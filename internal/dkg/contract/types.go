@@ -1,4 +1,4 @@
-package dkg
+package contract
 
 import (
 	"go.dedis.ch/kyber/v3"

@@ -17,8 +17,8 @@ import (
 )
 
 func NewReportingPluginFactory(
-	esk EncryptionSecretKey,
-	ssk SigningSecretKey,
+	esk contract.EncryptionSecretKey,
+	ssk contract.SigningSecretKey,
 	keyID contract.KeyID,
 	contract contract.OnchainContract,
 	logger commontypes.Logger,
@@ -43,8 +43,8 @@ func NewOnchainContract(
 }
 
 func OffchainConfig(
-	epks EncryptionPublicKeys,
-	spks SigningPublicKeys,
+	epks contract.EncryptionPublicKeys,
+	spks contract.SigningPublicKeys,
 	encryptionGroup anon.Suite,
 	translator point_translation.PubKeyTranslation,
 ) ([]byte, error) {
@@ -57,8 +57,8 @@ func OnchainConfig(keyID contract.KeyID) ([]byte, error) {
 }
 
 func NewPluginConfig(
-	epks EncryptionPublicKeys,
-	spks SigningPublicKeys,
+	epks contract.EncryptionPublicKeys,
+	spks contract.SigningPublicKeys,
 	encryptionGroup anon.Suite,
 	translator point_translation.PubKeyTranslation,
 	keyID contract.KeyID,

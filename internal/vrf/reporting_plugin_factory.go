@@ -72,9 +72,11 @@ func (v *vrfReportingPluginFactory) NewReportingPlugin(
 			errors.Wrap(err, "could not create new VRF Beacon reporting plugin")
 	}
 	return tbls, types.ReportingPluginInfo{
-		Name:              fmt.Sprintf("vrf instance %v", tbls.i),
-		MaxQueryLen:       500,
-		MaxObservationLen: 500,
-		MaxReportLen:      500,
+		Name: fmt.Sprintf("vrf instance %v", tbls.i),
+		Limits: types.ReportingPluginLimits{
+			MaxQueryLength:       500,
+			MaxObservationLength: 500,
+			MaxReportLength:      500,
+		},
 	}, nil
 }

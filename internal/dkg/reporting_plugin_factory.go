@@ -61,15 +61,17 @@ func (d *dkgReportingPluginFactory) NewReportingPlugin(
 	}
 	dkg.keyConsumer.KeyInvalidated(dkg.keyID)
 	return dkg, types.ReportingPluginInfo{
-		Name:              fmt.Sprintf("dkg instance %v", dkg.selfIdx),
-		MaxQueryLen:       1000,
-		MaxObservationLen: 100_000,
-		MaxReportLen:      10_000,
-		UniqueReports:     true,
+		Name: fmt.Sprintf("dkg instance %v", dkg.selfIdx),
+		Limits: types.ReportingPluginLimits{
+			MaxQueryLength:       1000,
+			MaxObservationLength: 100_000,
+			MaxReportLength:      10_000,
+		},
+		UniqueReports: true,
 	}, nil
 }
 
-func (d dkgReportingPluginFactory) NewDKG(a *NewDKGArgs) (*dkg, error) {
+func (d *dkgReportingPluginFactory) NewDKG(a *NewDKGArgs) (*dkg, error) {
 	if err := a.SanityCheckArgs(); err != nil {
 		return nil, errors.Wrap(err, "could not construct new DKG")
 	}

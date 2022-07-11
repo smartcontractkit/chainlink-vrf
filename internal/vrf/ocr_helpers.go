@@ -225,8 +225,8 @@ func (s *sigRequest) aggregateOutputs(blocks vrf_types.Blocks,
 	outputs = make([]vrf_types.AbstractVRFOutput, 0, len(vrfContributions))
 	for _, b := range blocks {
 		hd := heightDelay{b.Height, b.ConfirmationDelay}
-		delete(callbacksByBlock, hd)
 		if len(vrfContributions[b]) <= 2*int(s.n)/3 {
+			delete(callbacksByBlock, hd)
 			s.logger.Debug(
 				"not enough contributions for block",
 				commontypes.LogFields{
@@ -240,9 +240,10 @@ func (s *sigRequest) aggregateOutputs(blocks vrf_types.Blocks,
 		}
 		kd := s.keyProvider.KeyLookup(s.keyID)
 		output, err := kshare.RecoverCommit(
-			s.pairing.G1(), shares, int(kd.T), len(shares),
+			s.pairing.G1(), shares, int(kd.T)+1, len(shares),
 		)
 		if err != nil {
+			delete(callbacksByBlock, hd)
 			s.logger.Error(
 				"failed to recover distributed VRF output",
 				commontypes.LogFields{"error": err, "shares": shares, "t": s.t},
@@ -252,6 +253,7 @@ func (s *sigRequest) aggregateOutputs(blocks vrf_types.Blocks,
 		h := b.VRFHash(s.configDigest, kd.PublicKey)
 		hpoint := altbn_128.NewHashProof(h).HashPoint
 		if !validateSignature(s.pairing, hpoint, kd.PublicKey, output) {
+			delete(callbacksByBlock, hd)
 			s.logger.Error(
 				"could not verify distributed VRF output",
 				commontypes.LogFields{"distributed signature": output},
@@ -260,6 +262,7 @@ func (s *sigRequest) aggregateOutputs(blocks vrf_types.Blocks,
 		}
 		proof, err := output.MarshalBinary()
 		if err != nil {
+			delete(callbacksByBlock, hd)
 			s.logger.Error(
 				"could not serialize VRF output for onchain transmission",
 				commontypes.LogFields{"error": err, "output": output},
@@ -286,6 +289,7 @@ func (s *sigRequest) aggregateOutputs(blocks vrf_types.Blocks,
 			VRFProof:          common.BytesToHash(proof),
 			Callbacks:         ccallbacks,
 		})
+		delete(callbacksByBlock, hd)
 	}
 	return
 }
@@ -346,6 +350,32 @@ func sanityCheckCallback(
 		})
 	}
 	return nil
+}
+
+func sortBigInt(l []*big.Int) []*big.Int {
+	sort.Sort(byValue(l))
+	return l
+}
+
+type byValue []*big.Int
+
+func (a byValue) Len() int           { return len(a) }
+func (a byValue) Less(i, j int) bool { return a[i].Cmp(a[j]) < 0 }
+func (a byValue) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+
+func medianBigInt(l []*big.Int) *big.Int {
+	sortBigInt(l)
+	midPoint := len(l) / 2
+	if len(l)%2 == 1 {
+		return l[midPoint]
+	}
+	if len(l) == 0 {
+
+		panic("list must be populated")
+	}
+
+	midPointTotal := big.NewInt(0).Add(l[midPoint-1], l[midPoint])
+	return midPointTotal.Div(midPointTotal, big.NewInt(2))
 }
 
 var (

@@ -42,7 +42,7 @@ func CheckStatus(
 	tx *types.Transaction,
 	client Client,
 ) (err error) {
-	timeout := time.After(time.Minute)
+	timeout := time.After(5 * time.Second)
 	var buf bytes.Buffer
 	var receipt *types.Receipt
 	errMsg := "could not get byte encoding of tx with hash 0x%x while " +

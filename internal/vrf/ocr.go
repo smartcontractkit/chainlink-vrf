@@ -187,6 +187,11 @@ func (s *sigRequest) Report(
 	_ types.Query,
 	obs []types.AttributedObservation,
 ) (bool, types.Report, error) {
+	minObs := 2*int(s.t) + 1
+	if len(obs) < minObs {
+		err := fmt.Errorf("got %d observations, need %d", len(obs), minObs)
+		return false, nil, err
+	}
 	if err := s.ocrsSynced(ctx); err != nil {
 		return false, nil, errors.Wrap(err, "Report: ocr is not synced")
 	}
@@ -261,7 +266,13 @@ func (s *sigRequest) Report(
 	}
 	sort.Sort(blocks)
 
-	outputs := s.aggregateOutputs(blocks, vrfContributions, callbacksByBlock, callbackCounts, callbacks)
+	outputs := s.aggregateOutputs(
+		blocks,
+		vrfContributions,
+		callbacksByBlock,
+		callbackCounts,
+		callbacks,
+	)
 
 	orphanBlocks := make(hds, 0, len(callbacksByBlock))
 	for hd := range callbacksByBlock {
@@ -290,14 +301,6 @@ func (s *sigRequest) Report(
 		})
 	}
 
-	juelsPerFeeCoin, err := s.juelsPerFeeCoin.AggregateValues(juelsPerFeeCoinObs)
-	if err != nil {
-		return false, nil, errors.Wrapf(
-			err, "could not compute aggregate exchange rate from %v",
-			juelsPerFeeCoinObs,
-		)
-	}
-
 	var mostRecentBlockHash heightHash
 	var zeroHash common.Hash
 	for hh, c := range recentBlockHashes {
@@ -318,7 +321,7 @@ func (s *sigRequest) Report(
 	}
 
 	abstractReport := vrf_types.AbstractReport{
-		outputs, juelsPerFeeCoin, mostRecentBlockHash.height,
+		outputs, medianBigInt(juelsPerFeeCoinObs), mostRecentBlockHash.height,
 		mostRecentBlockHash.hash,
 	}
 	serializedReport, err := s.serializer.SerializeReport(abstractReport)

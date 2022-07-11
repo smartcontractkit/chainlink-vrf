@@ -72,16 +72,19 @@ func UnmarshalPluginConfig(
 }
 
 type (
-	EncryptionPublicKeys = dkg.EncryptionPublicKeys
-	EncryptionSecretKey  = dkg.EncryptionSecretKey
-	SigningPublicKeys    = dkg.SigningPublicKeys
-	SigningSecretKey     = dkg.SigningSecretKey
+	EncryptionPublicKeys = contract.EncryptionPublicKeys
+	EncryptionSecretKey  = contract.EncryptionSecretKey
+	SigningPublicKeys    = contract.SigningPublicKeys
+	SigningSecretKey     = contract.SigningSecretKey
 	PluginConfig         = dkg.PluginConfig
 	KeyConsumer          = dkg.KeyConsumer
+	KeyData              = dkg.KeyData
 
 	KeyID           = contract.KeyID
 	DKG             = contract.DKG
 	OnchainContract = contract.OnchainContract
+	OnchainKeyData  = contract.OnchainKeyData
 
-	PubKeyTranslation = point_translation.PubKeyTranslation
+	PubKeyTranslation  = point_translation.PubKeyTranslation
+	PairingTranslation = point_translation.PairingTranslation
 )
