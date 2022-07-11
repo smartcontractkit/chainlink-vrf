@@ -2,6 +2,7 @@ package ciphertext
 
 import (
 	"github.com/pkg/errors"
+
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/product_group"
 
 	"go.dedis.ch/kyber/v3"

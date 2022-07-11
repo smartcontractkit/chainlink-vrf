@@ -1,8 +1,9 @@
 package point_translation
 
 import (
-	"github.com/smartcontractkit/ocr2vrf/altbn_128"
 	"go.dedis.ch/kyber/v3"
+
+	"github.com/smartcontractkit/ocr2vrf/altbn_128"
 )
 
 type PubKeyTranslation interface {

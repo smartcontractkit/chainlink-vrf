@@ -10,11 +10,12 @@ import (
 
 	"github.com/golang/protobuf/proto"
 	"github.com/pkg/errors"
+	"go.dedis.ch/kyber/v3/share"
+	kshare "go.dedis.ch/kyber/v3/share"
+
 	"github.com/smartcontractkit/ocr2vrf/altbn_128"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
-	"go.dedis.ch/kyber/v3/share"
-	kshare "go.dedis.ch/kyber/v3/share"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"

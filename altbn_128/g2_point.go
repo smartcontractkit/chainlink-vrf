@@ -8,6 +8,7 @@ import (
 	"math/big"
 
 	bn256 "github.com/ethereum/go-ethereum/crypto/bn256/cloudflare"
+
 	"github.com/smartcontractkit/ocr2vrf/altbn_128/scalar"
 
 	"github.com/pkg/errors"

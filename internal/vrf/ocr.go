@@ -12,10 +12,11 @@ import (
 	"github.com/pkg/errors"
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
+	kshare "go.dedis.ch/kyber/v3/share"
+
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	protobuf "github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
-	kshare "go.dedis.ch/kyber/v3/share"
 )
 
 var _ types.ReportingPlugin = (*sigRequest)(nil)

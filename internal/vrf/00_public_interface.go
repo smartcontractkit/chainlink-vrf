@@ -8,6 +8,7 @@ import (
 
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
+
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
 )
