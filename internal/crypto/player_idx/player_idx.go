@@ -51,5 +51,5 @@ func (pi PlayerIdx) PriShare(sk kyber.Scalar) share.PriShare {
 
 func (pi PlayerIdx) PubShare(p kyber.Point) share.PubShare {
 	pi.mustBeNonZero()
-	return share.PubShare{int(pi.idx), p}
+	return share.PubShare{int(pi.idx - 1), p}
 }

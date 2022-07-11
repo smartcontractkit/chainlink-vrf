@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
 )
 
 type CoordinatorInterface interface {
@@ -42,8 +43,6 @@ type ReportSerializer interface {
 
 type JuelsPerFeeCoin interface {
 	JuelsPerFeeCoin() (*big.Int, error)
-
-	AggregateValues([]*big.Int) (*big.Int, error)
 }
 
 type Blockhashes interface {
@@ -89,3 +88,5 @@ type Block struct {
 	ConfirmationDelay uint32
 	Hash              common.Hash
 }
+
+type PairingTranslation = point_translation.PairingTranslation

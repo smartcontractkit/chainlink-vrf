@@ -7,13 +7,13 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/pkg/errors"
 	"github.com/smartcontractkit/ocr2vrf/gethwrappers/vrfbeaconcoordinator"
-	"go.dedis.ch/kyber/v3/pairing"
+	"go.dedis.ch/kyber/v3"
 
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
 )
 
 type EthereumReportSerializer struct {
-	Pairing pairing.Suite
+	G kyber.Group
 }
 
 func (e *EthereumReportSerializer) DeserializeReport(bytes []byte) (vrf_types.AbstractReport, error) {
@@ -56,13 +56,13 @@ func (e *EthereumReportSerializer) ConvertToBeaconReport(
 	)
 	emptyReport := vrfbeaconcoordinator.VRFBeaconReportReport{}
 	for _, output := range report.Outputs {
-		p := e.Pairing.G1().Point()
+		p := e.G.Point()
 		err := p.UnmarshalBinary(output.VRFProof[:])
 		if err != nil {
 			return emptyReport, errors.Wrap(err, "while unmarshalling vrf proof")
 		}
 		x, y := big.NewInt(0), big.NewInt(0)
-		if !p.Equal(e.Pairing.G1().Point().Null()) {
+		if !p.Equal(e.G.Point().Null()) {
 			x, y, err = affineCoordinates(p)
 			if err != nil {
 				return emptyReport, errors.Wrap(

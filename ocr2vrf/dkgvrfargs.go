@@ -4,7 +4,6 @@ import (
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
 	dkg_contract "github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
 )
@@ -51,7 +50,7 @@ type DKGVRFArgs struct {
 
 	ConfirmationDelays []uint32
 
-	Esk   dkg.EncryptionSecretKey
-	Ssk   dkg.SigningSecretKey
+	Esk   dkg_contract.EncryptionSecretKey
+	Ssk   dkg_contract.SigningSecretKey
 	KeyID dkg_contract.KeyID
 }
