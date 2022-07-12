@@ -40,7 +40,7 @@ func OffchainConfig(
 	epks EncryptionPublicKeys,
 	spks SigningPublicKeys,
 	encryptionGroup anon.Suite,
-	translator PubKeyTranslation,
+	translator point_translation.PubKeyTranslation,
 ) ([]byte, error) {
 	return dkg.OffchainConfig(epks, spks, encryptionGroup, translator)
 }
@@ -53,7 +53,7 @@ func NewPluginConfig(
 	epks EncryptionPublicKeys,
 	spks SigningPublicKeys,
 	encryptionGroup anon.Suite,
-	translator PubKeyTranslation,
+	translator point_translation.PubKeyTranslation,
 	keyID KeyID,
 ) *PluginConfig {
 	return dkg.NewPluginConfig(epks, spks, encryptionGroup, translator, keyID)
@@ -84,7 +84,4 @@ type (
 	DKG             = contract.DKG
 	OnchainContract = contract.OnchainContract
 	OnchainKeyData  = contract.OnchainKeyData
-
-	PubKeyTranslation  = point_translation.PubKeyTranslation
-	PairingTranslation = point_translation.PairingTranslation
 )

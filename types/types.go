@@ -7,6 +7,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
+	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
 )
 
@@ -90,4 +91,8 @@ type Block struct {
 	Hash              common.Hash
 }
 
-type PairingTranslation = point_translation.PairingTranslation
+type (
+	PubKeyTranslation  = point_translation.PubKeyTranslation
+	PairingTranslation = point_translation.PairingTranslation
+	PlayerIdxInt       = player_idx.Int
+)

@@ -23,6 +23,4 @@ var TranslatorRegistry = map[string]PubKeyTranslation{
 	},
 
 	"trivial": &TrivialTranslation{},
-
-	"bad translator": &BadTranslator{PairingTranslation{&altbn_128.PairingSuite{}}},
 }
