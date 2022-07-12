@@ -6,6 +6,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/crypto"
+
 	"github.com/smartcontractkit/ocr2vrf/gethwrappers/vrf"
 
 	bn256 "github.com/ethereum/go-ethereum/crypto/bn256/cloudflare"

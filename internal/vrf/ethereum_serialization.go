@@ -6,8 +6,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/pkg/errors"
-	"github.com/smartcontractkit/ocr2vrf/gethwrappers/vrfbeaconcoordinator"
 	"go.dedis.ch/kyber/v3"
+
+	"github.com/smartcontractkit/ocr2vrf/gethwrappers/vrfbeaconcoordinator"
 
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
 )

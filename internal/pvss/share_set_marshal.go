@@ -5,10 +5,11 @@ import (
 
 	"github.com/pkg/errors"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/sign/anon"
+
+	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
+	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
 )
 
 var _ = (&ShareSet{}).Marshal

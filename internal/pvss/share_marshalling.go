@@ -6,9 +6,10 @@ import (
 	"math"
 
 	"github.com/pkg/errors"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/ciphertext"
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/sign/anon"
+
+	"github.com/smartcontractkit/ocr2vrf/internal/crypto/ciphertext"
 )
 
 func (s *share) marshal() ([]byte, error) {

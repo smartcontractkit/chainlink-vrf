@@ -7,12 +7,13 @@ import (
 
 	bn256 "github.com/ethereum/go-ethereum/crypto/bn256/cloudflare"
 	"github.com/pkg/errors"
-	"github.com/smartcontractkit/ocr2vrf/altbn_128"
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
-	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/group/mod"
 	kshare "go.dedis.ch/kyber/v3/share"
+
+	"github.com/smartcontractkit/ocr2vrf/altbn_128"
+	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
+	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
 )
 
 func m(x int64) *mod.Int { return mod.NewInt64(x, bn256.P) }

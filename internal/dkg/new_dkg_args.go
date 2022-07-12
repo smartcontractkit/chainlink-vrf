@@ -11,11 +11,12 @@ import (
 	"github.com/pkg/errors"
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
+	"go.dedis.ch/kyber/v3"
+	"go.dedis.ch/kyber/v3/sign/anon"
+
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
-	"go.dedis.ch/kyber/v3"
-	"go.dedis.ch/kyber/v3/sign/anon"
 )
 
 type PluginConfig struct {

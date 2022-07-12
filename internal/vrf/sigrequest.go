@@ -8,11 +8,12 @@ import (
 	"github.com/pkg/errors"
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
+	"go.dedis.ch/kyber/v3"
+	"go.dedis.ch/kyber/v3/pairing"
+
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	dkg_contract "github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
-	"go.dedis.ch/kyber/v3"
-	"go.dedis.ch/kyber/v3/pairing"
 )
 
 type sigRequest struct {

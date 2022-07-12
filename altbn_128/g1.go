@@ -8,6 +8,7 @@ import (
 	"go.dedis.ch/kyber/v3/sign/anon"
 
 	bn256 "github.com/ethereum/go-ethereum/crypto/bn256/cloudflare"
+
 	"github.com/smartcontractkit/ocr2vrf/altbn_128/scalar"
 )
 

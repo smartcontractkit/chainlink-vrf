@@ -4,14 +4,16 @@ import (
 	"context"
 
 	"github.com/ethereum/go-ethereum/common"
+
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
+
+	"go.dedis.ch/kyber/v3/sign/anon"
 
 	"github.com/smartcontractkit/ocr2vrf/dkg"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
 	"github.com/smartcontractkit/ocr2vrf/internal/util"
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
-	"go.dedis.ch/kyber/v3/sign/anon"
 )
 
 type dummyDKG struct {

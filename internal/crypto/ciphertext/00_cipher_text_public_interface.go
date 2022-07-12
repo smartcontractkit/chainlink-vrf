@@ -3,10 +3,11 @@ package ciphertext
 import (
 	"io"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/share"
 	"go.dedis.ch/kyber/v3/sign/anon"
+
+	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 )
 
 type CipherText struct {
