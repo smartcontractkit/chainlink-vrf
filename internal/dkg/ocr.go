@@ -66,7 +66,6 @@ func (d *dkg) Report(
 
 		v.processShareSet(aobs)
 	}
-
 	if d.keyReportedOnchain(ctx) {
 		return false, nil, d.recoverDistributedKeyShare(ctx)
 	}
