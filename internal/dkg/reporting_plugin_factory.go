@@ -63,9 +63,9 @@ func (d *dkgReportingPluginFactory) NewReportingPlugin(
 	return dkg, types.ReportingPluginInfo{
 		Name: fmt.Sprintf("dkg instance %v", dkg.selfIdx),
 		Limits: types.ReportingPluginLimits{
-			MaxQueryLength:       1000,
-			MaxObservationLength: 100_000,
-			MaxReportLength:      10_000,
+			MaxQueryLength:       10_000,
+			MaxObservationLength: 500_000,
+			MaxReportLength:      100_000,
 		},
 		UniqueReports: true,
 	}, nil

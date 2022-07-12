@@ -75,9 +75,9 @@ func (v *vrfReportingPluginFactory) NewReportingPlugin(
 	return tbls, types.ReportingPluginInfo{
 		Name: fmt.Sprintf("vrf instance %v", tbls.i),
 		Limits: types.ReportingPluginLimits{
-			MaxQueryLength:       500,
-			MaxObservationLength: 500,
-			MaxReportLength:      500,
+			MaxQueryLength:       200000,
+			MaxObservationLength: 200000,
+			MaxReportLength:      200000,
 		},
 	}, nil
 }
