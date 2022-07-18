@@ -14,6 +14,10 @@ type OCR2VRF struct {
 	dkg, vrf *offchainreporting.Oracle
 }
 
+type (
+	EthereumReportSerializer = vrf.EthereumReportSerializer
+)
+
 func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 	transceiver := keyTransceiver{a.KeyID, nil}
 	dkg, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
