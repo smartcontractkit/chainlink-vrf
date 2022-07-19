@@ -30,7 +30,7 @@ func (kt *keyTransceiver) KeyLookup(p contract.KeyID) dkg.KeyData {
 		return *kt.kd.Clone()
 	}
 	if kt.kd == nil {
-		panic("key consumer is asking for unavailable key")
+		return dkg.KeyData{}
 	}
 
 	panic("key consumer is asking for unknown key ID")
