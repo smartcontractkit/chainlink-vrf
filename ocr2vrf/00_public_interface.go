@@ -6,6 +6,7 @@ import (
 	offchainreporting "github.com/smartcontractkit/libocr/offchainreporting2"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
+	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
 	"github.com/smartcontractkit/ocr2vrf/internal/util"
 	"github.com/smartcontractkit/ocr2vrf/internal/vrf"
 )
@@ -74,6 +75,14 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 		return nil, util.WrapError(err, "while setting up VRF oracle")
 	}
 	return &OCR2VRF{dkg, vrf}, nil
+}
+
+func OffchainConfig(keyID contract.KeyID) []byte {
+	return vrf.OffchainConfig(keyID)
+}
+
+func OnchainConfig(confDelays map[uint32]struct{}) []byte {
+	return vrf.OnchainConfig(confDelays)
 }
 
 func (o *OCR2VRF) Start() error {
