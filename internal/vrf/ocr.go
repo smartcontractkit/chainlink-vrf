@@ -80,6 +80,7 @@ func (s *sigRequest) Observation(
 		if _, present := s.blockProofs[b]; !present {
 			s.blockProofs[b], err = s.vrfOutput(b, s.keyProvider.KeyLookup(s.keyID))
 			if err != nil {
+				s.proofLock.Unlock()
 				return nil, err
 			}
 		}
@@ -89,6 +90,7 @@ func (s *sigRequest) Observation(
 				"oracleID": s.i, "error": err,
 				"proof": fmt.Sprintf("0x%x", s.blockProofs[b]),
 			})
+			s.proofLock.Unlock()
 			continue
 		}
 		s.proofLock.Unlock()

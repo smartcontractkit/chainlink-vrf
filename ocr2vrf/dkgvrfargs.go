@@ -9,7 +9,8 @@ import (
 )
 
 type DKGVRFArgs struct {
-	Logger commontypes.Logger
+	DKGLogger commontypes.Logger
+	VRFLogger commontypes.Logger
 
 	BinaryNetworkEndpointFactory types.BinaryNetworkEndpointFactory
 
@@ -19,7 +20,9 @@ type DKGVRFArgs struct {
 
 	OnchainKeyring types.OnchainKeyring
 
-	OffchainConfigDigester types.OffchainConfigDigester
+	DKGOffchainConfigDigester types.OffchainConfigDigester
+
+	VRFOffchainConfigDigester types.OffchainConfigDigester
 
 	VRFContractConfigTracker types.ContractConfigTracker
 
