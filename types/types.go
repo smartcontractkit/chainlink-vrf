@@ -31,6 +31,11 @@ type CoordinatorInterface interface {
 	ProvingKeyHash(context.Context) (common.Hash, error)
 
 	BeaconPeriod(ctx context.Context) (uint16, error)
+
+	ReportIsOnchain(
+		ctx context.Context,
+		epoch uint32, round uint8,
+	) (presentOnchain bool, err error)
 }
 
 type ReportSerializer interface {

@@ -15,6 +15,7 @@ import (
 	kshare "go.dedis.ch/kyber/v3/share"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
+	"github.com/smartcontractkit/ocr2vrf/internal/util"
 	protobuf "github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
 )
@@ -354,10 +355,13 @@ func (s *sigRequest) ShouldAcceptFinalizedReport(
 }
 
 func (s *sigRequest) ShouldTransmitAcceptedReport(
-	context.Context, types.ReportTimestamp, types.Report,
+	ctx context.Context, ts types.ReportTimestamp, _ types.Report,
 ) (bool, error) {
-
-	return true, nil
+	reportIsOnChain, err := s.coordinator.ReportIsOnchain(ctx, ts.Epoch, ts.Round)
+	if err != nil {
+		return false, util.WrapError(err, "coordinator ReportIsOnchain")
+	}
+	return !reportIsOnChain, nil
 }
 
 func (s *sigRequest) Start() error { return nil }
