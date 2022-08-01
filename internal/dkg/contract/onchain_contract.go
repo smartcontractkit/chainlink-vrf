@@ -7,8 +7,7 @@ import (
 
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 
-	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
-
+	"github.com/smartcontractkit/ocr2vrf/internal/common/ocr"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
 	"github.com/smartcontractkit/ocr2vrf/internal/util"
@@ -40,11 +39,11 @@ type DKG interface {
 
 	Address() common.Address
 
-	CurrentCommittee(ctx context.Context) (vrf_types.OCRCommittee, error)
+	CurrentCommittee(ctx context.Context) (ocr.OCRCommittee, error)
 
 	InitiateDKG(
 		ctx context.Context,
-		committee vrf_types.OCRCommittee,
+		committee ocr.OCRCommittee,
 		f player_idx.Int,
 		keyID KeyID,
 		epks EncryptionPublicKeys,

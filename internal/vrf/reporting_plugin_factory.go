@@ -1,6 +1,7 @@
 package vrf
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"time"
@@ -23,13 +24,13 @@ type vrfReportingPluginFactory struct {
 var _ types.ReportingPluginFactory = (*vrfReportingPluginFactory)(nil)
 
 type localArgs struct {
-	coordinator        vrf_types.CoordinatorInterface
-	confirmationDelays map[uint32]struct{}
-	blockhashes        vrf_types.Blockhashes
-	keyProvider        KeyProvider
-	serializer         vrf_types.ReportSerializer
-	juelsPerFeeCoin    vrf_types.JuelsPerFeeCoin
-	period             uint16
+	keyID           dkg_contract.KeyID
+	coordinator     vrf_types.CoordinatorInterface
+	blockhashes     vrf_types.Blockhashes
+	keyProvider     KeyProvider
+	serializer      vrf_types.ReportSerializer
+	juelsPerFeeCoin vrf_types.JuelsPerFeeCoin
+	period          uint16
 
 	logger     commontypes.Logger
 	randomness io.Reader
@@ -38,9 +39,6 @@ type localArgs struct {
 func (v *vrfReportingPluginFactory) NewReportingPlugin(
 	c types.ReportingPluginConfig,
 ) (types.ReportingPlugin, types.ReportingPluginInfo, error) {
-
-	var keyID dkg_contract.KeyID
-	copy(keyID[:], c.OffchainConfig[:32])
 
 	if c.N > int(player_idx.MaxPlayer) {
 		return nil, types.ReportingPluginInfo{},
@@ -51,8 +49,19 @@ func (v *vrfReportingPluginFactory) NewReportingPlugin(
 		return nil, types.ReportingPluginInfo{},
 			errors.Wrap(err, "could not determine local player DKG index")
 	}
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	confDelays, err := v.l.coordinator.ConfirmationDelays(ctx)
+	if err != nil {
+		return nil, types.ReportingPluginInfo{}, errors.Wrap(err, "could not get confirmation delays")
+	}
+	confDelaysSet := make(map[uint32]struct{})
+	for _, d := range confDelays {
+		confDelaysSet[d] = struct{}{}
+	}
 	tbls, err := newSigRequest(
-		keyID,
+		v.l.keyID,
 		v.l.keyProvider,
 		player_idx.Int(c.N),
 		player_idx.Int(c.F),
@@ -65,7 +74,7 @@ func (v *vrfReportingPluginFactory) NewReportingPlugin(
 		v.l.logger,
 		v.l.juelsPerFeeCoin,
 		v.l.coordinator,
-		v.l.confirmationDelays,
+		confDelaysSet,
 		v.l.period,
 	)
 	if err != nil {

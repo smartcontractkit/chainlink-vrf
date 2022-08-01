@@ -7,8 +7,10 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
+	"github.com/smartcontractkit/ocr2vrf/internal/common/ocr"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
+	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
 )
 
 type CoordinatorInterface interface {
@@ -36,6 +38,10 @@ type CoordinatorInterface interface {
 		ctx context.Context,
 		epoch uint32, round uint8,
 	) (presentOnchain bool, err error)
+
+	ConfirmationDelays(ctx context.Context) ([]uint32, error)
+
+	KeyID(ctx context.Context) (contract.KeyID, error)
 }
 
 type ReportSerializer interface {
@@ -88,8 +94,6 @@ type AbstractReport struct {
 	RecentBlockHash   common.Hash
 }
 
-type OCRCommittee struct{ Signers, Transmitters []common.Address }
-
 type Block struct {
 	Height            uint64
 	ConfirmationDelay uint32
@@ -100,4 +104,5 @@ type (
 	PubKeyTranslation  = point_translation.PubKeyTranslation
 	PairingTranslation = point_translation.PairingTranslation
 	PlayerIdxInt       = player_idx.Int
+	OCRCommittee       = ocr.OCRCommittee
 )
