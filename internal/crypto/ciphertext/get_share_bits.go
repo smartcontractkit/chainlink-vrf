@@ -10,15 +10,15 @@ import (
 )
 
 func getShareBits(receiver *player_idx.PlayerIdx, secretPoly *share.PriPoly) (kyber.Scalar, []byte, error) {
-	share := receiver.Eval(secretPoly)
-	rawShare, err := share.MarshalBinary()
+	privateShare := receiver.Eval(secretPoly)
+	rawShare, err := privateShare.MarshalBinary()
 	if err != nil {
 		return nil, nil, errors.Wrapf(err, "while computing bit reperesentation of secret share")
 	}
-	if err := verifyMarshalOutputBigEndian(share, rawShare); err != nil {
+	if err := verifyMarshalOutputBigEndian(privateShare, rawShare); err != nil {
 		return nil, nil, err
 	}
-	return share, rawShare, nil
+	return privateShare, rawShare, nil
 }
 
 func verifyMarshalOutputBigEndian(share kyber.Scalar, rawShare []byte) error {

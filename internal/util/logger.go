@@ -23,7 +23,7 @@ type prefixWriter struct {
 func (p prefixWriter) Write(po []byte) (n int, err error) {
 
 	if len(po) > 1000 {
-		po = bytes.Join([][]byte{po[:1000], []byte("<truncated>")}, nil)
+		po = bytes.Join([][]byte{po[:1000], []byte("<truncated>\n")}, nil)
 	}
 	return p.writer.Write(
 		bytes.Join([][]byte{[]byte(p.prefix), []byte(" "), po}, nil),

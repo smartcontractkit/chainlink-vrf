@@ -16,7 +16,7 @@ import (
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/util"
-	protobuf "github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
+	"github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
 )
 
@@ -55,6 +55,8 @@ func (s *sigRequest) Observation(
 		)
 	}
 	outputs := make([]*protobuf.VRFResponse, 0, len(pendingBlocks))
+	s.proofLock.Lock()
+	defer s.proofLock.Unlock()
 	for _, b := range pendingBlocks {
 		if _, present := s.confirmationDelays[b.ConfirmationDelay]; !present {
 			s.logger.Error("unknown confirmation delay", commontypes.LogFields{
@@ -70,20 +72,21 @@ func (s *sigRequest) Observation(
 			)
 			continue
 		}
-		if rem := b.Height % uint64(s.period); rem != 0 {
+		if remainder := b.Height % uint64(s.period); remainder != 0 {
 			s.logger.Error(
 				"ReportBlocks returned a non-beacon height",
-				commontypes.LogFields{"block": b, "period": s.period, "remainder": rem},
+				commontypes.LogFields{"block": b, "period": s.period, "remainder": remainder},
 			)
 			continue
 		}
-		s.proofLock.Lock()
 		if _, present := s.blockProofs[b]; !present {
-			s.blockProofs[b], err = s.vrfOutput(b, s.keyProvider.KeyLookup(s.keyID))
+
+			blockProof, err := s.vrfOutput(b, s.keyProvider.KeyLookup(s.keyID))
+
 			if err != nil {
-				s.proofLock.Unlock()
 				return nil, err
 			}
+			s.blockProofs[b] = blockProof
 		}
 		proofBytes, err := s.blockProofs[b].MarshalBinary()
 		if err != nil {
@@ -91,10 +94,8 @@ func (s *sigRequest) Observation(
 				"oracleID": s.i, "error": err,
 				"proof": fmt.Sprintf("0x%x", s.blockProofs[b]),
 			})
-			s.proofLock.Unlock()
 			continue
 		}
-		s.proofLock.Unlock()
 		var blockhash common.Hash
 		copy(blockhash[:], b.Hash[:])
 		outputs = append(outputs, &protobuf.VRFResponse{
@@ -152,24 +153,33 @@ func (s *sigRequest) Observation(
 	if err != nil {
 		return nil, errors.Wrap(err, "could not get verifiable blocks")
 	}
-	if newHeight := startHeight + uint64(len(blocks)) - 1; newHeight < currentHeight {
+	lastVerifiableBlockHeight := startHeight + uint64(len(blocks)) - 1
+	if lastVerifiableBlockHeight < currentHeight {
 		return nil, errors.Errorf(
 			"verifiable blocks don't include current block: %d < %d",
-			newHeight, currentHeight,
+			lastVerifiableBlockHeight, currentHeight,
 		)
 	}
 	recentHashes := make([]*protobuf.RecentBlockAndHash, 0, len(blocks))
-	for i, b := range blocks {
-		var blockhash common.Hash
-		copy(blockhash[:], b[:])
+	for i, blockhash := range blocks {
+		var hash common.Hash
+		copy(hash[:], blockhash[:])
 		recentHashes = append(
 			recentHashes,
 			&protobuf.RecentBlockAndHash{
 				Height:    startHeight + uint64(i),
-				Blockhash: blockhash[:],
+				Blockhash: hash[:],
 			},
 		)
 	}
+
+	s.logger.Debug("initial observation", commontypes.LogFields{
+		"JulesPerFeeCoin":   juelsPerFeeCoin,
+		"RecentBlockHashes": recentHashes,
+		"Proofs":            outputs,
+		"Callbacks":         callbacks,
+		"Raw blocks":        blocks,
+	})
 
 	observation := &protobuf.Observation{
 		JuelsPerFeeCoin:   juelsPerFeeCoin.Bytes(),
@@ -178,7 +188,6 @@ func (s *sigRequest) Observation(
 		Callbacks:         callbacks,
 	}
 	rv, err := proto.Marshal(observation)
-
 	if err != nil {
 		return nil, errors.Errorf("Error while marshaling Observation")
 	}
@@ -191,7 +200,7 @@ func (s *sigRequest) Report(
 	_ types.Query,
 	obs []types.AttributedObservation,
 ) (bool, types.Report, error) {
-	minObs := 2*int(s.t) + 1
+	minObs := int(s.t) + 1
 	if len(obs) < minObs {
 		err := fmt.Errorf("got %d observations, need %d", len(obs), minObs)
 		return false, nil, err
@@ -211,9 +220,8 @@ func (s *sigRequest) Report(
 	kd := s.keyProvider.KeyLookup(s.keyID)
 	players, err := player_idx.PlayerIdxs(s.n)
 	if err != nil {
-		return false, nil, errors.Wrap(
-			err, "could not construct players for tracking shares",
-		)
+		errMsg := "could not construct players for tracking shares"
+		return false, nil, errors.Wrap(err, errMsg)
 	}
 	juelsPerFeeCoinObs := make([]*big.Int, 0, len(obs))
 	type heightHash struct {
@@ -258,25 +266,30 @@ func (s *sigRequest) Report(
 					commontypes.LogFields{"hash": hh},
 				)
 				continue
+			} else {
+
+				seenHashes[hh] = struct{}{}
+				recentBlockHashes[hh]++
 			}
-			seenHashes[hh] = struct{}{}
-			recentBlockHashes[hh]++
 		}
 	}
 
 	blocks := make(vrf_types.Blocks, 0, len(vrfContributions))
-	for b, _ := range vrfContributions {
+	for b := range vrfContributions {
 		blocks = append(blocks, b)
 	}
 	sort.Sort(blocks)
 
-	outputs := s.aggregateOutputs(
+	outputs, err := s.aggregateOutputs(
 		blocks,
 		vrfContributions,
 		callbacksByBlock,
 		callbackCounts,
 		callbacks,
 	)
+	if err != nil {
+		return false, nil, util.WrapError(err, "could not aggregate VRF outputs")
+	}
 
 	orphanBlocks := make(hds, 0, len(callbacksByBlock))
 	for hd := range callbacksByBlock {
@@ -293,7 +306,8 @@ func (s *sigRequest) Report(
 			[]vrf_types.AbstractCostedCallbackRequest, 0, len(chashes))
 		for _, chs := range chashes {
 			ch := common.HexToHash(chs)
-			if callbackCounts[ch] > 2*uint64(s.n)/3 {
+
+			if callbackCounts[ch] > uint64(s.t) {
 				ccallbacks = append(ccallbacks, callbacks[ch])
 			}
 		}
@@ -304,11 +318,17 @@ func (s *sigRequest) Report(
 			Callbacks:         ccallbacks,
 		})
 	}
+	if len(outputs) == 0 {
+		noFields := commontypes.LogFields{}
+		s.logger.Debug(noOutputsRequiredNotTransmittingReport, noFields)
+		return false, nil, nil
+	}
 
 	var mostRecentBlockHash heightHash
 	var zeroHash common.Hash
 	for hh, c := range recentBlockHashes {
-		if c > 2*int(s.n)/3 {
+
+		if c > int(s.t) {
 			if (mostRecentBlockHash.hash == zeroHash) ||
 				(hh.height > mostRecentBlockHash.height) ||
 
@@ -336,8 +356,8 @@ func (s *sigRequest) Report(
 		return false, types.Report{}, err
 	}
 	s.reportsLock.Lock()
+	defer s.reportsLock.Unlock()
 	s.reports[ts] = report{abstractReport, serializedReport}
-	s.reportsLock.Unlock()
 	return len(outputs) > 0, serializedReport, nil
 }
 
@@ -347,7 +367,9 @@ func (s *sigRequest) ShouldAcceptFinalizedReport(
 
 	s.reportsLock.Lock()
 	if or, present := s.reports[ts]; present && bytes.Equal(or.s, r) {
-		s.coordinator.ReportWillBeTransmitted(ctx, or.r)
+		if err := s.coordinator.ReportWillBeTransmitted(ctx, or.r); err != nil {
+			return false, util.WrapError(err, "Error in ShouldAcceptFinalizedReport")
+		}
 		delete(s.reports, ts)
 	}
 	s.reportsLock.Unlock()
@@ -390,3 +412,8 @@ func (h hds) Less(i, j int) bool {
 func (h hds) Swap(i, j int) {
 	h[i], h[j] = h[j], h[i]
 }
+
+const noOutputsRequiredNotTransmittingReport = "no VRF outputs required; not transmitting report"
+const noEnoughContributions = "not enough contributions for block"
+const wrongShare = "wrong share provided"
+const outOfRangeObserver = "not enough players for observer index"

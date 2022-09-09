@@ -30,7 +30,7 @@ func (p *gTPoint) MarshalSize() int                               { panic("not i
 func (p *gTPoint) MarshalTo(w io.Writer) (int, error)             { panic("not implemented") }
 func (p *gTPoint) UnmarshalFrom(r io.Reader) (int, error)         { panic("not implemented") }
 func (p *gTPoint) Null() kyber.Point                              { panic("not implemented") }
-func (gt *gTPoint) Base() kyber.Point                             { panic("not implemented") }
+func (p *gTPoint) Base() kyber.Point                              { panic("not implemented") }
 func (p *gTPoint) Pick(rand cipher.Stream) kyber.Point            { panic("not implemented") }
 func (p *gTPoint) Set(p2 kyber.Point) kyber.Point                 { panic("not implemented") }
 func (p *gTPoint) Clone() kyber.Point                             { panic("not implemented") }

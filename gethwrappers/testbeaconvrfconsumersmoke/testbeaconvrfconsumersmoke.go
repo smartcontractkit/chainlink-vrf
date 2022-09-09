@@ -1,4 +1,4 @@
-package vrfbeaconcoordinator
+package testbeaconvrfconsumersmoke
 
 import (
 	"errors"
@@ -4583,6 +4583,199 @@ func (_OwnerIsCreator *OwnerIsCreatorFilterer) ParseOwnershipTransferred(log typ
 	}
 	event.Raw = log
 	return event, nil
+}
+
+var TestBeaconVRFConsumerSmokeMetaData = &bind.MetaData{
+	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_coordinator\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"makeRequest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"internalType\":\"uint256[]\",\"name\":\"randomWords\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"rawFulfillRandomWords\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"redeemRequest\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"requestID\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
+	Bin: "0x60a060405234801561001057600080fd5b506040516106b93803806106b983398101604081905261002f91610040565b6001600160a01b0316608052610070565b60006020828403121561005257600080fd5b81516001600160a01b038116811461006957600080fd5b9392505050565b6080516106216100986000396000818160f20152818161017f015261025401526106216000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80631f6dd8bb146100515780635a47dd711461006f5780636a5f15b1146100845780638f7792011461008c575b600080fd5b6100596100b5565b604051610066919061033e565b60405180910390f35b61008261007d36600461048d565b61017d565b005b610082610217565b60005461009e9065ffffffffffff1681565b60405165ffffffffffff9091168152602001610066565b6000546040517f74d8461100000000000000000000000000000000000000000000000000000000815265ffffffffffff90911660048201526060907f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff16906374d84611906024016000604051808303816000875af1158015610150573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f19168201604052610178919081019061055f565b905090565b7f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff1633146102075760405162461bcd60e51b815260206004820152601c60248201527f6f6e6c7920636f6f7264696e61746f722063616e2066756c66696c6c0000000060448201526064015b60405180910390fd5b6102128383836102f6565b505050565b6040517fdc92accf0000000000000000000000000000000000000000000000000000000081526001600482015260006024820152600860448201527f000000000000000000000000000000000000000000000000000000000000000073ffffffffffffffffffffffffffffffffffffffff169063dc92accf906064016020604051808303816000875af11580156102b2573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102d691906105f0565b6000805465ffffffffffff191665ffffffffffff92909216919091179055565b60405162461bcd60e51b815260206004820152600d60248201527f756e696d706c656d656e7465640000000000000000000000000000000000000060448201526064016101fe565b6020808252825182820181905260009190848201906040850190845b818110156103765783518352928401929184019160010161035a565b50909695505050505050565b65ffffffffffff8116811461039657600080fd5b50565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff811182821017156103f1576103f1610399565b604052919050565b600067ffffffffffffffff82111561041357610413610399565b5060051b60200190565b600082601f83011261042e57600080fd5b813567ffffffffffffffff81111561044857610448610399565b61045b601f8201601f19166020016103c8565b81815284602083860101111561047057600080fd5b816020850160208301376000918101602001919091529392505050565b6000806000606084860312156104a257600080fd5b83356104ad81610382565b925060208481013567ffffffffffffffff808211156104cb57600080fd5b818701915087601f8301126104df57600080fd5b81356104f26104ed826103f9565b6103c8565b81815260059190911b8301840190848101908a83111561051157600080fd5b938501935b8285101561052f57843582529385019390850190610516565b96505050604087013592508083111561054757600080fd5b50506105558682870161041d565b9150509250925092565b6000602080838503121561057257600080fd5b825167ffffffffffffffff81111561058957600080fd5b8301601f8101851361059a57600080fd5b80516105a86104ed826103f9565b81815260059190911b820183019083810190878311156105c757600080fd5b928401925b828410156105e5578351825292840192908401906105cc565b979650505050505050565b60006020828403121561060257600080fd5b815161060d81610382565b939250505056fea164736f6c634300080f000a",
+}
+
+var TestBeaconVRFConsumerSmokeABI = TestBeaconVRFConsumerSmokeMetaData.ABI
+
+var TestBeaconVRFConsumerSmokeBin = TestBeaconVRFConsumerSmokeMetaData.Bin
+
+func DeployTestBeaconVRFConsumerSmoke(auth *bind.TransactOpts, backend bind.ContractBackend, _coordinator common.Address) (common.Address, *types.Transaction, *TestBeaconVRFConsumerSmoke, error) {
+	parsed, err := TestBeaconVRFConsumerSmokeMetaData.GetAbi()
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	if parsed == nil {
+		return common.Address{}, nil, nil, errors.New("GetABI returned nil")
+	}
+
+	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(TestBeaconVRFConsumerSmokeBin), backend, _coordinator)
+	if err != nil {
+		return common.Address{}, nil, nil, err
+	}
+	return address, tx, &TestBeaconVRFConsumerSmoke{TestBeaconVRFConsumerSmokeCaller: TestBeaconVRFConsumerSmokeCaller{contract: contract}, TestBeaconVRFConsumerSmokeTransactor: TestBeaconVRFConsumerSmokeTransactor{contract: contract}, TestBeaconVRFConsumerSmokeFilterer: TestBeaconVRFConsumerSmokeFilterer{contract: contract}}, nil
+}
+
+type TestBeaconVRFConsumerSmoke struct {
+	TestBeaconVRFConsumerSmokeCaller
+	TestBeaconVRFConsumerSmokeTransactor
+	TestBeaconVRFConsumerSmokeFilterer
+}
+
+type TestBeaconVRFConsumerSmokeCaller struct {
+	contract *bind.BoundContract
+}
+
+type TestBeaconVRFConsumerSmokeTransactor struct {
+	contract *bind.BoundContract
+}
+
+type TestBeaconVRFConsumerSmokeFilterer struct {
+	contract *bind.BoundContract
+}
+
+type TestBeaconVRFConsumerSmokeSession struct {
+	Contract     *TestBeaconVRFConsumerSmoke
+	CallOpts     bind.CallOpts
+	TransactOpts bind.TransactOpts
+}
+
+type TestBeaconVRFConsumerSmokeCallerSession struct {
+	Contract *TestBeaconVRFConsumerSmokeCaller
+	CallOpts bind.CallOpts
+}
+
+type TestBeaconVRFConsumerSmokeTransactorSession struct {
+	Contract     *TestBeaconVRFConsumerSmokeTransactor
+	TransactOpts bind.TransactOpts
+}
+
+type TestBeaconVRFConsumerSmokeRaw struct {
+	Contract *TestBeaconVRFConsumerSmoke
+}
+
+type TestBeaconVRFConsumerSmokeCallerRaw struct {
+	Contract *TestBeaconVRFConsumerSmokeCaller
+}
+
+type TestBeaconVRFConsumerSmokeTransactorRaw struct {
+	Contract *TestBeaconVRFConsumerSmokeTransactor
+}
+
+func NewTestBeaconVRFConsumerSmoke(address common.Address, backend bind.ContractBackend) (*TestBeaconVRFConsumerSmoke, error) {
+	contract, err := bindTestBeaconVRFConsumerSmoke(address, backend, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &TestBeaconVRFConsumerSmoke{TestBeaconVRFConsumerSmokeCaller: TestBeaconVRFConsumerSmokeCaller{contract: contract}, TestBeaconVRFConsumerSmokeTransactor: TestBeaconVRFConsumerSmokeTransactor{contract: contract}, TestBeaconVRFConsumerSmokeFilterer: TestBeaconVRFConsumerSmokeFilterer{contract: contract}}, nil
+}
+
+func NewTestBeaconVRFConsumerSmokeCaller(address common.Address, caller bind.ContractCaller) (*TestBeaconVRFConsumerSmokeCaller, error) {
+	contract, err := bindTestBeaconVRFConsumerSmoke(address, caller, nil, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &TestBeaconVRFConsumerSmokeCaller{contract: contract}, nil
+}
+
+func NewTestBeaconVRFConsumerSmokeTransactor(address common.Address, transactor bind.ContractTransactor) (*TestBeaconVRFConsumerSmokeTransactor, error) {
+	contract, err := bindTestBeaconVRFConsumerSmoke(address, nil, transactor, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &TestBeaconVRFConsumerSmokeTransactor{contract: contract}, nil
+}
+
+func NewTestBeaconVRFConsumerSmokeFilterer(address common.Address, filterer bind.ContractFilterer) (*TestBeaconVRFConsumerSmokeFilterer, error) {
+	contract, err := bindTestBeaconVRFConsumerSmoke(address, nil, nil, filterer)
+	if err != nil {
+		return nil, err
+	}
+	return &TestBeaconVRFConsumerSmokeFilterer{contract: contract}, nil
+}
+
+func bindTestBeaconVRFConsumerSmoke(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(TestBeaconVRFConsumerSmokeABI))
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _TestBeaconVRFConsumerSmoke.Contract.TestBeaconVRFConsumerSmokeCaller.contract.Call(opts, result, method, params...)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _TestBeaconVRFConsumerSmoke.Contract.TestBeaconVRFConsumerSmokeTransactor.contract.Transfer(opts)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _TestBeaconVRFConsumerSmoke.Contract.TestBeaconVRFConsumerSmokeTransactor.contract.Transact(opts, method, params...)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _TestBeaconVRFConsumerSmoke.Contract.contract.Call(opts, result, method, params...)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _TestBeaconVRFConsumerSmoke.Contract.contract.Transfer(opts)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _TestBeaconVRFConsumerSmoke.Contract.contract.Transact(opts, method, params...)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeCaller) RequestID(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _TestBeaconVRFConsumerSmoke.contract.Call(opts, &out, "requestID")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeSession) RequestID() (*big.Int, error) {
+	return _TestBeaconVRFConsumerSmoke.Contract.RequestID(&_TestBeaconVRFConsumerSmoke.CallOpts)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeCallerSession) RequestID() (*big.Int, error) {
+	return _TestBeaconVRFConsumerSmoke.Contract.RequestID(&_TestBeaconVRFConsumerSmoke.CallOpts)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeTransactor) MakeRequest(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _TestBeaconVRFConsumerSmoke.contract.Transact(opts, "makeRequest")
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeSession) MakeRequest() (*types.Transaction, error) {
+	return _TestBeaconVRFConsumerSmoke.Contract.MakeRequest(&_TestBeaconVRFConsumerSmoke.TransactOpts)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeTransactorSession) MakeRequest() (*types.Transaction, error) {
+	return _TestBeaconVRFConsumerSmoke.Contract.MakeRequest(&_TestBeaconVRFConsumerSmoke.TransactOpts)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeTransactor) RawFulfillRandomWords(opts *bind.TransactOpts, requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
+	return _TestBeaconVRFConsumerSmoke.contract.Transact(opts, "rawFulfillRandomWords", requestID, randomWords, arguments)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeSession) RawFulfillRandomWords(requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
+	return _TestBeaconVRFConsumerSmoke.Contract.RawFulfillRandomWords(&_TestBeaconVRFConsumerSmoke.TransactOpts, requestID, randomWords, arguments)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeTransactorSession) RawFulfillRandomWords(requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
+	return _TestBeaconVRFConsumerSmoke.Contract.RawFulfillRandomWords(&_TestBeaconVRFConsumerSmoke.TransactOpts, requestID, randomWords, arguments)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeTransactor) RedeemRequest(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _TestBeaconVRFConsumerSmoke.contract.Transact(opts, "redeemRequest")
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeSession) RedeemRequest() (*types.Transaction, error) {
+	return _TestBeaconVRFConsumerSmoke.Contract.RedeemRequest(&_TestBeaconVRFConsumerSmoke.TransactOpts)
+}
+
+func (_TestBeaconVRFConsumerSmoke *TestBeaconVRFConsumerSmokeTransactorSession) RedeemRequest() (*types.Transaction, error) {
+	return _TestBeaconVRFConsumerSmoke.Contract.RedeemRequest(&_TestBeaconVRFConsumerSmoke.TransactOpts)
 }
 
 var TypeAndVersionInterfaceMetaData = &bind.MetaData{

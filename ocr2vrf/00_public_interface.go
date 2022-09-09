@@ -11,17 +11,13 @@ import (
 	"github.com/smartcontractkit/ocr2vrf/internal/vrf"
 )
 
-type OCR2VRF struct {
-	dkg, vrf *offchainreporting.Oracle
-}
+type OCR2VRF struct{ dkg, vrf *offchainreporting.Oracle }
 
-type (
-	EthereumReportSerializer = vrf.EthereumReportSerializer
-)
+type EthereumReportSerializer = vrf.EthereumReportSerializer
 
 func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 	transceiver := keyTransceiver{a.KeyID, nil}
-	dkg, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
+	deployedDKG, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
 		BinaryNetworkEndpointFactory: a.BinaryNetworkEndpointFactory,
 		V2Bootstrappers:              a.V2Bootstrappers,
 		ContractConfigTracker:        a.DKGContractConfigTracker,
@@ -61,7 +57,7 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "could not instantiate VRF reporting plugin factory")
 	}
-	vrf, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
+	deployedVRF, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
 		BinaryNetworkEndpointFactory: a.BinaryNetworkEndpointFactory,
 		V2Bootstrappers:              a.V2Bootstrappers,
 		ContractConfigTracker:        a.VRFContractConfigTracker,
@@ -78,7 +74,7 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 	if err != nil {
 		return nil, util.WrapError(err, "while setting up VRF oracle")
 	}
-	return &OCR2VRF{dkg, vrf}, nil
+	return &OCR2VRF{deployedDKG, deployedVRF}, nil
 }
 
 func OffchainConfig() []byte {

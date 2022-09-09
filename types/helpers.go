@@ -21,7 +21,7 @@ func (b Block) VRFHash(separator common.Hash, pKey kyber.Point) common.Hash {
 		panic("could not serialize key as domain separator")
 	}
 	hashMsg := bytes.Join(
-		[][]byte{separator[:], key, delayBytes[:], b.Hash.Bytes()},
+		[][]byte{separator[:], key, delayBytes[:], heightBytes[:], b.Hash.Bytes()},
 		nil,
 	)
 	return common.BytesToHash(crypto.Keccak256(hashMsg))

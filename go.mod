@@ -7,7 +7,7 @@ require (
 	github.com/golang/protobuf v1.5.2
 	github.com/pkg/errors v0.9.1
 	github.com/sirupsen/logrus v1.8.1
-	github.com/smartcontractkit/libocr v0.0.0-20220701150323-d815c8d0eab8
+	github.com/smartcontractkit/libocr v0.0.0-20220812191430-db92a9fdaa52
 	go.dedis.ch/fixbuf v1.0.3
 	go.dedis.ch/kyber/v3 v3.0.13
 	go.uber.org/multierr v1.7.0

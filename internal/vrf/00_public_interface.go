@@ -53,14 +53,14 @@ func NewVRFReportingPluginFactory(
 ) (types.ReportingPluginFactory, error) {
 	contractKeyID, err := coordinator.KeyID(context.Background())
 	if err != nil {
-		errors.Wrap(err, "could not get key ID")
+		return &vrfReportingPluginFactory{}, errors.Wrap(err, "could not get key ID")
 	}
 	if keyID != contractKeyID {
-		errors.New("provided keyID is different from coordinator keyID")
+		return &vrfReportingPluginFactory{}, errors.New("provided keyID is different from coordinator keyID")
 	}
 	period, err := coordinator.BeaconPeriod(context.Background())
 	if err != nil {
-		errors.Wrap(err, "could not get beacon period")
+		return &vrfReportingPluginFactory{}, errors.Wrap(err, "could not get beacon period")
 	}
 	return &vrfReportingPluginFactory{
 		&localArgs{

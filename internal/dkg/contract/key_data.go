@@ -46,11 +46,11 @@ func getKeyDataEncoding() abi.Arguments {
 		}
 		return result
 	}
-	return abi.Arguments([]abi.Argument{
+	return []abi.Argument{
 		{Name: "keyID", Type: mustNewType("bytes32")},
 		{Name: "publicKey", Type: mustNewType("bytes")},
 		{Name: "hashes", Type: mustNewType("bytes32[]")},
-	})
+	}
 }
 
 func MakeKeyDataFromOnchainKeyData(
@@ -62,7 +62,7 @@ func MakeKeyDataFromOnchainKeyData(
 	}
 	var hashes []hash.Hash
 	for _, h := range kd.Hashes {
-		hashes = append(hashes, hash.Hash(h))
+		hashes = append(hashes, h)
 	}
 	return KeyData{pk, hashes}, nil
 }

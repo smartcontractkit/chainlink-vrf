@@ -30,7 +30,7 @@ func (s *SecretShare) Mul(p kyber.Point) kyber.Point {
 
 var defaultPBKDF2NumberOfIterations uint32 = 150_000
 
-var encryptionVersionNum uint8 = 0
+var encryptionVersionNum uint8
 
 const saltLen, nonceLen = 32, 12
 
@@ -52,7 +52,7 @@ func (s *SecretShare) Encrypt(
 		iter = itersTestingOnly[0]
 	}
 	var iterBin [4]byte
-	binary.BigEndian.PutUint32(iterBin[:], uint32(iter))
+	binary.BigEndian.PutUint32(iterBin[:], iter)
 
 	var nonce [nonceLen]byte
 	if _, err := io.ReadFull(rand.Reader, nonce[:]); err != nil {

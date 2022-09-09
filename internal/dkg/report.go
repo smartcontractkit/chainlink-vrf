@@ -91,7 +91,6 @@ func (v *validShareRecords) storeValidShareSet(
 	_ = v.aggregatePublicKey.Add(agg, shareSet.PublicKey())
 	v.includedHashes.Add(*h)
 	v.validShareCount++
-	return
 }
 
 func (v *validShareRecords) processShareSet(aobs types.AttributedObservation) {

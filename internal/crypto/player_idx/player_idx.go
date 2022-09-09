@@ -19,7 +19,7 @@ func PlayerIdxs(n Int) (rv []*PlayerIdx, err error) {
 		return nil, errors.Errorf("%d is too few players", n)
 	}
 	for i := Int(1); i <= n; i++ {
-		rv = append(rv, &PlayerIdx{Int(i)})
+		rv = append(rv, &PlayerIdx{i})
 	}
 	return rv, nil
 }
@@ -46,10 +46,10 @@ func (pi PlayerIdx) Set(a, e interface{}) {
 
 func (pi PlayerIdx) PriShare(sk kyber.Scalar) share.PriShare {
 	pi.mustBeNonZero()
-	return share.PriShare{int(pi.idx - 1), sk}
+	return share.PriShare{int(pi.idx) - 1, sk}
 }
 
 func (pi PlayerIdx) PubShare(p kyber.Point) share.PubShare {
 	pi.mustBeNonZero()
-	return share.PubShare{int(pi.idx - 1), p}
+	return share.PubShare{int(pi.idx) - 1, p}
 }

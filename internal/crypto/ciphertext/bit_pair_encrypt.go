@@ -46,7 +46,7 @@ func encrypt(
 }
 
 func encryptDomainSep(domainSep []byte, pairIdx uint8) []byte {
-	return append(domainSep, byte(pairIdx))
+	return append(domainSep, pairIdx)
 }
 
 func combinedCipherTexts(cipherText []*elGamalBitPair, s anon.Suite) kyber.Point {
