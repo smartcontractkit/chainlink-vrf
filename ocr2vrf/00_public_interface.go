@@ -3,25 +3,21 @@ package ocr2vrf
 import (
 	"go.uber.org/multierr"
 
+	"github.com/pkg/errors"
 	offchainreporting "github.com/smartcontractkit/libocr/offchainreporting2"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
 	"github.com/smartcontractkit/ocr2vrf/internal/util"
 	"github.com/smartcontractkit/ocr2vrf/internal/vrf"
 )
 
-type OCR2VRF struct {
-	dkg, vrf *offchainreporting.Oracle
-}
+type OCR2VRF struct{ dkg, vrf *offchainreporting.Oracle }
 
-type (
-	EthereumReportSerializer = vrf.EthereumReportSerializer
-)
+type EthereumReportSerializer = vrf.EthereumReportSerializer
 
 func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 	transceiver := keyTransceiver{a.KeyID, nil}
-	dkg, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
+	deployedDKG, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
 		BinaryNetworkEndpointFactory: a.BinaryNetworkEndpointFactory,
 		V2Bootstrappers:              a.V2Bootstrappers,
 		ContractConfigTracker:        a.DKGContractConfigTracker,
@@ -49,7 +45,19 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 	for _, d := range a.ConfirmationDelays {
 		confirmationDelays[d] = struct{}{}
 	}
-	vrf, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
+	reportingPluginFactory, err := vrf.NewVRFReportingPluginFactory(
+		a.KeyID,
+		&transceiver,
+		a.Coordinator,
+		a.Blockhashes,
+		a.Serializer,
+		a.VRFLogger,
+		a.JulesPerFeeCoin,
+	)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not instantiate VRF reporting plugin factory")
+	}
+	deployedVRF, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
 		BinaryNetworkEndpointFactory: a.BinaryNetworkEndpointFactory,
 		V2Bootstrappers:              a.V2Bootstrappers,
 		ContractConfigTracker:        a.VRFContractConfigTracker,
@@ -61,24 +69,16 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 		OffchainConfigDigester:       a.VRFOffchainConfigDigester,
 		OffchainKeyring:              a.OffchainKeyring,
 		OnchainKeyring:               a.OnchainKeyring,
-		ReportingPluginFactory: vrf.NewVRFReportingPluginFactory(
-			&transceiver,
-			a.Coordinator,
-			a.Blockhashes,
-			a.Serializer,
-			a.VRFLogger,
-			a.JulesPerFeeCoin,
-			confirmationDelays,
-		),
+		ReportingPluginFactory:       reportingPluginFactory,
 	})
 	if err != nil {
 		return nil, util.WrapError(err, "while setting up VRF oracle")
 	}
-	return &OCR2VRF{dkg, vrf}, nil
+	return &OCR2VRF{deployedDKG, deployedVRF}, nil
 }
 
-func OffchainConfig(keyID contract.KeyID) []byte {
-	return vrf.OffchainConfig(keyID)
+func OffchainConfig() []byte {
+	return vrf.OffchainConfig()
 }
 
 func OnchainConfig(confDelays map[uint32]struct{}) []byte {

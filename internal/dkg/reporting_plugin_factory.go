@@ -5,7 +5,7 @@ import (
 	"sync"
 
 	"github.com/pkg/errors"
-
+	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
@@ -52,10 +52,12 @@ func (d *dkgReportingPluginFactory) NewReportingPlugin(
 	if err != nil {
 		return nil, emptyInfo, errors.Wrap(err, "could not construct DKG args")
 	}
+	d.l.logger.Debug("constructing share set", commontypes.LogFields{})
 	dkg, err := d.NewDKG(args)
 	if err != nil {
 		return nil, emptyInfo, errors.Wrap(err, "while creating reporting plugin")
 	}
+	d.l.logger.Debug("finished constructing share set", commontypes.LogFields{})
 	if d.testmode {
 		d.xxxDKGTestingOnly = dkg
 	}
@@ -86,7 +88,10 @@ func (d *dkgReportingPluginFactory) NewDKG(a *NewDKGArgs) (*dkg, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "could not create own share record")
 	}
-	shareRecords.set(myShareRecord, hash.Zero)
+	err = shareRecords.set(myShareRecord, hash.Zero)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not set own share record")
+	}
 	completed := false
 	return &dkg{
 		a.t, a.selfIdx, a.cfgDgst, a.keyID, a.keyConsumer, shareRecords, myShareRecord,

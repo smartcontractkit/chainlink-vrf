@@ -7,6 +7,7 @@ import (
 	"math/big"
 	"sort"
 
+	"github.com/pkg/errors"
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 
@@ -14,10 +15,9 @@ import (
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
 )
 
-func OffchainConfig(
-	keyID contract.KeyID,
-) []byte {
-	return keyID[:]
+func OffchainConfig() []byte {
+
+	return nil
 }
 
 func OnchainConfig(confDelays map[uint32]struct{}) []byte {
@@ -43,23 +43,36 @@ func OnchainConfig(confDelays map[uint32]struct{}) []byte {
 }
 
 func NewVRFReportingPluginFactory(
+	keyID contract.KeyID,
 	keyProvider KeyProvider,
 	coordinator vrf_types.CoordinatorInterface,
 	blockhashes vrf_types.Blockhashes,
 	serializer vrf_types.ReportSerializer,
 	logger commontypes.Logger,
 	juelsPerFeeCoin vrf_types.JuelsPerFeeCoin,
-	confirmationDelays map[uint32]struct{},
-
-) types.ReportingPluginFactory {
+) (types.ReportingPluginFactory, error) {
+	contractKeyID, err := coordinator.KeyID(context.Background())
+	if err != nil {
+		return &vrfReportingPluginFactory{}, errors.Wrap(err, "could not get key ID")
+	}
+	if keyID != contractKeyID {
+		return &vrfReportingPluginFactory{}, errors.New("provided keyID is different from coordinator keyID")
+	}
 	period, err := coordinator.BeaconPeriod(context.Background())
 	if err != nil {
-		panic(err)
+		return &vrfReportingPluginFactory{}, errors.Wrap(err, "could not get beacon period")
 	}
 	return &vrfReportingPluginFactory{
 		&localArgs{
-			coordinator, confirmationDelays, blockhashes, keyProvider, serializer,
-			juelsPerFeeCoin, period, logger, rand.Reader,
+			keyID:           keyID,
+			coordinator:     coordinator,
+			blockhashes:     blockhashes,
+			keyProvider:     keyProvider,
+			serializer:      serializer,
+			juelsPerFeeCoin: juelsPerFeeCoin,
+			period:          period,
+			logger:          logger,
+			randomness:      rand.Reader,
 		},
-	}
+	}, nil
 }

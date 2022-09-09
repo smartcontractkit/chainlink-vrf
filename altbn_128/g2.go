@@ -12,22 +12,22 @@ type G2 struct{ r cipher.Stream }
 
 var _ kyber.Group = (*G2)(nil)
 
-func (c *G2) String() string {
+func (g *G2) String() string {
 	return "AltBN-128 G₂"
 }
 
-func (c *G2) ScalarLen() int {
+func (g *G2) ScalarLen() int {
 	panic("not implemented")
 }
 
-func (c *G2) Scalar() kyber.Scalar {
+func (g *G2) Scalar() kyber.Scalar {
 	return scalar.NewScalarInt64(0)
 }
 
-func (c *G2) PointLen() int {
-	return len(c.Point().(*g2Point).G2.Marshal())
+func (g *G2) PointLen() int {
+	return len(g.Point().(*g2Point).G2.Marshal())
 }
 
-func (c *G2) Point() kyber.Point {
+func (g *G2) Point() kyber.Point {
 	return newG2Point()
 }

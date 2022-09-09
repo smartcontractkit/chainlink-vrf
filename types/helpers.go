@@ -5,25 +5,11 @@ import (
 	"encoding/binary"
 	"fmt"
 	"sort"
-	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
 	"go.dedis.ch/kyber/v3"
 )
-
-func (o OCRCommittee) String() string {
-	sportions := make([]string, len(o.Signers))
-	for i, s := range o.Signers {
-		sportions[i] = s.Hex()
-	}
-	tportions := make([]string, len(o.Transmitters))
-	for i, t := range o.Transmitters {
-		tportions[i] = t.Hex()
-	}
-	return fmt.Sprintf("OCRCommittee{Signers: %s, Transmitters: %s}",
-		strings.Join(sportions, ", "), strings.Join(tportions, ","))
-}
 
 func (b Block) VRFHash(separator common.Hash, pKey kyber.Point) common.Hash {
 	var heightBytes [8]byte
@@ -35,7 +21,7 @@ func (b Block) VRFHash(separator common.Hash, pKey kyber.Point) common.Hash {
 		panic("could not serialize key as domain separator")
 	}
 	hashMsg := bytes.Join(
-		[][]byte{separator[:], key, delayBytes[:], b.Hash.Bytes()},
+		[][]byte{separator[:], key, delayBytes[:], heightBytes[:], b.Hash.Bytes()},
 		nil,
 	)
 	return common.BytesToHash(crypto.Keccak256(hashMsg))

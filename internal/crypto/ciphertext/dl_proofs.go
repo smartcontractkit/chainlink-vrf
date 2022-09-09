@@ -32,7 +32,7 @@ func newDLKnowledgeProof(
 
 		panic(errors.Wrapf(err, "created unverifiable signature"))
 	}
-	return dLKnowledgeProof(rv), err
+	return rv, err
 }
 
 func (p dLKnowledgeProof) verify(

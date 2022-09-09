@@ -1,22 +1,25 @@
 package dkg
 
 import (
-	"bytes"
 	"fmt"
 	"io"
 	"math"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/pkg/errors"
+	"google.golang.org/protobuf/proto"
+
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
-	"go.dedis.ch/kyber/v3"
-	"go.dedis.ch/kyber/v3/sign/anon"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
+	"github.com/smartcontractkit/ocr2vrf/internal/dkg/protobuf"
+	"github.com/smartcontractkit/ocr2vrf/internal/util"
+
+	"go.dedis.ch/kyber/v3"
+	"go.dedis.ch/kyber/v3/sign/anon"
 )
 
 type PluginConfig struct {
@@ -35,140 +38,104 @@ type offchainConfig struct {
 type onchainConfig struct{ contract.KeyID }
 
 func (o *offchainConfig) MarshalBinary() ([]byte, error) {
-
-	rv := [][]byte{{0}}
-
-	if len(o.epks) > int(player_idx.MaxPlayer) {
-		return nil, errors.Errorf("too many players")
+	if len(o.epks) > int(player_idx.MaxPlayer) || len(o.epks) > math.MaxInt32 {
+		return nil, fmt.Errorf("too many players")
 	}
-	if len(o.spks) != len(o.epks) {
-		return nil, errors.Errorf(
-			"num public keys don't match; len(epks)=%d, len(spks)=%d",
-			len(o.epks), len(o.spks),
-		)
+	if olen, elen := len(o.spks), len(o.epks); olen != elen {
+		errMsg := "num public keys don't match; len(epks)=%d, len(spks)=%d"
+		return nil, fmt.Errorf(errMsg, olen, elen)
 	}
-	rv = append(rv, player_idx.RawMarshal(player_idx.Int(len(o.epks))))
-
-	ename := o.encryptionGroup.String()
-	if len(ename) > math.MaxUint8 {
-		return nil, errors.Errorf("name for encryption group too long")
-	}
-	rv = append(rv, []byte{uint8(len(ename))}, []byte(ename))
-
-	for _, pk := range o.epks {
-		pkm, err := pk.MarshalBinary()
+	epks, spks := make([][]byte, 0, len(o.epks)), make([][]byte, 0, len(o.epks))
+	for i, epk := range o.epks {
+		epkb, err := epk.MarshalBinary()
 		if err != nil {
-			return nil, errors.Wrap(err, "could not marshal encryption key in PluginConfig")
+			errMsg := "could not marshal %dth encryption key %v"
+			return nil, util.WrapErrorf(err, errMsg, i, epk)
 		}
-		rv = append(rv, pkm)
-	}
-
-	for _, pk := range o.spks {
-		pkm, err := pk.MarshalBinary()
+		epks = append(epks, epkb)
+		spkb, err := o.spks[i].MarshalBinary()
 		if err != nil {
-			return nil, errors.Wrap(err, "could not marshal signing key in PluginConfig")
+			errMsg := "could not marshal %dth signing key %v"
+			return nil, util.WrapErrorf(err, errMsg, i, o.spks[i])
 		}
-		rv = append(rv, pkm)
+		spks = append(spks, spkb)
+	}
+	if o.encryptionGroup == nil {
+		errMsg := "attempt to marshal DKG offchain config with nil encryption group"
+		return nil, fmt.Errorf(errMsg)
+	}
+	if o.translator == nil {
+		errMsg := "attempt to marshal DKG offchain config with nil group translator"
+		return nil, fmt.Errorf(errMsg)
 	}
 
-	tname := o.translator.Name()
-	if len(tname) > math.MaxUint8 {
-		return nil, errors.Errorf("name for public key translator too long")
-	}
-	rv = append(rv, []byte{uint8(len(tname))}, []byte(tname))
+	return proto.Marshal(&protobuf.OffchainConfig{
+		EncryptionPKs:   epks,
+		SignaturePKs:    spks,
+		EncryptionGroup: o.encryptionGroup.String(),
+		Translator:      o.translator.Name(),
+	})
 
-	return bytes.Join(rv, []byte{}), nil
 }
 
 func (o *onchainConfig) Marshal() []byte {
 	return append([]byte{}, o.KeyID[:]...)
 }
 
-func unmarshalBinaryOffchainConfig(offchainBinaryConfig []byte) (*offchainConfig, error) {
-
-	if len(offchainBinaryConfig) == 0 {
-		return nil, errors.Errorf(
-			"no binary for reporting plugin offchain config; did you pass it when you set the config?",
-		)
+func unmarshalBinaryOffchainConfig(
+	offchainBinaryConfig []byte,
+) (*offchainConfig, error) {
+	p := &protobuf.OffchainConfig{}
+	if err := proto.Unmarshal(offchainBinaryConfig, p); err != nil {
+		errMsg := "could not deserialize dkg offchain config binary 0x%x"
+		return nil, util.WrapErrorf(err, errMsg, offchainBinaryConfig)
 	}
-
-	versionNum, offchainBinaryConfig := offchainBinaryConfig[0], offchainBinaryConfig[1:]
-	if versionNum != 0 {
-		return nil, errors.Errorf(
-			"unknown binary version number, %d for reporting plugin offchain config",
-			versionNum)
+	if p.EncryptionPKs == nil || p.SignaturePKs == nil ||
+		p.EncryptionGroup == "" || p.Translator == "" {
+		errMsg := "empty field while deserializing offchain config: %+v"
+		return nil, fmt.Errorf(errMsg, p)
 	}
-
-	numPlayers, offchainBinaryConfig, err := player_idx.RawUnmarshal(offchainBinaryConfig)
-	if err != nil {
-		return nil, errors.Wrapf(err, "could not read number of players")
+	nepk, nspk := len(p.EncryptionPKs), len(p.SignaturePKs)
+	if nepk != nspk {
+		errMsg := "num encryption PKs (%d) and signature PKs (%d) should match"
+		return nil, fmt.Errorf(errMsg, nepk, nspk)
 	}
-
-	if len(offchainBinaryConfig) == 0 {
-		return nil, errors.Errorf("missing length for encryption-group name")
-	}
-	enameLen, offchainBinaryConfig := int(offchainBinaryConfig[0]), offchainBinaryConfig[1:]
-	if len(offchainBinaryConfig) < enameLen {
-		return nil, errors.Errorf("input too short for expected encryption-group name")
-	}
-	ename, offchainBinaryConfig := string(offchainBinaryConfig[:enameLen]), offchainBinaryConfig[enameLen:]
-	encGroup, ok := encryptionGroupRegistry[ename]
+	encGgroup, ok := encryptionGroupRegistry[p.EncryptionGroup]
 	if !ok {
-		return nil, errors.Errorf("unrecognized encryption-group name, '%s'", ename)
+		errMsg := "unrecognized encryption-group name, '%s'"
+		return nil, fmt.Errorf(errMsg, p.EncryptionGroup)
 	}
-
-	epkLen := encGroup.PointLen()
-	epks := make([]kyber.Point, numPlayers)
-	for i := range epks {
-		var pkm []byte
-		if len(offchainBinaryConfig) < encGroup.PointLen() {
-			return nil, errors.Errorf("input too short for expected encryption public key")
+	epks, spks := make([]kyber.Point, 0, nepk), make([]kyber.Point, 0, nspk)
+	for i, bepk := range p.EncryptionPKs {
+		epk := encGgroup.Point()
+		if err := epk.UnmarshalBinary(bepk); err != nil {
+			errMsg := "could not unmarshal encryption key 0x%x in group %s"
+			return nil, util.WrapErrorf(err, errMsg, bepk, p.EncryptionGroup)
 		}
-		pkm, offchainBinaryConfig = offchainBinaryConfig[:epkLen], offchainBinaryConfig[epkLen:]
-		epks[i] = encGroup.Point()
-		if err := epks[i].UnmarshalBinary(pkm); err != nil {
-			return nil, errors.Wrapf(err, "could not read encryption key")
+		epks = append(epks, epk)
+		spk := SigningGroup.Point()
+		bspk := p.SignaturePKs[i]
+		if err := spk.UnmarshalBinary(bspk); err != nil {
+			errMsg := "could not unmarshal signing key 0x%x in group %s"
+			return nil, util.WrapErrorf(err, errMsg, bspk, "ed25519")
 		}
+		spks = append(spks, spk)
 	}
-
-	spkLen := SigningGroup.PointLen()
-	spks := make([]kyber.Point, numPlayers)
-	for i := range spks {
-		var pkm []byte
-		if len(offchainBinaryConfig) < SigningGroup.PointLen() {
-			return nil, errors.Errorf("input too short for expected signing public key")
-		}
-		pkm, offchainBinaryConfig = offchainBinaryConfig[:spkLen], offchainBinaryConfig[spkLen:]
-		spks[i] = SigningGroup.Point()
-		if err := spks[i].UnmarshalBinary(pkm); err != nil {
-
-			return nil, errors.Wrapf(err, "could not read signing key")
-		}
-	}
-
-	if len(offchainBinaryConfig) == 0 {
-		return nil, errors.Errorf("missing translator name length")
-	}
-	tnameLen, offchainBinaryConfig := int(offchainBinaryConfig[0]), offchainBinaryConfig[1:]
-	if len(offchainBinaryConfig) < tnameLen {
-		return nil, errors.Errorf("input too short for expected translator name")
-	}
-	tname, offchainBinaryConfig := string(offchainBinaryConfig[:tnameLen]), offchainBinaryConfig[tnameLen:]
-	translator, ok := translatorRegistry[tname]
+	translator, ok := translatorRegistry[p.Translator]
 	if !ok {
-		return nil, errors.Errorf("unrecognized translator name")
+		return nil, fmt.Errorf("unrecognized translator name: %s", p.Translator)
 	}
-
-	if len(offchainBinaryConfig) > 0 {
-		return nil, errors.Errorf("overage in PluginConfig representation")
-	}
-
-	return &offchainConfig{epks, spks, encGroup, translator}, nil
+	return &offchainConfig{
+		epks:            epks,
+		spks:            spks,
+		encryptionGroup: encGgroup,
+		translator:      translator,
+	}, nil
 }
 
 func unmarshalBinaryOnchainConfig(onchainBinaryConfig []byte) (rv onchainConfig, err error) {
 	if len(onchainBinaryConfig) != len(contract.KeyID{}) {
-		return rv, errors.Errorf("onchainConfig binary is wrong length")
+		return rv, fmt.Errorf("onchainConfig binary is wrong length")
 	}
 	copy(rv.KeyID[:], onchainBinaryConfig)
 	return rv, nil
@@ -177,11 +144,13 @@ func unmarshalBinaryOnchainConfig(onchainBinaryConfig []byte) (rv onchainConfig,
 func unmarshalPluginConfig(offchainBinaryConfig, onchainBinaryConfig []byte) (*PluginConfig, error) {
 	offchainConfig, err := unmarshalBinaryOffchainConfig(offchainBinaryConfig)
 	if err != nil {
-		return nil, errors.Wrap(err, "while unmarshaling offchaincomponent of config")
+		errMsg := "while unmarshaling offchaincomponent of config"
+		return nil, util.WrapError(err, errMsg)
 	}
 	onchainConfig, err := unmarshalBinaryOnchainConfig(onchainBinaryConfig)
 	if err != nil {
-		return nil, errors.Wrap(err, "while unmarshaling onchaincomponent of config")
+		errMsg := "while unmarshaling onchaincomponent of config"
+		return nil, util.WrapError(err, errMsg)
 	}
 	return &PluginConfig{*offchainConfig, onchainConfig}, nil
 }
@@ -214,11 +183,12 @@ func (p *PluginConfig) NewDKGArgs(
 	oc := p.offchainConfig
 	translationGroup, err := oc.translator.TargetGroup(oc.encryptionGroup)
 	if err != nil {
-		return nil, errors.Wrap(err, "could not determine translation target group")
+		errMsg := "could not determine translation target group"
+		return nil, util.WrapError(err, errMsg)
 	}
 	players, err := player_idx.PlayerIdxs(n)
 	if err != nil {
-		return nil, errors.Wrap(err, "could not determine local player index")
+		return nil, util.WrapError(err, "could not determine local player index")
 	}
 	selfIdx := players[oID]
 	return &NewDKGArgs{
@@ -238,17 +208,17 @@ type localArgs struct {
 	randomness  io.Reader
 }
 
-func (oc *offchainConfig) String() string {
-	epks := make([]string, len(oc.epks))
-	spks := make([]string, len(oc.spks))
+func (o *offchainConfig) String() string {
+	epks := make([]string, len(o.epks))
+	spks := make([]string, len(o.spks))
 	for i := range epks {
-		epk, err := oc.epks[i].MarshalBinary()
+		epk, err := o.epks[i].MarshalBinary()
 		if err != nil {
 			epks[i] = "unmarshallable: " + err.Error()
 		} else {
 			epks[i] = hexutil.Encode(epk)
 		}
-		spk, err := oc.spks[i].MarshalBinary()
+		spk, err := o.spks[i].MarshalBinary()
 		if err != nil {
 			epks[i] = "unmarshallable: " + err.Error()
 		} else {
@@ -263,7 +233,7 @@ func (oc *offchainConfig) String() string {
 }`,
 		strings.Join(epks, ", "),
 		strings.Join(spks, ", "),
-		oc.encryptionGroup,
-		oc.translator,
+		o.encryptionGroup,
+		o.translator,
 	)
 }

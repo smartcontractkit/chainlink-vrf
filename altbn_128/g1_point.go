@@ -230,3 +230,8 @@ func LongMarshal(p kyber.Point) (rv [64]byte) {
 	copy(rv[:], m)
 	return
 }
+
+func IsAltBN128G1Point(p kyber.Point) bool {
+	_, ok := p.(*g1Point)
+	return ok
+}

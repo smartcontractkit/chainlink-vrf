@@ -21,16 +21,16 @@ import (
 type shareRecords map[hash.Hash]*shareRecord
 
 func newShareRecords() shareRecords {
-	return shareRecords(map[hash.Hash]*shareRecord{})
+	return map[hash.Hash]*shareRecord{}
 }
 
 func (rs shareRecords) set(r *shareRecord, h hash.Hash) error {
 	if h == hash.Zero {
-		if m, err := r.marshal(); err != nil {
+		m, err := r.marshal()
+		if err != nil {
 			return errors.Wrap(err, "could not marshal share record to get content address")
-		} else {
-			h = hash.GetHash(m)
 		}
+		h = hash.GetHash(m)
 	}
 	rs[h] = r
 	return nil

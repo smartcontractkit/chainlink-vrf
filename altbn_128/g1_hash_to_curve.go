@@ -140,6 +140,25 @@ func coordinatesToG1(x, y, t *mod.Int) *g1Point {
 	return pt
 }
 
+func CoordinatesToG1(x, y *mod.Int) kyber.Point {
+	if x.M.Cmp(p) != 0 || y.M.Cmp(p) != 0 {
+		panic("inputs are not in base field")
+	}
+	xBin, err := x.MarshalBinary()
+	if err != nil {
+		panic(err)
+	}
+	yBin, err := y.MarshalBinary()
+	if err != nil {
+		panic(err)
+	}
+	pt := newG1Point()
+	if _, err := pt.G1.Unmarshal(append(xBin, yBin...)); err != nil {
+		panic(err)
+	}
+	return pt
+}
+
 type HashProof struct {
 	msg           [32]byte
 	HashPoint     kyber.Point
@@ -201,7 +220,6 @@ func (hp *HashProof) EqualFProofs(f1, f2 vrf.HashToCurveFProof) bool {
 		f1.Y1.Cmp(s[0].interimValues.Y1) == 0 &&
 		f1.Y2.Cmp(s[0].interimValues.Y2) == 0 &&
 		f1.Y3.Cmp(s[0].interimValues.Y3) == 0 &&
-
 		f2.DenomInv.Cmp(s[1].interimValues.DenomInv) == 0 &&
 		f2.TInvSquared.Cmp(s[1].interimValues.TInvSquared) == 0 &&
 		f2.Y1.Cmp(s[1].interimValues.Y1) == 0 &&

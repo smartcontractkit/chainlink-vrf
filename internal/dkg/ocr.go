@@ -63,6 +63,8 @@ func (d *dkg) Report(
 		)
 	}
 	for _, aobs := range shares {
+		senderField := commontypes.LogFields{"sender": aobs.Observer}
+		d.logger.Debug("processing share set", senderField)
 
 		v.processShareSet(aobs)
 	}
