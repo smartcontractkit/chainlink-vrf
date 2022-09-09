@@ -28,7 +28,7 @@ func proveBitPair(
 		return rv, errors.Wrapf(err, "while constructing bit-pair proof")
 	}
 	pPKs := pksToPoints(possiblePKs)
-	sig := anon.Sign(pgroup, domainSep, anon.Set(pPKs), nil, bitPair, secret)
+	sig := anon.Sign(pgroup, domainSep, pPKs, nil, bitPair, secret)
 	if len(sig) != bitPairProofLen(suite) {
 		return rv, errors.Errorf("signature wrong length")
 	}
@@ -55,7 +55,7 @@ func (p bitPairProof) verify(suite anon.Suite,
 		return errors.Wrap(err, "while constructing possible keys for bit-pair proof")
 	}
 	possiblePKs := pksToPoints(possibleBlindingTerms)
-	_, err = anon.Verify(pgroup, domainSep, anon.Set(possiblePKs), nil, p)
+	_, err = anon.Verify(pgroup, domainSep, possiblePKs, nil, p)
 	if err != nil {
 		return errors.Wrap(err, "while verifying bit-pair proof")
 	}

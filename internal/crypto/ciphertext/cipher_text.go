@@ -40,14 +40,14 @@ func newCipherText(
 	if err := rv.proveFinalDLKnowledge(domainSep, group, pk, totalBlindingSecret); err != nil {
 
 		return nil, nil, errors.Wrap(err, "could not prove ciphertext encodes secret share")
-	} else {
-		blindingPK := group.Point().Mul(secretShare, nil)
-		if err := rv.verify(group, domainSep, pk, blindingPK); err != nil {
-
-			panic(err)
-		}
-		return rv, secretShare, nil
 	}
+	blindingPK := group.Point().Mul(secretShare, nil)
+	if err := rv.verify(group, domainSep, pk, blindingPK); err != nil {
+
+		panic(err)
+	}
+	return rv, secretShare, nil
+
 }
 
 func (c *cipherText) cipherTextDomainSep(domainSep []byte) (ds []byte, err error) {

@@ -3,6 +3,7 @@ package util
 import (
 	"bytes"
 	"context"
+	"errors"
 	"fmt"
 	"time"
 
@@ -49,7 +50,7 @@ func CheckStatus(
 		"reporting on %s while checking its status, due to error \"%w\""
 	for receipt == nil {
 		receipt, err = client.TransactionReceipt(ctx, tx.Hash())
-		if err != nil && err != ethereum.NotFound {
+		if err != nil && !errors.Is(err, ethereum.NotFound) {
 			berr := tx.EncodeRLP(&buf)
 			if berr != nil {
 				return WrapErrorf(berr, errMsg, "error", tx.Hash(), err)

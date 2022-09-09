@@ -28,7 +28,10 @@ func (kt *keyTransceiver) NewKey(kID contract.KeyID, kd *dkg.KeyData) {
 
 func (kt *keyTransceiver) KeyLookup(p contract.KeyID) dkg.KeyData {
 	if p == kt.keyID {
-		return *kt.kd.Clone()
+		if kt.kd != nil {
+			return *kt.kd.Clone()
+		}
+		return dkg.KeyData{nil, nil, nil, 0, false}
 	}
 
 	panic("key consumer is asking for unknown key ID")

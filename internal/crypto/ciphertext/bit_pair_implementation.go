@@ -69,7 +69,7 @@ func (e *elGamalBitPair) decrypt(sk kyber.Scalar) (int, error) {
 			return i, nil
 		}
 	}
-	return 0, errors.Errorf("plaintext unknown!")
+	return 0, errors.Errorf("plaintext unknown")
 }
 
 func (e *elGamalBitPair) marshal() (m []byte, err error) {
@@ -99,7 +99,7 @@ func (e *elGamalBitPair) marshal() (m []byte, err error) {
 func unmarshalElGamalBitPair(suite anon.Suite, d []byte,
 ) (e *elGamalBitPair, err error) {
 	if len(d) < elGamalBitPairMarshalLength(suite) {
-		return nil, errors.Errorf(("marshal data too short to contain elGamalBitPair"))
+		return nil, errors.Errorf("marshal data too short to contain elGamalBitPair")
 	}
 	e = &elGamalBitPair{suite: suite}
 	e.blindingCommitment = suite.Point()

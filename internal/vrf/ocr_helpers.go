@@ -16,6 +16,7 @@ import (
 	"github.com/smartcontractkit/ocr2vrf/altbn_128"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
+	"github.com/smartcontractkit/ocr2vrf/internal/util"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
@@ -26,21 +27,21 @@ import (
 )
 
 func (s *sigRequest) ocrsSynced(ctx context.Context) error {
-	dkg, vrf, err := s.coordinator.DKGVRFCommittees(ctx)
+	deployedDKG, deployedVRF, err := s.coordinator.DKGVRFCommittees(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to retrieve OCR committees")
 	}
-	if len(dkg.Signers) != len(vrf.Signers) || len(dkg.Transmitters) != len(vrf.Transmitters) {
-		return errors.Errorf("committee sizes differ %s != %s", dkg, vrf)
+	if len(deployedDKG.Signers) != len(deployedVRF.Signers) || len(deployedDKG.Transmitters) != len(deployedVRF.Transmitters) {
+		return errors.Errorf("committee sizes differ %s != %s", deployedDKG, deployedVRF)
 	}
-	for i, s := range dkg.Signers {
-		if s != vrf.Signers[i] {
-			return errors.Errorf("committee signers differ: %s != %s", s, vrf.Signers[i])
+	for i, s := range deployedDKG.Signers {
+		if s != deployedVRF.Signers[i] {
+			return errors.Errorf("committee signers differ: %s != %s", s, deployedVRF.Signers[i])
 		}
 	}
-	for i, s := range dkg.Transmitters {
-		if s != vrf.Transmitters[i] {
-			return errors.Errorf("committee transmitters differ: %s != %s", s, vrf.Transmitters[i])
+	for i, s := range deployedDKG.Transmitters {
+		if s != deployedVRF.Transmitters[i] {
+			return errors.Errorf("committee transmitters differ: %s != %s", s, deployedVRF.Transmitters[i])
 		}
 	}
 	keyData := s.keyProvider.KeyLookup(s.keyID)
@@ -79,11 +80,11 @@ func requestIDUint48(
 	r uint64, l commontypes.Logger, id commontypes.OracleID,
 ) (uint64, error) {
 	if r > maxUint48.Uint64() {
-		return 0, errors.Errorf("requestID too large: %d", r)
 		l.Warn(
 			"callback requestID too large",
 			commontypes.LogFields{"oracleID": id, "bad requestID": r},
 		)
+		return 0, errors.Errorf("requestID too large: %d", r)
 	}
 	return r, nil
 }
@@ -144,21 +145,21 @@ func (s *sigRequest) storeCallbacksByBlocks(costedCallbacks []*protobuf.CostedCa
 		if err != nil {
 
 			continue
-		} else {
-			if _, present := seenCallbackHashes[h]; present {
-				s.logger.Warn("duplicate callback received", commontypes.LogFields{
-					"oracleID": observer, "duplicate callback": cb,
-				})
-				continue
-			}
-			seenCallbackHashes[h] = struct{}{}
-			callbackCounts[h]++
-			cbBlock := heightDelay{cb.Callback.Height, cb.Callback.ConfDelay}
-			if _, present := callbacksByBlock[cbBlock]; !present {
-				callbacksByBlock[cbBlock] = make(map[common.Hash]struct{})
-			}
-			callbacksByBlock[cbBlock][h] = struct{}{}
 		}
+		if _, present := seenCallbackHashes[h]; present {
+			s.logger.Warn("duplicate callback received", commontypes.LogFields{
+				"oracleID": observer, "duplicate callback": cb,
+			})
+			continue
+		}
+		seenCallbackHashes[h] = struct{}{}
+		callbackCounts[h]++
+		cbBlock := heightDelay{cb.Callback.Height, cb.Callback.ConfDelay}
+		if _, present := callbacksByBlock[cbBlock]; !present {
+			callbacksByBlock[cbBlock] = make(map[common.Hash]struct{})
+		}
+		callbacksByBlock[cbBlock][h] = struct{}{}
+
 	}
 }
 
@@ -218,15 +219,19 @@ func (s *sigRequest) parseVRFProofs(
 	}
 }
 
-func (s *sigRequest) aggregateOutputs(blocks vrf_types.Blocks,
+func (s *sigRequest) aggregateOutputs(
+	blocks vrf_types.Blocks,
 	vrfContributions map[vrf_types.Block]map[commontypes.OracleID]share.PubShare,
-	callbacksByBlock map[heightDelay]map[common.Hash]struct{}, callbackCounts map[common.Hash]uint64,
-	callbacks map[common.Hash]vrf_types.AbstractCostedCallbackRequest) (outputs []vrf_types.AbstractVRFOutput) {
+	callbacksByBlock map[heightDelay]map[common.Hash]struct{},
+	callbackCounts map[common.Hash]uint64,
+	callbacks map[common.Hash]vrf_types.AbstractCostedCallbackRequest,
+) (outputs []vrf_types.AbstractVRFOutput, err error) {
 
 	outputs = make([]vrf_types.AbstractVRFOutput, 0, len(vrfContributions))
 	for _, b := range blocks {
 		hd := heightDelay{b.Height, b.ConfirmationDelay}
-		if len(vrfContributions[b]) <= 2*int(s.n)/3 {
+
+		if len(vrfContributions[b]) <= int(s.t) {
 			delete(callbacksByBlock, hd)
 			s.logger.Debug(
 				"not enough contributions for block",
@@ -236,12 +241,20 @@ func (s *sigRequest) aggregateOutputs(blocks vrf_types.Blocks,
 			continue
 		}
 		shares := make([]*kshare.PubShare, 0, len(vrfContributions[b]))
-		for _, c := range vrfContributions[b] {
-			shares = append(shares, &kshare.PubShare{c.I, c.V})
+		player_indices, err := player_idx.PlayerIdxs(s.n)
+		if err != nil {
+			return nil, util.WrapError(
+				err,
+				"could not construct player indices for share reconstruction",
+			)
+		}
+		for i, c := range vrfContributions[b] {
+			pubShare := player_indices[i].PubShare(c.V)
+			shares = append(shares, &pubShare)
 		}
 		kd := s.keyProvider.KeyLookup(s.keyID)
 		output, err := kshare.RecoverCommit(
-			s.pairing.G1(), shares, int(kd.T)+1, len(shares),
+			s.pairing.G1(), shares, int(s.t)+1, len(shares),
 		)
 		if err != nil {
 			delete(callbacksByBlock, hd)
@@ -280,8 +293,13 @@ func (s *sigRequest) aggregateOutputs(blocks vrf_types.Blocks,
 		sort.Strings(chashes)
 		for _, chs := range chashes {
 			ch := common.HexToHash(chs)
-			if callbackCounts[ch] > 2*uint64(s.n)/3 {
+			if callbackCounts[ch] > uint64(s.t) {
 				ccallbacks = append(ccallbacks, callbacks[ch])
+			} else {
+				s.logger.Error(
+					"insufficient number of appearances for a callback",
+					commontypes.LogFields{"callback hash": ch, "t": s.t, "count": callbackCounts[ch]},
+				)
 			}
 		}
 		outputs = append(outputs, vrf_types.AbstractVRFOutput{
@@ -323,7 +341,7 @@ func sanityCheckCallback(
 		})
 		return errors.Errorf("price delay too large")
 	}
-	if uint64(c.Callback.RequestId) > MaxRequestID.Uint64() {
+	if c.Callback.RequestId > MaxRequestID.Uint64() {
 		l.Warn("requestID too large", commontypes.LogFields{
 			"requestID": c.Callback.RequestId, "max": maxUint48, "callback": c,
 			"source": oracle,

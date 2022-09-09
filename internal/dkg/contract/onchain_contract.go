@@ -8,12 +8,9 @@ import (
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/common/ocr"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
 	"github.com/smartcontractkit/ocr2vrf/internal/util"
 
 	"go.dedis.ch/kyber/v3"
-	"go.dedis.ch/kyber/v3/sign/anon"
 )
 
 type KeyID [32]byte
@@ -34,23 +31,11 @@ type DKG interface {
 		ctx context.Context,
 		keyID [32]byte,
 		clientAddress common.Address,
-
 	) error
 
 	Address() common.Address
 
 	CurrentCommittee(ctx context.Context) (ocr.OCRCommittee, error)
-
-	InitiateDKG(
-		ctx context.Context,
-		committee ocr.OCRCommittee,
-		f player_idx.Int,
-		keyID KeyID,
-		epks EncryptionPublicKeys,
-		spks SigningPublicKeys,
-		encGroup anon.Suite,
-		translator point_translation.PubKeyTranslation,
-	) error
 }
 
 type OnchainKeyData struct {

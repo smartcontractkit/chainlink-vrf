@@ -37,7 +37,8 @@ func Unmarshal(d []byte) (*PlayerIdx, []byte, error) {
 
 func RawUnmarshal(d []byte) (Int, []byte, error) {
 	if len(d) < MarshalLen {
-		return 0, nil, errors.Errorf("wrong length for marshalled player idx")
+		errMsg := "wrong length for marshalled player idx: expected %d, got %d"
+		return 0, nil, errors.Errorf(errMsg, MarshalLen, len(d))
 	}
 	i := int64(0)
 	for j := 0; j < MarshalLen; j++ {

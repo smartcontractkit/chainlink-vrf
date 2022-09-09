@@ -35,8 +35,8 @@ func (g *changeBaseGroup) equal(og *changeBaseGroup) bool {
 	return g.Suite == og.Suite && g.base.Equal(og.base)
 }
 
-func (p *changeBaseGroup) String() string {
-	return fmt.Sprintf("&changeBaseGroup{Suite: %s; base: %s}", p.Suite, p.base)
+func (g *changeBaseGroup) String() string {
+	return fmt.Sprintf("&changeBaseGroup{Suite: %s; base: %s}", g.Suite, g.base)
 }
 
 type changeBasePoint struct {

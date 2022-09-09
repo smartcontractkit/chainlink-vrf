@@ -43,6 +43,6 @@ func (kd KeyData) Clone() *KeyData {
 		kd.PublicKey.Clone(),
 		shares, kd.SecretShare.Clone(),
 		kd.T,
-		true,
+		kd.Present,
 	}
 }

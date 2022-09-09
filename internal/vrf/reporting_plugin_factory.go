@@ -39,7 +39,6 @@ type localArgs struct {
 func (v *vrfReportingPluginFactory) NewReportingPlugin(
 	c types.ReportingPluginConfig,
 ) (types.ReportingPlugin, types.ReportingPluginInfo, error) {
-
 	if c.N > int(player_idx.MaxPlayer) {
 		return nil, types.ReportingPluginInfo{},
 			errors.Errorf("too many players: %d > %d", c.N, player_idx.MaxPlayer)
