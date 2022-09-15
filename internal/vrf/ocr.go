@@ -366,13 +366,13 @@ func (s *sigRequest) ShouldAcceptFinalizedReport(
 ) (bool, error) {
 
 	s.reportsLock.Lock()
+	defer s.reportsLock.Unlock()
 	if or, present := s.reports[ts]; present && bytes.Equal(or.s, r) {
 		if err := s.coordinator.ReportWillBeTransmitted(ctx, or.r); err != nil {
 			return false, util.WrapError(err, "Error in ShouldAcceptFinalizedReport")
 		}
 		delete(s.reports, ts)
 	}
-	s.reportsLock.Unlock()
 	return true, nil
 }
 
