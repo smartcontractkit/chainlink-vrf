@@ -10,8 +10,8 @@ import (
 	bn256 "github.com/ethereum/go-ethereum/crypto/bn256/cloudflare"
 
 	"github.com/smartcontractkit/ocr2vrf/altbn_128/scalar"
+	"github.com/smartcontractkit/ocr2vrf/internal/util"
 
-	"github.com/pkg/errors"
 	"go.dedis.ch/kyber/v3"
 )
 
@@ -41,7 +41,7 @@ func (p *g2Point) ensurePG2() {
 
 func (p *g2Point) mustBeValidPoint() {
 	if _, err := new(bn256.G2).Unmarshal(p.G2.Marshal()); err != nil {
-		panic(errors.Wrapf(err, "invalid G₂ point: 0x%x", p.G2.Marshal()))
+		panic(util.WrapErrorf(err, "invalid G₂ point: 0x%x", p.G2.Marshal()))
 	}
 }
 
@@ -56,16 +56,17 @@ func (p *g2Point) MarshalBinary() (data []byte, err error) {
 
 func (p *g2Point) UnmarshalBinary(data []byte) error {
 	if p == nil {
-		return errors.Errorf("can't assign to nil pointer")
+		return fmt.Errorf("can't assign to nil pointer")
 	}
 
 	p.G2 = new(bn256.G2)
 	rem, err := p.G2.Unmarshal(data)
 	if err != nil {
-		return errors.Wrapf(err, "while unmarshalling to G₂ point: 0x%x", data)
+		return util.WrapErrorf(err, "while unmarshalling to G₂ point: 0x%x", data)
 	}
 	if len(rem) > 0 {
-		return errors.Errorf("overage of %d bytes in representation of AltBN-128 G2 point", len(rem))
+		errMsg := "overage of %d bytes in representation of AltBN-128 G2 point"
+		return fmt.Errorf(errMsg, len(rem))
 	}
 	return nil
 }

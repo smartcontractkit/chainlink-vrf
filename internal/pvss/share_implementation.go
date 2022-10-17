@@ -40,7 +40,7 @@ func newShare(domainSep []byte, group anon.Suite,
 	if err != nil {
 		return nil, errors.Wrapf(err, "could not translate pub key for secret share")
 	}
-	if err := rv.verify(group, domainSep, receiver); err != nil {
+	if err2 := rv.verify(group, domainSep, receiver); err2 != nil {
 		panic("could not verify share just constructed")
 	}
 	return rv, err

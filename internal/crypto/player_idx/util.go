@@ -1,7 +1,7 @@
 package player_idx
 
 func init() {
-	if MaxPlayer < 0 {
+	if int(MaxPlayer) < 0 {
 		panic("idx must be an unsigned type")
 	}
 	if one+MaxPlayer != 0 {

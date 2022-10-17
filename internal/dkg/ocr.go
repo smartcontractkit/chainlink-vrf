@@ -21,14 +21,14 @@ func (d *dkg) Observation(
 		respondingShareRecord = d.myShareRecord
 	} else {
 
-		keyData, err := d.contract.KeyData(ctx, d.keyID, d.cfgDgst)
-		if err != nil {
+		keyData, err2 := d.contract.KeyData(ctx, d.keyID, d.cfgDgst)
+		if err2 != nil {
 
-			return nil, errors.Wrap(err, "digest marked as complete, but key data is unavailable")
+			return nil, errors.Wrap(err2, "digest marked as complete, but key data is unavailable")
 		}
-		respondingShareRecordHash, err := d.shareSets.getRandom(keyData.Hashes, d.randomness)
-		if err != nil {
-			return nil, errors.Wrapf(err,
+		respondingShareRecordHash, err2 := d.shareSets.getRandom(keyData.Hashes, d.randomness)
+		if err2 != nil {
+			return nil, errors.Wrapf(err2,
 				"could not choose random hash to send for data-availability phase. require hashes %v, have %v",
 				keyData.Hashes, d.shareSets,
 			)

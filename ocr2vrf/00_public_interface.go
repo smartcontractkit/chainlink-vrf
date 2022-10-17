@@ -1,6 +1,8 @@
 package ocr2vrf
 
 import (
+	"sync"
+
 	"go.uber.org/multierr"
 
 	"github.com/pkg/errors"
@@ -11,12 +13,15 @@ import (
 	"github.com/smartcontractkit/ocr2vrf/internal/vrf"
 )
 
-type OCR2VRF struct{ dkg, vrf *offchainreporting.Oracle }
+type OCR2VRF struct {
+	dkg, vrf       *offchainreporting.Oracle
+	keyTransceiver *keyTransceiver
+}
 
 type EthereumReportSerializer = vrf.EthereumReportSerializer
 
 func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
-	transceiver := keyTransceiver{a.KeyID, nil}
+	transceiver := keyTransceiver{a.KeyID, nil, sync.RWMutex{}}
 	deployedDKG, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
 		BinaryNetworkEndpointFactory: a.BinaryNetworkEndpointFactory,
 		V2Bootstrappers:              a.V2Bootstrappers,
@@ -74,7 +79,7 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 	if err != nil {
 		return nil, util.WrapError(err, "while setting up VRF oracle")
 	}
-	return &OCR2VRF{deployedDKG, deployedVRF}, nil
+	return &OCR2VRF{deployedDKG, deployedVRF, &transceiver}, nil
 }
 
 func OffchainConfig() []byte {

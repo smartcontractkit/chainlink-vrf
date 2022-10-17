@@ -76,8 +76,6 @@ type AbstractCostedCallbackRequest struct {
 	Requester         common.Address
 	Arguments         []byte
 	GasAllowance      *big.Int
-	RequestHeight     uint64
-	RequestBlockHash  common.Hash
 }
 
 type AbstractVRFOutput struct {

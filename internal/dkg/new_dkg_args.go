@@ -147,12 +147,12 @@ func unmarshalPluginConfig(offchainBinaryConfig, onchainBinaryConfig []byte) (*P
 		errMsg := "while unmarshaling offchaincomponent of config"
 		return nil, util.WrapError(err, errMsg)
 	}
-	onchainConfig, err := unmarshalBinaryOnchainConfig(onchainBinaryConfig)
+	hydratedOnchainConfig, err := unmarshalBinaryOnchainConfig(onchainBinaryConfig)
 	if err != nil {
 		errMsg := "while unmarshaling onchaincomponent of config"
 		return nil, util.WrapError(err, errMsg)
 	}
-	return &PluginConfig{*offchainConfig, onchainConfig}, nil
+	return &PluginConfig{*offchainConfig, hydratedOnchainConfig}, nil
 }
 
 type NewDKGArgs struct {

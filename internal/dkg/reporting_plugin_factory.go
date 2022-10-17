@@ -5,6 +5,7 @@ import (
 	"sync"
 
 	"github.com/pkg/errors"
+
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 
@@ -83,18 +84,18 @@ func (d *dkgReportingPluginFactory) NewDKG(a *NewDKGArgs) (*dkg, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "could not create own share set")
 	}
-	shareRecords := newShareRecords()
+	nShareRecords := newShareRecords()
 	myShareRecord, err := newShareRecord(a.signingGroup(), shareSet, a.ssk, a.cfgDgst)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not create own share record")
 	}
-	err = shareRecords.set(myShareRecord, hash.Zero)
+	err = nShareRecords.set(myShareRecord, hash.Zero)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not set own share record")
 	}
 	completed := false
 	return &dkg{
-		a.t, a.selfIdx, a.cfgDgst, a.keyID, a.keyConsumer, shareRecords, myShareRecord,
+		a.t, a.selfIdx, a.cfgDgst, a.keyID, a.keyConsumer, nShareRecords, myShareRecord,
 		a.esk, a.epks, a.ssk, a.spks,
 		a.encryptionGroup, a.translationGroup, a.translator,
 		sync.RWMutex{}, nil, a.contract, completed, d.markCompleted,

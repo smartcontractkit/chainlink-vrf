@@ -94,7 +94,7 @@ func (v *validShareRecords) storeValidShareSet(
 }
 
 func (v *validShareRecords) processShareSet(aobs types.AttributedObservation) {
-	if aobs.Observer < 0 || int(aobs.Observer) >= len(v.players) {
+	if int(aobs.Observer) >= len(v.players) {
 		v.d.logger.Debug("observer index out of range", commontypes.LogFields{
 			"observer index": aobs.Observer, "max index": len(v.players) - 1,
 		})

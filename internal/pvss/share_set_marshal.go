@@ -10,6 +10,7 @@ import (
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
+	"github.com/smartcontractkit/ocr2vrf/internal/util"
 )
 
 var _ = (&ShareSet{}).Marshal
@@ -81,11 +82,13 @@ func unmarshalShareSet(
 	}
 
 	pvssKeyB, data, err := readLenPrefixedBytes(data, 1)
-	pvssKey := translationGroup.Point()
-	if err := pvssKey.UnmarshalBinary(pvssKeyB); err != nil {
-		return nil, nil, errors.Wrap(err, "could not read translated PVSS public key")
+	if err != nil {
+		return nil, nil, util.WrapError(err, "could not read PVSS key bytes")
 	}
-
+	pvssKey := translationGroup.Point()
+	if err2 := pvssKey.UnmarshalBinary(pvssKeyB); err2 != nil {
+		return nil, nil, errors.Wrap(err2, "could not read translated PVSS public key")
+	}
 	numShares, data, err := player_idx.RawUnmarshal(data)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "could not get number of shares in marshalled share set")
