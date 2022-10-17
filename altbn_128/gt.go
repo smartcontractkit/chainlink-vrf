@@ -1,9 +1,9 @@
 package altbn_128
 
 import (
-	"go.dedis.ch/kyber/v3"
-
 	"github.com/smartcontractkit/ocr2vrf/altbn_128/scalar"
+
+	"go.dedis.ch/kyber/v3"
 )
 
 type GT struct{}

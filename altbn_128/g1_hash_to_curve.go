@@ -8,6 +8,7 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 
 	"github.com/smartcontractkit/ocr2vrf/gethwrappers/vrf"
+	"github.com/smartcontractkit/ocr2vrf/internal/util"
 
 	bn256 "github.com/ethereum/go-ethereum/crypto/bn256/cloudflare"
 
@@ -140,23 +141,31 @@ func coordinatesToG1(x, y, t *mod.Int) *g1Point {
 	return pt
 }
 
-func CoordinatesToG1(x, y *mod.Int) kyber.Point {
-	if x.M.Cmp(p) != 0 || y.M.Cmp(p) != 0 {
-		panic("inputs are not in base field")
+func CoordinatesToG1(x, y *mod.Int) (kyber.Point, error) {
+	if x.M.Cmp(p) != 0 {
+		return nil, fmt.Errorf("x ordinate %+v is not in base field", x)
+	}
+	if y.M.Cmp(p) != 0 {
+		return nil, fmt.Errorf("y ordinate %+v is not in base field", y)
 	}
 	xBin, err := x.MarshalBinary()
 	if err != nil {
-		panic(err)
+		return nil, util.WrapError(err, "could not marshal x ordinate")
 	}
 	yBin, err := y.MarshalBinary()
 	if err != nil {
-		panic(err)
+		return nil, util.WrapError(err, "could not marshal y ordinate")
 	}
 	pt := newG1Point()
-	if _, err := pt.G1.Unmarshal(append(xBin, yBin...)); err != nil {
-		panic(err)
+	combinedOrdinates := append(xBin, yBin...)
+	if _, err := pt.G1.Unmarshal(combinedOrdinates); err != nil {
+		return nil, util.WrapErrorf(
+			err,
+			"could not unmarshal combined ordinates 0x%x",
+			combinedOrdinates,
+		)
 	}
-	return pt
+	return pt, nil
 }
 
 type HashProof struct {

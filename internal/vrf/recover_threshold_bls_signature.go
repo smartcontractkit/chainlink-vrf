@@ -5,11 +5,12 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
+
+	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
+
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/pairing"
 	kshare "go.dedis.ch/kyber/v3/share"
-
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 )
 
 func recoverSignature(
@@ -61,7 +62,7 @@ func (a aggregatedPartialSigs) recoverSignature() (kyber.Point, error) {
 func (a aggregatedPartialSigs) badShares(err error) error {
 	var badShareList []player_idx.PlayerIdx
 	for _, share := range a.shares {
-		if err := share.checkPartialSig(a.ps, a.msg); err != nil {
+		if err2 := share.checkPartialSig(a.ps, a.msg); err2 != nil {
 			badShareList = append(badShareList, share.idx)
 		}
 	}

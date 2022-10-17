@@ -8,60 +8,68 @@ import (
 	"math/big"
 	"sort"
 
-	"github.com/golang/protobuf/proto"
 	"github.com/pkg/errors"
-	"go.dedis.ch/kyber/v3/share"
-	kshare "go.dedis.ch/kyber/v3/share"
 
 	"github.com/smartcontractkit/ocr2vrf/altbn_128"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
 	"github.com/smartcontractkit/ocr2vrf/internal/util"
+	"github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
+	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
+
+	kshare "go.dedis.ch/kyber/v3/share"
+
+	"google.golang.org/protobuf/proto"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/smartcontractkit/libocr/commontypes"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
-	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
+	"github.com/smartcontractkit/libocr/commontypes"
 )
 
 func (s *sigRequest) ocrsSynced(ctx context.Context) error {
 	deployedDKG, deployedVRF, err := s.coordinator.DKGVRFCommittees(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to retrieve OCR committees")
+		return errors.Wrap(err, failedRetrieveOCRCommitteesMsg)
 	}
-	if len(deployedDKG.Signers) != len(deployedVRF.Signers) || len(deployedDKG.Transmitters) != len(deployedVRF.Transmitters) {
-		return errors.Errorf("committee sizes differ %s != %s", deployedDKG, deployedVRF)
+	if len(deployedDKG.Signers) != len(deployedVRF.Signers) ||
+		len(deployedDKG.Transmitters) != len(deployedVRF.Transmitters) {
+		return errors.Errorf(
+			committeesWithDifferentSizesMsg+" %s != %s", deployedDKG, deployedVRF,
+		)
 	}
 	for i, s := range deployedDKG.Signers {
 		if s != deployedVRF.Signers[i] {
-			return errors.Errorf("committee signers differ: %s != %s", s, deployedVRF.Signers[i])
+			return errors.Errorf(
+				signersMismatchMsg+" %s != %s", s, deployedVRF.Signers[i],
+			)
 		}
 	}
 	for i, s := range deployedDKG.Transmitters {
 		if s != deployedVRF.Transmitters[i] {
-			return errors.Errorf("committee transmitters differ: %s != %s", s, deployedVRF.Transmitters[i])
+			return errors.Errorf(
+				transmittersMismatchMsg+" %s != %s", s, deployedVRF.Transmitters[i],
+			)
 		}
 	}
 	keyData := s.keyProvider.KeyLookup(s.keyID)
 	if !keyData.Present {
-		return errors.Errorf("no distributed key available")
+		return errors.Errorf(noDistributedKeyMsg)
 	}
 	keyBytes, err := keyData.PublicKey.MarshalBinary()
 	if err != nil {
-		return errors.Wrap(err, "could not serialize local view of key")
+		return errors.Wrap(err, failedSerializeLocalKey)
 	}
 	onchainKeyHash, err := s.coordinator.ProvingKeyHash(ctx)
 	if err != nil {
-		return errors.Wrap(err, "could not retrieve onchain view of key hash")
+		return errors.Wrap(err, failedRetrieveOnchainKeyMsg)
 	}
 	localKeyHash := common.BytesToHash(crypto.Keccak256(keyBytes))
 	if localKeyHash != onchainKeyHash {
-		return errors.Errorf("keyHash mismatch: 0x%x != 0x%x ", localKeyHash, onchainKeyHash)
+		return errors.Errorf(incorrectPublicKeyMsg+" : 0x%x != 0x%x ", localKeyHash, onchainKeyHash)
 	}
 	if keyData.SecretShare == nil {
-		return errors.Errorf("No local secret keyshare available")
+		return errors.Errorf(noLocalShareMsg)
 	}
 	return nil
 }
@@ -127,15 +135,17 @@ func addCallback(
 		common.BytesToAddress(c.Callback.Requester),
 		c.Callback.Arguments,
 		big.NewInt(0).SetBytes(c.GasAllowance),
-		c.Callback.RequestHeight,
-		common.BytesToHash(c.Callback.RequestBlockHash),
 	}
 	return h, nil
 }
 
-func (s *sigRequest) storeCallbacksByBlocks(costedCallbacks []*protobuf.CostedCallback,
-	callbacksByBlock map[heightDelay]map[common.Hash]struct{}, callbackCounts map[common.Hash]uint64,
-	callbacks map[common.Hash]vrf_types.AbstractCostedCallbackRequest, observer commontypes.OracleID) {
+func (s *sigRequest) storeCallbacksByBlocks(
+	costedCallbacks []*protobuf.CostedCallback,
+	callbacksByBlock map[heightDelay]map[common.Hash]struct{},
+	callbackCounts map[common.Hash]uint64,
+	callbacks map[common.Hash]vrf_types.AbstractCostedCallbackRequest,
+	observer commontypes.OracleID,
+) {
 
 	seenCallbackHashes := make(
 		map[common.Hash]struct{}, len(costedCallbacks),
@@ -159,13 +169,12 @@ func (s *sigRequest) storeCallbacksByBlocks(costedCallbacks []*protobuf.CostedCa
 			callbacksByBlock[cbBlock] = make(map[common.Hash]struct{})
 		}
 		callbacksByBlock[cbBlock][h] = struct{}{}
-
 	}
 }
 
 func (s *sigRequest) parseVRFProofs(
 	proofs []*protobuf.VRFResponse,
-	vrfContributions map[vrf_types.Block]map[commontypes.OracleID]share.PubShare,
+	vrfContributions map[vrf_types.Block]map[commontypes.OracleID]kshare.PubShare,
 	observer commontypes.OracleID,
 	player *player_idx.PlayerIdx,
 	kd dkg.KeyData,
@@ -208,7 +217,7 @@ func (s *sigRequest) parseVRFProofs(
 		}
 		p, g2 := s.pairing.Pair, s.pairing.G2().Point().Base()
 		if !p(hashPoint, pubShare.V).Equal(p(contribution, g2)) {
-			s.logger.Warn("wrong share provided", commontypes.LogFields{
+			s.logger.Warn(wrongShare, commontypes.LogFields{
 				"oracleID": observer, "sigShare": contribution,
 				"keyShare": pubShare.V, "hashPoint": hashPoint,
 				"pubKey": kd.PublicKey, "configDigest": s.configDigest, "block": b,
@@ -221,12 +230,11 @@ func (s *sigRequest) parseVRFProofs(
 
 func (s *sigRequest) aggregateOutputs(
 	blocks vrf_types.Blocks,
-	vrfContributions map[vrf_types.Block]map[commontypes.OracleID]share.PubShare,
+	vrfContributions map[vrf_types.Block]map[commontypes.OracleID]kshare.PubShare,
 	callbacksByBlock map[heightDelay]map[common.Hash]struct{},
 	callbackCounts map[common.Hash]uint64,
 	callbacks map[common.Hash]vrf_types.AbstractCostedCallbackRequest,
 ) (outputs []vrf_types.AbstractVRFOutput, err error) {
-
 	outputs = make([]vrf_types.AbstractVRFOutput, 0, len(vrfContributions))
 	for _, b := range blocks {
 		hd := heightDelay{b.Height, b.ConfirmationDelay}
@@ -234,7 +242,7 @@ func (s *sigRequest) aggregateOutputs(
 		if len(vrfContributions[b]) <= int(s.t) {
 			delete(callbacksByBlock, hd)
 			s.logger.Debug(
-				"not enough contributions for block",
+				notEnoughContributions,
 				commontypes.LogFields{
 					"block": b, "num contributions": len(vrfContributions[b]),
 				})
@@ -269,7 +277,7 @@ func (s *sigRequest) aggregateOutputs(
 		if !validateSignature(s.pairing, hpoint, kd.PublicKey, output) {
 			delete(callbacksByBlock, hd)
 			s.logger.Error(
-				"could not verify distributed VRF output",
+				failedVerifyVRFOutput,
 				commontypes.LogFields{"distributed signature": output},
 			)
 			continue
@@ -297,7 +305,7 @@ func (s *sigRequest) aggregateOutputs(
 				ccallbacks = append(ccallbacks, callbacks[ch])
 			} else {
 				s.logger.Error(
-					"insufficient number of appearances for a callback",
+					notEnoughAppearancesCallback,
 					commontypes.LogFields{"callback hash": ch, "t": s.t, "count": callbackCounts[ch]},
 				)
 			}
@@ -318,10 +326,10 @@ func sanityCheckCallback(
 	confDelays map[uint32]struct{}, beaconPeriod uint16,
 ) error {
 	if rem := c.Callback.Height % uint64(beaconPeriod); rem != 0 {
-		l.Warn("callback with non-beacon height", commontypes.LogFields{
+		l.Warn(nonBeaconHeightInCallbackMsg, commontypes.LogFields{
 			"height": c.Callback.Height, "period": beaconPeriod, "remainder": rem})
 		return errors.Errorf(
-			"non-beacon height: %d ∤ %d", beaconPeriod, c.Callback.Height,
+			nonBeaconHeightInCallbackMsg+" : %d ∤ %d", beaconPeriod, c.Callback.Height,
 		)
 	}
 	if _, present := confDelays[c.Callback.ConfDelay]; !present {
@@ -332,21 +340,21 @@ func sanityCheckCallback(
 				"source": oracle, "callback": c,
 			},
 		)
-		return errors.Errorf("confirmation delay too large")
+		return errors.Errorf(unknownConfirmationDelayMsg)
 	}
 	price := big.NewInt(0).SetBytes(c.Price)
 	if price.Cmp(MaxPrice) > 0 {
-		l.Warn("price too large", commontypes.LogFields{
+		l.Warn(priceTooLargeMsg, commontypes.LogFields{
 			"price": price, "max": MaxPrice, "callback": c, "source": oracle,
 		})
-		return errors.Errorf("price delay too large")
+		return errors.Errorf(priceTooLargeMsg)
 	}
 	if c.Callback.RequestId > MaxRequestID.Uint64() {
-		l.Warn("requestID too large", commontypes.LogFields{
+		l.Warn(requestIdTooLargeMsg, commontypes.LogFields{
 			"requestID": c.Callback.RequestId, "max": maxUint48, "callback": c,
 			"source": oracle,
 		})
-		return errors.Errorf("requestID too large")
+		return errors.Errorf(requestIdTooLargeMsg)
 	}
 	if uint64(c.Callback.NumWords) > MaxNumWords.Uint64() {
 		l.Warn("numWords too large", commontypes.LogFields{
@@ -363,10 +371,14 @@ func sanityCheckCallback(
 	}
 	allowance := big.NewInt(0).SetBytes(c.GasAllowance)
 	if allowance.Cmp(MaxGasAllowance) > 0 {
-		l.Warn("gas allowance too large", commontypes.LogFields{
-			"allowance": allowance, "max allowance": MaxGasAllowance,
-			"source": oracle,
-		})
+		l.Warn(
+			excessGasAllowanceMsg,
+			commontypes.LogFields{
+				"allowance":     allowance,
+				"max allowance": MaxGasAllowance,
+				"source":        oracle,
+			})
+		return errors.Errorf(excessGasAllowanceMsg)
 	}
 	return nil
 }
@@ -395,6 +407,18 @@ func medianBigInt(l []*big.Int) *big.Int {
 
 	midPointTotal := big.NewInt(0).Add(l[midPoint-1], l[midPoint])
 	return midPointTotal.Div(midPointTotal, big.NewInt(2))
+}
+
+func callbacksEqual(c1, c2 vrf_types.AbstractCostedCallbackRequest) bool {
+	return c1.BeaconHeight == c2.BeaconHeight &&
+		c1.ConfirmationDelay == c2.ConfirmationDelay &&
+		c1.SubscriptionID == c2.SubscriptionID &&
+		c1.Price.Cmp(c2.Price) == 0 &&
+		c1.RequestID == c2.RequestID &&
+		c1.NumWords == c2.NumWords &&
+		c1.Requester == c2.Requester &&
+		bytes.Equal(c1.Arguments, c2.Arguments) &&
+		c1.GasAllowance.Cmp(c2.GasAllowance) == 0
 }
 
 var (
@@ -430,3 +454,20 @@ func init() {
 		panic("MaxSubcriptionID needs new backing type")
 	}
 }
+
+const (
+	excessGasAllowanceMsg           = "gas allowance too large"
+	unknownConfirmationDelayMsg     = "uknown confirmation delay"
+	nonBeaconHeightInCallbackMsg    = "callback with non-beacon height"
+	priceTooLargeMsg                = "price too large"
+	requestIdTooLargeMsg            = "requestID too large"
+	noLocalShareMsg                 = "No local secret keyshare available"
+	incorrectPublicKeyMsg           = "keyHash mismatch"
+	noDistributedKeyMsg             = "no distributed key available"
+	failedSerializeLocalKey         = "could not serialize local view of key"
+	failedRetrieveOCRCommitteesMsg  = "failed to retrieve OCR committees"
+	committeesWithDifferentSizesMsg = "committee sizes differ"
+	signersMismatchMsg              = "committee signers differ"
+	transmittersMismatchMsg         = "committee transmitters differ"
+	failedRetrieveOnchainKeyMsg     = "could not retrieve onchain view of key hash"
+)

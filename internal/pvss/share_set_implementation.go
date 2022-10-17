@@ -9,6 +9,7 @@ import (
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
+	"github.com/smartcontractkit/ocr2vrf/internal/util"
 
 	"go.dedis.ch/kyber/v3"
 	kshare "go.dedis.ch/kyber/v3/share"
@@ -85,6 +86,9 @@ func (s *ShareSet) verify(group anon.Suite, domainSep types.ConfigDigest, pks []
 		return errors.Wrapf(err, "failed to construct domain separator for PVSS proofs")
 	}
 	players, err := player_idx.PlayerIdxs(player_idx.Int(numPlayers))
+	if err != nil {
+		return util.WrapError(err, "could not get list of player indices in ShareSet.verify")
+	}
 	for shareIdx, share := range s.shares {
 		p := players[shareIdx]
 		if err := share.verify(group, append(edomain, p.Marshal()...), p); err != nil {

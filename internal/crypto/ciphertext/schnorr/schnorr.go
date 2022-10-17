@@ -4,8 +4,9 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/pkg/errors"
 	"go.dedis.ch/kyber/v3"
+
+	"github.com/smartcontractkit/ocr2vrf/internal/util"
 )
 
 type Suite interface {
@@ -55,30 +56,39 @@ func VerifyWithChecks(g Suite, pub, msg, sig []byte) error {
 	scalarSize := s.MarshalSize()
 	sigSize := scalarSize + pointSize
 	if len(sig) != sigSize {
-		return fmt.Errorf("schnorr: signature of invalid length %d instead of %d", len(sig), sigSize)
+		return fmt.Errorf(
+			"schnorr: signature of invalid length %d instead of %d",
+			len(sig),
+			sigSize,
+		)
 	}
 	if err := R.UnmarshalBinary(sig[:pointSize]); err != nil {
-		return errors.Wrapf(err, "could not unmarshal R (0x%x)", sig[:pointSize])
+		return util.WrapErrorf(err, "could not unmarshal R (0x%x)", sig[:pointSize])
 	}
 	if p, ok := R.(pointCanCheckCanonicalAndSmallOrder); ok {
 		if !p.IsCanonical(sig[:pointSize]) {
-			return fmt.Errorf("R is not canonical")
+			return fmt.Errorf("the point R is not canonical")
 		}
 		if p.HasSmallOrder() {
-			return fmt.Errorf("R has small order")
+			return fmt.Errorf("the point R has small order")
 		}
 	}
-	if s, ok := g.Scalar().(scalarCanCheckCanonical); ok && !s.IsCanonical(sig[pointSize:]) {
-		return fmt.Errorf("signature is not canonical: 0x%x %d", sig[pointSize:], len(sig[pointSize:]))
+	sc, ok := g.Scalar().(scalarCanCheckCanonical)
+	if ok && !sc.IsCanonical(sig[pointSize:]) {
+		return fmt.Errorf(
+			"signature is not canonical: 0x%x %d",
+			sig[pointSize:],
+			len(sig[pointSize:]),
+		)
 	}
 	if err := s.UnmarshalBinary(sig[pointSize:]); err != nil {
-		return errors.Wrap(err, "could not unmarshal S")
+		return util.WrapError(err, "could not unmarshal S")
 	}
 
 	public := g.Point()
 	err := public.UnmarshalBinary(pub)
 	if err != nil {
-		return errors.Wrap(err, "schnorr: error unmarshalling public key")
+		return util.WrapError(err, "schnorr: error unmarshalling public key")
 	}
 	if p, ok := public.(pointCanCheckCanonicalAndSmallOrder); ok {
 		if !p.IsCanonical(pub) {
@@ -91,7 +101,7 @@ func VerifyWithChecks(g Suite, pub, msg, sig []byte) error {
 
 	h, err := hash(g, public, R, msg)
 	if err != nil {
-		return errors.Wrap(err, "could not compute hash")
+		return util.WrapError(err, "could not compute hash")
 	}
 
 	S := g.Point().Mul(s, nil)
@@ -100,7 +110,7 @@ func VerifyWithChecks(g Suite, pub, msg, sig []byte) error {
 	RAs := g.Point().Add(R, Ah)
 
 	if !S.Equal(RAs) {
-		return errors.New("schnorr: invalid signature")
+		return fmt.Errorf("schnorr: invalid signature")
 	}
 
 	return nil
@@ -109,11 +119,14 @@ func VerifyWithChecks(g Suite, pub, msg, sig []byte) error {
 
 func Verify(g Suite, public kyber.Point, msg, sig []byte) error {
 	PBuf, err := public.MarshalBinary()
-	if err := g.Point().UnmarshalBinary(PBuf); err != nil {
+	if err != nil {
+		return util.WrapError(err, "could not marshal point for sig verification")
+	}
+	if err = g.Point().UnmarshalBinary(PBuf); err != nil {
 		panic(err)
 	}
 	if err != nil {
-		return fmt.Errorf("error unmarshalling public key: %s", err)
+		return util.WrapError(err, "error unmarshalling public key")
 	}
 	return VerifyWithChecks(g, PBuf, msg, sig)
 }

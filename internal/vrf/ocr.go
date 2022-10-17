@@ -8,16 +8,20 @@ import (
 	"sort"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/golang/protobuf/proto"
+
 	"github.com/pkg/errors"
+
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
-	kshare "go.dedis.ch/kyber/v3/share"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/util"
 	"github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
+
+	kshare "go.dedis.ch/kyber/v3/share"
+
+	"google.golang.org/protobuf/proto"
 )
 
 var _ types.ReportingPlugin = (*sigRequest)(nil)
@@ -32,17 +36,17 @@ func (s *sigRequest) Observation(
 	ctx context.Context, rts types.ReportTimestamp, _ types.Query,
 ) (types.Observation, error) {
 	if err := s.ocrsSynced(ctx); err != nil {
-		return nil, errors.Wrap(err, "could not construct observation")
+		return nil, errors.Wrap(err, failedConstructObservation)
 	}
 	pendingBlocks, pendingCallbacks, err := s.coordinator.ReportBlocks(
 		ctx, s.period, s.confirmationDelays, s.retransmissionDelay, 100, 100,
 	)
 	if err != nil {
-		return nil, errors.Wrap(err, "Observation: could not list pending requests")
+		return nil, errors.Wrap(err, failedListPendingBlocks)
 	}
 	if len(pendingBlocks) == 0 && len(pendingCallbacks) == 0 {
 		s.logger.Debug(
-			"no observation required on this round",
+			noObservationInRound,
 			commontypes.LogFields{},
 		)
 		return nil, nil
@@ -51,7 +55,7 @@ func (s *sigRequest) Observation(
 	if err != nil {
 		return nil, errors.Wrap(
 			err,
-			"could not determine current chain height for confirmation threshold",
+			failedReadCurrentHeight,
 		)
 	}
 	outputs := make([]*protobuf.VRFResponse, 0, len(pendingBlocks))
@@ -59,39 +63,39 @@ func (s *sigRequest) Observation(
 	defer s.proofLock.Unlock()
 	for _, b := range pendingBlocks {
 		if _, present := s.confirmationDelays[b.ConfirmationDelay]; !present {
-			s.logger.Error("unknown confirmation delay", commontypes.LogFields{
+			s.logger.Error(unknownConfirmationDelay, commontypes.LogFields{
 				"delay": b.ConfirmationDelay, "known delays": s.confirmationDelays,
 				"block": b,
 			})
 			continue
 		}
-		if b.Height+uint64(b.ConfirmationDelay) >= currentHeight+1 {
+		if b.Height+uint64(b.ConfirmationDelay) >= currentHeight {
 			s.logger.Error(
-				"ReportBlocks returned a block too early",
+				earlyBlockReportBlocks,
 				commontypes.LogFields{"block": b, "currentHeight": currentHeight},
 			)
 			continue
 		}
 		if remainder := b.Height % uint64(s.period); remainder != 0 {
 			s.logger.Error(
-				"ReportBlocks returned a non-beacon height",
+				invalidBlockReportBlocks,
 				commontypes.LogFields{"block": b, "period": s.period, "remainder": remainder},
 			)
 			continue
 		}
 		if _, present := s.blockProofs[b]; !present {
 
-			blockProof, err := s.vrfOutput(b, s.keyProvider.KeyLookup(s.keyID))
+			blockProof, err2 := s.vrfOutput(b, s.keyProvider.KeyLookup(s.keyID))
 
-			if err != nil {
-				return nil, err
+			if err2 != nil {
+				return nil, err2
 			}
 			s.blockProofs[b] = blockProof
 		}
-		proofBytes, err := s.blockProofs[b].MarshalBinary()
-		if err != nil {
-			s.logger.Warn("could not marshal VRF proof", commontypes.LogFields{
-				"oracleID": s.i, "error": err,
+		proofBytes, err3 := s.blockProofs[b].MarshalBinary()
+		if err3 != nil {
+			s.logger.Warn(failedMarshalVRFProof, commontypes.LogFields{
+				"oracleID": s.i, "error": err3,
 				"proof": fmt.Sprintf("0x%x", s.blockProofs[b]),
 			})
 			continue
@@ -108,55 +112,53 @@ func (s *sigRequest) Observation(
 
 	callbacks := make([]*protobuf.CostedCallback, 0, len(pendingCallbacks))
 	for _, c := range pendingCallbacks {
-		var reqBlockHash common.Hash
-		copy(reqBlockHash[:], c.RequestBlockHash[:])
-		var requester common.Address
-		copy(requester[:], c.Requester[:])
 		pcb := protobuf.CostedCallback{
 			Callback: &protobuf.Callback{
-				RequestId:        c.RequestID,
-				NumWords:         uint32(c.NumWords),
-				Requester:        requester[:],
-				Arguments:        c.Arguments,
-				SubscriptionID:   c.SubscriptionID,
-				Height:           c.BeaconHeight,
-				ConfDelay:        c.ConfirmationDelay,
-				RequestHeight:    c.RequestHeight,
-				RequestBlockHash: reqBlockHash[:],
+				RequestId:      c.RequestID,
+				NumWords:       uint32(c.NumWords),
+				Requester:      append([]byte{}, c.Requester[:]...),
+				Arguments:      append([]byte{}, c.Arguments...),
+				SubscriptionID: c.SubscriptionID,
+				Height:         c.BeaconHeight,
+				ConfDelay:      c.ConfirmationDelay,
 			},
 			Price:        c.Price.Bytes(),
 			GasAllowance: c.GasAllowance.Bytes(),
 		}
-		err := sanityCheckCallback(
+		err2 := sanityCheckCallback(
 			&pcb, s.logger, s.i.OracleID(), s.confirmationDelays, s.period,
 		)
-		if err != nil {
+		if err2 != nil {
+			s.logger.Debug(skipErrMsg, commontypes.LogFields{
+				"callback": c,
+				"error":    err2,
+			})
 			continue
 		}
 		callbacks = append(callbacks, &pcb)
 	}
 
 	if (len(outputs) == 0) && (len(callbacks) == 0) {
-		s.logger.Error("no valid data to include in report", nil)
-		return nil, errors.Errorf("no valid data to include in report")
+		s.logger.Error(noValidDataToIncludeInReport, nil)
+		return nil, errors.Errorf(noValidDataToIncludeInReport)
 	}
 	juelsPerFeeCoin, err := s.juelsPerFeeCoin.JuelsPerFeeCoin()
 	if err != nil {
-		return nil, errors.Wrap(err, "error while reading JulesPerFeeCoin")
+		return nil, errors.Wrap(err, failedReadJulesPerFeeCoin)
 	}
 	if len(juelsPerFeeCoin.Bytes()) > (96 / 8) {
 		return nil, errors.Errorf(
-			"fee-coin exchange rate too large: %d", juelsPerFeeCoin,
+			largeFeeCoin+" %d", juelsPerFeeCoin,
 		)
 	}
 	startHeight, blocks, err := s.blockhashes.OnchainVerifiableBlocks(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "could not get verifiable blocks")
+		return nil, errors.Wrap(err, failedReadVerifiableBlocks)
 	}
 	lastVerifiableBlockHeight := startHeight + uint64(len(blocks)) - 1
 	if lastVerifiableBlockHeight < currentHeight {
 		return nil, errors.Errorf(
-			"verifiable blocks don't include current block: %d < %d",
+			currentBlockIsNotInVerifiableBlocks+" %d < %d",
 			lastVerifiableBlockHeight, currentHeight,
 		)
 	}
@@ -173,7 +175,7 @@ func (s *sigRequest) Observation(
 		)
 	}
 
-	s.logger.Debug("initial observation", commontypes.LogFields{
+	s.logger.Debug(initialObservation, commontypes.LogFields{
 		"JulesPerFeeCoin":   juelsPerFeeCoin,
 		"RecentBlockHashes": recentHashes,
 		"Proofs":            outputs,
@@ -189,7 +191,7 @@ func (s *sigRequest) Observation(
 	}
 	rv, err := proto.Marshal(observation)
 	if err != nil {
-		return nil, errors.Errorf("Error while marshaling Observation")
+		return nil, util.WrapError(err, failedMarshalObservation)
 	}
 	return rv, nil
 }
@@ -231,45 +233,46 @@ func (s *sigRequest) Report(
 	recentBlockHashes := make(map[heightHash]int, 256*len(obs))
 	for _, o := range obs {
 		observation := protobuf.Observation{}
-		err := proto.Unmarshal(o.Observation, &observation)
-		if err != nil {
-			s.logger.Warn("failed to parse observation", commontypes.LogFields{
-				"oracleID": o.Observer, "observation": o.Observation, "error": err,
+		err2 := proto.Unmarshal(o.Observation, &observation)
+		if err2 != nil {
+			s.logger.Warn(failedParseObservation, commontypes.LogFields{
+				"oracleID": o.Observer, "observation": o.Observation, "error": err2,
 			})
 			continue
 		}
-
-		s.storeCallbacksByBlocks(observation.Callbacks, callbacksByBlock, callbackCounts, callbacks, o.Observer)
+		s.storeCallbacksByBlocks(
+			observation.Callbacks,
+			callbacksByBlock,
+			callbackCounts,
+			callbacks,
+			o.Observer,
+		)
 		if s.n <= uint8(o.Observer) {
 			s.logger.Error(
-				"not enough players for observer index",
+				outOfRangeObserver,
 				commontypes.LogFields{"n": s.n, "oracleID": o.Observer},
 			)
 			continue
 		}
 		player := players[o.Observer]
 
-		s.parseVRFProofs(observation.Proofs, vrfContributions, o.Observer, player, kd)
-		juelsPerFeeCoinObs = append(juelsPerFeeCoinObs,
-			big.NewInt(0).SetBytes(observation.JuelsPerFeeCoin),
-		)
+		proofs := observation.Proofs
+		s.parseVRFProofs(proofs, vrfContributions, o.Observer, player, kd)
+		juelsPerFeeCoin := big.NewInt(0).SetBytes(observation.JuelsPerFeeCoin)
+		juelsPerFeeCoinObs = append(juelsPerFeeCoinObs, juelsPerFeeCoin)
 
-		seenHashes := make(
-			map[heightHash]struct{}, len(observation.RecentBlockHashes),
-		)
+		type hashes = map[heightHash]struct{}
+		seenHashes := make(hashes, len(observation.RecentBlockHashes))
 
 		for _, h := range observation.RecentBlockHashes {
 			hh := heightHash{h.Height, common.BytesToHash(h.Blockhash)}
-			if _, present := seenHashes[hh]; present {
-				s.logger.Warn(
-					"duplicate hash observed",
-					commontypes.LogFields{"hash": hh},
-				)
-				continue
-			} else {
+			if _, present := seenHashes[hh]; !present {
 
 				seenHashes[hh] = struct{}{}
 				recentBlockHashes[hh]++
+			} else {
+				fields := commontypes.LogFields{"hash": hh}
+				s.logger.Warn(duplicateHashErr, fields)
 			}
 		}
 	}
@@ -309,6 +312,13 @@ func (s *sigRequest) Report(
 
 			if callbackCounts[ch] > uint64(s.t) {
 				ccallbacks = append(ccallbacks, callbacks[ch])
+			} else {
+				s.logger.Error(
+					notEnoughAppearancesCallback,
+					commontypes.LogFields{
+						"callback hash": ch, "t": s.t, "count": callbackCounts[ch],
+					},
+				)
 			}
 		}
 		outputs = append(outputs, vrf_types.AbstractVRFOutput{
@@ -340,7 +350,7 @@ func (s *sigRequest) Report(
 	}
 	if mostRecentBlockHash.hash == zeroHash {
 		return false, nil, errors.Errorf(
-			"no consensus achieved on most recent block hash",
+			noConsensusOnRecentBlockhash,
 		)
 	}
 
@@ -413,7 +423,30 @@ func (h hds) Swap(i, j int) {
 	h[i], h[j] = h[j], h[i]
 }
 
-const noOutputsRequiredNotTransmittingReport = "no VRF outputs required; not transmitting report"
-const noEnoughContributions = "not enough contributions for block"
-const wrongShare = "wrong share provided"
-const outOfRangeObserver = "not enough players for observer index"
+const (
+	failedConstructObservation             = "could not construct observation"
+	failedListPendingBlocks                = "Observation: could not list pending requests"
+	noOutputsRequiredNotTransmittingReport = "no VRF outputs required; not transmitting report"
+	notEnoughContributions                 = "not enough contributions for block"
+	wrongShare                             = "wrong share provided"
+	outOfRangeObserver                     = "not enough players for observer index"
+	noObservationInRound                   = "no observation required on this round"
+	failedReadJulesPerFeeCoin              = "error while reading JulesPerFeeCoin"
+	failedReadVerifiableBlocks             = "could not get verifiable blocks"
+	failedMarshalObservation               = "Error while marshaling Observation"
+	unknownConfirmationDelay               = "unknown confirmation delay"
+	earlyBlockReportBlocks                 = "ReportBlocks returned a block too early"
+	invalidBlockReportBlocks               = "ReportBlocks returned a non-beacon height"
+	failedMarshalVRFProof                  = "could not marshal VRF proof"
+	noValidDataToIncludeInReport           = "no valid data to include in report"
+	currentBlockIsNotInVerifiableBlocks    = "verifiable blocks don't include current block:"
+	largeFeeCoin                           = "fee-coin exchange rate too large:"
+	failedReadCurrentHeight                = "could not determine current chain height for confirmation threshold"
+	initialObservation                     = "initial observation"
+	failedVerifyVRFOutput                  = "could not verify distributed VRF output"
+	failedParseObservation                 = "failed to parse observation"
+	duplicateHashErr                       = "duplicate hash observed"
+	noConsensusOnRecentBlockhash           = "no consensus achieved on most recent block hash"
+	notEnoughAppearancesCallback           = "insufficient number of appearances for a callback"
+	skipErrMsg                             = "skipping callback due to error"
+)

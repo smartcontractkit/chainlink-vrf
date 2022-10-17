@@ -74,8 +74,8 @@ func unmarshal(
 		return nil, nil, errors.Wrap(err, "could not unmarshal encryptionKey of share")
 	}
 	encryptionKey := group.Point()
-	if err := encryptionKey.UnmarshalBinary(encryptionKeyB); err != nil {
-		return nil, nil, errors.Wrap(err, "could not unmarshal encryptionKey of share")
+	if err2 := encryptionKey.UnmarshalBinary(encryptionKeyB); err2 != nil {
+		return nil, nil, errors.Wrap(err2, "could not unmarshal encryptionKey of share")
 	}
 
 	subKeyTranslationB, data, err := readLenPrefixedBytes(data, 1)
@@ -83,8 +83,8 @@ func unmarshal(
 		return nil, nil, errors.Wrap(err, "could not unmarshal subKeyTranslation of share")
 	}
 	subKeyTranslation := translationGroup.Point()
-	if err := subKeyTranslation.UnmarshalBinary(subKeyTranslationB); err != nil {
-		return nil, nil, errors.Wrap(err, "could not unmarshal subKeyTranslation of share")
+	if err2 := subKeyTranslation.UnmarshalBinary(subKeyTranslationB); err2 != nil {
+		return nil, nil, errors.Wrap(err2, "could not unmarshal subKeyTranslation of share")
 	}
 
 	return &share{cipherText, encryptionKey, subKeyTranslation, ss}, data, nil

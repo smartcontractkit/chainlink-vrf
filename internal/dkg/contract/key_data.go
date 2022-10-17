@@ -5,10 +5,12 @@ import (
 	"strings"
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
+
 	"github.com/pkg/errors"
-	"go.dedis.ch/kyber/v3"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/hash"
+
+	"go.dedis.ch/kyber/v3"
 )
 
 type KeyData struct {

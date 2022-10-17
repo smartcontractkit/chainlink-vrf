@@ -118,7 +118,6 @@ func unmarshalElGamalBitPair(suite anon.Suite, d []byte,
 
 	proofLen := bitPairProofLen(suite)
 	e.proof = append([]byte{}, remainder[:proofLen]...)
-	remainder = remainder[proofLen:]
 
 	return e, nil
 }

@@ -4,7 +4,9 @@ import (
 	"math/big"
 
 	bn256 "github.com/ethereum/go-ethereum/crypto/bn256/cloudflare"
+
 	"github.com/pkg/errors"
+
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/group/mod"
 	kshare "go.dedis.ch/kyber/v3/share"
@@ -35,7 +37,11 @@ func (s *sigRequest) vrfOutput(
 	output := kd.SecretShare.Mul(hpoint)
 	pk := s.i.Index(kd.Shares).(kshare.PubShare).V
 	if !validateSignature(s.pairing, hpoint, pk, output) {
-		return nil, errors.Errorf("could not verify own contribution to signature")
+		return nil, errors.Errorf(failedVerifyOwnContributionMsg)
 	}
 	return output, nil
 }
+
+const (
+	failedVerifyOwnContributionMsg = "could not verify own contribution to signature"
+)

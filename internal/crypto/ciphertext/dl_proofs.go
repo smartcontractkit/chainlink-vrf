@@ -28,9 +28,9 @@ func newDLKnowledgeProof(
 	pk := g.Point().Mul(b, nil)
 	msg := domainSep
 	sig := rv
-	if err := schnorr.Verify(g, pk, msg, sig); err != nil {
+	if err2 := schnorr.Verify(g, pk, msg, sig); err2 != nil {
 
-		panic(errors.Wrapf(err, "created unverifiable signature"))
+		panic(errors.Wrapf(err2, "created unverifiable signature"))
 	}
 	return rv, err
 }

@@ -8,9 +8,10 @@ import (
 	"math"
 
 	"github.com/pkg/errors"
-	"go.dedis.ch/kyber/v3/sign/anon"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
+
+	"go.dedis.ch/kyber/v3/sign/anon"
 )
 
 const (
@@ -31,16 +32,16 @@ func (c *cipherText) marshal() (m []byte, err error) {
 		return nil, errors.Errorf("suite name too long")
 	}
 
-	if err := hw(rv, []byte{uint8(len(suiteName))}, SUITE_DESC_LEN); err != nil {
-		return nil, err
+	if err2 := hw(rv, []byte{uint8(len(suiteName))}, SUITE_DESC_LEN); err2 != nil {
+		return nil, err2
 	}
 
-	if err := hw(rv, suiteName, CRYPTOGRAPHIC_SUITE_DESCRIPTION); err != nil {
-		return nil, err
+	if err2 := hw(rv, suiteName, CRYPTOGRAPHIC_SUITE_DESCRIPTION); err2 != nil {
+		return nil, err2
 	}
 
-	if err := hw(rv, c.receiver.Marshal(), RECEIVER_INDEX); err != nil {
-		return nil, err
+	if err2 := hw(rv, c.receiver.Marshal(), RECEIVER_INDEX); err2 != nil {
+		return nil, err2
 	}
 
 	n, err := c.encryptionKey.MarshalTo(rv)
@@ -107,20 +108,20 @@ func unmarshal(suite anon.Suite, byteStream io.Reader) (c *cipherText, err error
 	c = &cipherText{suite: suite}
 
 	var strLen [1]byte
-	if err := hr(byteStream, strLen[:], SUITE_DESC_LEN); err != nil {
-		return nil, err
+	if err2 := hr(byteStream, strLen[:], SUITE_DESC_LEN); err2 != nil {
+		return nil, err2
 	}
 	str := make([]byte, strLen[0])
-	if err := hr(byteStream, str, CRYPTOGRAPHIC_SUITE_DESCRIPTION); err != nil {
-		return nil, err
+	if err2 := hr(byteStream, str, CRYPTOGRAPHIC_SUITE_DESCRIPTION); err2 != nil {
+		return nil, err2
 	}
 	if string(str) != suite.String() {
 		return nil, errors.Errorf(`wrong suite for unmarshalling: need "%s", got "%s"`, suite, str)
 	}
 
 	idx := make([]byte, player_idx.MarshalLen)
-	if err := hr(byteStream, idx, RECEIVER_INDEX); err != nil {
-		return nil, err
+	if err2 := hr(byteStream, idx, RECEIVER_INDEX); err2 != nil {
+		return nil, err2
 	}
 	c.receiver, _, err = player_idx.Unmarshal(idx)
 	if err != nil {
@@ -137,26 +138,26 @@ func unmarshal(suite anon.Suite, byteStream io.Reader) (c *cipherText, err error
 	}
 
 	proofLen := make([]byte, 2)
-	if err := hr(byteStream, proofLen[:], SHARE_PROOF_LEN); err != nil {
-		return nil, err
+	if err2 := hr(byteStream, proofLen[:], SHARE_PROOF_LEN); err2 != nil {
+		return nil, err2
 	}
 
 	c.encodesShareProof = make([]byte, binary.BigEndian.Uint16(proofLen))
-	if err := hr(byteStream, c.encodesShareProof, SHARE_PROOF); err != nil {
-		return nil, err
+	if err2 := hr(byteStream, c.encodesShareProof, SHARE_PROOF); err2 != nil {
+		return nil, err2
 	}
 
 	var rawNumPairs [2]byte
-	if err := hr(byteStream, rawNumPairs[:], NUM_PAIRS); err != nil {
-		return nil, err
+	if err2 := hr(byteStream, rawNumPairs[:], NUM_PAIRS); err2 != nil {
+		return nil, err2
 	}
 	numPairs := binary.BigEndian.Uint16(rawNumPairs[:])
 
 	ctm := make([]byte, elGamalBitPairMarshalLength(suite))
 	c.cipherText = make([]*elGamalBitPair, numPairs)
 	for bpIdx := uint16(0); bpIdx < numPairs; bpIdx++ {
-		if err := hr(byteStream, ctm[:], "ciphertext bit pair"); err != nil {
-			return nil, err
+		if err2 := hr(byteStream, ctm[:], "ciphertext bit pair"); err2 != nil {
+			return nil, err2
 		}
 		c.cipherText[bpIdx], err = unmarshalElGamalBitPair(suite, ctm)
 		if err != nil {
