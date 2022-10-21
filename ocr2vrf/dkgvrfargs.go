@@ -56,4 +56,7 @@ type DKGVRFArgs struct {
 	Esk   dkg_contract.EncryptionSecretKey
 	Ssk   dkg_contract.SigningSecretKey
 	KeyID dkg_contract.KeyID
+
+	DKGReportingPluginFactoryDecorator func(factory types.ReportingPluginFactory) types.ReportingPluginFactory
+	VRFReportingPluginFactoryDecorator func(factory types.ReportingPluginFactory) types.ReportingPluginFactory
 }
