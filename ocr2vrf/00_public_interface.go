@@ -22,36 +22,6 @@ type EthereumReportSerializer = vrf.EthereumReportSerializer
 
 func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 	transceiver := keyTransceiver{a.KeyID, nil, sync.RWMutex{}}
-	dkgReportingPluginFactory := dkg.NewReportingPluginFactory(
-		a.Esk,
-		a.Ssk,
-		a.KeyID,
-		a.DKGContract,
-		a.DKGLogger,
-		&transceiver,
-	)
-
-	vrfReportingPluginFactory, err := vrf.NewVRFReportingPluginFactory(
-		a.KeyID,
-		&transceiver,
-		a.Coordinator,
-		a.Blockhashes,
-		a.Serializer,
-		a.VRFLogger,
-		a.JulesPerFeeCoin,
-	)
-	if err != nil {
-		return nil, errors.Wrap(err, "could not instantiate VRF reporting plugin factory")
-	}
-
-	if a.DKGReportingPluginFactoryDecorator != nil {
-		dkgReportingPluginFactory = a.DKGReportingPluginFactoryDecorator(dkgReportingPluginFactory)
-	}
-
-	if a.VRFReportingPluginFactoryDecorator != nil {
-		vrfReportingPluginFactory = a.VRFReportingPluginFactoryDecorator(vrfReportingPluginFactory)
-	}
-
 	deployedDKG, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
 		BinaryNetworkEndpointFactory: a.BinaryNetworkEndpointFactory,
 		V2Bootstrappers:              a.V2Bootstrappers,
@@ -64,7 +34,14 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 		OffchainConfigDigester:       a.DKGOffchainConfigDigester,
 		OffchainKeyring:              a.OffchainKeyring,
 		OnchainKeyring:               a.OnchainKeyring,
-		ReportingPluginFactory:       dkgReportingPluginFactory,
+		ReportingPluginFactory: dkg.NewReportingPluginFactory(
+			a.Esk,
+			a.Ssk,
+			a.KeyID,
+			a.DKGContract,
+			a.DKGLogger,
+			&transceiver,
+		),
 	})
 	if err != nil {
 		return nil, util.WrapError(err, "while setting up new DKG oracle")
@@ -73,7 +50,18 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 	for _, d := range a.ConfirmationDelays {
 		confirmationDelays[d] = struct{}{}
 	}
-
+	reportingPluginFactory, err := vrf.NewVRFReportingPluginFactory(
+		a.KeyID,
+		&transceiver,
+		a.Coordinator,
+		a.Blockhashes,
+		a.Serializer,
+		a.VRFLogger,
+		a.JulesPerFeeCoin,
+	)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not instantiate VRF reporting plugin factory")
+	}
 	deployedVRF, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
 		BinaryNetworkEndpointFactory: a.BinaryNetworkEndpointFactory,
 		V2Bootstrappers:              a.V2Bootstrappers,
@@ -86,7 +74,7 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 		OffchainConfigDigester:       a.VRFOffchainConfigDigester,
 		OffchainKeyring:              a.OffchainKeyring,
 		OnchainKeyring:               a.OnchainKeyring,
-		ReportingPluginFactory:       vrfReportingPluginFactory,
+		ReportingPluginFactory:       reportingPluginFactory,
 	})
 	if err != nil {
 		return nil, util.WrapError(err, "while setting up VRF oracle")
