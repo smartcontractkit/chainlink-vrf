@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"math/big"
+	"sync"
 
 	bn256 "github.com/ethereum/go-ethereum/crypto/bn256/cloudflare"
 
@@ -93,8 +94,11 @@ func (p *g2Point) Add(a kyber.Point, b kyber.Point) kyber.Point {
 }
 
 var g2BasePoint *g2Point
+var g2BasePointLock = sync.RWMutex{}
 
 func (p *g2Point) Base() kyber.Point {
+	g2BasePointLock.Lock()
+	defer g2BasePointLock.Unlock()
 	if g2BasePoint == nil {
 		g2BasePoint = &g2Point{new(bn256.G2).ScalarBaseMult(one)}
 	}

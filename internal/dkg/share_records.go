@@ -11,7 +11,7 @@ import (
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg/hash"
+	"github.com/smartcontractkit/ocr2vrf/types/hash"
 
 	"go.dedis.ch/kyber/v3"
 	kshare "go.dedis.ch/kyber/v3/share"

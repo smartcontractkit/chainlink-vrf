@@ -10,6 +10,7 @@ import (
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
+	dkg_types "github.com/smartcontractkit/ocr2vrf/types"
 )
 
 func NewReportingPluginFactory(
@@ -19,6 +20,7 @@ func NewReportingPluginFactory(
 	contract OnchainContract,
 	logger commontypes.Logger,
 	keyConsumer KeyConsumer,
+	db dkg_types.DKGSharePersistence,
 ) types.ReportingPluginFactory {
 	return dkg.NewReportingPluginFactory(
 		esk,
@@ -27,6 +29,7 @@ func NewReportingPluginFactory(
 		contract,
 		logger,
 		keyConsumer,
+		db,
 	)
 }
 
