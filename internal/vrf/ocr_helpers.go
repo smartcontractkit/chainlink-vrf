@@ -185,10 +185,19 @@ func (s *sigRequest) parseVRFProofs(
 	for _, output := range proofs {
 		if _, present := s.confirmationDelays[output.Delay]; !present {
 			s.logger.Warn(
-				"block output provided for unknown confirmation delay",
+				unknownConfirmationDelayInBlockMsg,
 				commontypes.LogFields{
 					"oracleID": observer, "delay": output.Delay,
 					"known delays": s.confirmationDelays,
+				})
+			continue
+		}
+		if output.Height%uint64(s.period) != 0 {
+			s.logger.Warn(
+				nonBeaconHeightInBlockMsg,
+				commontypes.LogFields{
+					"oracleID": observer, "height": output.Height,
+					"period": s.period,
 				})
 			continue
 		}
@@ -204,7 +213,7 @@ func (s *sigRequest) parseVRFProofs(
 		seenBlocks[hd] = struct{}{}
 		contribution := s.pairing.G1().Point()
 		if err := contribution.UnmarshalBinary(output.Sig.Sig); err != nil {
-			s.logger.Warn("could not read VRF contribution", commontypes.LogFields{
+			s.logger.Warn(failedReadContributionMsg, commontypes.LogFields{
 				"oracleID": observer, "error": err,
 				"contribution": fmt.Sprintf("0x%x", output.Sig.Sig),
 			})
@@ -251,6 +260,7 @@ func (s *sigRequest) aggregateOutputs(
 		shares := make([]*kshare.PubShare, 0, len(vrfContributions[b]))
 		player_indices, err := player_idx.PlayerIdxs(s.n)
 		if err != nil {
+
 			return nil, util.WrapError(
 				err,
 				"could not construct player indices for share reconstruction",
@@ -265,6 +275,7 @@ func (s *sigRequest) aggregateOutputs(
 			s.pairing.G1(), shares, int(s.t)+1, len(shares),
 		)
 		if err != nil {
+
 			delete(callbacksByBlock, hd)
 			s.logger.Error(
 				"failed to recover distributed VRF output",
@@ -284,6 +295,7 @@ func (s *sigRequest) aggregateOutputs(
 		}
 		proof, err := output.MarshalBinary()
 		if err != nil {
+
 			delete(callbacksByBlock, hd)
 			s.logger.Error(
 				"could not serialize VRF output for onchain transmission",
@@ -334,7 +346,7 @@ func sanityCheckCallback(
 	}
 	if _, present := confDelays[c.Callback.ConfDelay]; !present {
 		l.Warn(
-			"unknown confirmation delay",
+			unknownConfirmationDelayMsg,
 			commontypes.LogFields{
 				"delay": c.Callback.ConfDelay, "good delays": confDelays,
 				"source": oracle, "callback": c,
@@ -357,6 +369,7 @@ func sanityCheckCallback(
 		return errors.Errorf(requestIdTooLargeMsg)
 	}
 	if uint64(c.Callback.NumWords) > MaxNumWords.Uint64() {
+
 		l.Warn("numWords too large", commontypes.LogFields{
 			"numWords": c.Callback.NumWords, "max": MaxNumWords, "callback": c,
 			"source": oracle,
@@ -380,6 +393,7 @@ func sanityCheckCallback(
 			})
 		return errors.Errorf(excessGasAllowanceMsg)
 	}
+
 	return nil
 }
 
@@ -456,18 +470,21 @@ func init() {
 }
 
 const (
-	excessGasAllowanceMsg           = "gas allowance too large"
-	unknownConfirmationDelayMsg     = "uknown confirmation delay"
-	nonBeaconHeightInCallbackMsg    = "callback with non-beacon height"
-	priceTooLargeMsg                = "price too large"
-	requestIdTooLargeMsg            = "requestID too large"
-	noLocalShareMsg                 = "No local secret keyshare available"
-	incorrectPublicKeyMsg           = "keyHash mismatch"
-	noDistributedKeyMsg             = "no distributed key available"
-	failedSerializeLocalKey         = "could not serialize local view of key"
-	failedRetrieveOCRCommitteesMsg  = "failed to retrieve OCR committees"
-	committeesWithDifferentSizesMsg = "committee sizes differ"
-	signersMismatchMsg              = "committee signers differ"
-	transmittersMismatchMsg         = "committee transmitters differ"
-	failedRetrieveOnchainKeyMsg     = "could not retrieve onchain view of key hash"
+	excessGasAllowanceMsg              = "gas allowance too large"
+	unknownConfirmationDelayMsg        = "uknown confirmation delay"
+	nonBeaconHeightInCallbackMsg       = "callback with non-beacon height"
+	priceTooLargeMsg                   = "price too large"
+	requestIdTooLargeMsg               = "requestID too large"
+	noLocalShareMsg                    = "No local secret keyshare available"
+	incorrectPublicKeyMsg              = "keyHash mismatch"
+	noDistributedKeyMsg                = "no distributed key available"
+	failedSerializeLocalKey            = "could not serialize local view of key"
+	failedRetrieveOCRCommitteesMsg     = "failed to retrieve OCR committees"
+	committeesWithDifferentSizesMsg    = "committee sizes differ"
+	signersMismatchMsg                 = "committee signers differ"
+	transmittersMismatchMsg            = "committee transmitters differ"
+	failedRetrieveOnchainKeyMsg        = "could not retrieve onchain view of key hash"
+	failedReadContributionMsg          = "could not read VRF contribution"
+	nonBeaconHeightInBlockMsg          = "block output provided for non-beacon height"
+	unknownConfirmationDelayInBlockMsg = "block output provided for unknown confirmation delay"
 )

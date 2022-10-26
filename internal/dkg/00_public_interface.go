@@ -14,6 +14,7 @@ import (
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
+	dkg_types "github.com/smartcontractkit/ocr2vrf/types"
 )
 
 func NewReportingPluginFactory(
@@ -23,14 +24,22 @@ func NewReportingPluginFactory(
 	contract contract.OnchainContract,
 	logger commontypes.Logger,
 	keyConsumer KeyConsumer,
+	db dkg_types.DKGSharePersistence,
 ) types.ReportingPluginFactory {
 	dkgInProgress, testmode, xxxDKGTestingOnly := false, false, (*dkg)(nil)
 	return &dkgReportingPluginFactory{
-		&localArgs{esk, ssk, keyID, contract, logger, keyConsumer,
+		&localArgs{
+			esk,
+			ssk,
+			keyID,
+			contract,
+			logger,
+			keyConsumer,
 			rand.Reader,
+			db,
 		},
+		sync.RWMutex{},
 		dkgInProgress,
-		sync.Mutex{},
 		testmode,
 		xxxDKGTestingOnly,
 	}

@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/pkg/errors"
+
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 )
@@ -16,6 +17,8 @@ func (d *dkg) Query(context.Context, types.ReportTimestamp,
 func (d *dkg) Observation(
 	ctx context.Context, _ types.ReportTimestamp, _ types.Query,
 ) (o types.Observation, err error) {
+	d.lock.RLock()
+	defer d.lock.RUnlock()
 	var respondingShareRecord *shareRecord
 	if !d.keyReportedOnchain(ctx) {
 		respondingShareRecord = d.myShareRecord
@@ -56,6 +59,8 @@ func (d *dkg) Report(
 	ctx context.Context, _ types.ReportTimestamp, _ types.Query,
 	shares []types.AttributedObservation,
 ) (shouldReport bool, report types.Report, err error) {
+	d.lock.Lock()
+	defer d.lock.Unlock()
 	v, err := d.newValidShareRecords(ctx)
 	if err != nil {
 		return false, nil, errors.Wrap(
@@ -69,6 +74,7 @@ func (d *dkg) Report(
 		v.processShareSet(aobs)
 	}
 	if d.keyReportedOnchain(ctx) {
+
 		return false, nil, d.recoverDistributedKeyShare(ctx)
 	}
 

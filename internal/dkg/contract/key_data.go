@@ -8,14 +8,14 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg/hash"
+	dkg_hash "github.com/smartcontractkit/ocr2vrf/types/hash"
 
 	"go.dedis.ch/kyber/v3"
 )
 
 type KeyData struct {
 	PublicKey kyber.Point
-	Hashes    []hash.Hash
+	Hashes    []dkg_hash.Hash
 }
 
 func (kd *KeyData) MarshalBinary(keyID [32]byte) (rv []byte, err error) {
@@ -62,7 +62,7 @@ func MakeKeyDataFromOnchainKeyData(
 	if err := pk.UnmarshalBinary(kd.PublicKey); err != nil {
 		return KeyData{}, errors.Wrap(err, "could not unmarshal onchain key")
 	}
-	var hashes []hash.Hash
+	var hashes []dkg_hash.Hash
 	for _, h := range kd.Hashes {
 		hashes = append(hashes, h)
 	}

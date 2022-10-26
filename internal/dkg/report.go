@@ -11,8 +11,8 @@ import (
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg/hash"
 	"github.com/smartcontractkit/ocr2vrf/internal/pvss"
+	"github.com/smartcontractkit/ocr2vrf/types/hash"
 )
 
 var _ = (&dkg{}).Report
@@ -49,12 +49,19 @@ func (d *dkg) newValidShareRecords(
 		return nil, errors.Wrap(err, "could not construct player list")
 	}
 	return &validShareRecords{
-		map[player_idx.PlayerIdx]bool{}, hash.MakeHashes(), 0, players,
-		d, d.translationGroup.Point(), ctx,
+		map[player_idx.PlayerIdx]bool{},
+		hash.MakeHashes(),
+		0,
+		players,
+		d,
+		d.translationGroup.Point(),
+		ctx,
 	}, nil
 }
 
-func (v *validShareRecords) validateShareRecord(r *shareRecord, sender *player_idx.PlayerIdx,
+func (v *validShareRecords) validateShareRecord(
+	r *shareRecord,
+	sender *player_idx.PlayerIdx,
 ) (reportedDealer *player_idx.PlayerIdx, err error) {
 	reportedDealer, err = r.shareSet.Dealer()
 	if err != nil {
@@ -82,14 +89,17 @@ func (v *validShareRecords) validateShareRecord(r *shareRecord, sender *player_i
 }
 
 func (v *validShareRecords) storeValidShareSet(
-	aobs types.AttributedObservation, reportedDealer *player_idx.PlayerIdx,
-	shareSet *pvss.ShareSet, h *hash.Hash,
+	aobs types.AttributedObservation,
+	reportedDealer player_idx.PlayerIdx,
+	shareSet *pvss.ShareSet,
+	h *hash.Hash,
 ) {
-	v.includedDealers[*reportedDealer] = true
+	v.includedDealers[reportedDealer] = true
 
 	agg := v.aggregatePublicKey.Clone()
 	_ = v.aggregatePublicKey.Add(agg, shareSet.PublicKey())
 	v.includedHashes.Add(*h)
+	go v.persistShares(reportedDealer, aobs.Observation, *h)
 	v.validShareCount++
 }
 
@@ -113,7 +123,7 @@ func (v *validShareRecords) processShareSet(aobs types.AttributedObservation) {
 		v.d.logger.Warn("invalid share set", commontypes.LogFields{"err": err})
 		return
 	}
-	v.storeValidShareSet(aobs, reportedDealer, r.shareSet, &h)
+	v.storeValidShareSet(aobs, *reportedDealer, r.shareSet, &h)
 }
 
 func (v *validShareRecords) enoughShareSets() bool {

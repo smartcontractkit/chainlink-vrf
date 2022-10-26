@@ -17,6 +17,7 @@ import (
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/protobuf"
 	"github.com/smartcontractkit/ocr2vrf/internal/util"
+	dkg_types "github.com/smartcontractkit/ocr2vrf/types"
 
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/sign/anon"
@@ -171,6 +172,7 @@ type NewDKGArgs struct {
 	contract                   contract.OnchainContract
 	logger                     commontypes.Logger
 	randomness                 io.Reader
+	db                         dkg_types.DKGSharePersistence
 	xxxTestingOnlySigningGroup anon.Suite
 }
 
@@ -192,9 +194,23 @@ func (p *PluginConfig) NewDKGArgs(
 	}
 	selfIdx := players[oID]
 	return &NewDKGArgs{
-		t, selfIdx, d, l.esk, oc.epks, l.ssk, oc.spks, p.onchainConfig.KeyID,
-		l.keyConsumer, oc.encryptionGroup, translationGroup, oc.translator,
-		l.contract, l.logger, l.randomness, nil,
+		t,
+		selfIdx,
+		d,
+		l.esk,
+		oc.epks,
+		l.ssk,
+		oc.spks,
+		p.onchainConfig.KeyID,
+		l.keyConsumer,
+		oc.encryptionGroup,
+		translationGroup,
+		oc.translator,
+		l.contract,
+		l.logger,
+		l.randomness,
+		l.shareDB,
+		nil,
 	}, nil
 }
 
@@ -206,6 +222,7 @@ type localArgs struct {
 	logger      commontypes.Logger
 	keyConsumer KeyConsumer
 	randomness  io.Reader
+	shareDB     dkg_types.DKGSharePersistence
 }
 
 func (o *offchainConfig) String() string {
