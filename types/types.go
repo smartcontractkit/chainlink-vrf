@@ -101,6 +101,15 @@ type Block struct {
 type (
 	PubKeyTranslation  = point_translation.PubKeyTranslation
 	PairingTranslation = point_translation.PairingTranslation
+	PlayerIdx          = player_idx.PlayerIdx
 	PlayerIdxInt       = player_idx.Int
 	OCRCommittee       = ocr.OCRCommittee
 )
+
+func UnmarshalPlayerIdx(b []byte) (*PlayerIdx, []byte, error) {
+	return player_idx.Unmarshal(b)
+}
+
+func RawMarshalPlayerIdxInt(i PlayerIdxInt) []byte {
+	return player_idx.RawMarshal(i)
+}

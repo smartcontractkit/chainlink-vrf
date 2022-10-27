@@ -15,6 +15,7 @@ import (
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
 	"github.com/smartcontractkit/ocr2vrf/internal/pvss"
+	dkg_types "github.com/smartcontractkit/ocr2vrf/types"
 
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/group/edwards25519"
@@ -23,7 +24,8 @@ import (
 )
 
 type dkg struct {
-	t player_idx.Int
+	t    player_idx.Int
+	lock sync.RWMutex
 
 	selfIdx *player_idx.PlayerIdx
 	cfgDgst types.ConfigDigest
@@ -45,13 +47,14 @@ type dkg struct {
 
 	translator point_translation.PubKeyTranslation
 
-	lastKeyDataLock sync.RWMutex
-	lastKeyData     *KeyData
+	lastKeyData *KeyData
 
 	contract onchainContract
 
 	completed   bool
 	dkgComplete func()
+
+	db dkg_types.DKGSharePersistence
 
 	logger commontypes.Logger
 

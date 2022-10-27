@@ -1,6 +1,7 @@
 package player_idx
 
 import (
+	"fmt"
 	"math"
 
 	"github.com/pkg/errors"
@@ -75,4 +76,8 @@ func (pi PlayerIdx) AtMost(n Int) bool {
 
 func (pi PlayerIdx) OracleID() commontypes.OracleID {
 	return commontypes.OracleID(pi.idx - 1)
+}
+
+func (pi PlayerIdx) String() string {
+	return fmt.Sprintf("player %d", pi.idx)
 }

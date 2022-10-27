@@ -291,6 +291,7 @@ func (s *sigRequest) Report(
 		callbacks,
 	)
 	if err != nil {
+
 		return false, nil, util.WrapError(err, "could not aggregate VRF outputs")
 	}
 
@@ -313,13 +314,22 @@ func (s *sigRequest) Report(
 			if callbackCounts[ch] > uint64(s.t) {
 				ccallbacks = append(ccallbacks, callbacks[ch])
 			} else {
-				s.logger.Error(
+				s.logger.Warn(
 					notEnoughAppearancesCallback,
 					commontypes.LogFields{
 						"callback hash": ch, "t": s.t, "count": callbackCounts[ch],
 					},
 				)
 			}
+		}
+		if len(ccallbacks) == 0 {
+			s.logger.Warn(
+				noConsensusOnOrphanBlockCallbacksMsg,
+				commontypes.LogFields{
+					"heightAndDelay": hd, "callbacksHashes": chashes,
+				},
+			)
+			continue
 		}
 		outputs = append(outputs, vrf_types.AbstractVRFOutput{
 			BlockHeight:       hd.height,
@@ -363,7 +373,7 @@ func (s *sigRequest) Report(
 		s.logger.Error("could not construct serialized report",
 			commontypes.LogFields{"err": err},
 		)
-		return false, types.Report{}, err
+		return false, nil, err
 	}
 	s.reportsLock.Lock()
 	defer s.reportsLock.Unlock()
@@ -449,4 +459,5 @@ const (
 	noConsensusOnRecentBlockhash           = "no consensus achieved on most recent block hash"
 	notEnoughAppearancesCallback           = "insufficient number of appearances for a callback"
 	skipErrMsg                             = "skipping callback due to error"
+	noConsensusOnOrphanBlockCallbacksMsg   = "there is no consensus on any of the callbacks of an orphan block"
 )

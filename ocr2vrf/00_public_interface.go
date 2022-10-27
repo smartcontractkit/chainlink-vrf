@@ -29,6 +29,7 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 		a.DKGContract,
 		a.DKGLogger,
 		&transceiver,
+		a.DKGSharePersistence,
 	)
 
 	vrfReportingPluginFactory, err := vrf.NewVRFReportingPluginFactory(

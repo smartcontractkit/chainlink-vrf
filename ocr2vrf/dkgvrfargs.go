@@ -46,6 +46,8 @@ type DKGVRFArgs struct {
 
 	DKGMonitoringEndpoint commontypes.MonitoringEndpoint
 
+	DKGSharePersistence vrf_types.DKGSharePersistence
+
 	Blockhashes     vrf_types.Blockhashes
 	Serializer      vrf_types.ReportSerializer
 	JulesPerFeeCoin vrf_types.JuelsPerFeeCoin

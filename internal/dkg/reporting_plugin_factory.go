@@ -4,21 +4,18 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/pkg/errors"
-
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg/hash"
-	"github.com/smartcontractkit/ocr2vrf/internal/pvss"
+	"github.com/smartcontractkit/ocr2vrf/internal/util"
 )
 
 type dkgReportingPluginFactory struct {
-	l *localArgs
+	l    *localArgs
+	lock sync.RWMutex
 
 	dkgInProgress bool
-	dipMtx        sync.Mutex
 
 	testmode          bool
 	xxxDKGTestingOnly *dkg
@@ -29,11 +26,11 @@ var _ types.ReportingPluginFactory = (*dkgReportingPluginFactory)(nil)
 func (d *dkgReportingPluginFactory) NewReportingPlugin(
 	c types.ReportingPluginConfig,
 ) (types.ReportingPlugin, types.ReportingPluginInfo, error) {
-	d.dipMtx.Lock()
-	defer d.dipMtx.Unlock()
+	d.lock.Lock()
+	defer d.lock.Unlock()
 	emptyInfo := types.ReportingPluginInfo{}
 	if d.dkgInProgress {
-		return nil, emptyInfo, errors.Errorf(
+		return nil, emptyInfo, fmt.Errorf(
 			"attempt to initiate DKG round while an earlier DKG round is in progress",
 		)
 	}
@@ -41,22 +38,22 @@ func (d *dkgReportingPluginFactory) NewReportingPlugin(
 	a, err := unmarshalPluginConfig(c.OffchainConfig, c.OnchainConfig)
 	if err != nil {
 		return nil, emptyInfo,
-			errors.Wrap(err, "could not read offchain plugin config")
+			util.WrapError(err, "could not read offchain plugin config")
 	}
 	if c.N > int(player_idx.MaxPlayer) {
 		return nil, emptyInfo,
-			errors.Errorf("too many players: %d > %d", c.N, player_idx.MaxPlayer)
+			fmt.Errorf("too many players: %d > %d", c.N, player_idx.MaxPlayer)
 	}
 	args, err := a.NewDKGArgs(
 		c.ConfigDigest, d.l, c.OracleID, player_idx.Int(c.N), player_idx.Int(c.F),
 	)
 	if err != nil {
-		return nil, emptyInfo, errors.Wrap(err, "could not construct DKG args")
+		return nil, emptyInfo, util.WrapError(err, "could not construct DKG args")
 	}
 	d.l.logger.Debug("constructing share set", commontypes.LogFields{})
 	dkg, err := d.NewDKG(args)
 	if err != nil {
-		return nil, emptyInfo, errors.Wrap(err, "while creating reporting plugin")
+		return nil, emptyInfo, util.WrapError(err, "while creating reporting plugin")
 	}
 	d.l.logger.Debug("finished constructing share set", commontypes.LogFields{})
 	if d.testmode {
@@ -76,37 +73,41 @@ func (d *dkgReportingPluginFactory) NewReportingPlugin(
 
 func (d *dkgReportingPluginFactory) NewDKG(a *NewDKGArgs) (*dkg, error) {
 	if err := a.SanityCheckArgs(); err != nil {
-		return nil, errors.Wrap(err, "could not construct new DKG")
+		return nil, util.WrapError(err, "could not construct new DKG")
 	}
-	shareSet, err := pvss.NewShareSet(
-		a.cfgDgst, a.t, a.selfIdx, a.encryptionGroup, a.translator, a.epks,
-	)
-	if err != nil {
-		return nil, errors.Wrap(err, "could not create own share set")
-	}
-	nShareRecords := newShareRecords()
-	myShareRecord, err := newShareRecord(a.signingGroup(), shareSet, a.ssk, a.cfgDgst)
-	if err != nil {
-		return nil, errors.Wrap(err, "could not create own share record")
-	}
-	err = nShareRecords.set(myShareRecord, hash.Zero)
-	if err != nil {
-		return nil, errors.Wrap(err, "could not set own share record")
-	}
-	completed := false
-	return &dkg{
-		a.t, a.selfIdx, a.cfgDgst, a.keyID, a.keyConsumer, nShareRecords, myShareRecord,
-		a.esk, a.epks, a.ssk, a.spks,
-		a.encryptionGroup, a.translationGroup, a.translator,
-		sync.RWMutex{}, nil, a.contract, completed, d.markCompleted,
+	factory := &dkg{
+		a.t,
+		sync.RWMutex{},
+		a.selfIdx,
+		a.cfgDgst,
+		a.keyID,
+		a.keyConsumer,
+		newShareRecords(),
+		nil,
+		a.esk,
+		a.epks,
+		a.ssk,
+		a.spks,
+		a.encryptionGroup,
+		a.translationGroup,
+		a.translator,
+		nil,
+		a.contract,
+		false,
+		d.markCompleted,
+		a.db,
 		a.logger,
 		a.randomness,
-	}, nil
+	}
+	if err := factory.initializeShareSets(a.signingGroup()); err != nil {
+		return nil, util.WrapError(err, "could not initialize share sets")
+	}
+	return factory, nil
 }
 
 func (d *dkgReportingPluginFactory) markCompleted() {
-	d.dipMtx.Lock()
-	defer d.dipMtx.Unlock()
+	d.lock.Lock()
+	defer d.lock.Unlock()
 	d.dkgInProgress = false
 }
 
