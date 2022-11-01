@@ -135,6 +135,8 @@ func addCallback(
 		common.BytesToAddress(c.Callback.Requester),
 		c.Callback.Arguments,
 		big.NewInt(0).SetBytes(c.GasAllowance),
+		big.NewInt(0).SetBytes(c.GasPrice),
+		big.NewInt(0).SetBytes(c.WeiPerUnitLink),
 	}
 	return h, nil
 }
@@ -432,7 +434,9 @@ func callbacksEqual(c1, c2 vrf_types.AbstractCostedCallbackRequest) bool {
 		c1.NumWords == c2.NumWords &&
 		c1.Requester == c2.Requester &&
 		bytes.Equal(c1.Arguments, c2.Arguments) &&
-		c1.GasAllowance.Cmp(c2.GasAllowance) == 0
+		c1.GasAllowance.Cmp(c2.GasAllowance) == 0 &&
+		c1.GasPrice.Cmp(c2.GasPrice) == 0 &&
+		c1.WeiPerUnitLink.Cmp(c2.WeiPerUnitLink) == 0
 }
 
 var (
