@@ -76,6 +76,8 @@ type AbstractCostedCallbackRequest struct {
 	Requester         common.Address
 	Arguments         []byte
 	GasAllowance      *big.Int
+	GasPrice          *big.Int
+	WeiPerUnitLink    *big.Int
 }
 
 type AbstractVRFOutput struct {

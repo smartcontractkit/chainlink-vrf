@@ -95,6 +95,8 @@ func (e *EthereumReportSerializer) ConvertToBeaconReport(
 					callback.Arguments,
 					callback.SubscriptionID,
 					callback.GasAllowance,
+					callback.GasPrice,
+					callback.WeiPerUnitLink,
 				},
 				callback.Price,
 			}
@@ -154,6 +156,8 @@ func (e *EthereumReportSerializer) ConvertToAbstractReport(
 				c.Callback.Requester,
 				c.Callback.Arguments,
 				c.Callback.GasAllowance,
+				c.Callback.GasPrice,
+				c.Callback.WeiPerUnitLink,
 			}
 			abstractCallbacks = append(abstractCallbacks, abstractCallback)
 		}

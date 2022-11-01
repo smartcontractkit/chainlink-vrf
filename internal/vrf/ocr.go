@@ -122,8 +122,10 @@ func (s *sigRequest) Observation(
 				Height:         c.BeaconHeight,
 				ConfDelay:      c.ConfirmationDelay,
 			},
-			Price:        c.Price.Bytes(),
-			GasAllowance: c.GasAllowance.Bytes(),
+			Price:          c.Price.Bytes(),
+			GasAllowance:   c.GasAllowance.Bytes(),
+			GasPrice:       c.GasPrice.Bytes(),
+			WeiPerUnitLink: c.WeiPerUnitLink.Bytes(),
 		}
 		err2 := sanityCheckCallback(
 			&pcb, s.logger, s.i.OracleID(), s.confirmationDelays, s.period,
