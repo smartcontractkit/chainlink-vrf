@@ -4,21 +4,28 @@ import (
 	"bytes"
 	"context"
 	"crypto/rand"
+	"fmt"
 	"math/big"
 	"sort"
 
+	"github.com/gogo/protobuf/proto"
 	"github.com/pkg/errors"
 
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
+	"github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
 )
 
-func OffchainConfig() []byte {
+func OffchainConfig(v *protobuf.CoordinatorVars) []byte {
+	b, err := proto.Marshal(v)
+	if err != nil {
+		panic(fmt.Sprintf("error marshalling offchain config %v", err))
+	}
 
-	return nil
+	return b
 }
 
 func OnchainConfig(confDelays map[uint32]struct{}) []byte {

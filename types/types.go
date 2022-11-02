@@ -11,6 +11,7 @@ import (
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
+	"github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
 )
 
 type CoordinatorInterface interface {
@@ -25,6 +26,8 @@ type CoordinatorInterface interface {
 		callbacks []AbstractCostedCallbackRequest,
 		err error,
 	)
+
+	SetOffChainConfig([]byte) error
 
 	ReportWillBeTransmitted(context.Context, AbstractReport) error
 
@@ -106,6 +109,7 @@ type (
 	PlayerIdx          = player_idx.PlayerIdx
 	PlayerIdxInt       = player_idx.Int
 	OCRCommittee       = ocr.OCRCommittee
+	CoordinatorVars    = protobuf.CoordinatorVars
 )
 
 func UnmarshalPlayerIdx(b []byte) (*PlayerIdx, []byte, error) {

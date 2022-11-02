@@ -11,6 +11,7 @@ import (
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
 	"github.com/smartcontractkit/ocr2vrf/internal/util"
 	"github.com/smartcontractkit/ocr2vrf/internal/vrf"
+	"github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
 )
 
 type OCR2VRF struct {
@@ -95,8 +96,8 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 	return &OCR2VRF{deployedDKG, deployedVRF, &transceiver}, nil
 }
 
-func OffchainConfig() []byte {
-	return vrf.OffchainConfig()
+func OffchainConfig(v *protobuf.CoordinatorVars) []byte {
+	return vrf.OffchainConfig(v)
 }
 
 func OnchainConfig(confDelays map[uint32]struct{}) []byte {
