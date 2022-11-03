@@ -38,8 +38,14 @@ func (s *sigRequest) Observation(
 	if err := s.ocrsSynced(ctx); err != nil {
 		return nil, errors.Wrap(err, failedConstructObservation)
 	}
+
 	pendingBlocks, pendingCallbacks, err := s.coordinator.ReportBlocks(
-		ctx, s.period, s.confirmationDelays, s.retransmissionDelay, 100, 100,
+		ctx,
+		s.period,
+		s.confirmationDelays,
+		s.retransmissionDelay,
+		MaxBlocksInObservation,
+		MaxCallbacksInObservation,
 	)
 	if err != nil {
 		return nil, errors.Wrap(err, failedListPendingBlocks)
@@ -88,7 +94,8 @@ func (s *sigRequest) Observation(
 			blockProof, err2 := s.vrfOutput(b, s.keyProvider.KeyLookup(s.keyID))
 
 			if err2 != nil {
-				return nil, err2
+				errMsg := "Observation: Failed to construct a proof for a block"
+				return nil, errors.Wrap(err2, errMsg)
 			}
 			s.blockProofs[b] = blockProof
 		}
@@ -100,12 +107,10 @@ func (s *sigRequest) Observation(
 			})
 			continue
 		}
-		var blockhash common.Hash
-		copy(blockhash[:], b.Hash[:])
 		outputs = append(outputs, &protobuf.VRFResponse{
 			Height:    b.Height,
 			Delay:     b.ConfirmationDelay,
-			Blockhash: blockhash[:],
+			Blockhash: append([]byte{}, b.Hash[:]...),
 			Sig:       &protobuf.Signature{Sig: proofBytes[:]},
 		})
 	}
@@ -137,6 +142,13 @@ func (s *sigRequest) Observation(
 			})
 			continue
 		}
+		if pcb.Callback.Height+uint64(pcb.Callback.ConfDelay) >= currentHeight {
+			s.logger.Error(
+				earlyCallbackFromReportBlocks,
+				commontypes.LogFields{"callback": pcb.Callback, "currentHeight": currentHeight},
+			)
+			continue
+		}
 		callbacks = append(callbacks, &pcb)
 	}
 
@@ -157,6 +169,9 @@ func (s *sigRequest) Observation(
 	if err != nil {
 		return nil, errors.Wrap(err, failedReadVerifiableBlocks)
 	}
+	if len(blocks) > 256 {
+		return nil, errors.Errorf("OnchainVerifiableBlocks should return at most 256 blocks")
+	}
 	lastVerifiableBlockHeight := startHeight + uint64(len(blocks)) - 1
 	if lastVerifiableBlockHeight < currentHeight {
 		return nil, errors.Errorf(
@@ -166,13 +181,11 @@ func (s *sigRequest) Observation(
 	}
 	recentHashes := make([]*protobuf.RecentBlockAndHash, 0, len(blocks))
 	for i, blockhash := range blocks {
-		var hash common.Hash
-		copy(hash[:], blockhash[:])
 		recentHashes = append(
 			recentHashes,
 			&protobuf.RecentBlockAndHash{
 				Height:    startHeight + uint64(i),
-				Blockhash: hash[:],
+				Blockhash: append([]byte{}, blockhash[:]...),
 			},
 		)
 	}
@@ -259,7 +272,7 @@ func (s *sigRequest) Report(
 		player := players[o.Observer]
 
 		proofs := observation.Proofs
-		s.parseVRFProofs(proofs, vrfContributions, o.Observer, player, kd)
+		s.parseAndStoreVRFProofs(proofs, vrfContributions, o.Observer, player, kd)
 		juelsPerFeeCoin := big.NewInt(0).SetBytes(observation.JuelsPerFeeCoin)
 		juelsPerFeeCoinObs = append(juelsPerFeeCoinObs, juelsPerFeeCoin)
 
@@ -295,6 +308,11 @@ func (s *sigRequest) Report(
 	if err != nil {
 
 		return false, nil, util.WrapError(err, "could not aggregate VRF outputs")
+	}
+
+	for _, output := range outputs {
+		hd := heightDelay{output.BlockHeight, output.ConfirmationDelay}
+		delete(callbacksByBlock, hd)
 	}
 
 	orphanBlocks := make(hds, 0, len(callbacksByBlock))
@@ -462,4 +480,5 @@ const (
 	notEnoughAppearancesCallback           = "insufficient number of appearances for a callback"
 	skipErrMsg                             = "skipping callback due to error"
 	noConsensusOnOrphanBlockCallbacksMsg   = "there is no consensus on any of the callbacks of an orphan block"
+	earlyCallbackFromReportBlocks          = "ReportBlocks returned a callback too early"
 )
