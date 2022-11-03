@@ -174,7 +174,7 @@ func (s *sigRequest) storeCallbacksByBlocks(
 	}
 }
 
-func (s *sigRequest) parseVRFProofs(
+func (s *sigRequest) parseAndStoreVRFProofs(
 	proofs []*protobuf.VRFResponse,
 	vrfContributions map[vrf_types.Block]map[commontypes.OracleID]kshare.PubShare,
 	observer commontypes.OracleID,
@@ -251,12 +251,12 @@ func (s *sigRequest) aggregateOutputs(
 		hd := heightDelay{b.Height, b.ConfirmationDelay}
 
 		if len(vrfContributions[b]) <= int(s.t) {
-			delete(callbacksByBlock, hd)
 			s.logger.Debug(
 				notEnoughContributions,
 				commontypes.LogFields{
 					"block": b, "num contributions": len(vrfContributions[b]),
 				})
+
 			continue
 		}
 		shares := make([]*kshare.PubShare, 0, len(vrfContributions[b]))
@@ -278,31 +278,31 @@ func (s *sigRequest) aggregateOutputs(
 		)
 		if err != nil {
 
-			delete(callbacksByBlock, hd)
 			s.logger.Error(
 				"failed to recover distributed VRF output",
 				commontypes.LogFields{"error": err, "shares": shares, "t": s.t},
 			)
+
 			continue
 		}
 		h := b.VRFHash(s.configDigest, kd.PublicKey)
 		hpoint := altbn_128.NewHashProof(h).HashPoint
 		if !validateSignature(s.pairing, hpoint, kd.PublicKey, output) {
-			delete(callbacksByBlock, hd)
 			s.logger.Error(
 				failedVerifyVRFOutput,
 				commontypes.LogFields{"distributed signature": output},
 			)
+
 			continue
 		}
 		proof, err := output.MarshalBinary()
 		if err != nil {
 
-			delete(callbacksByBlock, hd)
 			s.logger.Error(
 				"could not serialize VRF output for onchain transmission",
 				commontypes.LogFields{"error": err, "output": output},
 			)
+
 		}
 		ccallbacks := make(
 			[]vrf_types.AbstractCostedCallbackRequest, 0, len(callbacksByBlock[hd]),
@@ -330,7 +330,6 @@ func (s *sigRequest) aggregateOutputs(
 			VRFProof:          common.BytesToHash(proof),
 			Callbacks:         ccallbacks,
 		})
-		delete(callbacksByBlock, hd)
 	}
 	return
 }
@@ -396,6 +395,16 @@ func sanityCheckCallback(
 		return errors.Errorf(excessGasAllowanceMsg)
 	}
 
+	if len(c.Callback.Arguments) > MaxArgumentsLen {
+		l.Warn(
+			tooLongArgumentsMsg,
+			commontypes.LogFields{
+				"arguments length":     len(c.Callback.Arguments),
+				"max arguments length": MaxArgumentsLen,
+				"source":               oracle,
+			})
+		return errors.Errorf(tooLongArgumentsMsg)
+	}
 	return nil
 }
 
@@ -449,12 +458,15 @@ var (
 )
 
 var (
-	MaxNumWords          = maxUint16
-	MaxConfirmationDelay = maxUint24
-	MaxRequestID         = maxUint48
-	MaxPrice             = maxUint96
-	MaxGasAllowance      = maxUint96
-	MaxSubscriptionID    = maxUint64
+	MaxNumWords               = maxUint16
+	MaxConfirmationDelay      = maxUint24
+	MaxRequestID              = maxUint48
+	MaxPrice                  = maxUint96
+	MaxGasAllowance           = maxUint96
+	MaxSubscriptionID         = maxUint64
+	MaxArgumentsLen           = 62_500
+	MaxBlocksInObservation    = 100
+	MaxCallbacksInObservation = 100
 )
 
 func init() {
@@ -491,4 +503,5 @@ const (
 	failedReadContributionMsg          = "could not read VRF contribution"
 	nonBeaconHeightInBlockMsg          = "block output provided for non-beacon height"
 	unknownConfirmationDelayInBlockMsg = "block output provided for unknown confirmation delay"
+	tooLongArgumentsMsg                = "arguments field in callback is too long"
 )

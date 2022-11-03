@@ -61,6 +61,12 @@ func (v *vrfReportingPluginFactory) NewReportingPlugin(
 	for _, d := range confDelays {
 		confDelaysSet[d] = struct{}{}
 	}
+
+	err = v.l.coordinator.SetOffChainConfig(c.OffchainConfig)
+	if err != nil {
+		return nil, types.ReportingPluginInfo{}, errors.Wrap(err, "could not set offchain config")
+	}
+
 	tbls, err := newSigRequest(
 		v.l.keyID,
 		v.l.keyProvider,
