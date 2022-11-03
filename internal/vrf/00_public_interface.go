@@ -19,7 +19,7 @@ import (
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
 )
 
-func OffchainConfig(v *protobuf.CoordinatorVars) []byte {
+func OffchainConfig(v *protobuf.CoordinatorConfig) []byte {
 	b, err := proto.Marshal(v)
 	if err != nil {
 		panic(fmt.Sprintf("error marshalling offchain config %v", err))

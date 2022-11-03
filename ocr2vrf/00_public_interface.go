@@ -96,7 +96,7 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 	return &OCR2VRF{deployedDKG, deployedVRF, &transceiver}, nil
 }
 
-func OffchainConfig(v *protobuf.CoordinatorVars) []byte {
+func OffchainConfig(v *protobuf.CoordinatorConfig) []byte {
 	return vrf.OffchainConfig(v)
 }
 

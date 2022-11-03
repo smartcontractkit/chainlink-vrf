@@ -109,7 +109,7 @@ type (
 	PlayerIdx          = player_idx.PlayerIdx
 	PlayerIdxInt       = player_idx.Int
 	OCRCommittee       = ocr.OCRCommittee
-	CoordinatorVars    = protobuf.CoordinatorVars
+	CoordinatorConfig  = protobuf.CoordinatorConfig
 )
 
 func UnmarshalPlayerIdx(b []byte) (*PlayerIdx, []byte, error) {
