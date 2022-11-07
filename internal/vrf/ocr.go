@@ -169,9 +169,6 @@ func (s *sigRequest) Observation(
 	if err != nil {
 		return nil, errors.Wrap(err, failedReadVerifiableBlocks)
 	}
-	if len(blocks) > 256 {
-		return nil, errors.Errorf("OnchainVerifiableBlocks should return at most 256 blocks")
-	}
 	lastVerifiableBlockHeight := startHeight + uint64(len(blocks)) - 1
 	if lastVerifiableBlockHeight < currentHeight {
 		return nil, errors.Errorf(
