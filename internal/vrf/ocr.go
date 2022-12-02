@@ -116,6 +116,7 @@ func (s *sigRequest) Observation(
 	}
 
 	callbacks := make([]*protobuf.CostedCallback, 0, len(pendingCallbacks))
+	cbRequestIDs := make([]uint64, 0, len(pendingCallbacks))
 	for _, c := range pendingCallbacks {
 		pcb := protobuf.CostedCallback{
 			Callback: &protobuf.Callback{
@@ -150,6 +151,7 @@ func (s *sigRequest) Observation(
 			continue
 		}
 		callbacks = append(callbacks, &pcb)
+		cbRequestIDs = append(cbRequestIDs, pcb.Callback.RequestId)
 	}
 
 	if (len(outputs) == 0) && (len(callbacks) == 0) {
@@ -191,11 +193,12 @@ func (s *sigRequest) Observation(
 	}
 
 	s.logger.Debug(initialObservation, commontypes.LogFields{
-		"JulesPerFeeCoin":   juelsPerFeeCoin,
-		"RecentBlockHashes": recentHashes,
-		"Proofs":            outputs,
-		"Callbacks":         callbacks,
-		"Raw blocks":        blocks,
+		"JulesPerFeeCoin":    juelsPerFeeCoin,
+		"RecentBlockHashes":  recentHashes,
+		"Proofs":             outputs,
+		"Callbacks":          callbacks,
+		"Raw blocks":         blocks,
+		"CallbackRequestIDs": cbRequestIDs,
 	})
 
 	observation := &protobuf.Observation{
@@ -388,6 +391,12 @@ func (s *sigRequest) Report(
 		outputs, medianBigInt(juelsPerFeeCoinObs), mostRecentBlockHash.height,
 		mostRecentBlockHash.hash,
 	}
+	s.logger.Debug(
+		callbacksInReport,
+		commontypes.LogFields{
+			"requestIDs": callbackRequestIDs(outputs),
+		},
+	)
 	serializedReport, err := s.serializer.SerializeReport(abstractReport)
 	if err != nil {
 		s.logger.Error("could not construct serialized report",
@@ -399,6 +408,18 @@ func (s *sigRequest) Report(
 	defer s.reportsLock.Unlock()
 	s.reports[ts] = report{abstractReport, serializedReport}
 	return len(outputs) > 0, serializedReport, nil
+}
+
+func callbackRequestIDs(
+	outputs []vrf_types.AbstractVRFOutput,
+) []uint64 {
+	var requestIDs []uint64
+	for _, o := range outputs {
+		for _, cb := range o.Callbacks {
+			requestIDs = append(requestIDs, cb.RequestID)
+		}
+	}
+	return requestIDs
 }
 
 func (s *sigRequest) ShouldAcceptFinalizedReport(
@@ -481,4 +502,5 @@ const (
 	skipErrMsg                             = "skipping callback due to error"
 	noConsensusOnOrphanBlockCallbacksMsg   = "there is no consensus on any of the callbacks of an orphan block"
 	earlyCallbackFromReportBlocks          = "ReportBlocks returned a callback too early"
+	callbacksInReport                      = "callbacks included in report"
 )
