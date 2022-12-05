@@ -440,7 +440,7 @@ func (s *sigRequest) ShouldAcceptFinalizedReport(
 func (s *sigRequest) ShouldTransmitAcceptedReport(
 	ctx context.Context, ts types.ReportTimestamp, _ types.Report,
 ) (bool, error) {
-	reportIsOnChain, err := s.coordinator.ReportIsOnchain(ctx, ts.Epoch, ts.Round)
+	reportIsOnChain, err := s.coordinator.ReportIsOnchain(ctx, ts.Epoch, ts.Round, ts.ConfigDigest)
 	if err != nil {
 		return false, util.WrapError(err, "coordinator ReportIsOnchain")
 	}
