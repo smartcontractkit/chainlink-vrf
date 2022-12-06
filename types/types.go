@@ -39,7 +39,7 @@ type CoordinatorInterface interface {
 
 	ReportIsOnchain(
 		ctx context.Context,
-		epoch uint32, round uint8,
+		epoch uint32, round uint8, configDigest [32]byte,
 	) (presentOnchain bool, err error)
 
 	ConfirmationDelays(ctx context.Context) ([]uint32, error)
