@@ -9,7 +9,6 @@ import (
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 
-	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/sign/anon"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
@@ -43,12 +42,6 @@ func NewReportingPluginFactory(
 		testmode,
 		xxxDKGTestingOnly,
 	}
-}
-
-func NewOnchainContract(
-	dkg contract.DKG, keyGroup kyber.Group,
-) contract.OnchainContract {
-	return contract.OnchainContract{dkg, keyGroup}
 }
 
 func OffchainConfig(

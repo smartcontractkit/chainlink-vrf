@@ -101,6 +101,7 @@ func (rs shareRecords) recoverPublicShares(
 		if !ok {
 			return nil, errors.Errorf("no share found for hash %s", h)
 		}
+
 		partialShares = append(partialShares, sr.shareSet.PublicShares())
 	}
 	rv := make([]kyber.Point, len(partialShares[0]))
@@ -109,6 +110,7 @@ func (rs shareRecords) recoverPublicShares(
 			if rv[playerIdx] == nil {
 				rv[playerIdx] = partialShare.Clone().Null()
 			}
+
 			rv[playerIdx] = partialShare.Clone().Add(rv[playerIdx], partialShare)
 		}
 	}

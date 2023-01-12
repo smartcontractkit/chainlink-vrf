@@ -58,6 +58,7 @@ func NewVRFReportingPluginFactory(
 	serializer vrf_types.ReportSerializer,
 	logger commontypes.Logger,
 	juelsPerFeeCoin vrf_types.JuelsPerFeeCoin,
+	reasonableGasPrice vrf_types.ReasonableGasPrice,
 ) (types.ReportingPluginFactory, error) {
 	contractKeyID, err := coordinator.KeyID(context.Background())
 	if err != nil {
@@ -72,15 +73,16 @@ func NewVRFReportingPluginFactory(
 	}
 	return &vrfReportingPluginFactory{
 		&localArgs{
-			keyID:           keyID,
-			coordinator:     coordinator,
-			blockhashes:     blockhashes,
-			keyProvider:     keyProvider,
-			serializer:      serializer,
-			juelsPerFeeCoin: juelsPerFeeCoin,
-			period:          period,
-			logger:          logger,
-			randomness:      rand.Reader,
+			keyID:              keyID,
+			coordinator:        coordinator,
+			blockhashes:        blockhashes,
+			keyProvider:        keyProvider,
+			serializer:         serializer,
+			juelsPerFeeCoin:    juelsPerFeeCoin,
+			reasonableGasPrice: reasonableGasPrice,
+			period:             period,
+			logger:             logger,
+			randomness:         rand.Reader,
 		},
 	}, nil
 }

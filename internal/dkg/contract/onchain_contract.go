@@ -50,7 +50,7 @@ func (o OnchainContract) KeyData(
 	if err != nil {
 		return KeyData{}, util.WrapError(err, "could not retrieve key from contract")
 	}
-	if len(kd.PublicKey) == 0 && len(kd.Hashes) == 0 {
+	if len(kd.PublicKey) == 0 || len(kd.Hashes) == 0 {
 		return KeyData{}, nil
 	}
 	return MakeKeyDataFromOnchainKeyData(kd, o.KeyGroup)

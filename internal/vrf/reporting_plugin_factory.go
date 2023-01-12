@@ -26,13 +26,14 @@ type vrfReportingPluginFactory struct {
 var _ types.ReportingPluginFactory = (*vrfReportingPluginFactory)(nil)
 
 type localArgs struct {
-	keyID           dkg_contract.KeyID
-	coordinator     vrf_types.CoordinatorInterface
-	blockhashes     vrf_types.Blockhashes
-	keyProvider     KeyProvider
-	serializer      vrf_types.ReportSerializer
-	juelsPerFeeCoin vrf_types.JuelsPerFeeCoin
-	period          uint16
+	keyID              dkg_contract.KeyID
+	coordinator        vrf_types.CoordinatorInterface
+	blockhashes        vrf_types.Blockhashes
+	keyProvider        KeyProvider
+	serializer         vrf_types.ReportSerializer
+	juelsPerFeeCoin    vrf_types.JuelsPerFeeCoin
+	reasonableGasPrice vrf_types.ReasonableGasPrice
+	period             uint16
 
 	logger     commontypes.Logger
 	randomness io.Reader
@@ -80,6 +81,7 @@ func (v *vrfReportingPluginFactory) NewReportingPlugin(
 		time.Hour,
 		v.l.logger,
 		v.l.juelsPerFeeCoin,
+		v.l.reasonableGasPrice,
 		v.l.coordinator,
 		confDelaysSet,
 		v.l.period,
