@@ -41,6 +41,7 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 		a.Serializer,
 		a.VRFLogger,
 		a.JulesPerFeeCoin,
+		a.ReasonableGasPrice,
 	)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not instantiate VRF reporting plugin factory")

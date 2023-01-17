@@ -61,6 +61,7 @@ func (d *dkg) Report(
 ) (shouldReport bool, report types.Report, err error) {
 	d.lock.Lock()
 	defer d.lock.Unlock()
+
 	v, err := d.newValidShareRecords(ctx)
 	if err != nil {
 		return false, nil, errors.Wrap(

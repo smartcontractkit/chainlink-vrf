@@ -29,6 +29,7 @@ func newShareRecord(
 	domainSep types.ConfigDigest,
 ) (*shareRecord, error) {
 	rv := &shareRecord{shareSet: shareSet}
+
 	if err := rv.sign(suite, domainSep, sk); err != nil {
 		return nil, errors.Wrapf(err, "could not sign new share record")
 	}
@@ -122,6 +123,7 @@ func (r *shareRecord) sign(suite schnorr.Suite,
 	if err != nil {
 		return errors.Wrap(err, "could sign share set")
 	}
+
 	pk := suite.Point().Mul(sk, nil)
 
 	if err := schnorr.Verify(suite, pk, msg, r.sig.sig); err != nil {

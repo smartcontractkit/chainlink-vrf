@@ -167,6 +167,12 @@ func (s *sigRequest) Observation(
 			largeFeeCoin+" %d", juelsPerFeeCoin,
 		)
 	}
+
+	reasonableGasPrice, err := s.reasonableGasPrice.ReasonableGasPrice()
+	if err != nil {
+		return nil, errors.Wrap(err, failedReadReaasonableGasPrice)
+	}
+
 	startHeight, blocks, err := s.blockhashes.OnchainVerifiableBlocks(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, failedReadVerifiableBlocks)
@@ -194,6 +200,7 @@ func (s *sigRequest) Observation(
 
 	s.logger.Debug(initialObservation, commontypes.LogFields{
 		"JulesPerFeeCoin":    juelsPerFeeCoin,
+		"ReasonableGasPrice": reasonableGasPrice,
 		"RecentBlockHashes":  recentHashes,
 		"Proofs":             outputs,
 		"Callbacks":          callbacks,
@@ -202,10 +209,11 @@ func (s *sigRequest) Observation(
 	})
 
 	observation := &protobuf.Observation{
-		JuelsPerFeeCoin:   juelsPerFeeCoin.Bytes(),
-		RecentBlockHashes: recentHashes,
-		Proofs:            outputs,
-		Callbacks:         callbacks,
+		JuelsPerFeeCoin:    juelsPerFeeCoin.Bytes(),
+		ReasonableGasPrice: reasonableGasPrice.Bytes(),
+		RecentBlockHashes:  recentHashes,
+		Proofs:             outputs,
+		Callbacks:          callbacks,
 	}
 	rv, err := proto.Marshal(observation)
 	if err != nil {
@@ -244,6 +252,8 @@ func (s *sigRequest) Report(
 		return false, nil, errors.Wrap(err, errMsg)
 	}
 	juelsPerFeeCoinObs := make([]*big.Int, 0, len(obs))
+	reasonableGasPriceObs := make([]*big.Int, 0, len(obs))
+
 	type heightHash struct {
 		height uint64
 		hash   common.Hash
@@ -278,6 +288,9 @@ func (s *sigRequest) Report(
 		s.parseAndStoreVRFProofs(proofs, vrfContributions, o.Observer, player, kd)
 		juelsPerFeeCoin := big.NewInt(0).SetBytes(observation.JuelsPerFeeCoin)
 		juelsPerFeeCoinObs = append(juelsPerFeeCoinObs, juelsPerFeeCoin)
+
+		reasonableGasPrice := big.NewInt(0).SetBytes(observation.ReasonableGasPrice)
+		reasonableGasPriceObs = append(reasonableGasPriceObs, reasonableGasPrice)
 
 		type hashes = map[heightHash]struct{}
 		seenHashes := make(hashes, len(observation.RecentBlockHashes))
@@ -388,7 +401,7 @@ func (s *sigRequest) Report(
 	}
 
 	abstractReport := vrf_types.AbstractReport{
-		outputs, medianBigInt(juelsPerFeeCoinObs), mostRecentBlockHash.height,
+		outputs, medianBigInt(juelsPerFeeCoinObs), medianBigInt(reasonableGasPriceObs).Uint64(), mostRecentBlockHash.height,
 		mostRecentBlockHash.hash,
 	}
 	s.logger.Debug(
@@ -483,6 +496,7 @@ const (
 	outOfRangeObserver                     = "not enough players for observer index"
 	noObservationInRound                   = "no observation required on this round"
 	failedReadJulesPerFeeCoin              = "error while reading JulesPerFeeCoin"
+	failedReadReaasonableGasPrice          = "error while reading ReasonableGasPrice"
 	failedReadVerifiableBlocks             = "could not get verifiable blocks"
 	failedMarshalObservation               = "Error while marshaling Observation"
 	unknownConfirmationDelay               = "unknown confirmation delay"
