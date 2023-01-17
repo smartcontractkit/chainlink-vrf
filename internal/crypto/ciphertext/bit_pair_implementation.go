@@ -41,8 +41,18 @@ func newElGamalBitPair(suite anon.Suite, domainSep []byte, b int, pk kyber.Point
 	rv := &elGamalBitPair{blindingCommitment, cipherTextTerm, proof, suite}
 	if err := rv.verify(domainSep, pk); err != nil {
 
-		pkm, err := pk.MarshalBinary()
-		return nil, nil, errors.Wrapf(err, "made unverifiable bit pair! domainSep: 0x%x pk: 0x%x %s x: %s", domainSep, pkm, err, x)
+		pkm, err2 := pk.MarshalBinary()
+		if err2 != nil {
+			return nil, nil,
+				errors.Wrapf(
+					err2, "error while marshalling public key in newElGamalBitPair: %s", err,
+				)
+		}
+		return nil, nil,
+			errors.Wrapf(
+				err,
+				"made unverifiable bit pair! domainSep: 0x%x pk: 0x%x %s x: %s",
+				domainSep, pkm, err, x)
 	}
 	return rv, x, nil
 }
@@ -63,6 +73,7 @@ func (e *elGamalBitPair) decrypt(sk kyber.Scalar) (int, error) {
 		return 0, errors.Errorf("need scalar of type %T, got type %T", e.suite.Scalar(), sk)
 	}
 	plainText := e.suite.Point()
+
 	plainText.Sub(e.cipherTextTerm, plainText.Mul(sk, e.blindingCommitment))
 	for i, pt := range memPlainTexts(e.suite) {
 		if pt.Equal(plainText) {

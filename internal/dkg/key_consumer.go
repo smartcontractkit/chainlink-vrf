@@ -20,8 +20,9 @@ type KeyData struct {
 	PublicKey   kyber.Point
 	Shares      []share.PubShare
 	SecretShare *SecretShare
-	T           player_idx.Int
-	Present     bool
+
+	T       player_idx.Int
+	Present bool
 }
 
 func (kd KeyData) Clone() *KeyData {

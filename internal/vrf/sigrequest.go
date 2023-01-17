@@ -36,6 +36,7 @@ type sigRequest struct {
 
 	retransmissionDelay time.Duration
 	juelsPerFeeCoin     vrf_types.JuelsPerFeeCoin
+	reasonableGasPrice  vrf_types.ReasonableGasPrice
 	confirmationDelays  map[uint32]struct{}
 
 	period      uint16
@@ -57,6 +58,7 @@ func newSigRequest(
 	retransmissionDelay time.Duration,
 	logger commontypes.Logger,
 	juelsPerFeeCoin vrf_types.JuelsPerFeeCoin,
+	reasonableGasPrice vrf_types.ReasonableGasPrice,
 	coordinator vrf_types.CoordinatorInterface,
 	confirmationDelays map[uint32]struct{},
 	period uint16,
@@ -81,6 +83,7 @@ func newSigRequest(
 		logger,
 		retransmissionDelay,
 		juelsPerFeeCoin,
+		reasonableGasPrice,
 		confirmationDelays,
 		period,
 		coordinator,

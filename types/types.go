@@ -61,6 +61,10 @@ type JuelsPerFeeCoin interface {
 	JuelsPerFeeCoin() (*big.Int, error)
 }
 
+type ReasonableGasPrice interface {
+	ReasonableGasPrice() (*big.Int, error)
+}
+
 type Blockhashes interface {
 	OnchainVerifiableBlocks(
 		context.Context,
@@ -91,10 +95,11 @@ type AbstractVRFOutput struct {
 }
 
 type AbstractReport struct {
-	Outputs           []AbstractVRFOutput
-	JulesPerFeeCoin   *big.Int
-	RecentBlockHeight uint64
-	RecentBlockHash   common.Hash
+	Outputs            []AbstractVRFOutput
+	JulesPerFeeCoin    *big.Int
+	ReasonableGasPrice uint64
+	RecentBlockHeight  uint64
+	RecentBlockHash    common.Hash
 }
 
 type Block struct {

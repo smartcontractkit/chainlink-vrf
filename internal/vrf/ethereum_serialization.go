@@ -113,6 +113,7 @@ func (e *EthereumReportSerializer) ConvertToBeaconReport(
 	onchainReport := vrfbeacon.VRFBeaconReportReport{
 		vrfOutputs,
 		report.JulesPerFeeCoin,
+		report.ReasonableGasPrice,
 		report.RecentBlockHeight,
 		report.RecentBlockHash,
 	}
@@ -172,6 +173,7 @@ func (e *EthereumReportSerializer) ConvertToAbstractReport(
 	abstractReport := vrf_types.AbstractReport{
 		abstracOutputs,
 		report.JuelsPerFeeCoin,
+		report.ReasonableGasPrice,
 		report.RecentBlockHeight,
 		report.RecentBlockHash,
 	}

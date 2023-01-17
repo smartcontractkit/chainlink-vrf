@@ -48,10 +48,11 @@ type DKGVRFArgs struct {
 
 	DKGSharePersistence vrf_types.DKGSharePersistence
 
-	Blockhashes     vrf_types.Blockhashes
-	Serializer      vrf_types.ReportSerializer
-	JulesPerFeeCoin vrf_types.JuelsPerFeeCoin
-	Coordinator     vrf_types.CoordinatorInterface
+	Blockhashes        vrf_types.Blockhashes
+	Serializer         vrf_types.ReportSerializer
+	JulesPerFeeCoin    vrf_types.JuelsPerFeeCoin
+	ReasonableGasPrice vrf_types.ReasonableGasPrice
+	Coordinator        vrf_types.CoordinatorInterface
 
 	ConfirmationDelays []uint32
 
