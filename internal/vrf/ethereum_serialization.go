@@ -83,39 +83,39 @@ func (e *EthereumReportSerializer) ConvertToBeaconReport(
 		if !p.Equal(e.G.Point().Null()) {
 			x, y = affineCoordinates(p)
 		}
-		vrfProof := vrfbeacon.ECCArithmeticG1Point{[2]*big.Int{x, y}}
+		vrfProof := vrfbeacon.ECCArithmeticG1Point{P: [2]*big.Int{x, y}}
 		type callbackType = vrfbeacon.VRFBeaconTypesCostedCallback
 		callbacks := make([]callbackType, 0, len(output.Callbacks))
 		for _, callback := range output.Callbacks {
 			beaconCostedCallback := callbackType{
-				vrfbeacon.VRFBeaconTypesCallback{
-					big.NewInt(0).SetUint64(callback.RequestID),
-					callback.NumWords,
-					callback.Requester,
-					callback.Arguments,
-					callback.SubscriptionID,
-					callback.GasAllowance,
-					callback.GasPrice,
-					callback.WeiPerUnitLink,
+				Callback: vrfbeacon.VRFBeaconTypesCallback{
+					RequestID:      big.NewInt(0).SetUint64(callback.RequestID),
+					NumWords:       callback.NumWords,
+					Requester:      callback.Requester,
+					Arguments:      callback.Arguments,
+					GasAllowance:   callback.GasAllowance,
+					SubID:          callback.SubscriptionID,
+					GasPrice:       callback.GasPrice,
+					WeiPerUnitLink: callback.WeiPerUnitLink,
 				},
-				callback.Price,
+				Price: callback.Price,
 			}
 			callbacks = append(callbacks, beaconCostedCallback)
 		}
 		vrfOutput := vrfbeacon.VRFBeaconTypesVRFOutput{
-			output.BlockHeight,
-			big.NewInt(int64(output.ConfirmationDelay)),
-			vrfProof,
-			callbacks,
+			BlockHeight:       output.BlockHeight,
+			ConfirmationDelay: big.NewInt(int64(output.ConfirmationDelay)),
+			VrfOutput:         vrfProof,
+			Callbacks:         callbacks,
 		}
 		vrfOutputs = append(vrfOutputs, vrfOutput)
 	}
 	onchainReport := vrfbeacon.VRFBeaconReportReport{
-		vrfOutputs,
-		report.JulesPerFeeCoin,
-		report.ReasonableGasPrice,
-		report.RecentBlockHeight,
-		report.RecentBlockHash,
+		Outputs:            vrfOutputs,
+		JuelsPerFeeCoin:    report.JuelsPerFeeCoin,
+		ReasonableGasPrice: report.ReasonableGasPrice,
+		RecentBlockHeight:  report.RecentBlockHeight,
+		RecentBlockHash:    report.RecentBlockHash,
 	}
 	return onchainReport, nil
 }
@@ -123,7 +123,7 @@ func (e *EthereumReportSerializer) ConvertToBeaconReport(
 func (e *EthereumReportSerializer) ConvertToAbstractReport(
 	report vrfbeacon.VRFBeaconReportReport,
 ) (vrf_types.AbstractReport, error) {
-	abstracOutputs := make([]vrf_types.AbstractVRFOutput, 0, len(report.Outputs))
+	abstractOutputs := make([]vrf_types.AbstractVRFOutput, 0, len(report.Outputs))
 	for _, out := range report.Outputs {
 		xCoordinate := mod.NewInt(out.VrfOutput.P[0], bn256.P)
 		yCoordinate := mod.NewInt(out.VrfOutput.P[1], bn256.P)
@@ -168,10 +168,10 @@ func (e *EthereumReportSerializer) ConvertToAbstractReport(
 			vrfProof,
 			abstractCallbacks,
 		}
-		abstracOutputs = append(abstracOutputs, abstractOutput)
+		abstractOutputs = append(abstractOutputs, abstractOutput)
 	}
 	abstractReport := vrf_types.AbstractReport{
-		abstracOutputs,
+		abstractOutputs,
 		report.JuelsPerFeeCoin,
 		report.ReasonableGasPrice,
 		report.RecentBlockHeight,

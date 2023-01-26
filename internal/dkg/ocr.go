@@ -31,18 +31,26 @@ func (d *dkg) Observation(
 		}
 		respondingShareRecordHash, err2 := d.shareSets.getRandom(keyData.Hashes, d.randomness)
 		if err2 != nil {
-			return nil, errors.Wrapf(err2,
-				"could not choose random hash to send for data-availability phase. require hashes %v, have %v",
-				keyData.Hashes, d.shareSets,
+
+			d.logger.Error(
+				"could not choose random hash to send for data-availability phase",
+				commontypes.LogFields{
+					"required hashes":     keyData.Hashes,
+					"existing share sets": d.shareSets,
+				},
 			)
+			return types.Observation{}, nil
 		}
 		var ok bool
 		respondingShareRecord, ok = d.shareSets[respondingShareRecordHash]
 		if !ok {
-			return nil, errors.Errorf(
-				"could not choose random share set to send: no record for %v",
-				respondingShareRecordHash,
+			d.logger.Error(
+				"could not choose random share set to send. No record for the hash.",
+				commontypes.LogFields{
+					"randomly chosen hash": respondingShareRecordHash,
+				},
 			)
+			return types.Observation{}, nil
 		}
 	}
 	o, err = respondingShareRecord.marshal()

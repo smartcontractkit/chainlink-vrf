@@ -127,10 +127,10 @@ func unmarshalBinaryOffchainConfig(
 		return nil, fmt.Errorf("unrecognized translator name: %s", p.Translator)
 	}
 	return &offchainConfig{
-		epks:            epks,
-		spks:            spks,
-		encryptionGroup: encGgroup,
-		translator:      translator,
+		epks,
+		spks,
+		encGgroup,
+		translator,
 	}, nil
 }
 

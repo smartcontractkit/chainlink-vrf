@@ -10,7 +10,6 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/smartcontractkit/ocr2vrf/altbn_128"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
 	"github.com/smartcontractkit/ocr2vrf/internal/util"
@@ -74,29 +73,6 @@ func (s *sigRequest) ocrsSynced(ctx context.Context) error {
 	return nil
 }
 
-func getBlock(height uint64, confdelay uint32, blocks []vrf_types.Block) *vrf_types.Block {
-
-	for _, b := range blocks {
-		if b.Height == height && b.ConfirmationDelay == confdelay {
-			return &b
-		}
-	}
-	return nil
-}
-
-func requestIDUint48(
-	r uint64, l commontypes.Logger, id commontypes.OracleID,
-) (uint64, error) {
-	if r > maxUint48.Uint64() {
-		l.Warn(
-			"callback requestID too large",
-			commontypes.LogFields{"oracleID": id, "bad requestID": r},
-		)
-		return 0, errors.Errorf("requestID too large: %d", r)
-	}
-	return r, nil
-}
-
 func callbackHash(c *protobuf.CostedCallback) (common.Hash, error) {
 	s, err := proto.Marshal(c)
 	if err != nil {
@@ -107,7 +83,7 @@ func callbackHash(c *protobuf.CostedCallback) (common.Hash, error) {
 	return crypto.Keccak256Hash(s), nil
 }
 
-func addCallback(
+func validateAndAddCallback(
 	callbacks map[common.Hash]vrf_types.AbstractCostedCallbackRequest,
 	c *protobuf.CostedCallback,
 	oracle commontypes.OracleID, confDelays map[uint32]struct{}, beaconPeriod uint16,
@@ -126,17 +102,17 @@ func addCallback(
 		return common.Hash{}, errors.Wrap(err, "could not add callback")
 	}
 	callbacks[h] = vrf_types.AbstractCostedCallbackRequest{
-		c.Callback.Height,
-		c.Callback.ConfDelay,
-		c.Callback.SubscriptionID,
-		big.NewInt(0).SetBytes(c.Price),
-		c.Callback.RequestId,
-		uint16(c.Callback.NumWords),
-		common.BytesToAddress(c.Callback.Requester),
-		c.Callback.Arguments,
-		big.NewInt(0).SetBytes(c.GasAllowance),
-		big.NewInt(0).SetBytes(c.GasPrice),
-		big.NewInt(0).SetBytes(c.WeiPerUnitLink),
+		BeaconHeight:      c.Callback.Height,
+		ConfirmationDelay: c.Callback.ConfDelay,
+		SubscriptionID:    big.NewInt(0).SetBytes(c.Callback.SubscriptionID),
+		Price:             big.NewInt(0).SetBytes(c.Price),
+		RequestID:         c.Callback.RequestId,
+		NumWords:          uint16(c.Callback.NumWords),
+		Requester:         common.BytesToAddress(c.Callback.Requester),
+		Arguments:         c.Callback.Arguments,
+		GasAllowance:      big.NewInt(0).SetBytes(c.GasAllowance),
+		GasPrice:          big.NewInt(0).SetBytes(c.GasPrice),
+		WeiPerUnitLink:    big.NewInt(0).SetBytes(c.WeiPerUnitLink),
 	}
 	return h, nil
 }
@@ -153,7 +129,10 @@ func (s *sigRequest) storeCallbacksByBlocks(
 		map[common.Hash]struct{}, len(costedCallbacks),
 	)
 	for _, cb := range costedCallbacks {
-		h, err := addCallback(callbacks, cb, observer, s.confirmationDelays, s.period, s.logger)
+
+		h, err := validateAndAddCallback(
+			callbacks, cb, observer, s.confirmationDelays, s.period, s.logger,
+		)
 		if err != nil {
 
 			continue
@@ -181,6 +160,7 @@ func (s *sigRequest) parseAndStoreVRFProofs(
 	player *player_idx.PlayerIdx,
 	kd dkg.KeyData,
 ) {
+
 	pubShare := player.Index(kd.Shares).(kshare.PubShare)
 
 	seenBlocks := make(map[heightDelay]struct{}, len(proofs))
@@ -221,13 +201,13 @@ func (s *sigRequest) parseAndStoreVRFProofs(
 			})
 			continue
 		}
-		h := b.VRFHash(s.configDigest, kd.PublicKey)
-		hashPoint := altbn_128.NewHashProof(h).HashPoint
+
+		hashPoint := blsSeed(s.configDigest, b, kd.PublicKey)
 		if _, present := vrfContributions[b]; !present {
 			vrfContributions[b] = make(map[commontypes.OracleID]kshare.PubShare)
 		}
-		p, g2 := s.pairing.Pair, s.pairing.G2().Point().Base()
-		if !p(hashPoint, pubShare.V).Equal(p(contribution, g2)) {
+
+		if !validateSignature(s.pairing, hashPoint, pubShare.V, contribution) {
 			s.logger.Warn(wrongShare, commontypes.LogFields{
 				"oracleID": observer, "sigShare": contribution,
 				"keyShare": pubShare.V, "hashPoint": hashPoint,
@@ -273,6 +253,7 @@ func (s *sigRequest) aggregateOutputs(
 			shares = append(shares, &pubShare)
 		}
 		kd := s.keyProvider.KeyLookup(s.keyID)
+
 		output, err := kshare.RecoverCommit(
 			s.pairing.G1(), shares, int(s.t)+1, len(shares),
 		)
@@ -285,8 +266,9 @@ func (s *sigRequest) aggregateOutputs(
 
 			continue
 		}
-		h := b.VRFHash(s.configDigest, kd.PublicKey)
-		hpoint := altbn_128.NewHashProof(h).HashPoint
+
+		hpoint := blsSeed(s.configDigest, b, kd.PublicKey)
+
 		if !validateSignature(s.pairing, hpoint, kd.PublicKey, output) {
 			s.logger.Error(
 				failedVerifyVRFOutput,
@@ -315,6 +297,7 @@ func (s *sigRequest) aggregateOutputs(
 		sort.Strings(chashes)
 		for _, chs := range chashes {
 			ch := common.HexToHash(chs)
+
 			if callbackCounts[ch] > uint64(s.t) {
 				ccallbacks = append(ccallbacks, callbacks[ch])
 			} else {
@@ -325,10 +308,10 @@ func (s *sigRequest) aggregateOutputs(
 			}
 		}
 		outputs = append(outputs, vrf_types.AbstractVRFOutput{
-			BlockHeight:       b.Height,
-			ConfirmationDelay: b.ConfirmationDelay,
-			VRFProof:          common.BytesToHash(proof),
-			Callbacks:         ccallbacks,
+			b.Height,
+			b.ConfirmationDelay,
+			common.BytesToHash(proof),
+			ccallbacks,
 		})
 	}
 	return
@@ -437,7 +420,7 @@ func medianBigInt(l []*big.Int) *big.Int {
 func callbacksEqual(c1, c2 vrf_types.AbstractCostedCallbackRequest) bool {
 	return c1.BeaconHeight == c2.BeaconHeight &&
 		c1.ConfirmationDelay == c2.ConfirmationDelay &&
-		c1.SubscriptionID == c2.SubscriptionID &&
+		c1.SubscriptionID.Cmp(c2.SubscriptionID) == 0 &&
 		c1.Price.Cmp(c2.Price) == 0 &&
 		c1.RequestID == c2.RequestID &&
 		c1.NumWords == c2.NumWords &&
@@ -446,6 +429,24 @@ func callbacksEqual(c1, c2 vrf_types.AbstractCostedCallbackRequest) bool {
 		c1.GasAllowance.Cmp(c2.GasAllowance) == 0 &&
 		c1.GasPrice.Cmp(c2.GasPrice) == 0 &&
 		c1.WeiPerUnitLink.Cmp(c2.WeiPerUnitLink) == 0
+}
+
+func getAbstractCallbackFromCallback(
+	c *protobuf.CostedCallback,
+) vrf_types.AbstractCostedCallbackRequest {
+	return vrf_types.AbstractCostedCallbackRequest{
+		BeaconHeight:      c.Callback.Height,
+		ConfirmationDelay: c.Callback.ConfDelay,
+		SubscriptionID:    big.NewInt(0).SetBytes(c.Callback.SubscriptionID),
+		Price:             big.NewInt(0).SetBytes(c.Price),
+		RequestID:         c.Callback.RequestId,
+		NumWords:          uint16(c.Callback.NumWords),
+		Requester:         common.BytesToAddress(c.Callback.Requester),
+		Arguments:         c.Callback.Arguments,
+		GasAllowance:      big.NewInt(0).SetBytes(c.GasAllowance),
+		GasPrice:          big.NewInt(0).SetBytes(c.GasPrice),
+		WeiPerUnitLink:    big.NewInt(0).SetBytes(c.WeiPerUnitLink),
+	}
 }
 
 var (
@@ -487,7 +488,7 @@ func init() {
 
 const (
 	excessGasAllowanceMsg              = "gas allowance too large"
-	unknownConfirmationDelayMsg        = "uknown confirmation delay"
+	unknownConfirmationDelayMsg        = "unknown confirmation delay"
 	nonBeaconHeightInCallbackMsg       = "callback with non-beacon height"
 	priceTooLargeMsg                   = "price too large"
 	requestIdTooLargeMsg               = "requestID too large"

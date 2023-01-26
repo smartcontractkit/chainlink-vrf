@@ -76,7 +76,7 @@ type Blockhashes interface {
 type AbstractCostedCallbackRequest struct {
 	BeaconHeight      uint64
 	ConfirmationDelay uint32
-	SubscriptionID    uint64
+	SubscriptionID    *big.Int
 	Price             *big.Int
 	RequestID         uint64
 	NumWords          uint16
@@ -90,16 +90,22 @@ type AbstractCostedCallbackRequest struct {
 type AbstractVRFOutput struct {
 	BlockHeight       uint64
 	ConfirmationDelay uint32
-	VRFProof          [32]byte
-	Callbacks         []AbstractCostedCallbackRequest
+
+	VRFProof [32]byte
+
+	Callbacks []AbstractCostedCallbackRequest
 }
 
 type AbstractReport struct {
-	Outputs            []AbstractVRFOutput
-	JulesPerFeeCoin    *big.Int
+	Outputs []AbstractVRFOutput
+
+	JuelsPerFeeCoin *big.Int
+
 	ReasonableGasPrice uint64
-	RecentBlockHeight  uint64
-	RecentBlockHash    common.Hash
+
+	RecentBlockHeight uint64
+
+	RecentBlockHash common.Hash
 }
 
 type Block struct {
