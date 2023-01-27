@@ -19,10 +19,13 @@ import (
 	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
 )
 
+var _ types.ReportingPlugin = (*sigRequest)(nil)
+
 type sigRequest struct {
-	keyID        dkg_contract.KeyID
-	keyProvider  KeyProvider
-	n            player_idx.Int
+	keyID       dkg_contract.KeyID
+	keyProvider KeyProvider
+	n           player_idx.Int
+
 	t            player_idx.Int
 	configDigest common.Hash
 	i            player_idx.PlayerIdx

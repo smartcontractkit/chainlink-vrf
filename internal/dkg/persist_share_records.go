@@ -29,8 +29,9 @@ func (sr shareRecord) PersistentRecord() (types.PersistentShareSetRecord, error)
 			util.WrapError(err, errMsg)
 	}
 	rv := types.PersistentShareSetRecord{
-		Dealer:               *dealer,
-		MarshaledShareRecord: marshaled,
+		*dealer,
+		marshaled,
+		hash.Hash{},
 	}
 	return rv, nil
 }
@@ -66,6 +67,7 @@ func (d *dkg) initializeShareSets(signingGroup anon.Suite) error {
 		}
 	}
 	if !myShareRecovered {
+
 		shareSet, err := pvss.NewShareSet(
 			d.cfgDgst, d.t, d.selfIdx, d.encryptionGroup, d.translator, d.epks,
 		)
@@ -97,10 +99,10 @@ func (d *dkg) initializeShareSets(signingGroup anon.Suite) error {
 
 func (v *validShareRecords) persistShares(
 	reportedDealer player_idx.PlayerIdx,
-	marshaledShare []byte,
+	marshaledShareSet []byte,
 	h hash.Hash,
 ) {
-	psr := types.PersistentShareSetRecord{reportedDealer, marshaledShare, h}
+	psr := types.PersistentShareSetRecord{reportedDealer, marshaledShareSet, h}
 	lpsr := []types.PersistentShareSetRecord{psr}
 	v.d.lock.Lock()
 	defer v.d.lock.Unlock()

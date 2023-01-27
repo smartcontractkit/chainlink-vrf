@@ -84,16 +84,16 @@ func newStubDKG(
 }
 
 func (d *stubDKG) GetKey(
-	ctx context.Context,
-	keyID contract.KeyID,
-	configDigest [32]byte,
+	_ context.Context,
+	_ contract.KeyID,
+	_ [32]byte,
 ) (contract.OnchainKeyData, error) {
 	return contract.OnchainKeyData{PublicKey: d.binaryPk}, nil
 }
 
 func (d *stubDKG) AddClient(
-	ctx context.Context,
-	keyID [32]byte,
+	_ context.Context,
+	_ [32]byte,
 	clientAddress common.Address,
 ) error {
 	tx, err := d.contract.AddClient(d.auth, d.keyID, clientAddress)
@@ -147,14 +147,14 @@ func (d *stubDKG) TransmitKeyToVRFContract() error {
 }
 
 func (d *stubDKG) InitiateDKG(
-	ctx context.Context,
-	committee ocr.OCRCommittee,
-	f player_idx.Int,
-	keyID contract.KeyID,
-	epks contract.EncryptionPublicKeys,
-	spks contract.SigningPublicKeys,
-	encGroup anon.Suite,
-	translator point_translation.PubKeyTranslation,
+	_ context.Context,
+	_ ocr.OCRCommittee,
+	_ player_idx.Int,
+	_ contract.KeyID,
+	_ contract.EncryptionPublicKeys,
+	_ contract.SigningPublicKeys,
+	_ anon.Suite,
+	_ point_translation.PubKeyTranslation,
 ) error {
 	panic("implement me")
 }

@@ -38,7 +38,6 @@ func (s *sigRequest) Observation(
 	if err := s.ocrsSynced(ctx); err != nil {
 		return nil, errors.Wrap(err, failedConstructObservation)
 	}
-
 	pendingBlocks, pendingCallbacks, err := s.coordinator.ReportBlocks(
 		ctx,
 		s.period,
@@ -50,6 +49,7 @@ func (s *sigRequest) Observation(
 	if err != nil {
 		return nil, errors.Wrap(err, failedListPendingBlocks)
 	}
+
 	if len(pendingBlocks) == 0 && len(pendingCallbacks) == 0 {
 		s.logger.Debug(
 			noObservationInRound,
@@ -91,8 +91,8 @@ func (s *sigRequest) Observation(
 		}
 		if _, present := s.blockProofs[b]; !present {
 
-			blockProof, err2 := s.vrfOutput(b, s.keyProvider.KeyLookup(s.keyID))
-
+			blockProof, err2 :=
+				s.computePartialSig(b, s.keyProvider.KeyLookup(s.keyID))
 			if err2 != nil {
 				errMsg := "Observation: Failed to construct a proof for a block"
 				return nil, errors.Wrap(err2, errMsg)
@@ -124,7 +124,7 @@ func (s *sigRequest) Observation(
 				NumWords:       uint32(c.NumWords),
 				Requester:      append([]byte{}, c.Requester[:]...),
 				Arguments:      append([]byte{}, c.Arguments...),
-				SubscriptionID: c.SubscriptionID,
+				SubscriptionID: c.SubscriptionID.Bytes(),
 				Height:         c.BeaconHeight,
 				ConfDelay:      c.ConfirmationDelay,
 			},
@@ -132,6 +132,16 @@ func (s *sigRequest) Observation(
 			GasAllowance:   c.GasAllowance.Bytes(),
 			GasPrice:       c.GasPrice.Bytes(),
 			WeiPerUnitLink: c.WeiPerUnitLink.Bytes(),
+		}
+
+		tempCallback := getAbstractCallbackFromCallback(&pcb)
+		if !callbacksEqual(c, tempCallback) {
+			s.logger.Error("CostedCallback is not assigned properly",
+				commontypes.LogFields{
+					"Callback":                  c,
+					"Callback after conversion": tempCallback,
+				})
+			panic("protobuf.CostedCallback fields have not been assigned properly")
 		}
 		err2 := sanityCheckCallback(
 			&pcb, s.logger, s.i.OracleID(), s.confirmationDelays, s.period,
@@ -160,7 +170,7 @@ func (s *sigRequest) Observation(
 	}
 	juelsPerFeeCoin, err := s.juelsPerFeeCoin.JuelsPerFeeCoin()
 	if err != nil {
-		return nil, errors.Wrap(err, failedReadJulesPerFeeCoin)
+		return nil, errors.Wrap(err, failedReadJuelsPerFeeCoin)
 	}
 	if len(juelsPerFeeCoin.Bytes()) > (96 / 8) {
 		return nil, errors.Errorf(
@@ -178,7 +188,9 @@ func (s *sigRequest) Observation(
 		return nil, errors.Wrap(err, failedReadVerifiableBlocks)
 	}
 	if len(blocks) > 256 {
-		return nil, errors.Errorf("OnchainVerifiableBlocks should return at most 256 blocks")
+		return nil, errors.Errorf(
+			"OnchainVerifiableBlocks should return at most 256 blocks",
+		)
 	}
 	lastVerifiableBlockHeight := startHeight + uint64(len(blocks)) - 1
 	if lastVerifiableBlockHeight < currentHeight {
@@ -191,6 +203,7 @@ func (s *sigRequest) Observation(
 	for i, blockhash := range blocks {
 		recentHashes = append(
 			recentHashes,
+
 			&protobuf.RecentBlockAndHash{
 				Height:    startHeight + uint64(i),
 				Blockhash: append([]byte{}, blockhash[:]...),
@@ -199,7 +212,7 @@ func (s *sigRequest) Observation(
 	}
 
 	s.logger.Debug(initialObservation, commontypes.LogFields{
-		"JulesPerFeeCoin":    juelsPerFeeCoin,
+		"JuelsPerFeeCoin":    juelsPerFeeCoin,
 		"ReasonableGasPrice": reasonableGasPrice,
 		"RecentBlockHashes":  recentHashes,
 		"Proofs":             outputs,
@@ -228,9 +241,8 @@ func (s *sigRequest) Report(
 	_ types.Query,
 	obs []types.AttributedObservation,
 ) (bool, types.Report, error) {
-	minObs := int(s.t) + 1
-	if len(obs) < minObs {
-		err := fmt.Errorf("got %d observations, need %d", len(obs), minObs)
+	if len(obs) < 2*int(s.t)+1 {
+		err := fmt.Errorf("got %d observations, need %d", len(obs), 2*int(s.t)+1)
 		return false, nil, err
 	}
 	if err := s.ocrsSynced(ctx); err != nil {
@@ -242,6 +254,7 @@ func (s *sigRequest) Report(
 
 	callbackCounts := make(map[common.Hash]uint64)
 	callbacksByBlock := make(map[heightDelay]map[common.Hash]struct{})
+
 	vrfContributions := make(
 		map[vrf_types.Block]map[commontypes.OracleID]kshare.PubShare,
 	)
@@ -368,10 +381,10 @@ func (s *sigRequest) Report(
 			continue
 		}
 		outputs = append(outputs, vrf_types.AbstractVRFOutput{
-			BlockHeight:       hd.height,
-			ConfirmationDelay: hd.delay,
-			VRFProof:          [32]byte{},
-			Callbacks:         ccallbacks,
+			hd.height,
+			hd.delay,
+			[32]byte{},
+			ccallbacks,
 		})
 	}
 	if len(outputs) == 0 {
@@ -401,7 +414,10 @@ func (s *sigRequest) Report(
 	}
 
 	abstractReport := vrf_types.AbstractReport{
-		outputs, medianBigInt(juelsPerFeeCoinObs), medianBigInt(reasonableGasPriceObs).Uint64(), mostRecentBlockHash.height,
+		outputs,
+		medianBigInt(juelsPerFeeCoinObs),
+		medianBigInt(reasonableGasPriceObs).Uint64(),
+		mostRecentBlockHash.height,
 		mostRecentBlockHash.hash,
 	}
 	s.logger.Debug(
@@ -495,7 +511,7 @@ const (
 	wrongShare                             = "wrong share provided"
 	outOfRangeObserver                     = "not enough players for observer index"
 	noObservationInRound                   = "no observation required on this round"
-	failedReadJulesPerFeeCoin              = "error while reading JulesPerFeeCoin"
+	failedReadJuelsPerFeeCoin              = "error while reading JuelsPerFeeCoin"
 	failedReadReaasonableGasPrice          = "error while reading ReasonableGasPrice"
 	failedReadVerifiableBlocks             = "could not get verifiable blocks"
 	failedMarshalObservation               = "Error while marshaling Observation"

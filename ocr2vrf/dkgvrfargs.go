@@ -50,7 +50,7 @@ type DKGVRFArgs struct {
 
 	Blockhashes        vrf_types.Blockhashes
 	Serializer         vrf_types.ReportSerializer
-	JulesPerFeeCoin    vrf_types.JuelsPerFeeCoin
+	JuelsPerFeeCoin    vrf_types.JuelsPerFeeCoin
 	ReasonableGasPrice vrf_types.ReasonableGasPrice
 	Coordinator        vrf_types.CoordinatorInterface
 

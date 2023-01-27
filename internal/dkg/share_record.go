@@ -17,9 +17,11 @@ import (
 )
 
 type shareRecord struct {
-	shareSet             *pvss.ShareSet
+	shareSet *pvss.ShareSet
+
 	marshaledShareRecord []byte
-	sig                  signature
+
+	sig signature
 }
 
 type signature struct{ sig []byte }
@@ -94,6 +96,7 @@ func unmarshalShareRecord(
 
 	sig, data := data[:64], data[64:]
 	dealerPK := dealer.Index(spks).(kyber.Point)
+
 	msg := append(cfgDgst[:], ssBytes...)
 	err = schnorr.Verify(sigSuite, dealerPK, msg, sig)
 	if err != nil {
