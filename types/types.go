@@ -24,6 +24,8 @@ type CoordinatorInterface interface {
 	) (
 		blocks []Block,
 		callbacks []AbstractCostedCallbackRequest,
+		recentBlockHashesStartHeight uint64,
+		recentBlockHashes []common.Hash,
 		err error,
 	)
 
@@ -45,6 +47,8 @@ type CoordinatorInterface interface {
 	ConfirmationDelays(ctx context.Context) ([]uint32, error)
 
 	KeyID(ctx context.Context) (contract.KeyID, error)
+
+	CurrentChainHeight(context.Context) (height uint64, err error)
 }
 
 type ReportSerializer interface {
@@ -63,14 +67,6 @@ type JuelsPerFeeCoin interface {
 
 type ReasonableGasPrice interface {
 	ReasonableGasPrice() (*big.Int, error)
-}
-
-type Blockhashes interface {
-	OnchainVerifiableBlocks(
-		context.Context,
-	) (startHeight uint64, hashes []common.Hash, err error)
-
-	CurrentHeight(context.Context) (uint64, error)
 }
 
 type AbstractCostedCallbackRequest struct {

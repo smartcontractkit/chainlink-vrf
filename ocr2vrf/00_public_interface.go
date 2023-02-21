@@ -35,7 +35,6 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 		a.KeyID,
 		transceiver,
 		a.Coordinator,
-		a.Blockhashes,
 		a.Serializer,
 		a.VRFLogger,
 		a.JuelsPerFeeCoin,
