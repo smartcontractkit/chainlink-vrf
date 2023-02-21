@@ -38,7 +38,8 @@ func (s *sigRequest) Observation(
 	if err := s.ocrsSynced(ctx); err != nil {
 		return nil, errors.Wrap(err, failedConstructObservation)
 	}
-	pendingBlocks, pendingCallbacks, err := s.coordinator.ReportBlocks(
+	pendingBlocks, pendingCallbacks, recentBlockHashesStartHeight,
+		recentBlockHashes, err := s.coordinator.ReportBlocks(
 		ctx,
 		s.period,
 		s.confirmationDelays,
@@ -57,7 +58,7 @@ func (s *sigRequest) Observation(
 		)
 		return nil, nil
 	}
-	currentHeight, err := s.blockhashes.CurrentHeight(ctx)
+	currentHeight, err := s.coordinator.CurrentChainHeight(ctx)
 	if err != nil {
 		return nil, errors.Wrap(
 			err,
@@ -183,20 +184,10 @@ func (s *sigRequest) Observation(
 		return nil, errors.Wrap(err, failedReadReaasonableGasPrice)
 	}
 
-	startHeight, blocks, err := s.blockhashes.OnchainVerifiableBlocks(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, failedReadVerifiableBlocks)
-	}
+	startHeight, blocks := recentBlockHashesStartHeight, recentBlockHashes
 	if len(blocks) > 256 {
 		return nil, errors.Errorf(
-			"OnchainVerifiableBlocks should return at most 256 blocks",
-		)
-	}
-	lastVerifiableBlockHeight := startHeight + uint64(len(blocks)) - 1
-	if lastVerifiableBlockHeight < currentHeight {
-		return nil, errors.Errorf(
-			currentBlockIsNotInVerifiableBlocks+" %d < %d",
-			lastVerifiableBlockHeight, currentHeight,
+			"recentBlockHashes should be at most 256 blocks",
 		)
 	}
 	recentHashes := make([]*protobuf.RecentBlockAndHash, 0, len(blocks))
@@ -534,3 +525,5 @@ const (
 	earlyCallbackFromReportBlocks          = "ReportBlocks returned a callback too early"
 	callbacksInReport                      = "callbacks included in report"
 )
+
+const numBlocks = 256

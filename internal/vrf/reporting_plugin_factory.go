@@ -28,7 +28,6 @@ var _ types.ReportingPluginFactory = (*vrfReportingPluginFactory)(nil)
 type localArgs struct {
 	keyID              dkg_contract.KeyID
 	coordinator        vrf_types.CoordinatorInterface
-	blockhashes        vrf_types.Blockhashes
 	keyProvider        KeyProvider
 	serializer         vrf_types.ReportSerializer
 	juelsPerFeeCoin    vrf_types.JuelsPerFeeCoin
@@ -76,7 +75,6 @@ func (v *vrfReportingPluginFactory) NewReportingPlugin(
 		common.Hash(c.ConfigDigest),
 		*players[c.OracleID],
 		&altbn_128.PairingSuite{},
-		v.l.blockhashes,
 		v.l.serializer,
 		time.Hour,
 		v.l.logger,

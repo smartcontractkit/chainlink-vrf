@@ -30,7 +30,6 @@ type sigRequest struct {
 	configDigest common.Hash
 	i            player_idx.PlayerIdx
 	pairing      pairing.Suite
-	blockhashes  vrf_types.Blockhashes
 	serializer   vrf_types.ReportSerializer
 	blockProofs  map[vrf_types.Block]kyber.Point
 	proofLock    sync.RWMutex
@@ -56,7 +55,6 @@ func newSigRequest(
 	configDigest common.Hash,
 	i player_idx.PlayerIdx,
 	pairing pairing.Suite,
-	blockhashes vrf_types.Blockhashes,
 	serializer vrf_types.ReportSerializer,
 	retransmissionDelay time.Duration,
 	logger commontypes.Logger,
@@ -79,7 +77,6 @@ func newSigRequest(
 		configDigest,
 		i,
 		pairing,
-		blockhashes,
 		serializer,
 		map[vrf_types.Block]kyber.Point{},
 		sync.RWMutex{},

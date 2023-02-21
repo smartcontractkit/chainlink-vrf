@@ -54,7 +54,6 @@ func NewVRFReportingPluginFactory(
 	keyID contract.KeyID,
 	keyProvider KeyProvider,
 	coordinator vrf_types.CoordinatorInterface,
-	blockhashes vrf_types.Blockhashes,
 	serializer vrf_types.ReportSerializer,
 	logger commontypes.Logger,
 	juelsPerFeeCoin vrf_types.JuelsPerFeeCoin,
@@ -75,7 +74,6 @@ func NewVRFReportingPluginFactory(
 		&localArgs{
 			keyID:              keyID,
 			coordinator:        coordinator,
-			blockhashes:        blockhashes,
 			keyProvider:        keyProvider,
 			serializer:         serializer,
 			juelsPerFeeCoin:    juelsPerFeeCoin,

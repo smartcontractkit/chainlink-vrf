@@ -48,7 +48,6 @@ type DKGVRFArgs struct {
 
 	DKGSharePersistence vrf_types.DKGSharePersistence
 
-	Blockhashes        vrf_types.Blockhashes
 	Serializer         vrf_types.ReportSerializer
 	JuelsPerFeeCoin    vrf_types.JuelsPerFeeCoin
 	ReasonableGasPrice vrf_types.ReasonableGasPrice
