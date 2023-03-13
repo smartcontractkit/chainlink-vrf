@@ -1,6 +1,7 @@
 package dkg
 
 import (
+	"context"
 	"fmt"
 	"sync"
 
@@ -75,6 +76,8 @@ func (d *dkgReportingPluginFactory) NewDKG(a *NewDKGArgs) (*dkg, error) {
 	if err := a.SanityCheckArgs(); err != nil {
 		return nil, util.WrapError(err, "could not construct new DKG")
 	}
+
+	ctx, cancelFunc := context.WithCancel(context.Background())
 	factory := &dkg{
 		a.t,
 		sync.RWMutex{},
@@ -98,9 +101,28 @@ func (d *dkgReportingPluginFactory) NewDKG(a *NewDKGArgs) (*dkg, error) {
 		a.db,
 		a.logger,
 		a.randomness,
+		ctx,
+		cancelFunc,
 	}
 	if err := factory.initializeShareSets(a.signingGroup()); err != nil {
 		return nil, util.WrapError(err, "could not initialize share sets")
+	}
+
+	res := make(chan error, 1)
+	go func(ctx context.Context) {
+		if factory.keyReportedOnchain(ctx) {
+			err := factory.recoverDistributedKeyShare(ctx)
+			if err != nil {
+				errMsg := "could not reconstruct shares for an available distributed key"
+				err2 := util.WrapError(err, errMsg)
+				res <- err2
+			}
+		}
+		res <- nil
+	}(ctx)
+	err := <-res
+	if err != nil {
+		return nil, err
 	}
 	return factory, nil
 }
