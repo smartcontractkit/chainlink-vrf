@@ -124,5 +124,7 @@ func (d *dkg) Start() error {
 }
 
 func (d *dkg) Close() error {
+
+	d.cancelFunc()
 	return nil
 }

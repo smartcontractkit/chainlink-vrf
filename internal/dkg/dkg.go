@@ -63,6 +63,9 @@ type dkg struct {
 	logger commontypes.Logger
 
 	randomness io.Reader
+
+	ctx        context.Context
+	cancelFunc context.CancelFunc
 }
 
 var _ types.ReportingPlugin = (*dkg)(nil)

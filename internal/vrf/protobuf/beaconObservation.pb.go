@@ -65,10 +65,11 @@ type Callback struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RequestId      uint64 `protobuf:"varint,1,opt,name=requestId,proto3" json:"requestId,omitempty"`
-	NumWords       uint32 `protobuf:"varint,2,opt,name=numWords,proto3" json:"numWords,omitempty"`
-	Requester      []byte `protobuf:"bytes,3,opt,name=requester,proto3" json:"requester,omitempty"`
-	Arguments      []byte `protobuf:"bytes,4,opt,name=arguments,proto3" json:"arguments,omitempty"`
+	RequestId uint64 `protobuf:"varint,1,opt,name=requestId,proto3" json:"requestId,omitempty"`
+	NumWords  uint32 `protobuf:"varint,2,opt,name=numWords,proto3" json:"numWords,omitempty"`
+	Requester []byte `protobuf:"bytes,3,opt,name=requester,proto3" json:"requester,omitempty"`
+	Arguments []byte `protobuf:"bytes,4,opt,name=arguments,proto3" json:"arguments,omitempty"`
+
 	SubscriptionID []byte `protobuf:"bytes,5,opt,name=subscriptionID,proto3" json:"subscriptionID,omitempty"`
 	Height         uint64 `protobuf:"varint,6,opt,name=height,proto3" json:"height,omitempty"`
 	ConfDelay      uint32 `protobuf:"varint,7,opt,name=confDelay,proto3" json:"confDelay,omitempty"`
@@ -159,11 +160,15 @@ type CostedCallback struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Callback       *Callback `protobuf:"bytes,1,opt,name=callback,proto3" json:"callback,omitempty"`
-	Price          []byte    `protobuf:"bytes,2,opt,name=price,proto3" json:"price,omitempty"`
-	GasAllowance   []byte    `protobuf:"bytes,3,opt,name=gasAllowance,proto3" json:"gasAllowance,omitempty"`
-	GasPrice       []byte    `protobuf:"bytes,4,opt,name=gasPrice,proto3" json:"gasPrice,omitempty"`
-	WeiPerUnitLink []byte    `protobuf:"bytes,5,opt,name=weiPerUnitLink,proto3" json:"weiPerUnitLink,omitempty"`
+	Callback *Callback `protobuf:"bytes,1,opt,name=callback,proto3" json:"callback,omitempty"`
+
+	Price []byte `protobuf:"bytes,2,opt,name=price,proto3" json:"price,omitempty"`
+
+	GasAllowance []byte `protobuf:"bytes,3,opt,name=gasAllowance,proto3" json:"gasAllowance,omitempty"`
+
+	GasPrice []byte `protobuf:"bytes,4,opt,name=gasPrice,proto3" json:"gasPrice,omitempty"`
+
+	WeiPerUnitLink []byte `protobuf:"bytes,5,opt,name=weiPerUnitLink,proto3" json:"weiPerUnitLink,omitempty"`
 }
 
 func (x *CostedCallback) Reset() {
@@ -301,7 +306,7 @@ type CoordinatorConfig struct {
 
 	CallbackOverhead int64 `protobuf:"varint,5,opt,name=callbackOverhead,proto3" json:"callbackOverhead,omitempty"`
 
-	LookbackBlocks int64 `protobuf:"varint,6,opt,name=lookbackBlocks,proto3" json:"lookbackBlocks,omitempty"`
+	LookbackBlocks uint64 `protobuf:"varint,6,opt,name=lookbackBlocks,proto3" json:"lookbackBlocks,omitempty"`
 }
 
 func (x *CoordinatorConfig) Reset() {
@@ -370,7 +375,7 @@ func (x *CoordinatorConfig) GetCallbackOverhead() int64 {
 	return 0
 }
 
-func (x *CoordinatorConfig) GetLookbackBlocks() int64 {
+func (x *CoordinatorConfig) GetLookbackBlocks() uint64 {
 	if x != nil {
 		return x.LookbackBlocks
 	}
@@ -580,7 +585,7 @@ var file_beaconObservation_proto_rawDesc = []byte{
 	0x4f, 0x76, 0x65, 0x72, 0x68, 0x65, 0x61, 0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x10,
 	0x63, 0x61, 0x6c, 0x6c, 0x62, 0x61, 0x63, 0x6b, 0x4f, 0x76, 0x65, 0x72, 0x68, 0x65, 0x61, 0x64,
 	0x12, 0x26, 0x0a, 0x0e, 0x6c, 0x6f, 0x6f, 0x6b, 0x62, 0x61, 0x63, 0x6b, 0x42, 0x6c, 0x6f, 0x63,
-	0x6b, 0x73, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0e, 0x6c, 0x6f, 0x6f, 0x6b, 0x62, 0x61,
+	0x6b, 0x73, 0x18, 0x06, 0x20, 0x01, 0x28, 0x04, 0x52, 0x0e, 0x6c, 0x6f, 0x6f, 0x6b, 0x62, 0x61,
 	0x63, 0x6b, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x73, 0x22, 0x7d, 0x0a, 0x0b, 0x56, 0x52, 0x46, 0x52,
 	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x68, 0x65, 0x69, 0x67, 0x68,
 	0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x68, 0x65, 0x69, 0x67, 0x68, 0x74, 0x12,
