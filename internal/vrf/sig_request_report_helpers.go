@@ -22,10 +22,8 @@ func m(x int64) *mod.Int { return mod.NewInt64(x, bn256.P) }
 var three = m(3)
 
 func affineCoordinates(p kyber.Point) (*big.Int, *big.Int) {
+
 	b := altbn_128.LongMarshal(p)
-	if len(b) != 64 {
-		panic("wrong length for marshaled point")
-	}
 	return big.NewInt(0).SetBytes(b[:32]), big.NewInt(0).SetBytes(b[32:])
 }
 

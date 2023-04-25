@@ -7,6 +7,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
+	"github.com/smartcontractkit/libocr/commontypes"
+	"github.com/smartcontractkit/libocr/offchainreporting2/types"
+
 	"github.com/smartcontractkit/ocr2vrf/internal/common/ocr"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
@@ -29,7 +32,7 @@ type CoordinatorInterface interface {
 		err error,
 	)
 
-	SetOffChainConfig([]byte) error
+	UpdateConfiguration(offchainConfig []byte, configDigest types.ConfigDigest, oracleID commontypes.OracleID) error
 
 	ReportWillBeTransmitted(context.Context, AbstractReport) error
 
