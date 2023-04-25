@@ -181,7 +181,7 @@ func (s *sigRequest) Observation(
 
 	reasonableGasPrice, err := s.reasonableGasPrice.ReasonableGasPrice()
 	if err != nil {
-		return nil, errors.Wrap(err, failedReadReaasonableGasPrice)
+		return nil, errors.Wrap(err, failedReadReasonableGasPrice)
 	}
 
 	startHeight, blocks := recentBlockHashesStartHeight, recentBlockHashes
@@ -264,6 +264,13 @@ func (s *sigRequest) Report(
 	}
 	recentBlockHashes := make(map[heightHash]int, 256*len(obs))
 	for _, o := range obs {
+		if s.n <= uint8(o.Observer) {
+			s.logger.Error(
+				outOfRangeObserver,
+				commontypes.LogFields{"n": s.n, "oracleID": o.Observer},
+			)
+			continue
+		}
 		observation := protobuf.Observation{}
 		err2 := proto.Unmarshal(o.Observation, &observation)
 		if err2 != nil {
@@ -279,13 +286,6 @@ func (s *sigRequest) Report(
 			callbacks,
 			o.Observer,
 		)
-		if s.n <= uint8(o.Observer) {
-			s.logger.Error(
-				outOfRangeObserver,
-				commontypes.LogFields{"n": s.n, "oracleID": o.Observer},
-			)
-			continue
-		}
 		player := players[o.Observer]
 
 		proofs := observation.Proofs
@@ -503,15 +503,13 @@ const (
 	outOfRangeObserver                     = "not enough players for observer index"
 	noObservationInRound                   = "no observation required on this round"
 	failedReadJuelsPerFeeCoin              = "error while reading JuelsPerFeeCoin"
-	failedReadReaasonableGasPrice          = "error while reading ReasonableGasPrice"
-	failedReadVerifiableBlocks             = "could not get verifiable blocks"
+	failedReadReasonableGasPrice           = "error while reading ReasonableGasPrice"
 	failedMarshalObservation               = "Error while marshaling Observation"
 	unknownConfirmationDelay               = "unknown confirmation delay"
 	earlyBlockReportBlocks                 = "ReportBlocks returned a block too early"
 	invalidBlockReportBlocks               = "ReportBlocks returned a non-beacon height"
 	failedMarshalVRFProof                  = "could not marshal VRF proof"
 	noValidDataToIncludeInReport           = "no valid data to include in report"
-	currentBlockIsNotInVerifiableBlocks    = "verifiable blocks don't include current block:"
 	largeFeeCoin                           = "fee-coin exchange rate too large:"
 	failedReadCurrentHeight                = "could not determine current chain height for confirmation threshold"
 	initialObservation                     = "initial observation"

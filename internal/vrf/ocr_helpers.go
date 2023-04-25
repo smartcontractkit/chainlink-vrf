@@ -285,6 +285,7 @@ func (s *sigRequest) aggregateOutputs(
 				commontypes.LogFields{"error": err, "output": output},
 			)
 
+			continue
 		}
 		ccallbacks := make(
 			[]vrf_types.AbstractCostedCallbackRequest, 0, len(callbacksByBlock[hd]),
@@ -388,6 +389,37 @@ func sanityCheckCallback(
 			})
 		return errors.Errorf(tooLongArgumentsMsg)
 	}
+
+	gasPrice := big.NewInt(0).SetBytes(c.GasPrice)
+	if gasPrice.Cmp(MaxGasPrice) > 0 {
+		l.Warn(gasPriceTooBigMsg, commontypes.LogFields{
+			"GasPrice": gasPrice,
+			"max":      MaxGasPrice,
+			"callback": c,
+			"source":   oracle,
+		})
+		return errors.Errorf(gasPriceTooBigMsg)
+	}
+	weiPerUnitLink := big.NewInt(0).SetBytes(c.WeiPerUnitLink)
+	if weiPerUnitLink.Cmp(MaxWeiPerUnitLink) > 0 {
+		l.Warn(weiPerUnitLinkTooBigMsg, commontypes.LogFields{
+			"WeiPerUnitLink": weiPerUnitLink,
+			"max":            MaxWeiPerUnitLink,
+			"callback":       c,
+			"source":         oracle,
+		})
+		return errors.Errorf(weiPerUnitLinkTooBigMsg)
+	}
+	subscriptionID := big.NewInt(0).SetBytes(c.Callback.SubscriptionID)
+	if subscriptionID.Cmp(MaxSubscriptionID) > 0 {
+		l.Warn(subscriptionIDTooBigMsg, commontypes.LogFields{
+			"SubscriptionID": subscriptionID,
+			"max":            MaxSubscriptionID,
+			"callback":       c,
+			"source":         oracle,
+		})
+		return errors.Errorf(subscriptionIDTooBigMsg)
+	}
 	return nil
 }
 
@@ -450,12 +482,13 @@ func getAbstractCallbackFromCallback(
 }
 
 var (
-	maxUint16 = big.NewInt(0).SetUint64(math.MaxUint16)
-	maxUint24 = big.NewInt(0).SetBytes(bytes.Repeat([]byte{0xff}, 3))
-	maxUint48 = big.NewInt(0).SetBytes(bytes.Repeat([]byte{0xff}, 6))
-	maxUint32 = big.NewInt(0).SetUint64(math.MaxUint32)
-	maxUint64 = big.NewInt(0).SetUint64(math.MaxUint64)
-	maxUint96 = big.NewInt(0).SetBytes(bytes.Repeat([]byte{0xff}, 12))
+	maxUint16  = big.NewInt(0).SetUint64(math.MaxUint16)
+	maxUint24  = big.NewInt(0).SetBytes(bytes.Repeat([]byte{0xff}, 3))
+	maxUint32  = big.NewInt(0).SetUint64(math.MaxUint32)
+	maxUint48  = big.NewInt(0).SetBytes(bytes.Repeat([]byte{0xff}, 6))
+	maxUint64  = big.NewInt(0).SetUint64(math.MaxUint64)
+	maxUint96  = big.NewInt(0).SetBytes(bytes.Repeat([]byte{0xff}, 12))
+	maxUint256 = big.NewInt(0).SetBytes(bytes.Repeat([]byte{0xff}, 32))
 )
 
 var (
@@ -464,10 +497,12 @@ var (
 	MaxRequestID              = maxUint48
 	MaxPrice                  = maxUint96
 	MaxGasAllowance           = maxUint96
-	MaxSubscriptionID         = maxUint64
+	MaxSubscriptionID         = maxUint256
 	MaxArgumentsLen           = 62_500
 	MaxBlocksInObservation    = 100
 	MaxCallbacksInObservation = 100
+	MaxGasPrice               = maxUint256
+	MaxWeiPerUnitLink         = maxUint256
 )
 
 func init() {
@@ -481,7 +516,7 @@ func init() {
 	if MaxRequestID.Cmp(maxUint64) > 0 {
 		panic("MaxRequestID needs new backing type")
 	}
-	if MaxSubscriptionID.Cmp(maxUint64) > 0 {
+	if MaxSubscriptionID.Cmp(maxUint256) > 0 {
 		panic("MaxSubcriptionID needs new backing type")
 	}
 }
@@ -505,4 +540,7 @@ const (
 	nonBeaconHeightInBlockMsg          = "block output provided for non-beacon height"
 	unknownConfirmationDelayInBlockMsg = "block output provided for unknown confirmation delay"
 	tooLongArgumentsMsg                = "arguments field in callback is too long"
+	gasPriceTooBigMsg                  = "Gas price is too big"
+	weiPerUnitLinkTooBigMsg            = "weiPerUnitLink is too big"
+	subscriptionIDTooBigMsg            = "subscriptionID is too big"
 )

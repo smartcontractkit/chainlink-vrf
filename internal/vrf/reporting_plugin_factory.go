@@ -62,9 +62,9 @@ func (v *vrfReportingPluginFactory) NewReportingPlugin(
 		confDelaysSet[d] = struct{}{}
 	}
 
-	err = v.l.coordinator.SetOffChainConfig(c.OffchainConfig)
+	err = v.l.coordinator.UpdateConfiguration(c.OffchainConfig, c.ConfigDigest, c.OracleID)
 	if err != nil {
-		return nil, types.ReportingPluginInfo{}, errors.Wrap(err, "could not set offchain config")
+		return nil, types.ReportingPluginInfo{}, errors.Wrap(err, "could not update off-chain config")
 	}
 
 	tbls, err := newSigRequest(
