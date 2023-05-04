@@ -74,7 +74,7 @@ func (s *sigRequest) ocrsSynced(ctx context.Context) error {
 }
 
 func callbackHash(c *protobuf.CostedCallback) (common.Hash, error) {
-	s, err := proto.Marshal(c)
+	s, err := proto.MarshalOptions{Deterministic: true}.Marshal(c)
 	if err != nil {
 		return common.Hash{}, errors.Wrap(
 			err, "could not serialize callback for indexing",
@@ -424,15 +424,15 @@ func sanityCheckCallback(
 }
 
 func sortBigInt(l []*big.Int) []*big.Int {
-	sort.Sort(byValue(l))
+	sort.Sort(sortableBigInt(l))
 	return l
 }
 
-type byValue []*big.Int
+type sortableBigInt []*big.Int
 
-func (a byValue) Len() int           { return len(a) }
-func (a byValue) Less(i, j int) bool { return a[i].Cmp(a[j]) < 0 }
-func (a byValue) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a sortableBigInt) Len() int           { return len(a) }
+func (a sortableBigInt) Less(i, j int) bool { return a[i].Cmp(a[j]) < 0 }
+func (a sortableBigInt) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
 func medianBigInt(l []*big.Int) *big.Int {
 	sortBigInt(l)

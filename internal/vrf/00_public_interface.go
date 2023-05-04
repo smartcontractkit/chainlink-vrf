@@ -8,8 +8,9 @@ import (
 	"math/big"
 	"sort"
 
-	"github.com/gogo/protobuf/proto"
 	"github.com/pkg/errors"
+
+	proto "google.golang.org/protobuf/proto"
 
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
