@@ -77,7 +77,7 @@ type AbstractCostedCallbackRequest struct {
 	ConfirmationDelay uint32
 	SubscriptionID    *big.Int
 	Price             *big.Int
-	RequestID         uint64
+	RequestID         *big.Int
 	NumWords          uint16
 	Requester         common.Address
 	Arguments         []byte
