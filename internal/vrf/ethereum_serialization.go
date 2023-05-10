@@ -89,7 +89,7 @@ func (e *EthereumReportSerializer) ConvertToBeaconReport(
 		for _, callback := range output.Callbacks {
 			beaconCostedCallback := callbackType{
 				Callback: vrfbeacon.VRFBeaconTypesCallback{
-					RequestID:      big.NewInt(0).SetUint64(callback.RequestID),
+					RequestID:      callback.RequestID,
 					NumWords:       callback.NumWords,
 					Requester:      callback.Requester,
 					Arguments:      callback.Arguments,
@@ -152,7 +152,7 @@ func (e *EthereumReportSerializer) ConvertToAbstractReport(
 				uint32(out.ConfirmationDelay.Uint64()),
 				c.Callback.SubID,
 				c.Price,
-				c.Callback.RequestID.Uint64(),
+				c.Callback.RequestID,
 				c.Callback.NumWords,
 				c.Callback.Requester,
 				c.Callback.Arguments,

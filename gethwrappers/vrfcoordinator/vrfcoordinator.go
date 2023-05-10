@@ -2980,7 +2980,7 @@ func (_ISubscription *ISubscriptionTransactorSession) RequestSubscriptionOwnerTr
 }
 
 var IVRFCoordinatorProducerAPIMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint48[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"recipients\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"paymentsInJuels\",\"type\":\"uint256[]\"}],\"name\":\"batchTransferLink\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSubscriptionLinkBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"balance\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint64\",\"name\":\"blockHeight\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"components\":[{\"internalType\":\"uint256[2]\",\"name\":\"p\",\"type\":\"uint256[2]\"}],\"internalType\":\"structECCArithmetic.G1Point\",\"name\":\"vrfOutput\",\"type\":\"tuple\"},{\"components\":[{\"components\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"uint96\",\"name\":\"gasAllowance\",\"type\":\"uint96\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"}],\"internalType\":\"structVRFBeaconTypes.Callback\",\"name\":\"callback\",\"type\":\"tuple\"},{\"internalType\":\"uint96\",\"name\":\"price\",\"type\":\"uint96\"}],\"internalType\":\"structVRFBeaconTypes.CostedCallback[]\",\"name\":\"callbacks\",\"type\":\"tuple[]\"}],\"internalType\":\"structVRFBeaconTypes.VRFOutput[]\",\"name\":\"vrfOutputs\",\"type\":\"tuple[]\"},{\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"blockHeight\",\"type\":\"uint64\"},{\"internalType\":\"bytes32\",\"name\":\"blockHash\",\"type\":\"bytes32\"}],\"name\":\"processVRFOutputs\",\"outputs\":[{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay[8]\",\"name\":\"confDelays\",\"type\":\"uint24[8]\"}],\"name\":\"setConfirmationDelays\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"gasPrice\",\"type\":\"uint64\"}],\"name\":\"setReasonableGasPrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"juelsAmount\",\"type\":\"uint256\"}],\"name\":\"transferLink\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint256[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"costJuels\",\"type\":\"uint256\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"RandomnessRedeemed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"costJuels\",\"type\":\"uint256\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"recipients\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"paymentsInJuels\",\"type\":\"uint256[]\"}],\"name\":\"batchTransferLink\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSubscriptionLinkBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"balance\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint64\",\"name\":\"blockHeight\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"components\":[{\"internalType\":\"uint256[2]\",\"name\":\"p\",\"type\":\"uint256[2]\"}],\"internalType\":\"structECCArithmetic.G1Point\",\"name\":\"vrfOutput\",\"type\":\"tuple\"},{\"components\":[{\"components\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"uint96\",\"name\":\"gasAllowance\",\"type\":\"uint96\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"}],\"internalType\":\"structVRFBeaconTypes.Callback\",\"name\":\"callback\",\"type\":\"tuple\"},{\"internalType\":\"uint96\",\"name\":\"price\",\"type\":\"uint96\"}],\"internalType\":\"structVRFBeaconTypes.CostedCallback[]\",\"name\":\"callbacks\",\"type\":\"tuple[]\"}],\"internalType\":\"structVRFBeaconTypes.VRFOutput[]\",\"name\":\"vrfOutputs\",\"type\":\"tuple[]\"},{\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"blockHeight\",\"type\":\"uint64\"},{\"internalType\":\"bytes32\",\"name\":\"blockHash\",\"type\":\"bytes32\"}],\"name\":\"processVRFOutputs\",\"outputs\":[{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay[8]\",\"name\":\"confDelays\",\"type\":\"uint24[8]\"}],\"name\":\"setConfirmationDelays\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"gasPrice\",\"type\":\"uint64\"}],\"name\":\"setReasonableGasPrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"juelsAmount\",\"type\":\"uint256\"}],\"name\":\"transferLink\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 var IVRFCoordinatorProducerAPIABI = IVRFCoordinatorProducerAPIMetaData.ABI
@@ -3774,6 +3774,7 @@ type IVRFCoordinatorProducerAPIRandomnessFulfillmentRequested struct {
 	GasPrice               *big.Int
 	WeiPerUnitLink         *big.Int
 	Arguments              []byte
+	CostJuels              *big.Int
 	Raw                    types.Log
 }
 
@@ -3847,6 +3848,143 @@ func (_IVRFCoordinatorProducerAPI *IVRFCoordinatorProducerAPIFilterer) ParseRand
 	return event, nil
 }
 
+type IVRFCoordinatorProducerAPIRandomnessRedeemedIterator struct {
+	Event *IVRFCoordinatorProducerAPIRandomnessRedeemed
+
+	contract *bind.BoundContract
+	event    string
+
+	logs chan types.Log
+	sub  ethereum.Subscription
+	done bool
+	fail error
+}
+
+func (it *IVRFCoordinatorProducerAPIRandomnessRedeemedIterator) Next() bool {
+
+	if it.fail != nil {
+		return false
+	}
+
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(IVRFCoordinatorProducerAPIRandomnessRedeemed)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+
+	select {
+	case log := <-it.logs:
+		it.Event = new(IVRFCoordinatorProducerAPIRandomnessRedeemed)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+func (it *IVRFCoordinatorProducerAPIRandomnessRedeemedIterator) Error() error {
+	return it.fail
+}
+
+func (it *IVRFCoordinatorProducerAPIRandomnessRedeemedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+type IVRFCoordinatorProducerAPIRandomnessRedeemed struct {
+	RequestID *big.Int
+	Requester common.Address
+	SubID     *big.Int
+	Raw       types.Log
+}
+
+func (_IVRFCoordinatorProducerAPI *IVRFCoordinatorProducerAPIFilterer) FilterRandomnessRedeemed(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*IVRFCoordinatorProducerAPIRandomnessRedeemedIterator, error) {
+
+	var requestIDRule []interface{}
+	for _, requestIDItem := range requestID {
+		requestIDRule = append(requestIDRule, requestIDItem)
+	}
+	var requesterRule []interface{}
+	for _, requesterItem := range requester {
+		requesterRule = append(requesterRule, requesterItem)
+	}
+
+	logs, sub, err := _IVRFCoordinatorProducerAPI.contract.FilterLogs(opts, "RandomnessRedeemed", requestIDRule, requesterRule)
+	if err != nil {
+		return nil, err
+	}
+	return &IVRFCoordinatorProducerAPIRandomnessRedeemedIterator{contract: _IVRFCoordinatorProducerAPI.contract, event: "RandomnessRedeemed", logs: logs, sub: sub}, nil
+}
+
+func (_IVRFCoordinatorProducerAPI *IVRFCoordinatorProducerAPIFilterer) WatchRandomnessRedeemed(opts *bind.WatchOpts, sink chan<- *IVRFCoordinatorProducerAPIRandomnessRedeemed, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
+
+	var requestIDRule []interface{}
+	for _, requestIDItem := range requestID {
+		requestIDRule = append(requestIDRule, requestIDItem)
+	}
+	var requesterRule []interface{}
+	for _, requesterItem := range requester {
+		requesterRule = append(requesterRule, requesterItem)
+	}
+
+	logs, sub, err := _IVRFCoordinatorProducerAPI.contract.WatchLogs(opts, "RandomnessRedeemed", requestIDRule, requesterRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+
+				event := new(IVRFCoordinatorProducerAPIRandomnessRedeemed)
+				if err := _IVRFCoordinatorProducerAPI.contract.UnpackLog(event, "RandomnessRedeemed", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+func (_IVRFCoordinatorProducerAPI *IVRFCoordinatorProducerAPIFilterer) ParseRandomnessRedeemed(log types.Log) (*IVRFCoordinatorProducerAPIRandomnessRedeemed, error) {
+	event := new(IVRFCoordinatorProducerAPIRandomnessRedeemed)
+	if err := _IVRFCoordinatorProducerAPI.contract.UnpackLog(event, "RandomnessRedeemed", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
 type IVRFCoordinatorProducerAPIRandomnessRequestedIterator struct {
 	Event *IVRFCoordinatorProducerAPIRandomnessRequested
 
@@ -3914,6 +4052,7 @@ type IVRFCoordinatorProducerAPIRandomnessRequested struct {
 	ConfDelay              *big.Int
 	SubID                  *big.Int
 	NumWords               uint16
+	CostJuels              *big.Int
 	Raw                    types.Log
 }
 
@@ -3988,7 +4127,7 @@ func (_IVRFCoordinatorProducerAPI *IVRFCoordinatorProducerAPIFilterer) ParseRand
 }
 
 var IVRFMigratableCoordinatorMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint48[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 var IVRFMigratableCoordinatorABI = IVRFMigratableCoordinatorMetaData.ABI
@@ -4103,28 +4242,6 @@ func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactorRaw) Transa
 	return _IVRFMigratableCoordinator.Contract.contract.Transact(opts, method, params...)
 }
 
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorCaller) NUMCONFDELAYS(opts *bind.CallOpts) (uint8, error) {
-	var out []interface{}
-	err := _IVRFMigratableCoordinator.contract.Call(opts, &out, "NUM_CONF_DELAYS")
-
-	if err != nil {
-		return *new(uint8), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint8)).(*uint8)
-
-	return out0, err
-
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorSession) NUMCONFDELAYS() (uint8, error) {
-	return _IVRFMigratableCoordinator.Contract.NUMCONFDELAYS(&_IVRFMigratableCoordinator.CallOpts)
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorCallerSession) NUMCONFDELAYS() (uint8, error) {
-	return _IVRFMigratableCoordinator.Contract.NUMCONFDELAYS(&_IVRFMigratableCoordinator.CallOpts)
-}
-
 func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorCaller) GetFee(opts *bind.CallOpts, subID *big.Int, extraArgs []byte) (*big.Int, error) {
 	var out []interface{}
 	err := _IVRFMigratableCoordinator.contract.Call(opts, &out, "getFee", subID, extraArgs)
@@ -4203,794 +4320,6 @@ func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorSession) RequestRando
 
 func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactorSession) RequestRandomnessFulfillment(requester common.Address, subID *big.Int, numWords uint16, confirmationDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
 	return _IVRFMigratableCoordinator.Contract.RequestRandomnessFulfillment(&_IVRFMigratableCoordinator.TransactOpts, requester, subID, numWords, confirmationDelay, callbackGasLimit, arguments, extraArgs)
-}
-
-type IVRFMigratableCoordinatorConfigSetIterator struct {
-	Event *IVRFMigratableCoordinatorConfigSet
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFMigratableCoordinatorConfigSetIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFMigratableCoordinatorConfigSet)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFMigratableCoordinatorConfigSet)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFMigratableCoordinatorConfigSetIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFMigratableCoordinatorConfigSetIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFMigratableCoordinatorConfigSet struct {
-	PreviousConfigBlockNumber uint32
-	ConfigDigest              [32]byte
-	ConfigCount               uint64
-	Signers                   []common.Address
-	Transmitters              []common.Address
-	F                         uint8
-	OnchainConfig             []byte
-	OffchainConfigVersion     uint64
-	OffchainConfig            []byte
-	Raw                       types.Log
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) FilterConfigSet(opts *bind.FilterOpts) (*IVRFMigratableCoordinatorConfigSetIterator, error) {
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.FilterLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigratableCoordinatorConfigSetIterator{contract: _IVRFMigratableCoordinator.contract, event: "ConfigSet", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) WatchConfigSet(opts *bind.WatchOpts, sink chan<- *IVRFMigratableCoordinatorConfigSet) (event.Subscription, error) {
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.WatchLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFMigratableCoordinatorConfigSet)
-				if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) ParseConfigSet(log types.Log) (*IVRFMigratableCoordinatorConfigSet, error) {
-	event := new(IVRFMigratableCoordinatorConfigSet)
-	if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFMigratableCoordinatorNewTransmissionIterator struct {
-	Event *IVRFMigratableCoordinatorNewTransmission
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFMigratableCoordinatorNewTransmissionIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFMigratableCoordinatorNewTransmission)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFMigratableCoordinatorNewTransmission)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFMigratableCoordinatorNewTransmissionIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFMigratableCoordinatorNewTransmissionIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFMigratableCoordinatorNewTransmission struct {
-	AggregatorRoundId  uint32
-	EpochAndRound      *big.Int
-	Transmitter        common.Address
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	ConfigDigest       [32]byte
-	Raw                types.Log
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) FilterNewTransmission(opts *bind.FilterOpts, aggregatorRoundId []uint32, epochAndRound []*big.Int) (*IVRFMigratableCoordinatorNewTransmissionIterator, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.FilterLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigratableCoordinatorNewTransmissionIterator{contract: _IVRFMigratableCoordinator.contract, event: "NewTransmission", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) WatchNewTransmission(opts *bind.WatchOpts, sink chan<- *IVRFMigratableCoordinatorNewTransmission, aggregatorRoundId []uint32, epochAndRound []*big.Int) (event.Subscription, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.WatchLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFMigratableCoordinatorNewTransmission)
-				if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) ParseNewTransmission(log types.Log) (*IVRFMigratableCoordinatorNewTransmission, error) {
-	event := new(IVRFMigratableCoordinatorNewTransmission)
-	if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFMigratableCoordinatorOutputsServedIterator struct {
-	Event *IVRFMigratableCoordinatorOutputsServed
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFMigratableCoordinatorOutputsServedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFMigratableCoordinatorOutputsServed)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFMigratableCoordinatorOutputsServed)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFMigratableCoordinatorOutputsServedIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFMigratableCoordinatorOutputsServedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFMigratableCoordinatorOutputsServed struct {
-	RecentBlockHeight  uint64
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	OutputsServed      []VRFBeaconTypesOutputServed
-	Raw                types.Log
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) FilterOutputsServed(opts *bind.FilterOpts) (*IVRFMigratableCoordinatorOutputsServedIterator, error) {
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.FilterLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigratableCoordinatorOutputsServedIterator{contract: _IVRFMigratableCoordinator.contract, event: "OutputsServed", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) WatchOutputsServed(opts *bind.WatchOpts, sink chan<- *IVRFMigratableCoordinatorOutputsServed) (event.Subscription, error) {
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.WatchLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFMigratableCoordinatorOutputsServed)
-				if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "OutputsServed", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) ParseOutputsServed(log types.Log) (*IVRFMigratableCoordinatorOutputsServed, error) {
-	event := new(IVRFMigratableCoordinatorOutputsServed)
-	if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "OutputsServed", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFMigratableCoordinatorRandomWordsFulfilledIterator struct {
-	Event *IVRFMigratableCoordinatorRandomWordsFulfilled
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFMigratableCoordinatorRandomWordsFulfilledIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFMigratableCoordinatorRandomWordsFulfilled)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFMigratableCoordinatorRandomWordsFulfilled)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFMigratableCoordinatorRandomWordsFulfilledIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFMigratableCoordinatorRandomWordsFulfilledIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFMigratableCoordinatorRandomWordsFulfilled struct {
-	RequestIDs            []*big.Int
-	SuccessfulFulfillment []byte
-	TruncatedErrorData    [][]byte
-	Raw                   types.Log
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) FilterRandomWordsFulfilled(opts *bind.FilterOpts) (*IVRFMigratableCoordinatorRandomWordsFulfilledIterator, error) {
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.FilterLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigratableCoordinatorRandomWordsFulfilledIterator{contract: _IVRFMigratableCoordinator.contract, event: "RandomWordsFulfilled", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) WatchRandomWordsFulfilled(opts *bind.WatchOpts, sink chan<- *IVRFMigratableCoordinatorRandomWordsFulfilled) (event.Subscription, error) {
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.WatchLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFMigratableCoordinatorRandomWordsFulfilled)
-				if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) ParseRandomWordsFulfilled(log types.Log) (*IVRFMigratableCoordinatorRandomWordsFulfilled, error) {
-	event := new(IVRFMigratableCoordinatorRandomWordsFulfilled)
-	if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFMigratableCoordinatorRandomnessFulfillmentRequestedIterator struct {
-	Event *IVRFMigratableCoordinatorRandomnessFulfillmentRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFMigratableCoordinatorRandomnessFulfillmentRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFMigratableCoordinatorRandomnessFulfillmentRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFMigratableCoordinatorRandomnessFulfillmentRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFMigratableCoordinatorRandomnessFulfillmentRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFMigratableCoordinatorRandomnessFulfillmentRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFMigratableCoordinatorRandomnessFulfillmentRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	GasAllowance           uint32
-	GasPrice               *big.Int
-	WeiPerUnitLink         *big.Int
-	Arguments              []byte
-	Raw                    types.Log
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) FilterRandomnessFulfillmentRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*IVRFMigratableCoordinatorRandomnessFulfillmentRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.FilterLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigratableCoordinatorRandomnessFulfillmentRequestedIterator{contract: _IVRFMigratableCoordinator.contract, event: "RandomnessFulfillmentRequested", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) WatchRandomnessFulfillmentRequested(opts *bind.WatchOpts, sink chan<- *IVRFMigratableCoordinatorRandomnessFulfillmentRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.WatchLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFMigratableCoordinatorRandomnessFulfillmentRequested)
-				if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) ParseRandomnessFulfillmentRequested(log types.Log) (*IVRFMigratableCoordinatorRandomnessFulfillmentRequested, error) {
-	event := new(IVRFMigratableCoordinatorRandomnessFulfillmentRequested)
-	if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFMigratableCoordinatorRandomnessRequestedIterator struct {
-	Event *IVRFMigratableCoordinatorRandomnessRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFMigratableCoordinatorRandomnessRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFMigratableCoordinatorRandomnessRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFMigratableCoordinatorRandomnessRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFMigratableCoordinatorRandomnessRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFMigratableCoordinatorRandomnessRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFMigratableCoordinatorRandomnessRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	Raw                    types.Log
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) FilterRandomnessRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*IVRFMigratableCoordinatorRandomnessRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.FilterLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigratableCoordinatorRandomnessRequestedIterator{contract: _IVRFMigratableCoordinator.contract, event: "RandomnessRequested", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) WatchRandomnessRequested(opts *bind.WatchOpts, sink chan<- *IVRFMigratableCoordinatorRandomnessRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.WatchLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFMigratableCoordinatorRandomnessRequested)
-				if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) ParseRandomnessRequested(log types.Log) (*IVRFMigratableCoordinatorRandomnessRequested, error) {
-	event := new(IVRFMigratableCoordinatorRandomnessRequested)
-	if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
 }
 
 var IVRFMigrationMetaData = &bind.MetaData{
@@ -5155,8 +4484,204 @@ func (_IVRFMigration *IVRFMigrationTransactorSession) OnMigration(encodedData []
 	return _IVRFMigration.Contract.OnMigration(&_IVRFMigration.TransactOpts, encodedData)
 }
 
+var IVRFRouterMetaData = &bind.MetaData{
+	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+}
+
+var IVRFRouterABI = IVRFRouterMetaData.ABI
+
+type IVRFRouter struct {
+	IVRFRouterCaller
+	IVRFRouterTransactor
+	IVRFRouterFilterer
+}
+
+type IVRFRouterCaller struct {
+	contract *bind.BoundContract
+}
+
+type IVRFRouterTransactor struct {
+	contract *bind.BoundContract
+}
+
+type IVRFRouterFilterer struct {
+	contract *bind.BoundContract
+}
+
+type IVRFRouterSession struct {
+	Contract     *IVRFRouter
+	CallOpts     bind.CallOpts
+	TransactOpts bind.TransactOpts
+}
+
+type IVRFRouterCallerSession struct {
+	Contract *IVRFRouterCaller
+	CallOpts bind.CallOpts
+}
+
+type IVRFRouterTransactorSession struct {
+	Contract     *IVRFRouterTransactor
+	TransactOpts bind.TransactOpts
+}
+
+type IVRFRouterRaw struct {
+	Contract *IVRFRouter
+}
+
+type IVRFRouterCallerRaw struct {
+	Contract *IVRFRouterCaller
+}
+
+type IVRFRouterTransactorRaw struct {
+	Contract *IVRFRouterTransactor
+}
+
+func NewIVRFRouter(address common.Address, backend bind.ContractBackend) (*IVRFRouter, error) {
+	contract, err := bindIVRFRouter(address, backend, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &IVRFRouter{IVRFRouterCaller: IVRFRouterCaller{contract: contract}, IVRFRouterTransactor: IVRFRouterTransactor{contract: contract}, IVRFRouterFilterer: IVRFRouterFilterer{contract: contract}}, nil
+}
+
+func NewIVRFRouterCaller(address common.Address, caller bind.ContractCaller) (*IVRFRouterCaller, error) {
+	contract, err := bindIVRFRouter(address, caller, nil, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &IVRFRouterCaller{contract: contract}, nil
+}
+
+func NewIVRFRouterTransactor(address common.Address, transactor bind.ContractTransactor) (*IVRFRouterTransactor, error) {
+	contract, err := bindIVRFRouter(address, nil, transactor, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &IVRFRouterTransactor{contract: contract}, nil
+}
+
+func NewIVRFRouterFilterer(address common.Address, filterer bind.ContractFilterer) (*IVRFRouterFilterer, error) {
+	contract, err := bindIVRFRouter(address, nil, nil, filterer)
+	if err != nil {
+		return nil, err
+	}
+	return &IVRFRouterFilterer{contract: contract}, nil
+}
+
+func bindIVRFRouter(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(IVRFRouterABI))
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
+}
+
+func (_IVRFRouter *IVRFRouterRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IVRFRouter.Contract.IVRFRouterCaller.contract.Call(opts, result, method, params...)
+}
+
+func (_IVRFRouter *IVRFRouterRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.IVRFRouterTransactor.contract.Transfer(opts)
+}
+
+func (_IVRFRouter *IVRFRouterRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.IVRFRouterTransactor.contract.Transact(opts, method, params...)
+}
+
+func (_IVRFRouter *IVRFRouterCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IVRFRouter.Contract.contract.Call(opts, result, method, params...)
+}
+
+func (_IVRFRouter *IVRFRouterTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.contract.Transfer(opts)
+}
+
+func (_IVRFRouter *IVRFRouterTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.contract.Transact(opts, method, params...)
+}
+
+func (_IVRFRouter *IVRFRouterCaller) GetFee(opts *bind.CallOpts, subID *big.Int, extraArgs []byte) (*big.Int, error) {
+	var out []interface{}
+	err := _IVRFRouter.contract.Call(opts, &out, "getFee", subID, extraArgs)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+func (_IVRFRouter *IVRFRouterSession) GetFee(subID *big.Int, extraArgs []byte) (*big.Int, error) {
+	return _IVRFRouter.Contract.GetFee(&_IVRFRouter.CallOpts, subID, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterCallerSession) GetFee(subID *big.Int, extraArgs []byte) (*big.Int, error) {
+	return _IVRFRouter.Contract.GetFee(&_IVRFRouter.CallOpts, subID, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterCaller) GetFulfillmentFee(opts *bind.CallOpts, subID *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*big.Int, error) {
+	var out []interface{}
+	err := _IVRFRouter.contract.Call(opts, &out, "getFulfillmentFee", subID, callbackGasLimit, arguments, extraArgs)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+func (_IVRFRouter *IVRFRouterSession) GetFulfillmentFee(subID *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*big.Int, error) {
+	return _IVRFRouter.Contract.GetFulfillmentFee(&_IVRFRouter.CallOpts, subID, callbackGasLimit, arguments, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterCallerSession) GetFulfillmentFee(subID *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*big.Int, error) {
+	return _IVRFRouter.Contract.GetFulfillmentFee(&_IVRFRouter.CallOpts, subID, callbackGasLimit, arguments, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterTransactor) RedeemRandomness(opts *bind.TransactOpts, subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.contract.Transact(opts, "redeemRandomness", subID, requestID, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.RedeemRandomness(&_IVRFRouter.TransactOpts, subID, requestID, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterTransactorSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.RedeemRandomness(&_IVRFRouter.TransactOpts, subID, requestID, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterTransactor) RequestRandomness(opts *bind.TransactOpts, subID *big.Int, numWords uint16, confDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.contract.Transact(opts, "requestRandomness", subID, numWords, confDelay, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterSession) RequestRandomness(subID *big.Int, numWords uint16, confDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.RequestRandomness(&_IVRFRouter.TransactOpts, subID, numWords, confDelay, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterTransactorSession) RequestRandomness(subID *big.Int, numWords uint16, confDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.RequestRandomness(&_IVRFRouter.TransactOpts, subID, numWords, confDelay, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterTransactor) RequestRandomnessFulfillment(opts *bind.TransactOpts, subID *big.Int, numWords uint16, confDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.contract.Transact(opts, "requestRandomnessFulfillment", subID, numWords, confDelay, callbackGasLimit, arguments, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterSession) RequestRandomnessFulfillment(subID *big.Int, numWords uint16, confDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.RequestRandomnessFulfillment(&_IVRFRouter.TransactOpts, subID, numWords, confDelay, callbackGasLimit, arguments, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterTransactorSession) RequestRandomnessFulfillment(subID *big.Int, numWords uint16, confDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.RequestRandomnessFulfillment(&_IVRFRouter.TransactOpts, subID, numWords, confDelay, callbackGasLimit, arguments, extraArgs)
+}
+
 var IVRFRouterConsumerMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[],\"name\":\"MustBeRouter\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint48[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"internalType\":\"uint256[]\",\"name\":\"randomWords\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"rawFulfillRandomWords\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[],\"name\":\"MustBeRouter\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"randomWords\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"rawFulfillRandomWords\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 var IVRFRouterConsumerABI = IVRFRouterConsumerMetaData.ABI
@@ -5271,28 +4796,6 @@ func (_IVRFRouterConsumer *IVRFRouterConsumerTransactorRaw) Transact(opts *bind.
 	return _IVRFRouterConsumer.Contract.contract.Transact(opts, method, params...)
 }
 
-func (_IVRFRouterConsumer *IVRFRouterConsumerCaller) NUMCONFDELAYS(opts *bind.CallOpts) (uint8, error) {
-	var out []interface{}
-	err := _IVRFRouterConsumer.contract.Call(opts, &out, "NUM_CONF_DELAYS")
-
-	if err != nil {
-		return *new(uint8), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint8)).(*uint8)
-
-	return out0, err
-
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerSession) NUMCONFDELAYS() (uint8, error) {
-	return _IVRFRouterConsumer.Contract.NUMCONFDELAYS(&_IVRFRouterConsumer.CallOpts)
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerCallerSession) NUMCONFDELAYS() (uint8, error) {
-	return _IVRFRouterConsumer.Contract.NUMCONFDELAYS(&_IVRFRouterConsumer.CallOpts)
-}
-
 func (_IVRFRouterConsumer *IVRFRouterConsumerTransactor) RawFulfillRandomWords(opts *bind.TransactOpts, requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
 	return _IVRFRouterConsumer.contract.Transact(opts, "rawFulfillRandomWords", requestID, randomWords, arguments)
 }
@@ -5303,794 +4806,6 @@ func (_IVRFRouterConsumer *IVRFRouterConsumerSession) RawFulfillRandomWords(requ
 
 func (_IVRFRouterConsumer *IVRFRouterConsumerTransactorSession) RawFulfillRandomWords(requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
 	return _IVRFRouterConsumer.Contract.RawFulfillRandomWords(&_IVRFRouterConsumer.TransactOpts, requestID, randomWords, arguments)
-}
-
-type IVRFRouterConsumerConfigSetIterator struct {
-	Event *IVRFRouterConsumerConfigSet
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFRouterConsumerConfigSetIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFRouterConsumerConfigSet)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFRouterConsumerConfigSet)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFRouterConsumerConfigSetIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFRouterConsumerConfigSetIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFRouterConsumerConfigSet struct {
-	PreviousConfigBlockNumber uint32
-	ConfigDigest              [32]byte
-	ConfigCount               uint64
-	Signers                   []common.Address
-	Transmitters              []common.Address
-	F                         uint8
-	OnchainConfig             []byte
-	OffchainConfigVersion     uint64
-	OffchainConfig            []byte
-	Raw                       types.Log
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) FilterConfigSet(opts *bind.FilterOpts) (*IVRFRouterConsumerConfigSetIterator, error) {
-
-	logs, sub, err := _IVRFRouterConsumer.contract.FilterLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerConfigSetIterator{contract: _IVRFRouterConsumer.contract, event: "ConfigSet", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) WatchConfigSet(opts *bind.WatchOpts, sink chan<- *IVRFRouterConsumerConfigSet) (event.Subscription, error) {
-
-	logs, sub, err := _IVRFRouterConsumer.contract.WatchLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFRouterConsumerConfigSet)
-				if err := _IVRFRouterConsumer.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) ParseConfigSet(log types.Log) (*IVRFRouterConsumerConfigSet, error) {
-	event := new(IVRFRouterConsumerConfigSet)
-	if err := _IVRFRouterConsumer.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFRouterConsumerNewTransmissionIterator struct {
-	Event *IVRFRouterConsumerNewTransmission
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFRouterConsumerNewTransmissionIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFRouterConsumerNewTransmission)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFRouterConsumerNewTransmission)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFRouterConsumerNewTransmissionIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFRouterConsumerNewTransmissionIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFRouterConsumerNewTransmission struct {
-	AggregatorRoundId  uint32
-	EpochAndRound      *big.Int
-	Transmitter        common.Address
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	ConfigDigest       [32]byte
-	Raw                types.Log
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) FilterNewTransmission(opts *bind.FilterOpts, aggregatorRoundId []uint32, epochAndRound []*big.Int) (*IVRFRouterConsumerNewTransmissionIterator, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _IVRFRouterConsumer.contract.FilterLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerNewTransmissionIterator{contract: _IVRFRouterConsumer.contract, event: "NewTransmission", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) WatchNewTransmission(opts *bind.WatchOpts, sink chan<- *IVRFRouterConsumerNewTransmission, aggregatorRoundId []uint32, epochAndRound []*big.Int) (event.Subscription, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _IVRFRouterConsumer.contract.WatchLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFRouterConsumerNewTransmission)
-				if err := _IVRFRouterConsumer.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) ParseNewTransmission(log types.Log) (*IVRFRouterConsumerNewTransmission, error) {
-	event := new(IVRFRouterConsumerNewTransmission)
-	if err := _IVRFRouterConsumer.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFRouterConsumerOutputsServedIterator struct {
-	Event *IVRFRouterConsumerOutputsServed
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFRouterConsumerOutputsServedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFRouterConsumerOutputsServed)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFRouterConsumerOutputsServed)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFRouterConsumerOutputsServedIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFRouterConsumerOutputsServedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFRouterConsumerOutputsServed struct {
-	RecentBlockHeight  uint64
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	OutputsServed      []VRFBeaconTypesOutputServed
-	Raw                types.Log
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) FilterOutputsServed(opts *bind.FilterOpts) (*IVRFRouterConsumerOutputsServedIterator, error) {
-
-	logs, sub, err := _IVRFRouterConsumer.contract.FilterLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerOutputsServedIterator{contract: _IVRFRouterConsumer.contract, event: "OutputsServed", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) WatchOutputsServed(opts *bind.WatchOpts, sink chan<- *IVRFRouterConsumerOutputsServed) (event.Subscription, error) {
-
-	logs, sub, err := _IVRFRouterConsumer.contract.WatchLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFRouterConsumerOutputsServed)
-				if err := _IVRFRouterConsumer.contract.UnpackLog(event, "OutputsServed", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) ParseOutputsServed(log types.Log) (*IVRFRouterConsumerOutputsServed, error) {
-	event := new(IVRFRouterConsumerOutputsServed)
-	if err := _IVRFRouterConsumer.contract.UnpackLog(event, "OutputsServed", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFRouterConsumerRandomWordsFulfilledIterator struct {
-	Event *IVRFRouterConsumerRandomWordsFulfilled
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFRouterConsumerRandomWordsFulfilledIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFRouterConsumerRandomWordsFulfilled)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFRouterConsumerRandomWordsFulfilled)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFRouterConsumerRandomWordsFulfilledIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFRouterConsumerRandomWordsFulfilledIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFRouterConsumerRandomWordsFulfilled struct {
-	RequestIDs            []*big.Int
-	SuccessfulFulfillment []byte
-	TruncatedErrorData    [][]byte
-	Raw                   types.Log
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) FilterRandomWordsFulfilled(opts *bind.FilterOpts) (*IVRFRouterConsumerRandomWordsFulfilledIterator, error) {
-
-	logs, sub, err := _IVRFRouterConsumer.contract.FilterLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerRandomWordsFulfilledIterator{contract: _IVRFRouterConsumer.contract, event: "RandomWordsFulfilled", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) WatchRandomWordsFulfilled(opts *bind.WatchOpts, sink chan<- *IVRFRouterConsumerRandomWordsFulfilled) (event.Subscription, error) {
-
-	logs, sub, err := _IVRFRouterConsumer.contract.WatchLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFRouterConsumerRandomWordsFulfilled)
-				if err := _IVRFRouterConsumer.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) ParseRandomWordsFulfilled(log types.Log) (*IVRFRouterConsumerRandomWordsFulfilled, error) {
-	event := new(IVRFRouterConsumerRandomWordsFulfilled)
-	if err := _IVRFRouterConsumer.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFRouterConsumerRandomnessFulfillmentRequestedIterator struct {
-	Event *IVRFRouterConsumerRandomnessFulfillmentRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFRouterConsumerRandomnessFulfillmentRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFRouterConsumerRandomnessFulfillmentRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFRouterConsumerRandomnessFulfillmentRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFRouterConsumerRandomnessFulfillmentRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFRouterConsumerRandomnessFulfillmentRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFRouterConsumerRandomnessFulfillmentRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	GasAllowance           uint32
-	GasPrice               *big.Int
-	WeiPerUnitLink         *big.Int
-	Arguments              []byte
-	Raw                    types.Log
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) FilterRandomnessFulfillmentRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*IVRFRouterConsumerRandomnessFulfillmentRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFRouterConsumer.contract.FilterLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerRandomnessFulfillmentRequestedIterator{contract: _IVRFRouterConsumer.contract, event: "RandomnessFulfillmentRequested", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) WatchRandomnessFulfillmentRequested(opts *bind.WatchOpts, sink chan<- *IVRFRouterConsumerRandomnessFulfillmentRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFRouterConsumer.contract.WatchLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFRouterConsumerRandomnessFulfillmentRequested)
-				if err := _IVRFRouterConsumer.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) ParseRandomnessFulfillmentRequested(log types.Log) (*IVRFRouterConsumerRandomnessFulfillmentRequested, error) {
-	event := new(IVRFRouterConsumerRandomnessFulfillmentRequested)
-	if err := _IVRFRouterConsumer.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFRouterConsumerRandomnessRequestedIterator struct {
-	Event *IVRFRouterConsumerRandomnessRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFRouterConsumerRandomnessRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFRouterConsumerRandomnessRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFRouterConsumerRandomnessRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFRouterConsumerRandomnessRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFRouterConsumerRandomnessRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFRouterConsumerRandomnessRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	Raw                    types.Log
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) FilterRandomnessRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*IVRFRouterConsumerRandomnessRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFRouterConsumer.contract.FilterLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerRandomnessRequestedIterator{contract: _IVRFRouterConsumer.contract, event: "RandomnessRequested", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) WatchRandomnessRequested(opts *bind.WatchOpts, sink chan<- *IVRFRouterConsumerRandomnessRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFRouterConsumer.contract.WatchLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFRouterConsumerRandomnessRequested)
-				if err := _IVRFRouterConsumer.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) ParseRandomnessRequested(log types.Log) (*IVRFRouterConsumerRandomnessRequested, error) {
-	event := new(IVRFRouterConsumerRandomnessRequested)
-	if err := _IVRFRouterConsumer.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
 }
 
 var LinkTokenInterfaceMetaData = &bind.MetaData{
@@ -9567,7 +8282,7 @@ func (_VRFBeaconBilling *VRFBeaconBillingFilterer) ParseUnpaused(log types.Log) 
 }
 
 var VRFBeaconTypesMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint48[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint256[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"costJuels\",\"type\":\"uint256\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"RandomnessRedeemed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"costJuels\",\"type\":\"uint256\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
 	Bin: "0x6080604052348015600f57600080fd5b50605780601d6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c80632f7527cc14602d575b600080fd5b6034600881565b60405160ff909116815260200160405180910390f3fea164736f6c6343000813000a",
 }
 
@@ -10298,6 +9013,7 @@ type VRFBeaconTypesRandomnessFulfillmentRequested struct {
 	GasPrice               *big.Int
 	WeiPerUnitLink         *big.Int
 	Arguments              []byte
+	CostJuels              *big.Int
 	Raw                    types.Log
 }
 
@@ -10371,6 +9087,143 @@ func (_VRFBeaconTypes *VRFBeaconTypesFilterer) ParseRandomnessFulfillmentRequest
 	return event, nil
 }
 
+type VRFBeaconTypesRandomnessRedeemedIterator struct {
+	Event *VRFBeaconTypesRandomnessRedeemed
+
+	contract *bind.BoundContract
+	event    string
+
+	logs chan types.Log
+	sub  ethereum.Subscription
+	done bool
+	fail error
+}
+
+func (it *VRFBeaconTypesRandomnessRedeemedIterator) Next() bool {
+
+	if it.fail != nil {
+		return false
+	}
+
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(VRFBeaconTypesRandomnessRedeemed)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+
+	select {
+	case log := <-it.logs:
+		it.Event = new(VRFBeaconTypesRandomnessRedeemed)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+func (it *VRFBeaconTypesRandomnessRedeemedIterator) Error() error {
+	return it.fail
+}
+
+func (it *VRFBeaconTypesRandomnessRedeemedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+type VRFBeaconTypesRandomnessRedeemed struct {
+	RequestID *big.Int
+	Requester common.Address
+	SubID     *big.Int
+	Raw       types.Log
+}
+
+func (_VRFBeaconTypes *VRFBeaconTypesFilterer) FilterRandomnessRedeemed(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*VRFBeaconTypesRandomnessRedeemedIterator, error) {
+
+	var requestIDRule []interface{}
+	for _, requestIDItem := range requestID {
+		requestIDRule = append(requestIDRule, requestIDItem)
+	}
+	var requesterRule []interface{}
+	for _, requesterItem := range requester {
+		requesterRule = append(requesterRule, requesterItem)
+	}
+
+	logs, sub, err := _VRFBeaconTypes.contract.FilterLogs(opts, "RandomnessRedeemed", requestIDRule, requesterRule)
+	if err != nil {
+		return nil, err
+	}
+	return &VRFBeaconTypesRandomnessRedeemedIterator{contract: _VRFBeaconTypes.contract, event: "RandomnessRedeemed", logs: logs, sub: sub}, nil
+}
+
+func (_VRFBeaconTypes *VRFBeaconTypesFilterer) WatchRandomnessRedeemed(opts *bind.WatchOpts, sink chan<- *VRFBeaconTypesRandomnessRedeemed, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
+
+	var requestIDRule []interface{}
+	for _, requestIDItem := range requestID {
+		requestIDRule = append(requestIDRule, requestIDItem)
+	}
+	var requesterRule []interface{}
+	for _, requesterItem := range requester {
+		requesterRule = append(requesterRule, requesterItem)
+	}
+
+	logs, sub, err := _VRFBeaconTypes.contract.WatchLogs(opts, "RandomnessRedeemed", requestIDRule, requesterRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+
+				event := new(VRFBeaconTypesRandomnessRedeemed)
+				if err := _VRFBeaconTypes.contract.UnpackLog(event, "RandomnessRedeemed", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+func (_VRFBeaconTypes *VRFBeaconTypesFilterer) ParseRandomnessRedeemed(log types.Log) (*VRFBeaconTypesRandomnessRedeemed, error) {
+	event := new(VRFBeaconTypesRandomnessRedeemed)
+	if err := _VRFBeaconTypes.contract.UnpackLog(event, "RandomnessRedeemed", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
 type VRFBeaconTypesRandomnessRequestedIterator struct {
 	Event *VRFBeaconTypesRandomnessRequested
 
@@ -10438,6 +9291,7 @@ type VRFBeaconTypesRandomnessRequested struct {
 	ConfDelay              *big.Int
 	SubID                  *big.Int
 	NumWords               uint16
+	CostJuels              *big.Int
 	Raw                    types.Log
 }
 
@@ -10512,8 +9366,8 @@ func (_VRFBeaconTypes *VRFBeaconTypesFilterer) ParseRandomnessRequested(log type
 }
 
 var VRFCoordinatorMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"beaconPeriodBlocksArg\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"linkToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"linkEthFeed\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"router\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"BeaconPeriodMustBePositive\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestHeight\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"earliestAllowed\",\"type\":\"uint256\"}],\"name\":\"BlockTooRecent\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"providedLength\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxLength\",\"type\":\"uint32\"}],\"name\":\"CallbackArgumentsLengthTooBig\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint16\",\"name\":\"firstDelay\",\"type\":\"uint16\"},{\"internalType\":\"uint16\",\"name\":\"minDelay\",\"type\":\"uint16\"}],\"name\":\"ConfirmationDelayBlocksTooShort\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint16[10]\",\"name\":\"confirmationDelays\",\"type\":\"uint16[10]\"},{\"internalType\":\"uint8\",\"name\":\"violatingIndex\",\"type\":\"uint8\"}],\"name\":\"ConfirmationDelaysNotIncreasing\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"CoordinatorNotRegistered\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gasAllowance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"gasLeft\",\"type\":\"uint256\"}],\"name\":\"GasAllowanceExceedsGasLeft\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"providedLimit\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxLimit\",\"type\":\"uint32\"}],\"name\":\"GasLimitTooBig\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"reportHeight\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"separatorHeight\",\"type\":\"uint64\"}],\"name\":\"HistoryDomainSeparatorTooOld\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"actualBalance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requiredBalance\",\"type\":\"uint256\"}],\"name\":\"InsufficientBalance\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidBillingConfig\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint16\",\"name\":\"expectedLength\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"actualLength\",\"type\":\"uint256\"}],\"name\":\"InvalidCalldata\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"consumer\",\"type\":\"address\"}],\"name\":\"InvalidConsumer\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidJuelsConversion\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"numRecipients\",\"type\":\"uint256\"}],\"name\":\"InvalidNumberOfRecipients\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestedSubID\",\"type\":\"uint256\"}],\"name\":\"InvalidSubscription\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"requestedVersion\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"coordinatorVersion\",\"type\":\"uint8\"}],\"name\":\"MigrationVersionMismatch\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"MustBeProducer\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"proposedOwner\",\"type\":\"address\"}],\"name\":\"MustBeRequestedOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"MustBeRouter\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"MustBeSubOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NoWordsRequested\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint16[10]\",\"name\":\"confDelays\",\"type\":\"uint16[10]\"}],\"name\":\"NonZeroDelayAfterZeroDelay\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OnMigrationNotSupported\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OnlyCallableFromLink\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"PendingRequestExists\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"producer\",\"type\":\"address\"}],\"name\":\"ProducerAlreadyInitialized\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"internalType\":\"uint256\",\"name\":\"requestHeight\",\"type\":\"uint256\"}],\"name\":\"RandomnessNotAvailable\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"numRecipients\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"numPayments\",\"type\":\"uint256\"}],\"name\":\"RecipientsPaymentsMismatch\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"Reentrant\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"expected\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"actual\",\"type\":\"address\"}],\"name\":\"ResponseMustBeRetrievedByRequester\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"TooManyConsumers\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"TooManyRequestsReplaceContract\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"TooManySlotsReplaceContract\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requested\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"max\",\"type\":\"uint256\"}],\"name\":\"TooManyWords\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"blockHeight\",\"type\":\"uint256\"}],\"name\":\"UniverseHasEndedBangBangBang\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"givenDelay\",\"type\":\"uint24\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay[8]\",\"name\":\"knownDelays\",\"type\":\"uint24[8]\"}],\"name\":\"UnknownConfirmationDelay\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"useReasonableGasPrice\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"unusedGasPenaltyPercent\",\"type\":\"uint8\"},{\"internalType\":\"uint32\",\"name\":\"stalenessSeconds\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"redeemableRequestGasOverhead\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"callbackRequestGasOverhead\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"premiumPercentage\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"reasonableGasPriceStalenessBlocks\",\"type\":\"uint32\"},{\"internalType\":\"int256\",\"name\":\"fallbackWeiPerUnitLink\",\"type\":\"int256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.BillingConfig\",\"name\":\"billingConfig\",\"type\":\"tuple\"}],\"name\":\"BillingConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"uint32\",\"name\":\"maxCallbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxCallbackArgumentsLength\",\"type\":\"uint32\"}],\"indexed\":false,\"internalType\":\"structVRFCoordinator.Config\",\"name\":\"newConfig\",\"type\":\"tuple\"}],\"name\":\"CoordinatorConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint8\",\"name\":\"newVersion\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newCoordinator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"MigrationCompleted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Paused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint48[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"SubscriptionCanceled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"consumer\",\"type\":\"address\"}],\"name\":\"SubscriptionConsumerAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"consumer\",\"type\":\"address\"}],\"name\":\"SubscriptionConsumerRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"SubscriptionCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"oldBalance\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newBalance\",\"type\":\"uint256\"}],\"name\":\"SubscriptionFunded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"SubscriptionOwnerTransferRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"SubscriptionOwnerTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Unpaused\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"MAX_CONSUMERS\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MAX_JUELS_SUPPLY\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"\",\"type\":\"uint96\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MAX_NUM_WORDS\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"acceptOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"}],\"name\":\"acceptSubscriptionOwnerTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"consumer\",\"type\":\"address\"}],\"name\":\"addConsumer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"recipients\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"paymentsInJuels\",\"type\":\"uint256[]\"}],\"name\":\"batchTransferLink\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint96\",\"name\":\"gasAllowance\",\"type\":\"uint96\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"calculateRequestPriceCallbackJuels\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"\",\"type\":\"uint96\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"calculateRequestPriceJuels\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"\",\"type\":\"uint96\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"cancelSubscription\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"createSubscription\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBillingConfig\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"useReasonableGasPrice\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"unusedGasPenaltyPercent\",\"type\":\"uint8\"},{\"internalType\":\"uint32\",\"name\":\"stalenessSeconds\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"redeemableRequestGasOverhead\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"callbackRequestGasOverhead\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"premiumPercentage\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"reasonableGasPriceStalenessBlocks\",\"type\":\"uint32\"},{\"internalType\":\"int256\",\"name\":\"fallbackWeiPerUnitLink\",\"type\":\"int256\"}],\"internalType\":\"structVRFBeaconTypes.BillingConfig\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestId\",\"type\":\"uint48\"}],\"name\":\"getCallbackMemo\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getConfirmationDelays\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay[8]\",\"name\":\"\",\"type\":\"uint24[8]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"}],\"name\":\"getSubscription\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"balance\",\"type\":\"uint96\"},{\"internalType\":\"uint64\",\"name\":\"reqCount\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"pendingFulfillments\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"consumers\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSubscriptionLinkBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"balance\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_beaconPeriodBlocks\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_link\",\"outputs\":[{\"internalType\":\"contractLinkTokenInterface\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_link_eth_feed\",\"outputs\":[{\"internalType\":\"contractAggregatorV3Interface\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_router\",\"outputs\":[{\"internalType\":\"contractVRFRouter\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_startSlot\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIVRFMigration\",\"name\":\"newCoordinator\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"encodedRequest\",\"type\":\"bytes\"}],\"name\":\"migrate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"migrationVersion\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"version\",\"type\":\"uint8\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"minDelay\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onMigration\",\"outputs\":[],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onTokenTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint64\",\"name\":\"blockHeight\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"components\":[{\"internalType\":\"uint256[2]\",\"name\":\"p\",\"type\":\"uint256[2]\"}],\"internalType\":\"structECCArithmetic.G1Point\",\"name\":\"vrfOutput\",\"type\":\"tuple\"},{\"components\":[{\"components\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"uint96\",\"name\":\"gasAllowance\",\"type\":\"uint96\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"}],\"internalType\":\"structVRFBeaconTypes.Callback\",\"name\":\"callback\",\"type\":\"tuple\"},{\"internalType\":\"uint96\",\"name\":\"price\",\"type\":\"uint96\"}],\"internalType\":\"structVRFBeaconTypes.CostedCallback[]\",\"name\":\"callbacks\",\"type\":\"tuple[]\"}],\"internalType\":\"structVRFBeaconTypes.VRFOutput[]\",\"name\":\"vrfOutputs\",\"type\":\"tuple[]\"},{\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"blockHeight\",\"type\":\"uint64\"},{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"processVRFOutputs\",\"outputs\":[{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputs\",\"type\":\"tuple[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"consumer\",\"type\":\"address\"}],\"name\":\"removeConsumer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelayArg\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelayArg\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"requestSubscriptionOwnerTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_config\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"maxCallbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxCallbackArgumentsLength\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"}],\"name\":\"s_pendingRequests\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.SlotNumber\",\"name\":\"slotNumber\",\"type\":\"uint32\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_producer\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"useReasonableGasPrice\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"unusedGasPenaltyPercent\",\"type\":\"uint8\"},{\"internalType\":\"uint32\",\"name\":\"stalenessSeconds\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"redeemableRequestGasOverhead\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"callbackRequestGasOverhead\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"premiumPercentage\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"reasonableGasPriceStalenessBlocks\",\"type\":\"uint32\"},{\"internalType\":\"int256\",\"name\":\"fallbackWeiPerUnitLink\",\"type\":\"int256\"}],\"internalType\":\"structVRFBeaconTypes.BillingConfig\",\"name\":\"billingConfig\",\"type\":\"tuple\"}],\"name\":\"setBillingConfig\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint32\",\"name\":\"maxCallbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxCallbackArgumentsLength\",\"type\":\"uint32\"}],\"internalType\":\"structVRFCoordinator.Config\",\"name\":\"config\",\"type\":\"tuple\"}],\"name\":\"setConfig\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay[8]\",\"name\":\"confDelays\",\"type\":\"uint24[8]\"}],\"name\":\"setConfirmationDelays\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"producer\",\"type\":\"address\"}],\"name\":\"setProducer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"gasPrice\",\"type\":\"uint64\"}],\"name\":\"setReasonableGasPrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"juelsAmount\",\"type\":\"uint256\"}],\"name\":\"transferLink\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"typeAndVersion\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"unpause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
-	Bin: "0x6101206040523480156200001257600080fd5b50604051620060e1380380620060e18339810160408190526200003591620002bd565b82828233806000816200008f5760405162461bcd60e51b815260206004820152601860248201527f43616e6e6f7420736574206f776e657220746f207a65726f000000000000000060448201526064015b60405180910390fd5b600080546001600160a01b0319166001600160a01b0384811691909117909155811615620000c257620000c28162000166565b50506001805460ff60a01b19169055506001600160a01b0392831660805290821660a0521660c05260008490036200010d57604051632abc297960e01b815260040160405180910390fd5b60e084905260006200011e62000211565b9050600060e0518262000132919062000311565b905060008160e0516200014691906200034a565b905062000154818462000366565b61010052506200039695505050505050565b336001600160a01b03821603620001c05760405162461bcd60e51b815260206004820152601760248201527f43616e6e6f74207472616e7366657220746f2073656c66000000000000000000604482015260640162000086565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b60004661a4b181148062000227575062066eed81145b15620002995760646001600160a01b031663a3b1b31d6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156200026d573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906200029391906200037c565b91505090565b4391505090565b80516001600160a01b0381168114620002b857600080fd5b919050565b60008060008060808587031215620002d457600080fd5b84519350620002e660208601620002a0565b9250620002f660408601620002a0565b91506200030660608601620002a0565b905092959194509250565b6000826200032f57634e487b7160e01b600052601260045260246000fd5b500690565b634e487b7160e01b600052601160045260246000fd5b8181038181111562000360576200036062000334565b92915050565b8082018082111562000360576200036062000334565b6000602082840312156200038f57600080fd5b5051919050565b60805160a05160c05160e05161010051615c7a62000467600039600061035b01526000818161073f01528181611d750152818161358e015281816135bd015281816135f50152613fb701526000818161042401528181610b7501528181610c060152818161107f0152818161155b015281816119f001528181611c60015281816121df015281816122d601526141a601526000818161083e015261397b01526000818161050701528181610a8201528181611abf015281816125b901528181612cc00152612d480152615c7a6000f3fe608060405234801561001057600080fd5b50600436106102b65760003560e01c80638a8a139011610172578063bec4c08c116100d9578063d0b925fd11610092578063d0b925fd14610774578063dac83d2914610802578063dc311dd314610815578063f27fcfb814610839578063f2fde38b14610860578063f99b1d6814610873578063f9c45ced1461088657600080fd5b8063bec4c08c146106f9578063c3fbb6fd1461070c578063c63c4e9b1461071f578063cb63179714610727578063cd0593df1461073a578063ce3f47191461076157600080fd5b8063a21a23e41161012b578063a21a23e414610685578063a4c0ed361461068d578063abbf1c9b146106a0578063b0724195146106c0578063b2a7cac5146106d3578063bd58017f146106e657600080fd5b80638a8a1390146105465780638d907c621461056e5780638da5cb5b1461063b5780638eef585f1461064c57806395009f081461065f5780639e2010361461067257600080fd5b8063483af7031161022157806369a3164e116101da57806369a3164e146104c157806373433a2f146104d4578063747c91f7146104e757806379ba5097146104fa5780637d253aff146105025780638456cb591461052957806385c64e111461053157600080fd5b8063483af703146103ff578063581bdd161461041f578063597d2f3c146104535780635c975abb1461046457806362f8b6201461047c57806364d51a2a146104a657600080fd5b80632b38bafc116102735780632b38bafc146103a05780632d9297b0146103b35780632f7527cc146103d35780633f4ba83a146103db57806340d6bb82146103e357806346942d18146103ec57600080fd5b806305f4acc6146102bb578063088070f5146102d05780630ae095401461030d578063181f5a77146103205780631a961f2514610356578063294daa491461038b575b600080fd5b6102ce6102c936600461461d565b610899565b005b600b546102eb9063ffffffff80821691600160201b90041682565b6040805163ffffffff9384168152929091166020830152015b60405180910390f35b6102ce61031b36600461465f565b610916565b60408051808201825260148152730565246436f6f7264696e61746f7220312e302e360641b6020820152905161030491906146d5565b61037d7f000000000000000000000000000000000000000000000000000000000000000081565b604051908152602001610304565b60015b60405160ff9091168152602001610304565b6102ce6103ae3660046146e8565b610caf565b6103bb610d10565b6040516001600160601b039091168152602001610304565b61038e600881565b6102ce610d51565b61037d6103e881565b6102ce6103fa366004614705565b610d63565b61041261040d366004614769565b610de9565b604051610304919061485c565b6104467f000000000000000000000000000000000000000000000000000000000000000081565b604051610304919061486f565b6002546001600160601b031661037d565b61046c611062565b6040519015158152602001610304565b61048f61048a3660046149ec565b611072565b60405165ffffffffffff9091168152602001610304565b6104ae606481565b60405161ffff9091168152602001610304565b6103bb6104cf366004614a7d565b611258565b6102ce6104e2366004614aca565b611302565b6103bb6b033b2e3c9fd0803ce800000081565b6102ce6113f3565b6104467f000000000000000000000000000000000000000000000000000000000000000081565b6102ce61149d565b6105396114ad565b6040516103049190614b5d565b61037d610554366004614b82565b65ffffffffffff166000908152600c602052604090205490565b61062e6040805161010081018252600080825260208201819052918101829052606081018290526080810182905260a0810182905260c0810182905260e08101919091525060408051610100808201835260045460ff80821615158452918104909116602083015263ffffffff620100008204811693830193909352600160301b810483166060830152600160501b810483166080830152600160701b8104831660a0830152600160901b900490911660c082015260055460e082015290565b6040516103049190614b9d565b6000546001600160a01b0316610446565b6102ce61065a366004614c2f565b611512565b61048f61066d366004614c77565b61154e565b61037d610680366004614d2a565b6117a7565b61037d6117cb565b6102ce61069b366004614dea565b611a88565b6106b36106ae366004614e39565b611c53565b6040516103049190614ec6565b6102ce6106ce366004614ed9565b611e79565b6102ce6106e1366004614f1a565b611eee565b600a54610446906001600160a01b031681565b6102ce61070736600461465f565b61201a565b6102ce61071a366004614f33565b6121a4565b6104ae600381565b6102ce61073536600461465f565b612738565b61037d7f000000000000000000000000000000000000000000000000000000000000000081565b6102ce61076f366004614f87565b612a3d565b6107c5610782366004614b82565b60106020526000908152604090205463ffffffff811690600160201b810462ffffff1690600160381b810461ffff1690600160481b90046001600160a01b031684565b6040805163ffffffff909516855262ffffff909316602085015261ffff909116918301919091526001600160a01b03166060820152608001610304565b6102ce61081036600461465f565b612a56565b610828610823366004614f1a565b612b62565b604051610304959493929190615001565b6104467f000000000000000000000000000000000000000000000000000000000000000081565b6102ce61086e3660046146e8565b612c5e565b6102ce610881366004615056565b612c6f565b61037d610894366004615082565b612de2565b600a546001600160a01b031633146108c457604051634bea32db60e11b815260040160405180910390fd5b60045460ff16156109135760408051808201909152436001600160401b039081168083529083166020909201829052600780546001600160801b031916909117600160401b9092029190911790555b50565b60008281526008602052604090205482906001600160a01b0316806109565760405163c5171ee960e01b8152600481018390526024015b60405180910390fd5b336001600160a01b038216146109815780604051636c51fda960e11b815260040161094d919061486f565b6000848152600960205260409020548490600160a01b90046001600160401b0316156109c057604051631685ecdd60e31b815260040160405180910390fd5b60065460ff16156109e45760405163769dd35360e11b815260040160405180910390fd5b600085815260096020908152604091829020825160608101845290546001600160601b0381168083526001600160401b03600160601b8304811694840194909452600160a01b90910490921692810192909252610a4087612dfc565b600280546001600160601b03169082906000610a5c83856150c8565b92506101000a8154816001600160601b0302191690836001600160601b031602179055507f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031663a9059cbb88846001600160601b03166040518363ffffffff1660e01b8152600401610aeb9291906001600160a01b03929092168252602082015260400190565b6020604051808303816000875af1158015610b0a573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610b2e91906150fd565b610b5e5760405163cf47918160e01b81526001600160601b0380831660048301528316602482015260440161094d565b60405163677a055360e11b81526001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169063cef40aa690610baa90309060040161486f565b602060405180830381865afa158015610bc7573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610beb91906150fd565b15610c6b57604051632ee6cacd60e21b8152600481018990527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169063bb9b2b3490602401600060405180830381600087803b158015610c5257600080fd5b505af1158015610c66573d6000803e3d6000fd5b505050505b877f3784f77e8e883de95b5d47cd713ced01229fa74d118c0a462224bcb0516d43f18884604051610c9d92919061511a565b60405180910390a25050505050505050565b610cb7612f5a565b600a546001600160a01b031615610cee57600a5460405163ea6d390560e01b815261094d916001600160a01b03169060040161486f565b600a80546001600160a01b0319166001600160a01b0392909216919091179055565b600080610d1b612fad565b600454610d359190600160301b900463ffffffff1661513c565b6001600160401b03169050610d4b81600061303e565b91505090565b610d59612f5a565b610d6161308e565b565b610d6b612f5a565b6064610d7d6040830160208401615176565b60ff161115610d9f5760405163015f505560e31b815260040160405180910390fd5b806004610dac82826151a0565b9050507f6dff48329afe669cb5cd0d9af619ec435fe9550e84871839e9df73a1fa34c9bf81604051610dde91906152ea565b60405180910390a150565b600a546060906001600160a01b03163314610e1757604051634bea32db60e11b815260040160405180910390fd5b610e1f6130dd565b600080876001600160401b03811115610e3a57610e3a6148a8565b604051908082528060200260200182016040528015610e7357816020015b610e6061448a565b815260200190600190039081610e585790505b50905060005b88811015610f635760008a8a83818110610e9557610e95615399565b9050602002810190610ea791906153af565b610eb090615546565b9050610ebd81888b613125565b60408101515151151580610ed957506040810151516020015115155b15610f50576040805160808101825282516001600160401b0316815260208084015162ffffff168183015283830180515151938301939093529151519091015160608201528351849061ffff8716908110610f3657610f36615399565b60200260200101819052508380610f4c9061561b565b9450505b5080610f5b8161563c565b915050610e79565b5060008261ffff166001600160401b03811115610f8257610f826148a8565b604051908082528060200260200182016040528015610fbb57816020015b610fa861448a565b815260200190600190039081610fa05790505b50905060005b8361ffff1681101561101757828181518110610fdf57610fdf615399565b6020026020010151828281518110610ff957610ff9615399565b6020026020010181905250808061100f9061563c565b915050610fc1565b507ff10ea936d00579b4c52035ee33bf46929646b3aa87554c565d8fb2c7aa549c448689898460405161104d9493929190615655565b60405180910390a19998505050505050505050565b600154600160a01b900460ff1690565b6000336001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016146110bd5760405163f74c318f60e01b815260040160405180910390fd5b6110c56130dd565b60065460ff16156110e95760405163769dd35360e11b815260040160405180910390fd5b60008060006110f98988886134fc565b92509250925061110989896137d1565b65ffffffffffff8316600090815260106020908152604080832085518154848801518489015160608a01516001600160a01b0316600160481b02600160481b600160e81b031961ffff909216600160381b0291909116600160381b600160e81b031962ffffff909316600160201b0266ffffffffffffff1990941663ffffffff909516949094179290921716919091171790558a83526009909152902080546001600160401b03600160601b9091041690600c6111c58361569a565b82546101009290920a6001600160401b0381810219909316918316021790915560408051918416825262ffffff8916602083015281018a905261ffff891660608201526001600160a01b038b16915065ffffffffffff8516907fc3b31df4232b05afd212fc28027dae6fd6a81618c2a3116182cb57c7f0a3fd0a9060800160405180910390a35090979650505050505050565b600080611263612fad565b61126e90601061513c565b6001600160401b03169050600060146112888360156156b6565b61129291906156e3565b845161129e91906156b6565b6112a6612fad565b6004546001600160401b0391909116906112cd90600160501b900463ffffffff16886156f7565b6112d79190615717565b6001600160601b03166112ea919061573a565b90506112f781600061303e565b925050505b92915050565b600a546001600160a01b0316331461132d57604051634bea32db60e11b815260040160405180910390fd5b8280158061133b5750601f81115b1561135c57604051634ecc4fef60e01b81526004810182905260240161094d565b8082146113865760405163339f8a9d60e01b8152600481018290526024810183905260440161094d565b60005b818110156113eb576113d98686838181106113a6576113a6615399565b90506020020160208101906113bb91906146e8565b8585848181106113cd576113cd615399565b90506020020135612c6f565b806113e38161563c565b915050611389565b505050505050565b6001546001600160a01b031633146114465760405162461bcd60e51b815260206004820152601660248201527526bab9ba10313290383937b837b9b2b21037bbb732b960511b604482015260640161094d565b60008054336001600160a01b0319808316821784556001805490911690556040516001600160a01b0390921692909183917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a350565b6114a5612f5a565b610d61613909565b6114b56144c0565b6040805161010081019182905290600f90600890826000855b82829054906101000a900462ffffff1662ffffff16815260200190600301906020826002010492830192600103820291508084116114ce5790505050505050905090565b600a546001600160a01b0316331461153d57604051634bea32db60e11b815260040160405180910390fd5b61154a600f8260086144df565b5050565b6000336001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016146115995760405163f74c318f60e01b815260040160405180910390fd5b6115a16130dd565b60065460ff16156115c55760405163769dd35360e11b815260040160405180910390fd5b600b5463ffffffff908116908516111561160657600b54604051637aebf00f60e11b815263ffffffff8087166004830152909116602482015260440161094d565b600b548351600160201b90910463ffffffff161015611656578251600b54604051631961a6f960e31b815263ffffffff9283166004820152600160201b909104909116602482015260440161094d565b6000806116648a89896134fc565b925050915060006040518061010001604052808465ffffffffffff1681526020018a61ffff1681526020018c6001600160a01b031681526020018781526020018863ffffffff166001600160601b031681526020018b81526020016116c7612fad565b6001600160401b031681526020016116dd61394c565b905290506116ea81613a23565b81888b83604051602001611701949392919061574d565b60408051601f19818403018152918152815160209283012065ffffffffffff86166000908152600c9093529120556117388a613b74565b8a6001600160a01b03168365ffffffffffff167f24f0e469e0097d1e8d9975137f9f4dd17d2c1481b3a2f25f2382f51287eda1dc848b8e8e8d8860c001518960e001518f604051611790989796959493929190615813565b60405180910390a350909998505050505050505050565b60006117b98463ffffffff1684611258565b6001600160601b031695945050505050565b60065460009060ff16156117f25760405163769dd35360e11b815260040160405180910390fd5b6117fa6130dd565b600033611808600143615878565b6001546040516bffffffffffffffffffffffff19606094851b81166020830152924060348201523090931b90911660548301526001600160c01b0319600160a81b90910460c01b16606882015260700160408051808303601f19018152919052805160209091012060018054919250600160a81b9091046001600160401b03169060156118948361569a565b91906101000a8154816001600160401b0302191690836001600160401b03160217905550506000806001600160401b038111156118d3576118d36148a8565b6040519080825280602002602001820160405280156118fc578160200160208202803683370190505b506040805160608082018352600080835260208084018281528486018381528984526009835286842095518654925191516001600160601b039091166001600160a01b031993841617600160601b6001600160401b03938416021767ffffffffffffffff60a01b1916600160a01b9290911691909102179094558451928301855233835282810182815283860187815289845260088352959092208351815486166001600160a01b0391821617825592516001820180549096169316929092179093559251805194955090936119d8926002850192019061457d565b5050604051634a3cdba760e11b8152600481018490527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169150639479b74e90602401600060405180830381600087803b158015611a3d57600080fd5b505af1158015611a51573d6000803e3d6000fd5b50506040513392508491507f1d3015d7ba850fa198dc7b1a3f5d42779313a681035f77c8c03764c61005518d90600090a350905090565b60065460ff1615611aac5760405163769dd35360e11b815260040160405180910390fd5b611ab46130dd565b336001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001614611afd576040516344b0e3c360e01b815260040160405180910390fd5b60208114611b2857604051636865567560e01b8152602060048201526024810182905260440161094d565b6000611b3682840184614f1a565b6000818152600860205260409020549091506001600160a01b0316611b715760405163c5171ee960e01b81526004810182905260240161094d565b600081815260096020526040812080546001600160601b031691869190611b9883856156f7565b92506101000a8154816001600160601b0302191690836001600160601b0316021790555084600260008282829054906101000a90046001600160601b0316611be091906156f7565b92506101000a8154816001600160601b0302191690836001600160601b03160217905550817f1ced9348ff549fceab2ac57cd3a9de38edaaab274b725ee82c23e8fc8c4eec7a828784611c33919061573a565b6040805192835260208301919091520160405180910390a2505050505050565b6060336001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001614611c9e5760405163f74c318f60e01b815260040160405180910390fd5b60065460ff1615611cc25760405163769dd35360e11b815260040160405180910390fd5b65ffffffffffff831660008181526010602081815260408084208151608081018352815463ffffffff8116825262ffffff600160201b8204168286015261ffff600160381b820416938201939093526001600160a01b03600160481b840481166060830190815297909652939092526001600160e81b03191690559151811690871614611d6a57806060015186604051638e30e82360e01b815260040161094d92919061588b565b8051600090611da0907f00000000000000000000000000000000000000000000000000000000000000009063ffffffff166156b6565b90506000611dac613c01565b90506000836020015162ffffff1682611dc59190615878565b9050808310611e115782846020015162ffffff1684611de4919061573a565b611def90600161573a565b6040516315ad27c360e01b81526004810192909252602482015260440161094d565b6001600160401b03831115611e3c576040516302c6ef8160e11b81526004810184905260240161094d565b6000838152600d602090815260408083208288015162ffffff168452909152902054611e6c908890869086613c85565b9998505050505050505050565b611e81612f5a565b8051600b80546020808501805163ffffffff908116600160201b0267ffffffffffffffff1990941695811695861793909317909355604080519485529251909116908301527ffffe83c0c6d543712480c43dcc77636fc5671d01e3199dfb237b1bbf29d971e49101610dde565b60065460ff1615611f125760405163769dd35360e11b815260040160405180910390fd5b6000818152600860205260409020546001600160a01b0316611f4a5760405163c5171ee960e01b81526004810182905260240161094d565b6000818152600860205260409020600101546001600160a01b03163314611fa1576000818152600860205260409081902060010154905163d084e97560e01b815261094d916001600160a01b03169060040161486f565b6000818152600860205260409081902080546001600160a01b031980821633908117845560019093018054909116905591516001600160a01b039092169183917fd4114ab6e9af9f597c52041f32d62dc57c5c4e4c0d4427006069635e216c93869161200e91859161588b565b60405180910390a25050565b60008281526008602052604090205482906001600160a01b0316806120555760405163c5171ee960e01b81526004810183905260240161094d565b336001600160a01b038216146120805780604051636c51fda960e11b815260040161094d919061486f565b60065460ff16156120a45760405163769dd35360e11b815260040160405180910390fd5b6120ac6130dd565b600084815260086020526040902060020154606319016120df576040516305a48e0f60e01b815260040160405180910390fd5b6001600160a01b038316600090815260036020908152604080832087845290915290205460ff1661219e576001600160a01b03831660008181526003602090815260408083208884528252808320805460ff1916600190811790915560088352818420600201805491820181558452919092200180546001600160a01b0319169092179091555184907f1e980d04aa7648e205713e5e8ea3808672ac163d10936d36f91b2c88ac1575e19061219590869061486f565b60405180910390a25b50505050565b60065460ff16156121c85760405163769dd35360e11b815260040160405180910390fd5b60405163677a055360e11b81526001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169063cef40aa69061221490869060040161486f565b602060405180830381865afa158015612231573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061225591906150fd565b612272576040516301fd70a160e51b815260040160405180910390fd5b6040811461229f5760408051636865567560e01b815260048101919091526024810182905260440161094d565b60006122ad828401846158a5565b6020810151604051637d331ac560e11b8152600481019190915290915030906001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169063fa66358a90602401602060405180830381865afa15801561231d573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061234191906158df565b6001600160a01b03161461237057806020015160405163c5171ee960e01b815260040161094d91815260200190565b60008060008060006123858660200151612b62565b94509450945094509450816001600160a01b0316336001600160a01b0316146123c35781604051636c51fda960e11b815260040161094d919061486f565b886001600160a01b031663294daa496040518163ffffffff1660e01b8152600401602060405180830381865afa158015612401573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061242591906158fc565b60ff16866000015160ff16146124c2578560000151896001600160a01b031663294daa496040518163ffffffff1660e01b8152600401602060405180830381865afa158015612478573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061249c91906158fc565b60405163e7aada9560e01b815260ff92831660048201529116602482015260440161094d565b6001600160401b038316156124ea57604051631685ecdd60e31b815260040160405180910390fd5b60006040518060c001604052806124ff600190565b60ff16815260200188602001518152602001846001600160a01b03168152602001838152602001876001600160601b03168152602001866001600160401b031681525090506000816040516020016125579190615919565b60405160208183030381529060405290506125758860200151612dfc565b600280548891906000906125939084906001600160601b03166150c8565b92506101000a8154816001600160601b0302191690836001600160601b031602179055507f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031663a9059cbb8c896040518363ffffffff1660e01b815260040161260592919061511a565b6020604051808303816000875af1158015612624573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061264891906150fd565b6126895760405162461bcd60e51b8152602060048201526012602482015271696e73756666696369656e742066756e647360701b604482015260640161094d565b60405163ce3f471960e01b81526001600160a01b038c169063ce3f4719906126b59084906004016146d5565b600060405180830381600087803b1580156126cf57600080fd5b505af11580156126e3573d6000803e3d6000fd5b505050508760200151886000015160ff167fbd89b747474d3fc04664dfbd1d56ae7ffbe46ee097cdb9979c13916bb76269ce8d604051612723919061486f565b60405180910390a35050505050505050505050565b60008281526008602052604090205482906001600160a01b0316806127735760405163c5171ee960e01b81526004810183905260240161094d565b336001600160a01b0382161461279e5780604051636c51fda960e11b815260040161094d919061486f565b6000848152600960205260409020548490600160a01b90046001600160401b0316156127dd57604051631685ecdd60e31b815260040160405180910390fd5b60065460ff16156128015760405163769dd35360e11b815260040160405180910390fd5b6001600160a01b038416600090815260036020908152604080832088845290915290205460ff166128495784846040516379bfd40160e01b815260040161094d929190615990565b6000858152600860209081526040808320600201805482518185028101850190935280835291929091908301828280156128ac57602002820191906000526020600020905b81546001600160a01b0316815260019091019060200180831161288e575b505050505090506000600182516128c39190615878565b905060005b82518110156129ce57866001600160a01b03168382815181106128ed576128ed615399565b60200260200101516001600160a01b0316036129bc57600083838151811061291757612917615399565b6020026020010151905080600860008b8152602001908152602001600020600201838154811061294957612949615399565b600091825260208083209190910180546001600160a01b0319166001600160a01b0394909416939093179092558a8152600890915260409020600201805480612994576129946159a7565b600082815260209020810160001990810180546001600160a01b0319169055019055506129ce565b806129c68161563c565b9150506128c8565b506001600160a01b03861660009081526003602090815260408083208a845290915290819020805460ff191690555187907f32158c6058347c1601b2d12bc696ac6901d8a9a9aa3ba10c27ab0a983e8425a790612a2c90899061486f565b60405180910390a250505050505050565b604051632cb6686f60e01b815260040160405180910390fd5b60008281526008602052604090205482906001600160a01b031680612a915760405163c5171ee960e01b81526004810183905260240161094d565b336001600160a01b03821614612abc5780604051636c51fda960e11b815260040161094d919061486f565b60065460ff1615612ae05760405163769dd35360e11b815260040160405180910390fd5b6000848152600860205260409020600101546001600160a01b0384811691161461219e576000848152600860205260409081902060010180546001600160a01b0319166001600160a01b0386161790555184907f21a4dad170a6bf476c31bbcf4a16628295b0e450672eec25d7c93308e05344a190612195903390879061588b565b6000818152600860205260408120548190819081906060906001600160a01b0316612ba35760405163c5171ee960e01b81526004810187905260240161094d565b60008681526009602090815260408083205460088352928190208054600290910180548351818602810186019094528084526001600160601b038616956001600160401b03600160601b8204811696600160a01b90920416946001600160a01b0390941693918391830182828015612c4457602002820191906000526020600020905b81546001600160a01b03168152600190910190602001808311612c26575b505050505090509450945094509450945091939590929450565b612c66612f5a565b61091381613e59565b600a546001600160a01b03163314612c9a57604051634bea32db60e11b815260040160405180910390fd5b60405163a9059cbb60e01b81526001600160a01b038381166004830152602482018390527f0000000000000000000000000000000000000000000000000000000000000000169063a9059cbb906044016020604051808303816000875af1158015612d09573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190612d2d91906150fd565b61154a576040516370a0823160e01b81526001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016906370a0823190612d7d90309060040161486f565b602060405180830381865afa158015612d9a573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190612dbe91906159bd565b60405163cf47918160e01b815260048101919091526024810182905260440161094d565b6000612dec610d10565b6001600160601b03169392505050565b6000818152600860209081526040808320815160608101835281546001600160a01b03908116825260018301541681850152600282018054845181870281018701865281815292959394860193830182828015612e8257602002820191906000526020600020905b81546001600160a01b03168152600190910190602001808311612e64575b505050505081525050905060005b816040015151811015612f01576003600083604001518381518110612eb757612eb7615399565b6020908102919091018101516001600160a01b0316825281810192909252604090810160009081208682529092529020805460ff1916905580612ef98161563c565b915050612e90565b50600082815260086020526040812080546001600160a01b03199081168255600182018054909116905590612f3960028301826145d2565b505050600090815260096020526040902080546001600160e01b0319169055565b6000546001600160a01b03163314610d615760405162461bcd60e51b815260206004820152601660248201527527b7363c9031b0b63630b1363290313c9037bbb732b960511b604482015260640161094d565b60045460009060ff168015612fd35750600754600160401b90046001600160401b031615155b1561303957600454600160901b900463ffffffff164310808061301a575060045461300b90600160901b900463ffffffff1643615878565b6007546001600160401b031610155b15613037575050600754600160401b90046001600160401b031690565b505b503a90565b600454600090819060649061306090600160701b900463ffffffff16826159d6565b6130709063ffffffff16866156b6565b61307a91906156e3565b90506130868184613efc565b949350505050565b613096613f62565b6001805460ff60a01b191690557f5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa335b6040516130d3919061486f565b60405180910390a1565b6130e5611062565b15610d615760405162461bcd60e51b815260206004820152601060248201526f14185d5cd8589b194e881c185d5cd95960821b604482015260640161094d565b82516001600160401b038084169116111561316957825160405163012d824d60e01b81526001600160401b038085166004830152909116602482015260440161094d565b60408301515151600090158015613187575060408401515160200151155b156131bf575082516001600160401b03166000908152600d602090815260408083208287015162ffffff168452909152902054613219565b83604001516040516020016131d491906159f3565b60408051601f19818403018152918152815160209283012086516001600160401b03166000908152600d84528281208885015162ffffff168252909352912081905590505b6060840151516000816001600160401b03811115613239576132396148a8565b604051908082528060200260200182016040528015613262578160200160208202803683370190505b5090506000826001600160401b0381111561327f5761327f6148a8565b6040519080825280601f01601f1916602001820160405280156132a9576020820181803683370190505b5090506000836001600160401b038111156132c6576132c66148a8565b6040519080825280602002602001820160405280156132f957816020015b60608152602001906001900390816132e45790505b5090506000805b858110156133fa5760008a60600151828151811061332057613320615399565b602002602001015190506000806133418d600001518e602001518c86613fad565b9150915081156133805780868661ffff168151811061336257613362615399565b602002602001018190525084806133789061561b565b9550506133af565b600160f81b87858151811061339757613397615399565b60200101906001600160f81b031916908160001a9053505b82515188518990869081106133c6576133c6615399565b602002602001019065ffffffffffff16908165ffffffffffff168152505050505080806133f29061563c565b915050613300565b50606089015151156134f15760008161ffff166001600160401b03811115613424576134246148a8565b60405190808252806020026020018201604052801561345757816020015b60608152602001906001900390816134425790505b50905060005b8261ffff168110156134b35783818151811061347b5761347b615399565b602002602001015182828151811061349557613495615399565b602002602001018190525080806134ab9061563c565b91505061345d565b507f47ddf7bb0cbd94c1b43c5097f1352a80db0ceb3696f029d32b24f32cd631d2b78585836040516134e793929190615a26565b60405180910390a1505b505050505050505050565b604080516080810182526000808252602082018190529181018290526060810182905260006103e88561ffff16111561355657604051634a90778560e01b815261ffff861660048201526103e8602482015260440161094d565b8461ffff1660000361357b576040516308fad2a760e01b815260040160405180910390fd5b6000613585613c01565b905060006135b37f000000000000000000000000000000000000000000000000000000000000000083615adc565b90506000816135e27f00000000000000000000000000000000000000000000000000000000000000008561573a565b6135ec9190615878565b9050600061361a7f0000000000000000000000000000000000000000000000000000000000000000836156e3565b905063ffffffff8110613640576040516307b2a52360e41b815260040160405180910390fd5b604080518082018252600e805465ffffffffffff1682528251610100810193849052849360009392916020840191600f906008908288855b82829054906101000a900462ffffff1662ffffff168152602001906003019060208260020104928301926001038202915080841161367857905050505091909252505081519192505065ffffffffffff908116106136e957604051630568cab760e31b815260040160405180910390fd5b80516136f6906001615af0565b600e805465ffffffffffff191665ffffffffffff9290921691909117905560005b600881101561375d578a62ffffff168260200151826008811061373c5761373c615399565b602002015162ffffff161461375d57806137558161563c565b915050613717565b60088110613785576020820151604051630c4f769b60e41b815261094d918d91600401615b0f565b506040805160808101825263ffffffff909316835262ffffff8b16602084015261ffff8c16908301526001600160a01b038c166060830152519750955090935050505093509350939050565b6001600160a01b038216600090815260036020908152604080832084845290915290205460ff166138195780826040516379bfd40160e01b815260040161094d929190615990565b6000613823610d10565b600083815260096020526040902080546001600160601b0392831693509091168281101561387957815460405163cf47918160e01b81526001600160601b0390911660048201526024810184905260440161094d565b8154839083906000906138969084906001600160601b03166150c8565b92506101000a8154816001600160601b0302191690836001600160601b0316021790555082600260008282829054906101000a90046001600160601b03166138de91906150c8565b92506101000a8154816001600160601b0302191690836001600160601b031602179055505050505050565b6139116130dd565b6001805460ff60a01b1916600160a01b1790557f62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a2586130c63390565b6004805460408051633fabe5a360e21b815290516000936201000090930463ffffffff169283151592859283927f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169263feaf968c928183019260a0928290030181865afa1580156139ca573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906139ee9190615b43565b509450909250849150508015613a125750613a098242615878565b8463ffffffff16105b156130865750600554949350505050565b6040808201516001600160a01b031660009081526003602090815282822060a085015183529052205460ff16613a78578060a0015181604001516040516379bfd40160e01b815260040161094d929190615990565b6000613a8c82608001518360600151611258565b60a0830151600090815260096020526040902080546001600160601b039283169350909116821115613ae657805460405163cf47918160e01b81526001600160601b0390911660048201526024810183905260440161094d565b805482908290600090613b039084906001600160601b03166150c8565b92506101000a8154816001600160601b0302191690836001600160601b0316021790555081600260008282829054906101000a90046001600160601b0316613b4b91906150c8565b92506101000a8154816001600160601b0302191690836001600160601b03160217905550505050565b60008181526009602052604090208054600160601b90046001600160401b031681600c613ba08361569a565b82546101009290920a6001600160401b038181021990931691831602179091558254600160a01b9004169050816014613bd88361569a565b91906101000a8154816001600160401b0302191690836001600160401b03160217905550505050565b60004661a4b1811480613c16575062066eed81145b15613c7e5760646001600160a01b031663a3b1b31d6040518163ffffffff1660e01b8152600401602060405180830381865afa158015613c5a573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610d4b91906159bd565b4391505090565b606082613cbe5760405163c7d41b1b60e01b815265ffffffffffff861660048201526001600160401b038316602482015260440161094d565b6040805165ffffffffffff8716602080830191909152865163ffffffff168284015286015162ffffff166060808301919091529186015161ffff166080820152908501516001600160a01b031660a082015260c0810184905260009060e0016040516020818303038152906040528051906020012090506103e8856040015161ffff161115613d74576040808601519051634a90778560e01b815261ffff90911660048201526103e8602482015260440161094d565b6000856040015161ffff166001600160401b03811115613d9657613d966148a8565b604051908082528060200260200182016040528015613dbf578160200160208202803683370190505b50905060005b866040015161ffff168161ffff161015613e4e578281604051602001613e0292919091825260f01b6001600160f01b031916602082015260220190565b6040516020818303038152906040528051906020012060001c828261ffff1681518110613e3157613e31615399565b602090810291909101015280613e468161561b565b915050613dc5565b509695505050505050565b336001600160a01b03821603613eab5760405162461bcd60e51b815260206004820152601760248201527621b0b73737ba103a3930b739b332b9103a379039b2b63360491b604482015260640161094d565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b6000808215613f0b5782613f13565b613f1361394c565b9050600081613f2a86670de0b6b3a76400006156b6565b613f3491906156e3565b90506b033b2e3c9fd0803ce80000008111156130865760405162de437160e81b815260040160405180910390fd5b613f6a611062565b610d615760405162461bcd60e51b815260206004820152601460248201527314185d5cd8589b194e881b9bdd081c185d5cd95960621b604482015260640161094d565b6000606081613fe57f00000000000000000000000000000000000000000000000000000000000000006001600160401b0389166156e3565b845160a08101516040519293509091600091614009918b918b91869060200161574d565b60408051601f198184030181529181528151602092830120845165ffffffffffff166000908152600c90935291205490915081146140785760016040518060400160405280601081526020016f756e6b6e6f776e2063616c6c6261636b60801b81525094509450505050614359565b6040805160808101825263ffffffff8516815262ffffff8a1660208083019190915284015161ffff1681830152908301516001600160a01b03166060820152876140fa57600160405180604001604052806016815260200175756e617661696c61626c652072616e646f6d6e65737360501b8152509550955050505050614359565b600061410c8460000151838b8e613c85565b6060808401518651918701516040519394509092600092635a47dd7160e01b9261413b92879190602401615b93565b60408051601f198184030181529190526020810180516001600160e01b03166001600160e01b0319909316929092179091526006805460ff191660011790559050600080805a8d51608001516040808c015190516355fe976360e01b81529293506001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016926355fe9763926141dd9290918990600401615bc6565b60408051808303816000875af11580156141fb573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061421f9190615c02565b90935091508161425b578c516080015160405163aad1598360e01b81526001600160601b0390911660048201526024810182905260440161094d565b60006113885a61426b919061573a565b6006805460ff191690559050818110156142935761429361428c8284615878565b8f51614362565b8d5160a0015160009081526009602052604090208054600160a01b90046001600160401b03169060146142c583615c31565b82546001600160401b039182166101009390930a928302919092021990911617905550895165ffffffffffff166000908152600c6020526040812055836143365760016040518060400160405280601081526020016f195e1958dd5d1a5bdb8819985a5b195960821b815250614349565b6000604051806020016040528060008152505b9c509c5050505050505050505050505b94509492505050565b80608001516001600160601b031682111561437b575050565b60045460009060649061439690610100900460ff1682615c54565b60ff168360c001518585608001516001600160601b03166143b79190615878565b6143c191906156b6565b6143cb91906156b6565b6143d591906156e3565b905060006143e7828460e00151613efc565b60a08401516000908152600960205260408120805492935083929091906144189084906001600160601b03166156f7565b92506101000a8154816001600160601b0302191690836001600160601b0316021790555080600260008282829054906101000a90046001600160601b031661446091906156f7565b92506101000a8154816001600160601b0302191690836001600160601b0316021790555050505050565b604051806080016040528060006001600160401b03168152602001600062ffffff16815260200160008152602001600081525090565b6040518061010001604052806008906020820280368337509192915050565b60018301918390821561456d5791602002820160005b8382111561453c57833562ffffff1683826101000a81548162ffffff021916908362ffffff16021790555092602001926003016020816002010492830192600103026144f5565b801561456b5782816101000a81549062ffffff021916905560030160208160020104928301926001030261453c565b505b506145799291506145ec565b5090565b82805482825590600052602060002090810192821561456d579160200282015b8281111561456d57825182546001600160a01b0319166001600160a01b0390911617825560209092019160019091019061459d565b508054600082559060005260206000209081019061091391905b5b8082111561457957600081556001016145ed565b80356001600160401b038116811461461857600080fd5b919050565b60006020828403121561462f57600080fd5b61463882614601565b9392505050565b6001600160a01b038116811461091357600080fd5b80356146188161463f565b6000806040838503121561467257600080fd5b8235915060208301356146848161463f565b809150509250929050565b6000815180845260005b818110156146b557602081850181015186830182015201614699565b506000602082860101526020601f19601f83011685010191505092915050565b602081526000614638602083018461468f565b6000602082840312156146fa57600080fd5b81356146388161463f565b6000610100828403121561471857600080fd5b50919050565b60008083601f84011261473057600080fd5b5081356001600160401b0381111561474757600080fd5b6020830191508360208260051b850101111561476257600080fd5b9250929050565b60008060008060008060a0878903121561478257600080fd5b86356001600160401b0381111561479857600080fd5b6147a489828a0161471e565b90975095505060208701356001600160c01b03811681146147c457600080fd5b93506147d260408801614601565b92506147e060608801614601565b9150608087013590509295509295509295565b600081518084526020808501945080840160005b8381101561485157815180516001600160401b031688528381015162ffffff1684890152604080820151908901526060908101519088015260809096019590820190600101614807565b509495945050505050565b60208152600061463860208301846147f3565b6001600160a01b0391909116815260200190565b803561ffff8116811461461857600080fd5b803562ffffff8116811461461857600080fd5b634e487b7160e01b600052604160045260246000fd5b604080519081016001600160401b03811182821017156148e0576148e06148a8565b60405290565b60405161010081016001600160401b03811182821017156148e0576148e06148a8565b604051608081016001600160401b03811182821017156148e0576148e06148a8565b604051602081016001600160401b03811182821017156148e0576148e06148a8565b604051601f8201601f191681016001600160401b0381118282101715614975576149756148a8565b604052919050565b600082601f83011261498e57600080fd5b81356001600160401b038111156149a7576149a76148a8565b6149ba601f8201601f191660200161494d565b8181528460208386010111156149cf57600080fd5b816020850160208301376000918101602001919091529392505050565b600080600080600060a08688031215614a0457600080fd5b8535614a0f8161463f565b945060208601359350614a2460408701614883565b9250614a3260608701614895565b915060808601356001600160401b03811115614a4d57600080fd5b614a598882890161497d565b9150509295509295909350565b80356001600160601b038116811461461857600080fd5b60008060408385031215614a9057600080fd5b614a9983614a66565b915060208301356001600160401b03811115614ab457600080fd5b614ac08582860161497d565b9150509250929050565b60008060008060408587031215614ae057600080fd5b84356001600160401b0380821115614af757600080fd5b614b038883890161471e565b90965094506020870135915080821115614b1c57600080fd5b50614b298782880161471e565b95989497509550505050565b8060005b600881101561219e57815162ffffff16845260209384019390910190600101614b39565b61010081016112fc8284614b35565b803565ffffffffffff8116811461461857600080fd5b600060208284031215614b9457600080fd5b61463882614b6c565b60006101008201905082511515825260ff6020840151166020830152604083015163ffffffff808216604085015280606086015116606085015250506080830151614bf0608084018263ffffffff169052565b5060a0830151614c0860a084018263ffffffff169052565b5060c0830151614c2060c084018263ffffffff169052565b5060e092830151919092015290565b6000610100808385031215614c4357600080fd5b838184011115614c5257600080fd5b509092915050565b63ffffffff8116811461091357600080fd5b803561461881614c5a565b600080600080600080600060e0888a031215614c9257600080fd5b8735614c9d8161463f565b965060208801359550614cb260408901614883565b9450614cc060608901614895565b93506080880135614cd081614c5a565b925060a08801356001600160401b0380821115614cec57600080fd5b614cf88b838c0161497d565b935060c08a0135915080821115614d0e57600080fd5b50614d1b8a828b0161497d565b91505092959891949750929550565b60008060008060808587031215614d4057600080fd5b843593506020850135614d5281614c5a565b925060408501356001600160401b0380821115614d6e57600080fd5b614d7a8883890161497d565b93506060870135915080821115614d9057600080fd5b50614d9d8782880161497d565b91505092959194509250565b60008083601f840112614dbb57600080fd5b5081356001600160401b03811115614dd257600080fd5b60208301915083602082850101111561476257600080fd5b60008060008060608587031215614e0057600080fd5b8435614e0b8161463f565b93506020850135925060408501356001600160401b03811115614e2d57600080fd5b614b2987828801614da9565b60008060008060808587031215614e4f57600080fd5b8435614e5a8161463f565b935060208501359250614e6f60408601614b6c565b915060608501356001600160401b03811115614e8a57600080fd5b614d9d8782880161497d565b600081518084526020808501945080840160005b8381101561485157815187529582019590820190600101614eaa565b6020815260006146386020830184614e96565b600060408284031215614eeb57600080fd5b614ef36148be565b8235614efe81614c5a565b81526020830135614f0e81614c5a565b60208201529392505050565b600060208284031215614f2c57600080fd5b5035919050565b600080600060408486031215614f4857600080fd5b8335614f538161463f565b925060208401356001600160401b03811115614f6e57600080fd5b614f7a86828701614da9565b9497909650939450505050565b60008060208385031215614f9a57600080fd5b82356001600160401b03811115614fb057600080fd5b614fbc85828601614da9565b90969095509350505050565b600081518084526020808501945080840160005b838110156148515781516001600160a01b031687529582019590820190600101614fdc565b6001600160601b03861681526001600160401b038581166020830152841660408201526001600160a01b038316606082015260a06080820181905260009061504b90830184614fc8565b979650505050505050565b6000806040838503121561506957600080fd5b82356150748161463f565b946020939093013593505050565b6000806040838503121561509557600080fd5b8235915060208301356001600160401b03811115614ab457600080fd5b634e487b7160e01b600052601160045260246000fd5b6001600160601b038281168282160390808211156150e8576150e86150b2565b5092915050565b801515811461091357600080fd5b60006020828403121561510f57600080fd5b8151614638816150ef565b6001600160a01b039290921682526001600160601b0316602082015260400190565b6001600160401b0381811683821602808216919082811461515f5761515f6150b2565b505092915050565b60ff8116811461091357600080fd5b60006020828403121561518857600080fd5b813561463881615167565b600081356112fc81614c5a565b81356151ab816150ef565b815460ff19811691151560ff16918217835560208401356151cb81615167565b61ff008160081b168361ffff1984161717845550505061520e6151f060408401615193565b825465ffffffff0000191660109190911b65ffffffff000016178255565b61524361521d60608401615193565b825469ffffffff000000000000191660309190911b69ffffffff00000000000016178255565b61527661525260808401615193565b82805463ffffffff60501b191660509290921b63ffffffff60501b16919091179055565b6152a961528560a08401615193565b82805463ffffffff60701b191660709290921b63ffffffff60701b16919091179055565b6152dc6152b860c08401615193565b82805463ffffffff60901b191660909290921b63ffffffff60901b16919091179055565b60e082013560018201555050565b610100810182356152fa816150ef565b15158252602083013561530c81615167565b60ff166020830152604083013561532281614c5a565b63ffffffff16604083015261533960608401614c6c565b63ffffffff16606083015261535060808401614c6c565b63ffffffff16608083015261536760a08401614c6c565b63ffffffff1660a083015261537e60c08401614c6c565b63ffffffff811660c08401525060e092830135919092015290565b634e487b7160e01b600052603260045260246000fd5b60008235609e198336030181126153c557600080fd5b9190910192915050565b600082601f8301126153e057600080fd5b813560206001600160401b03808311156153fc576153fc6148a8565b8260051b61540b83820161494d565b938452858101830193838101908886111561542557600080fd5b84880192505b8583101561553a5782358481111561544257600080fd5b8801601f196040828c038201121561545957600080fd5b6154616148be565b878301358781111561547257600080fd5b8301610100818e038401121561548757600080fd5b61548f6148e6565b925061549c898201614b6c565b83526154aa60408201614883565b898401526154ba60608201614654565b60408401526080810135888111156154d157600080fd5b6154df8e8b8385010161497d565b6060850152506154f160a08201614a66565b608084015260c081013560a084015260e081013560c084015261010081013560e08401525081815261552560408401614a66565b8189015284525050918401919084019061542b565b98975050505050505050565b600081360360a081121561555957600080fd5b615561614909565b61556a84614601565b81526020615579818601614895565b828201526040603f198401121561558f57600080fd5b61559761492b565b925036605f8601126155a857600080fd5b6155b06148be565b8060808701368111156155c257600080fd5b604088015b818110156155de57803584529284019284016155c7565b50908552604084019490945250509035906001600160401b0382111561560357600080fd5b61560f368386016153cf565b60608201529392505050565b600061ffff808316818103615632576156326150b2565b6001019392505050565b60006001820161564e5761564e6150b2565b5060010190565b6001600160401b0385811682526001600160c01b038516602083015283166040820152608060608201819052600090615690908301846147f3565b9695505050505050565b60006001600160401b03808316818103615632576156326150b2565b80820281158282048414176112fc576112fc6150b2565b634e487b7160e01b600052601260045260246000fd5b6000826156f2576156f26156cd565b500490565b6001600160601b038181168382160190808211156150e8576150e86150b2565b6001600160601b0381811683821602808216919082811461515f5761515f6150b2565b808201808211156112fc576112fc6150b2565b6001600160401b038516815262ffffff841660208201528260408201526080606082015265ffffffffffff82511660808201526000602083015161579760a084018261ffff169052565b5060408301516001600160a01b031660c0830152606083015161010060e084018190526157c861018085018361468f565b915060808501516157e3828601826001600160601b03169052565b505060a084015161012084015260c084015161014084015260e08401516101608401528091505095945050505050565b60006101006001600160401b038b16835262ffffff8a16602084015288604084015261ffff8816606084015263ffffffff871660808401528560a08401528460c08401528060e08401526158698184018561468f565b9b9a5050505050505050505050565b818103818111156112fc576112fc6150b2565b6001600160a01b0392831681529116602082015260400190565b6000604082840312156158b757600080fd5b6158bf6148be565b82356158ca81615167565b81526020928301359281019290925250919050565b6000602082840312156158f157600080fd5b81516146388161463f565b60006020828403121561590e57600080fd5b815161463881615167565b6020815260ff82511660208201526020820151604082015260018060a01b0360408301511660608201526000606083015160c0608084015261595e60e0840182614fc8565b90506001600160601b0360808501511660a08401526001600160401b0360a08501511660c08401528091505092915050565b9182526001600160a01b0316602082015260400190565b634e487b7160e01b600052603160045260246000fd5b6000602082840312156159cf57600080fd5b5051919050565b63ffffffff8181168382160190808211156150e8576150e86150b2565b815160408201908260005b6002811015615a1d5782518252602092830192909101906001016159fe565b50505092915050565b606080825284519082018190526000906020906080840190828801845b82811015615a6757815165ffffffffffff1684529284019290840190600101615a43565b50505083810382850152615a7b818761468f565b905083810360408501528085518083528383019150838160051b84010184880160005b83811015615acc57601f19868403018552615aba83835161468f565b94870194925090860190600101615a9e565b50909a9950505050505050505050565b600082615aeb57615aeb6156cd565b500690565b65ffffffffffff8181168382160190808211156150e8576150e86150b2565b62ffffff8316815261012081016146386020830184614b35565b805169ffffffffffffffffffff8116811461461857600080fd5b600080600080600060a08688031215615b5b57600080fd5b615b6486615b29565b9450602086015193506040860151925060608601519150615b8760808701615b29565b90509295509295909350565b65ffffffffffff84168152606060208201526000615bb46060830185614e96565b8281036040840152615690818561468f565b6001600160601b03841681526001600160a01b0383166020820152606060408201819052600090615bf99083018461468f565b95945050505050565b60008060408385031215615c1557600080fd5b8251615c20816150ef565b6020840151909250614684816150ef565b60006001600160401b03821680615c4a57615c4a6150b2565b6000190192915050565b60ff82811682821603908111156112fc576112fc6150b256fea164736f6c6343000813000a",
+	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"beaconPeriodBlocksArg\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"linkToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"linkEthFeed\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"router\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"BeaconPeriodMustBePositive\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestHeight\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"earliestAllowed\",\"type\":\"uint256\"}],\"name\":\"BlockTooRecent\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"providedLength\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxLength\",\"type\":\"uint32\"}],\"name\":\"CallbackArgumentsLengthTooBig\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint16[10]\",\"name\":\"confirmationDelays\",\"type\":\"uint16[10]\"},{\"internalType\":\"uint8\",\"name\":\"violatingIndex\",\"type\":\"uint8\"}],\"name\":\"ConfirmationDelaysNotIncreasing\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"CoordinatorNotRegistered\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gasAllowance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"gasLeft\",\"type\":\"uint256\"}],\"name\":\"GasAllowanceExceedsGasLeft\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"providedLimit\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxLimit\",\"type\":\"uint32\"}],\"name\":\"GasLimitTooBig\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"reportHeight\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"separatorHeight\",\"type\":\"uint64\"}],\"name\":\"HistoryDomainSeparatorTooOld\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"actualBalance\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requiredBalance\",\"type\":\"uint256\"}],\"name\":\"InsufficientBalance\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidBillingConfig\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint16\",\"name\":\"expectedLength\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"actualLength\",\"type\":\"uint256\"}],\"name\":\"InvalidCalldata\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"consumer\",\"type\":\"address\"}],\"name\":\"InvalidConsumer\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidJuelsConversion\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"numRecipients\",\"type\":\"uint256\"}],\"name\":\"InvalidNumberOfRecipients\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestedSubID\",\"type\":\"uint256\"}],\"name\":\"InvalidSubscription\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"requestedVersion\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"coordinatorVersion\",\"type\":\"uint8\"}],\"name\":\"MigrationVersionMismatch\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"MustBeProducer\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"proposedOwner\",\"type\":\"address\"}],\"name\":\"MustBeRequestedOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"MustBeRouter\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"MustBeSubOwner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"NoWordsRequested\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint16[10]\",\"name\":\"confDelays\",\"type\":\"uint16[10]\"}],\"name\":\"NonZeroDelayAfterZeroDelay\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OnMigrationNotSupported\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OnlyCallableFromLink\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"PendingRequestExists\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"producer\",\"type\":\"address\"}],\"name\":\"ProducerAlreadyInitialized\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestHeight\",\"type\":\"uint256\"}],\"name\":\"RandomnessNotAvailable\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"numRecipients\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"numPayments\",\"type\":\"uint256\"}],\"name\":\"RecipientsPaymentsMismatch\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"Reentrant\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"expected\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"actual\",\"type\":\"address\"}],\"name\":\"ResponseMustBeRetrievedByRequester\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"TooManyConsumers\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"TooManyRequestsReplaceContract\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"TooManySlotsReplaceContract\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requested\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"max\",\"type\":\"uint256\"}],\"name\":\"TooManyWords\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"blockHeight\",\"type\":\"uint256\"}],\"name\":\"UniverseHasEndedBangBangBang\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"givenDelay\",\"type\":\"uint24\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay[8]\",\"name\":\"knownDelays\",\"type\":\"uint24[8]\"}],\"name\":\"UnknownConfirmationDelay\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"useReasonableGasPrice\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"unusedGasPenaltyPercent\",\"type\":\"uint8\"},{\"internalType\":\"uint32\",\"name\":\"stalenessSeconds\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"redeemableRequestGasOverhead\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"callbackRequestGasOverhead\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"premiumPercentage\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"reasonableGasPriceStalenessBlocks\",\"type\":\"uint32\"},{\"internalType\":\"int256\",\"name\":\"fallbackWeiPerUnitLink\",\"type\":\"int256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.BillingConfig\",\"name\":\"billingConfig\",\"type\":\"tuple\"}],\"name\":\"BillingConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"uint32\",\"name\":\"maxCallbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxCallbackArgumentsLength\",\"type\":\"uint32\"}],\"indexed\":false,\"internalType\":\"structVRFCoordinator.Config\",\"name\":\"newConfig\",\"type\":\"tuple\"}],\"name\":\"CoordinatorConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint8\",\"name\":\"newVersion\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newCoordinator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"MigrationCompleted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Paused\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint256[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"costJuels\",\"type\":\"uint256\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"RandomnessRedeemed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"costJuels\",\"type\":\"uint256\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"SubscriptionCanceled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"consumer\",\"type\":\"address\"}],\"name\":\"SubscriptionConsumerAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"consumer\",\"type\":\"address\"}],\"name\":\"SubscriptionConsumerRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"SubscriptionCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"oldBalance\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newBalance\",\"type\":\"uint256\"}],\"name\":\"SubscriptionFunded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"SubscriptionOwnerTransferRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"SubscriptionOwnerTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"Unpaused\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"MAX_CONSUMERS\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MAX_JUELS_SUPPLY\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"\",\"type\":\"uint96\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MAX_NUM_WORDS\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"acceptOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"}],\"name\":\"acceptSubscriptionOwnerTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"consumer\",\"type\":\"address\"}],\"name\":\"addConsumer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"recipients\",\"type\":\"address[]\"},{\"internalType\":\"uint256[]\",\"name\":\"paymentsInJuels\",\"type\":\"uint256[]\"}],\"name\":\"batchTransferLink\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint96\",\"name\":\"gasAllowance\",\"type\":\"uint96\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"calculateRequestPriceCallbackJuels\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"\",\"type\":\"uint96\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"calculateRequestPriceJuels\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"\",\"type\":\"uint96\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"cancelSubscription\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"createSubscription\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBillingConfig\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"useReasonableGasPrice\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"unusedGasPenaltyPercent\",\"type\":\"uint8\"},{\"internalType\":\"uint32\",\"name\":\"stalenessSeconds\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"redeemableRequestGasOverhead\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"callbackRequestGasOverhead\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"premiumPercentage\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"reasonableGasPriceStalenessBlocks\",\"type\":\"uint32\"},{\"internalType\":\"int256\",\"name\":\"fallbackWeiPerUnitLink\",\"type\":\"int256\"}],\"internalType\":\"structVRFBeaconTypes.BillingConfig\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestId\",\"type\":\"uint256\"}],\"name\":\"getCallbackMemo\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getConfirmationDelays\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay[8]\",\"name\":\"\",\"type\":\"uint24[8]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"}],\"name\":\"getSubscription\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"balance\",\"type\":\"uint96\"},{\"internalType\":\"uint64\",\"name\":\"reqCount\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"pendingFulfillments\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"consumers\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSubscriptionLinkBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"balance\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_beaconPeriodBlocks\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_link\",\"outputs\":[{\"internalType\":\"contractLinkTokenInterface\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_link_eth_feed\",\"outputs\":[{\"internalType\":\"contractAggregatorV3Interface\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_router\",\"outputs\":[{\"internalType\":\"contractVRFRouter\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_startSlot\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"contractIVRFMigration\",\"name\":\"newCoordinator\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"encodedRequest\",\"type\":\"bytes\"}],\"name\":\"migrate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"migrationVersion\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"version\",\"type\":\"uint8\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onMigration\",\"outputs\":[],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onTokenTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint64\",\"name\":\"blockHeight\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"components\":[{\"internalType\":\"uint256[2]\",\"name\":\"p\",\"type\":\"uint256[2]\"}],\"internalType\":\"structECCArithmetic.G1Point\",\"name\":\"vrfOutput\",\"type\":\"tuple\"},{\"components\":[{\"components\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"uint96\",\"name\":\"gasAllowance\",\"type\":\"uint96\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"}],\"internalType\":\"structVRFBeaconTypes.Callback\",\"name\":\"callback\",\"type\":\"tuple\"},{\"internalType\":\"uint96\",\"name\":\"price\",\"type\":\"uint96\"}],\"internalType\":\"structVRFBeaconTypes.CostedCallback[]\",\"name\":\"callbacks\",\"type\":\"tuple[]\"}],\"internalType\":\"structVRFBeaconTypes.VRFOutput[]\",\"name\":\"vrfOutputs\",\"type\":\"tuple[]\"},{\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"internalType\":\"uint64\",\"name\":\"blockHeight\",\"type\":\"uint64\"},{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"processVRFOutputs\",\"outputs\":[{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputs\",\"type\":\"tuple[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestIDArg\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"consumer\",\"type\":\"address\"}],\"name\":\"removeConsumer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelayArg\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelayArg\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"requestSubscriptionOwnerTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_config\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"maxCallbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxCallbackArgumentsLength\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_pendingRequests\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.SlotNumber\",\"name\":\"slotNumber\",\"type\":\"uint32\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_producer\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"useReasonableGasPrice\",\"type\":\"bool\"},{\"internalType\":\"uint8\",\"name\":\"unusedGasPenaltyPercent\",\"type\":\"uint8\"},{\"internalType\":\"uint32\",\"name\":\"stalenessSeconds\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"redeemableRequestGasOverhead\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"callbackRequestGasOverhead\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"premiumPercentage\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"reasonableGasPriceStalenessBlocks\",\"type\":\"uint32\"},{\"internalType\":\"int256\",\"name\":\"fallbackWeiPerUnitLink\",\"type\":\"int256\"}],\"internalType\":\"structVRFBeaconTypes.BillingConfig\",\"name\":\"billingConfig\",\"type\":\"tuple\"}],\"name\":\"setBillingConfig\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint32\",\"name\":\"maxCallbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"maxCallbackArgumentsLength\",\"type\":\"uint32\"}],\"internalType\":\"structVRFCoordinator.Config\",\"name\":\"config\",\"type\":\"tuple\"}],\"name\":\"setConfig\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay[8]\",\"name\":\"confDelays\",\"type\":\"uint24[8]\"}],\"name\":\"setConfirmationDelays\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"producer\",\"type\":\"address\"}],\"name\":\"setProducer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint64\",\"name\":\"gasPrice\",\"type\":\"uint64\"}],\"name\":\"setReasonableGasPrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"juelsAmount\",\"type\":\"uint256\"}],\"name\":\"transferLink\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"typeAndVersion\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"unpause\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	Bin: "0x6101206040523480156200001257600080fd5b50604051620060bc380380620060bc8339810160408190526200003591620002bd565b82828233806000816200008f5760405162461bcd60e51b815260206004820152601860248201527f43616e6e6f7420736574206f776e657220746f207a65726f000000000000000060448201526064015b60405180910390fd5b600080546001600160a01b0319166001600160a01b0384811691909117909155811615620000c257620000c28162000166565b50506001805460ff60a01b19169055506001600160a01b0392831660805290821660a0521660c05260008490036200010d57604051632abc297960e01b815260040160405180910390fd5b60e084905260006200011e62000211565b9050600060e0518262000132919062000311565b905060008160e0516200014691906200034a565b905062000154818462000366565b61010052506200039695505050505050565b336001600160a01b03821603620001c05760405162461bcd60e51b815260206004820152601760248201527f43616e6e6f74207472616e7366657220746f2073656c66000000000000000000604482015260640162000086565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b60004661a4b181148062000227575062066eed81145b15620002995760646001600160a01b031663a3b1b31d6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156200026d573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906200029391906200037c565b91505090565b4391505090565b80516001600160a01b0381168114620002b857600080fd5b919050565b60008060008060808587031215620002d457600080fd5b84519350620002e660208601620002a0565b9250620002f660408601620002a0565b91506200030660608601620002a0565b905092959194509250565b6000826200032f57634e487b7160e01b600052601260045260246000fd5b500690565b634e487b7160e01b600052601160045260246000fd5b8181038181111562000360576200036062000334565b92915050565b8082018082111562000360576200036062000334565b6000602082840312156200038f57600080fd5b5051919050565b60805160a05160c05160e05161010051615c556200046760003960006103a101526000818161079e015281816113f201528181613e2601528181614288015281816142b701526142ef0152600081816104ca01528181610dbf01528181610e5001528181611050015281816112e00152818161179401528181611c13015281816121dc015281816122d3015261400d01526000818161080f0152613aec0152600081816105b601528181610ccc01528181611ce2015281816125b601528181612cbd0152612d450152615c556000f3fe608060405234801561001057600080fd5b50600436106102aa5760003560e01c806379ba509711610172578063b2a7cac5116100d9578063ce3f471911610092578063ce3f4719146107c0578063dac83d29146107d3578063dc311dd3146107e6578063f27fcfb81461080a578063f2fde38b14610831578063f99b1d6814610844578063f9c45ced1461085757600080fd5b8063b2a7cac51461073a578063bd58017f1461074d578063bec4c08c14610760578063c3fbb6fd14610773578063cb63179714610786578063cd0593df1461079957600080fd5b80638eef585f1161012b5780638eef585f146106d357806395009f08146106e65780639e201036146106f9578063a21a23e41461070c578063a4c0ed3614610714578063b07241951461072757600080fd5b806379ba5097146105a95780637d253aff146105b15780638456cb59146105d857806385c64e11146105e05780638d907c62146105f55780638da5cb5b146106c257600080fd5b806340d6bb821161021657806362f8b620116101cf57806362f8b6201461052257806364d51a2a1461053557806369a3164e146105505780636ae5fb3b1461056357806373433a2f14610583578063747c91f71461059657600080fd5b806340d6bb821461041b57806346942d181461042457806347c3e2cb14610437578063581bdd16146104c5578063597d2f3c146104f95780635c975abb1461050a57600080fd5b80631a961f25116102685780631a961f251461039c578063294daa49146103c35780632b38bafc146103d85780632d9297b0146103eb5780632f7527cc1461040b5780633f4ba83a1461041357600080fd5b80625bd524146102af57806305f4acc6146102d8578063088070f5146102ed5780630ae095401461032557806316f6ee9a14610338578063181f5a7714610366575b600080fd5b6102c26102bd3660046146a1565b61086a565b6040516102cf9190614794565b60405180910390f35b6102eb6102e63660046147a7565b610ae3565b005b600b546103089063ffffffff80821691600160201b90041682565b6040805163ffffffff9384168152929091166020830152016102cf565b6102eb6103333660046147e2565b610b60565b610358610346366004614812565b6000908152600c602052604090205490565b6040519081526020016102cf565b60408051808201825260148152730565246436f6f7264696e61746f7220312e302e360641b602082015290516102cf9190614871565b6103587f000000000000000000000000000000000000000000000000000000000000000081565b60015b60405160ff90911681526020016102cf565b6102eb6103e6366004614884565b610ef9565b6103f3610f5a565b6040516001600160601b0390911681526020016102cf565b6103c6600881565b6102eb610f9b565b6103586103e881565b6102eb6104323660046148a1565b610fad565b610488610445366004614812565b60106020526000908152604090205463ffffffff811690600160201b810462ffffff1690600160381b810461ffff1690600160481b90046001600160a01b031684565b6040805163ffffffff909516855262ffffff909316602085015261ffff909116918301919091526001600160a01b031660608201526080016102cf565b6104ec7f000000000000000000000000000000000000000000000000000000000000000081565b6040516102cf91906148ba565b6002546001600160601b0316610358565b610512611033565b60405190151581526020016102cf565b610358610530366004614a35565b611043565b61053d606481565b60405161ffff90911681526020016102cf565b6103f361055e366004614ac8565b611229565b610576610571366004614b15565b6112d3565b6040516102cf9190614ba7565b6102eb610591366004614bba565b61153b565b6103f36b033b2e3c9fd0803ce800000081565b6102eb61162c565b6104ec7f000000000000000000000000000000000000000000000000000000000000000081565b6102eb6116d6565b6105e86116e6565b6040516102cf9190614c4d565b6106b56040805161010081018252600080825260208201819052918101829052606081018290526080810182905260a0810182905260c0810182905260e08101919091525060408051610100808201835260045460ff80821615158452918104909116602083015263ffffffff620100008204811693830193909352600160301b810483166060830152600160501b810483166080830152600160701b8104831660a0830152600160901b900490911660c082015260055460e082015290565b6040516102cf9190614c5c565b6000546001600160a01b03166104ec565b6102eb6106e1366004614cee565b61174b565b6103586106f4366004614d36565b611787565b610358610707366004614deb565b6119ca565b6103586119ee565b6102eb610722366004614e9f565b611cab565b6102eb610735366004614eee565b611e76565b6102eb610748366004614812565b611eeb565b600a546104ec906001600160a01b031681565b6102eb61076e3660046147e2565b612017565b6102eb610781366004614f2f565b6121a1565b6102eb6107943660046147e2565b612735565b6103587f000000000000000000000000000000000000000000000000000000000000000081565b6102eb6107ce366004614f83565b612a3a565b6102eb6107e13660046147e2565b612a53565b6107f96107f4366004614812565b612b5f565b6040516102cf959493929190614ffd565b6104ec7f000000000000000000000000000000000000000000000000000000000000000081565b6102eb61083f366004614884565b612c5b565b6102eb610852366004615052565b612c6c565b61035861086536600461507e565b612ddf565b600a546060906001600160a01b0316331461089857604051634bea32db60e11b815260040160405180910390fd5b6108a0612df9565b600080876001600160401b038111156108bb576108bb6148f1565b6040519080825280602002602001820160405280156108f457816020015b6108e16144c3565b8152602001906001900390816108d95790505b50905060005b888110156109e45760008a8a83818110610916576109166150ae565b905060200281019061092891906150c4565b61093190615254565b905061093e81888b612e41565b6040810151515115158061095a57506040810151516020015115155b156109d1576040805160808101825282516001600160401b0316815260208084015162ffffff168183015283830180515151938301939093529151519091015160608201528351849061ffff87169081106109b7576109b76150ae565b602002602001018190525083806109cd90615341565b9450505b50806109dc81615362565b9150506108fa565b5060008261ffff166001600160401b03811115610a0357610a036148f1565b604051908082528060200260200182016040528015610a3c57816020015b610a296144c3565b815260200190600190039081610a215790505b50905060005b8361ffff16811015610a9857828181518110610a6057610a606150ae565b6020026020010151828281518110610a7a57610a7a6150ae565b60200260200101819052508080610a9090615362565b915050610a42565b507ff10ea936d00579b4c52035ee33bf46929646b3aa87554c565d8fb2c7aa549c4486898984604051610ace949392919061537b565b60405180910390a19998505050505050505050565b600a546001600160a01b03163314610b0e57604051634bea32db60e11b815260040160405180910390fd5b60045460ff1615610b5d5760408051808201909152436001600160401b039081168083529083166020909201829052600780546001600160801b031916909117600160401b9092029190911790555b50565b60008281526008602052604090205482906001600160a01b031680610ba05760405163c5171ee960e01b8152600481018390526024015b60405180910390fd5b336001600160a01b03821614610bcb5780604051636c51fda960e11b8152600401610b9791906148ba565b6000848152600960205260409020548490600160a01b90046001600160401b031615610c0a57604051631685ecdd60e31b815260040160405180910390fd5b60065460ff1615610c2e5760405163769dd35360e11b815260040160405180910390fd5b600085815260096020908152604091829020825160608101845290546001600160601b0381168083526001600160401b03600160601b8304811694840194909452600160a01b90910490921692810192909252610c8a87613206565b600280546001600160601b03169082906000610ca683856153c0565b92506101000a8154816001600160601b0302191690836001600160601b031602179055507f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031663a9059cbb88846001600160601b03166040518363ffffffff1660e01b8152600401610d359291906001600160a01b03929092168252602082015260400190565b6020604051808303816000875af1158015610d54573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610d7891906153f5565b610da85760405163cf47918160e01b81526001600160601b03808316600483015283166024820152604401610b97565b60405163677a055360e11b81526001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169063cef40aa690610df49030906004016148ba565b602060405180830381865afa158015610e11573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610e3591906153f5565b15610eb557604051632ee6cacd60e21b8152600481018990527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169063bb9b2b3490602401600060405180830381600087803b158015610e9c57600080fd5b505af1158015610eb0573d6000803e3d6000fd5b505050505b877f3784f77e8e883de95b5d47cd713ced01229fa74d118c0a462224bcb0516d43f18884604051610ee7929190615412565b60405180910390a25050505050505050565b610f01613364565b600a546001600160a01b031615610f3857600a5460405163ea6d390560e01b8152610b97916001600160a01b0316906004016148ba565b600a80546001600160a01b0319166001600160a01b0392909216919091179055565b600080610f656133b7565b600454610f7f9190600160301b900463ffffffff16615434565b6001600160401b03169050610f95816000613448565b91505090565b610fa3613364565b610fab613498565b565b610fb5613364565b6064610fc7604083016020840161546e565b60ff161115610fe95760405163015f505560e31b815260040160405180910390fd5b806004610ff68282615498565b9050507f6dff48329afe669cb5cd0d9af619ec435fe9550e84871839e9df73a1fa34c9bf8160405161102891906155e2565b60405180910390a150565b600154600160a01b900460ff1690565b6000336001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000161461108e5760405163f74c318f60e01b815260040160405180910390fd5b611096612df9565b60065460ff16156110ba5760405163769dd35360e11b815260040160405180910390fd5b82600080806110cb898b8a876134e7565b92509250925060006110dd8b8b6136f6565b600085815260106020908152604080832087518154898501518a85015160608c015163ffffffff90941666ffffffffffffff1990931692909217600160201b62ffffff9092169190910217600160381b600160e81b031916600160381b61ffff90921691909102600160481b600160e81b03191617600160481b6001600160a01b03909216919091021790558d8352600990915290208054919250600160601b9091046001600160401b031690600c61119583615691565b82546101009290920a6001600160401b0381810219909316918316021790915560408051918516825262ffffff8816602083015281018c905261ffff8b166060820152608081018390526001600160a01b038d16915085907fde48e1b154e9370aea26671941a0f7c6b68a21389b76cad8eff8a0aab1a8edcc9060a00160405180910390a350919998505050505050505050565b6000806112346133b7565b61123f906010615434565b6001600160401b03169050600060146112598360156156ad565b61126391906156da565b845161126f91906156ad565b6112776133b7565b6004546001600160401b03919091169061129e90600160501b900463ffffffff16886156ee565b6112a8919061570e565b6001600160601b03166112bb9190615731565b90506112c8816000613448565b925050505b92915050565b6060336001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000161461131e5760405163f74c318f60e01b815260040160405180910390fd5b60065460ff16156113425760405163769dd35360e11b815260040160405180910390fd5b60008381526010602081815260408084208151608081018352815463ffffffff8116825262ffffff600160201b8204168286015261ffff600160381b820416938201939093526001600160a01b03600160481b8404811660608301908152968a9052949093526001600160e81b031990911690559151859291908116908816146113e757806060015187604051638e30e82360e01b8152600401610b97929190615744565b805160009061141d907f00000000000000000000000000000000000000000000000000000000000000009063ffffffff166156ad565b90506000611429613833565b90506000836020015162ffffff1682611442919061575e565b905080831061148e5782846020015162ffffff16846114619190615731565b61146c906001615731565b6040516315ad27c360e01b815260048101929092526024820152604401610b97565b6001600160401b038311156114b9576040516302c6ef8160e11b815260048101849052602401610b97565b896001600160a01b0316857f16f3f633197fafab10a5df69e6f3f2f7f20092f08d8d47de0a91c0f4b96a1a258b6040516114f591815260200190565b60405180910390a36000838152600d602090815260408083208288015162ffffff16845290915290205461152d9086908690866138b7565b9a9950505050505050505050565b600a546001600160a01b0316331461156657604051634bea32db60e11b815260040160405180910390fd5b828015806115745750601f81115b1561159557604051634ecc4fef60e01b815260048101829052602401610b97565b8082146115bf5760405163339f8a9d60e01b81526004810182905260248101839052604401610b97565b60005b81811015611624576116128686838181106115df576115df6150ae565b90506020020160208101906115f49190614884565b858584818110611606576116066150ae565b90506020020135612c6c565b8061161c81615362565b9150506115c2565b505050505050565b6001546001600160a01b0316331461167f5760405162461bcd60e51b815260206004820152601660248201527526bab9ba10313290383937b837b9b2b21037bbb732b960511b6044820152606401610b97565b60008054336001600160a01b0319808316821784556001805490911690556040516001600160a01b0390921692909183917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a350565b6116de613364565b610fab613a7a565b6116ee6144f9565b6040805161010081019182905290600f90600890826000855b82829054906101000a900462ffffff1662ffffff16815260200190600301906020826002010492830192600103820291508084116117075790505050505050905090565b600a546001600160a01b0316331461177657604051634bea32db60e11b815260040160405180910390fd5b611783600f826008614518565b5050565b6000336001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016146117d25760405163f74c318f60e01b815260040160405180910390fd5b6117da612df9565b60065460ff16156117fe5760405163769dd35360e11b815260040160405180910390fd5b600b5463ffffffff908116908516111561183f57600b54604051637aebf00f60e11b815263ffffffff80871660048301529091166024820152604401610b97565b600b548351600160201b90910463ffffffff16101561188f578251600b54604051631961a6f960e31b815263ffffffff9283166004820152600160201b9091049091166024820152604401610b97565b60008061189e898b8a8a6134e7565b925050915060006040518061010001604052808481526020018a61ffff1681526020018c6001600160a01b031681526020018781526020018863ffffffff166001600160601b031681526020018b81526020016118f96133b7565b6001600160401b0316815260200161190f613abd565b815250905081888b8360405160200161192b94939291906157ef565b60408051601f1981840301815291815281516020928301206000868152600c9093529120556119598a613b94565b8a6001600160a01b0316837f74f0f2be86eed895fd1d9a8ac408bf6d9c6614182c356bcab6975818a7d9232c848b8e8e8d8860c001518960e001518f61199e8c613c21565b6040516119b399989796959493929190615822565b60405180910390a350909998505050505050505050565b60006119dc8463ffffffff1684611229565b6001600160601b031695945050505050565b60065460009060ff1615611a155760405163769dd35360e11b815260040160405180910390fd5b611a1d612df9565b600033611a2b60014361575e565b6001546040516bffffffffffffffffffffffff19606094851b81166020830152924060348201523090931b90911660548301526001600160c01b0319600160a81b90910460c01b16606882015260700160408051808303601f19018152919052805160209091012060018054919250600160a81b9091046001600160401b0316906015611ab783615691565b91906101000a8154816001600160401b0302191690836001600160401b03160217905550506000806001600160401b03811115611af657611af66148f1565b604051908082528060200260200182016040528015611b1f578160200160208202803683370190505b506040805160608082018352600080835260208084018281528486018381528984526009835286842095518654925191516001600160601b039091166001600160a01b031993841617600160601b6001600160401b03938416021767ffffffffffffffff60a01b1916600160a01b9290911691909102179094558451928301855233835282810182815283860187815289845260088352959092208351815486166001600160a01b039182161782559251600182018054909616931692909217909355925180519495509093611bfb92600285019201906145b6565b5050604051634a3cdba760e11b8152600481018490527f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169150639479b74e90602401600060405180830381600087803b158015611c6057600080fd5b505af1158015611c74573d6000803e3d6000fd5b50506040513392508491507f1d3015d7ba850fa198dc7b1a3f5d42779313a681035f77c8c03764c61005518d90600090a350905090565b60065460ff1615611ccf5760405163769dd35360e11b815260040160405180910390fd5b611cd7612df9565b336001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001614611d20576040516344b0e3c360e01b815260040160405180910390fd5b60208114611d4b57604051636865567560e01b81526020600482015260248101829052604401610b97565b6000611d5982840184614812565b6000818152600860205260409020549091506001600160a01b0316611d945760405163c5171ee960e01b815260048101829052602401610b97565b600081815260096020526040812080546001600160601b031691869190611dbb83856156ee565b92506101000a8154816001600160601b0302191690836001600160601b0316021790555084600260008282829054906101000a90046001600160601b0316611e0391906156ee565b92506101000a8154816001600160601b0302191690836001600160601b03160217905550817f1ced9348ff549fceab2ac57cd3a9de38edaaab274b725ee82c23e8fc8c4eec7a828784611e569190615731565b6040805192835260208301919091520160405180910390a2505050505050565b611e7e613364565b8051600b80546020808501805163ffffffff908116600160201b0267ffffffffffffffff1990941695811695861793909317909355604080519485529251909116908301527ffffe83c0c6d543712480c43dcc77636fc5671d01e3199dfb237b1bbf29d971e49101611028565b60065460ff1615611f0f5760405163769dd35360e11b815260040160405180910390fd5b6000818152600860205260409020546001600160a01b0316611f475760405163c5171ee960e01b815260048101829052602401610b97565b6000818152600860205260409020600101546001600160a01b03163314611f9e576000818152600860205260409081902060010154905163d084e97560e01b8152610b97916001600160a01b0316906004016148ba565b6000818152600860205260409081902080546001600160a01b031980821633908117845560019093018054909116905591516001600160a01b039092169183917fd4114ab6e9af9f597c52041f32d62dc57c5c4e4c0d4427006069635e216c93869161200b918591615744565b60405180910390a25050565b60008281526008602052604090205482906001600160a01b0316806120525760405163c5171ee960e01b815260048101839052602401610b97565b336001600160a01b0382161461207d5780604051636c51fda960e11b8152600401610b9791906148ba565b60065460ff16156120a15760405163769dd35360e11b815260040160405180910390fd5b6120a9612df9565b600084815260086020526040902060020154606319016120dc576040516305a48e0f60e01b815260040160405180910390fd5b6001600160a01b038316600090815260036020908152604080832087845290915290205460ff1661219b576001600160a01b03831660008181526003602090815260408083208884528252808320805460ff1916600190811790915560088352818420600201805491820181558452919092200180546001600160a01b0319169092179091555184907f1e980d04aa7648e205713e5e8ea3808672ac163d10936d36f91b2c88ac1575e1906121929086906148ba565b60405180910390a25b50505050565b60065460ff16156121c55760405163769dd35360e11b815260040160405180910390fd5b60405163677a055360e11b81526001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169063cef40aa6906122119086906004016148ba565b602060405180830381865afa15801561222e573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061225291906153f5565b61226f576040516301fd70a160e51b815260040160405180910390fd5b6040811461229c5760408051636865567560e01b8152600481019190915260248101829052604401610b97565b60006122aa82840184615890565b6020810151604051637d331ac560e11b8152600481019190915290915030906001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169063fa66358a90602401602060405180830381865afa15801561231a573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061233e91906158ca565b6001600160a01b03161461236d57806020015160405163c5171ee960e01b8152600401610b9791815260200190565b60008060008060006123828660200151612b5f565b94509450945094509450816001600160a01b0316336001600160a01b0316146123c05781604051636c51fda960e11b8152600401610b9791906148ba565b886001600160a01b031663294daa496040518163ffffffff1660e01b8152600401602060405180830381865afa1580156123fe573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061242291906158e7565b60ff16866000015160ff16146124bf578560000151896001600160a01b031663294daa496040518163ffffffff1660e01b8152600401602060405180830381865afa158015612475573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061249991906158e7565b60405163e7aada9560e01b815260ff928316600482015291166024820152604401610b97565b6001600160401b038316156124e757604051631685ecdd60e31b815260040160405180910390fd5b60006040518060c001604052806124fc600190565b60ff16815260200188602001518152602001846001600160a01b03168152602001838152602001876001600160601b03168152602001866001600160401b031681525090506000816040516020016125549190615904565b60405160208183030381529060405290506125728860200151613206565b600280548891906000906125909084906001600160601b03166153c0565b92506101000a8154816001600160601b0302191690836001600160601b031602179055507f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031663a9059cbb8c896040518363ffffffff1660e01b8152600401612602929190615412565b6020604051808303816000875af1158015612621573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061264591906153f5565b6126865760405162461bcd60e51b8152602060048201526012602482015271696e73756666696369656e742066756e647360701b6044820152606401610b97565b60405163ce3f471960e01b81526001600160a01b038c169063ce3f4719906126b2908490600401614871565b600060405180830381600087803b1580156126cc57600080fd5b505af11580156126e0573d6000803e3d6000fd5b505050508760200151886000015160ff167fbd89b747474d3fc04664dfbd1d56ae7ffbe46ee097cdb9979c13916bb76269ce8d60405161272091906148ba565b60405180910390a35050505050505050505050565b60008281526008602052604090205482906001600160a01b0316806127705760405163c5171ee960e01b815260048101839052602401610b97565b336001600160a01b0382161461279b5780604051636c51fda960e11b8152600401610b9791906148ba565b6000848152600960205260409020548490600160a01b90046001600160401b0316156127da57604051631685ecdd60e31b815260040160405180910390fd5b60065460ff16156127fe5760405163769dd35360e11b815260040160405180910390fd5b6001600160a01b038416600090815260036020908152604080832088845290915290205460ff166128465784846040516379bfd40160e01b8152600401610b9792919061597b565b6000858152600860209081526040808320600201805482518185028101850190935280835291929091908301828280156128a957602002820191906000526020600020905b81546001600160a01b0316815260019091019060200180831161288b575b505050505090506000600182516128c0919061575e565b905060005b82518110156129cb57866001600160a01b03168382815181106128ea576128ea6150ae565b60200260200101516001600160a01b0316036129b9576000838381518110612914576129146150ae565b6020026020010151905080600860008b81526020019081526020016000206002018381548110612946576129466150ae565b600091825260208083209190910180546001600160a01b0319166001600160a01b0394909416939093179092558a815260089091526040902060020180548061299157612991615992565b600082815260209020810160001990810180546001600160a01b0319169055019055506129cb565b806129c381615362565b9150506128c5565b506001600160a01b03861660009081526003602090815260408083208a845290915290819020805460ff191690555187907f32158c6058347c1601b2d12bc696ac6901d8a9a9aa3ba10c27ab0a983e8425a790612a299089906148ba565b60405180910390a250505050505050565b604051632cb6686f60e01b815260040160405180910390fd5b60008281526008602052604090205482906001600160a01b031680612a8e5760405163c5171ee960e01b815260048101839052602401610b97565b336001600160a01b03821614612ab95780604051636c51fda960e11b8152600401610b9791906148ba565b60065460ff1615612add5760405163769dd35360e11b815260040160405180910390fd5b6000848152600860205260409020600101546001600160a01b0384811691161461219b576000848152600860205260409081902060010180546001600160a01b0319166001600160a01b0386161790555184907f21a4dad170a6bf476c31bbcf4a16628295b0e450672eec25d7c93308e05344a1906121929033908790615744565b6000818152600860205260408120548190819081906060906001600160a01b0316612ba05760405163c5171ee960e01b815260048101879052602401610b97565b60008681526009602090815260408083205460088352928190208054600290910180548351818602810186019094528084526001600160601b038616956001600160401b03600160601b8204811696600160a01b90920416946001600160a01b0390941693918391830182828015612c4157602002820191906000526020600020905b81546001600160a01b03168152600190910190602001808311612c23575b505050505090509450945094509450945091939590929450565b612c63613364565b610b5d81613d79565b600a546001600160a01b03163314612c9757604051634bea32db60e11b815260040160405180910390fd5b60405163a9059cbb60e01b81526001600160a01b038381166004830152602482018390527f0000000000000000000000000000000000000000000000000000000000000000169063a9059cbb906044016020604051808303816000875af1158015612d06573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190612d2a91906153f5565b611783576040516370a0823160e01b81526001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016906370a0823190612d7a9030906004016148ba565b602060405180830381865afa158015612d97573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190612dbb91906159a8565b60405163cf47918160e01b8152600481019190915260248101829052604401610b97565b6000612de9610f5a565b6001600160601b03169392505050565b612e01611033565b15610fab5760405162461bcd60e51b815260206004820152601060248201526f14185d5cd8589b194e881c185d5cd95960821b6044820152606401610b97565b82516001600160401b0380841691161115612e8557825160405163012d824d60e01b81526001600160401b0380851660048301529091166024820152604401610b97565b60408301515151600090158015612ea3575060408401515160200151155b15612edb575082516001600160401b03166000908152600d602090815260408083208287015162ffffff168452909152902054612f35565b8360400151604051602001612ef091906159c1565b60408051601f19818403018152918152815160209283012086516001600160401b03166000908152600d84528281208885015162ffffff168252909352912081905590505b6060840151516000816001600160401b03811115612f5557612f556148f1565b604051908082528060200260200182016040528015612f7e578160200160208202803683370190505b5090506000826001600160401b03811115612f9b57612f9b6148f1565b6040519080825280601f01601f191660200182016040528015612fc5576020820181803683370190505b5090506000836001600160401b03811115612fe257612fe26148f1565b60405190808252806020026020018201604052801561301557816020015b60608152602001906001900390816130005790505b5090506000805b858110156131045760008a60600151828151811061303c5761303c6150ae565b6020026020010151905060008061305d8d600001518e602001518c86613e1c565b91509150811561309c5780868661ffff168151811061307e5761307e6150ae565b6020026020010181905250848061309490615341565b9550506130cb565b600160f81b8785815181106130b3576130b36150ae565b60200101906001600160f81b031916908160001a9053505b82515188518990869081106130e2576130e26150ae565b60200260200101818152505050505080806130fc90615362565b91505061301c565b50606089015151156131fb5760008161ffff166001600160401b0381111561312e5761312e6148f1565b60405190808252806020026020018201604052801561316157816020015b606081526020019060019003908161314c5790505b50905060005b8261ffff168110156131bd57838181518110613185576131856150ae565b602002602001015182828151811061319f5761319f6150ae565b602002602001018190525080806131b590615362565b915050613167565b507f062da5296a5df5a60841a9f5538eb5d6c4bbaac0ad10958416f171d826c8d7f78585836040516131f1939291906159f4565b60405180910390a1505b505050505050505050565b6000818152600860209081526040808320815160608101835281546001600160a01b0390811682526001830154168185015260028201805484518187028101870186528181529295939486019383018282801561328c57602002820191906000526020600020905b81546001600160a01b0316815260019091019060200180831161326e575b505050505081525050905060005b81604001515181101561330b5760036000836040015183815181106132c1576132c16150ae565b6020908102919091018101516001600160a01b0316825281810192909252604090810160009081208682529092529020805460ff191690558061330381615362565b91505061329a565b50600082815260086020526040812080546001600160a01b03199081168255600182018054909116905590613343600283018261460b565b505050600090815260096020526040902080546001600160e01b0319169055565b6000546001600160a01b03163314610fab5760405162461bcd60e51b815260206004820152601660248201527527b7363c9031b0b63630b1363290313c9037bbb732b960511b6044820152606401610b97565b60045460009060ff1680156133dd5750600754600160401b90046001600160401b031615155b1561344357600454600160901b900463ffffffff1643108080613424575060045461341590600160901b900463ffffffff164361575e565b6007546001600160401b031610155b15613441575050600754600160401b90046001600160401b031690565b505b503a90565b600454600090819060649061346a90600160701b900463ffffffff1682615aa2565b61347a9063ffffffff16866156ad565b61348491906156da565b905061349081846141c1565b949350505050565b6134a0614227565b6001805460ff60a01b191690557f5db9ee0a495bf2e6ff9c91a7834c1ba4fdd244a5e8aa4e537bd38aeae4b073aa335b6040516134dd91906148ba565b60405180910390a1565b604080516080810182526000808252602082018190529181018290526060810182905260006103e88561ffff16111561354157604051634a90778560e01b815261ffff861660048201526103e86024820152604401610b97565b8461ffff16600003613566576040516308fad2a760e01b815260040160405180910390fd5b600080613571614272565b600e54919350915065ffffffffffff16600061358e8b8b84614345565b604080518082018252600e805465ffffffffffff1682528251610100810193849052939450600093919290916020840191600f906008908288855b82829054906101000a900462ffffff1662ffffff16815260200190600301906020826002010492830192600103820291508084116135c9579050505050505081525050905082600161361b9190615abf565b600e805465ffffffffffff191665ffffffffffff9290921691909117905560005b6008811015613682578962ffffff1682602001518260088110613661576136616150ae565b602002015162ffffff1614613682578061367a81615362565b91505061363c565b600881106136aa576020820151604051630c4f769b60e41b8152610b97918c91600401615ade565b50506040805160808101825263ffffffff909416845262ffffff8916602085015261ffff8a16908401526001600160a01b038a1660608401529550909350909150509450945094915050565b6001600160a01b038216600090815260036020908152604080832084845290915281205460ff1661373e5781836040516379bfd40160e01b8152600401610b9792919061597b565b6000613748610f5a565b600084815260096020526040902080546001600160601b0392831693509091168281101561379e57815460405163cf47918160e01b81526001600160601b03909116600482015260248101849052604401610b97565b8154839083906000906137bb9084906001600160601b03166153c0565b92506101000a8154816001600160601b0302191690836001600160601b0316021790555082600260008282829054906101000a90046001600160601b031661380391906153c0565b92506101000a8154816001600160601b0302191690836001600160601b0316021790555082935050505092915050565b60004661a4b1811480613848575062066eed81145b156138b05760646001600160a01b031663a3b1b31d6040518163ffffffff1660e01b8152600401602060405180830381865afa15801561388c573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610f9591906159a8565b4391505090565b6060826138e95760405163220a34e960e11b8152600481018690526001600160401b0383166024820152604401610b97565b604080516020808201889052865163ffffffff168284015286015162ffffff166060808301919091529186015161ffff166080820152908501516001600160a01b031660a082015260c0810184905260009060e0016040516020818303038152906040528051906020012090506103e8856040015161ffff161115613995576040808601519051634a90778560e01b815261ffff90911660048201526103e86024820152604401610b97565b6000856040015161ffff166001600160401b038111156139b7576139b76148f1565b6040519080825280602002602001820160405280156139e0578160200160208202803683370190505b50905060005b866040015161ffff168161ffff161015613a6f578281604051602001613a2392919091825260f01b6001600160f01b031916602082015260220190565b6040516020818303038152906040528051906020012060001c828261ffff1681518110613a5257613a526150ae565b602090810291909101015280613a6781615341565b9150506139e6565b509695505050505050565b613a82612df9565b6001805460ff60a01b1916600160a01b1790557f62e78cea01bee320cd4e420270b5ea74000d11b0c9f74754ebdbfc544b05a2586134d03390565b6004805460408051633fabe5a360e21b815290516000936201000090930463ffffffff169283151592859283927f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03169263feaf968c928183019260a0928290030181865afa158015613b3b573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190613b5f9190615b12565b509450909250849150508015613b835750613b7a824261575e565b8463ffffffff16105b156134905750600554949350505050565b60008181526009602052604090208054600160601b90046001600160401b031681600c613bc083615691565b82546101009290920a6001600160401b038181021990931691831602179091558254600160a01b9004169050816014613bf883615691565b91906101000a8154816001600160401b0302191690836001600160401b03160217905550505050565b6040808201516001600160a01b031660009081526003602090815282822060a0850151835290529081205460ff16613c78578160a0015182604001516040516379bfd40160e01b8152600401610b9792919061597b565b6000613c8c83608001518460600151611229565b60a0840151600090815260096020526040902080546001600160601b039283169350909116821115613ce657805460405163cf47918160e01b81526001600160601b03909116600482015260248101839052604401610b97565b805482908290600090613d039084906001600160601b03166153c0565b92506101000a8154816001600160601b0302191690836001600160601b0316021790555081600260008282829054906101000a90046001600160601b0316613d4b91906153c0565b92506101000a8154816001600160601b0302191690836001600160601b031602179055508192505050919050565b336001600160a01b03821603613dcb5760405162461bcd60e51b815260206004820152601760248201527621b0b73737ba103a3930b739b332b9103a379039b2b63360491b6044820152606401610b97565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b6000606081613e547f00000000000000000000000000000000000000000000000000000000000000006001600160401b0389166156da565b845160a08101516040519293509091600091613e78918b918b9186906020016157ef565b60408051601f19818403018152918152815160209283012084516000908152600c9093529120549091508114613edf5760016040518060400160405280601081526020016f756e6b6e6f776e2063616c6c6261636b60801b815250945094505050506141b8565b6040805160808101825263ffffffff8516815262ffffff8a1660208083019190915284015161ffff1681830152908301516001600160a01b0316606082015287613f6157600160405180604001604052806016815260200175756e617661696c61626c652072616e646f6d6e65737360501b81525095509550505050506141b8565b6000613f738460000151838b8e6138b7565b606080840151865191870151604051939450909260009263d21ea8fd60e01b92613fa292879190602401615b62565b60408051601f198184030181529190526020810180516001600160e01b03166001600160e01b0319909316929092179091526006805460ff191660011790559050600080805a8d51608001516040808c015190516355fe976360e01b81529293506001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016926355fe9763926140449290918990600401615b8d565b60408051808303816000875af1158015614062573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906140869190615bc9565b9093509150816140c2578c516080015160405163aad1598360e01b81526001600160601b03909116600482015260248101829052604401610b97565b60006113885a6140d29190615731565b6006805460ff191690559050818110156140fa576140fa6140f3828461575e565b8f5161439b565b8d5160a0015160009081526009602052604090208054600160a01b90046001600160401b031690601461412c83615bf8565b82546001600160401b039182166101009390930a92830291909202199091161790555089516000908152600c6020526040812055836141955760016040518060400160405280601081526020016f195e1958dd5d1a5bdb8819985a5b195960821b8152506141a8565b6000604051806020016040528060008152505b9c509c5050505050505050505050505b94509492505050565b60008082156141d057826141d8565b6141d8613abd565b90506000816141ef86670de0b6b3a76400006156ad565b6141f991906156da565b90506b033b2e3c9fd0803ce80000008111156134905760405162de437160e81b815260040160405180910390fd5b61422f611033565b610fab5760405162461bcd60e51b815260206004820152601460248201527314185d5cd8589b194e881b9bdd081c185d5cd95960621b6044820152606401610b97565b600080600061427f613833565b905060006142ad7f000000000000000000000000000000000000000000000000000000000000000083615c1b565b90506000816142dc7f000000000000000000000000000000000000000000000000000000000000000085615731565b6142e6919061575e565b905060006143147f0000000000000000000000000000000000000000000000000000000000000000836156da565b905063ffffffff811061433a576040516307b2a52360e41b815260040160405180910390fd5b909590945092505050565b604080513060208201529081018490526001600160a01b038316606082015265ffffffffffff8216608082015260009060a0016040516020818303038152906040528051906020012060001c90505b9392505050565b80608001516001600160601b03168211156143b4575050565b6004546000906064906143cf90610100900460ff1682615c2f565b60ff168360c001518585608001516001600160601b03166143f0919061575e565b6143fa91906156ad565b61440491906156ad565b61440e91906156da565b90506000614420828460e001516141c1565b60a08401516000908152600960205260408120805492935083929091906144519084906001600160601b03166156ee565b92506101000a8154816001600160601b0302191690836001600160601b0316021790555080600260008282829054906101000a90046001600160601b031661449991906156ee565b92506101000a8154816001600160601b0302191690836001600160601b0316021790555050505050565b604051806080016040528060006001600160401b03168152602001600062ffffff16815260200160008152602001600081525090565b6040518061010001604052806008906020820280368337509192915050565b6001830191839082156145a65791602002820160005b8382111561457557833562ffffff1683826101000a81548162ffffff021916908362ffffff160217905550926020019260030160208160020104928301926001030261452e565b80156145a45782816101000a81549062ffffff0219169055600301602081600201049283019260010302614575565b505b506145b2929150614625565b5090565b8280548282559060005260206000209081019282156145a6579160200282015b828111156145a657825182546001600160a01b0319166001600160a01b039091161782556020909201916001909101906145d6565b5080546000825590600052602060002090810190610b5d91905b5b808211156145b25760008155600101614626565b60008083601f84011261464c57600080fd5b5081356001600160401b0381111561466357600080fd5b6020830191508360208260051b850101111561467e57600080fd5b9250929050565b80356001600160401b038116811461469c57600080fd5b919050565b60008060008060008060a087890312156146ba57600080fd5b86356001600160401b038111156146d057600080fd5b6146dc89828a0161463a565b90975095505060208701356001600160c01b03811681146146fc57600080fd5b935061470a60408801614685565b925061471860608801614685565b9150608087013590509295509295509295565b600081518084526020808501945080840160005b8381101561478957815180516001600160401b031688528381015162ffffff168489015260408082015190890152606090810151908801526080909601959082019060010161473f565b509495945050505050565b602081526000614394602083018461472b565b6000602082840312156147b957600080fd5b61439482614685565b6001600160a01b0381168114610b5d57600080fd5b803561469c816147c2565b600080604083850312156147f557600080fd5b823591506020830135614807816147c2565b809150509250929050565b60006020828403121561482457600080fd5b5035919050565b6000815180845260005b8181101561485157602081850181015186830182015201614835565b506000602082860101526020601f19601f83011685010191505092915050565b602081526000614394602083018461482b565b60006020828403121561489657600080fd5b8135614394816147c2565b600061010082840312156148b457600080fd5b50919050565b6001600160a01b0391909116815260200190565b803561ffff8116811461469c57600080fd5b62ffffff81168114610b5d57600080fd5b634e487b7160e01b600052604160045260246000fd5b604080519081016001600160401b0381118282101715614929576149296148f1565b60405290565b60405161010081016001600160401b0381118282101715614929576149296148f1565b604051608081016001600160401b0381118282101715614929576149296148f1565b604051602081016001600160401b0381118282101715614929576149296148f1565b604051601f8201601f191681016001600160401b03811182821017156149be576149be6148f1565b604052919050565b600082601f8301126149d757600080fd5b81356001600160401b038111156149f0576149f06148f1565b614a03601f8201601f1916602001614996565b818152846020838601011115614a1857600080fd5b816020850160208301376000918101602001919091529392505050565b600080600080600060a08688031215614a4d57600080fd5b8535614a58816147c2565b945060208601359350614a6d604087016148ce565b92506060860135614a7d816148e0565b915060808601356001600160401b03811115614a9857600080fd5b614aa4888289016149c6565b9150509295509295909350565b80356001600160601b038116811461469c57600080fd5b60008060408385031215614adb57600080fd5b614ae483614ab1565b915060208301356001600160401b03811115614aff57600080fd5b614b0b858286016149c6565b9150509250929050565b60008060008060808587031215614b2b57600080fd5b8435614b36816147c2565b9350602085013592506040850135915060608501356001600160401b03811115614b5f57600080fd5b614b6b878288016149c6565b91505092959194509250565b600081518084526020808501945080840160005b8381101561478957815187529582019590820190600101614b8b565b6020815260006143946020830184614b77565b60008060008060408587031215614bd057600080fd5b84356001600160401b0380821115614be757600080fd5b614bf38883890161463a565b90965094506020870135915080821115614c0c57600080fd5b50614c198782880161463a565b95989497509550505050565b8060005b600881101561219b57815162ffffff16845260209384019390910190600101614c29565b61010081016112cd8284614c25565b60006101008201905082511515825260ff6020840151166020830152604083015163ffffffff808216604085015280606086015116606085015250506080830151614caf608084018263ffffffff169052565b5060a0830151614cc760a084018263ffffffff169052565b5060c0830151614cdf60c084018263ffffffff169052565b5060e092830151919092015290565b6000610100808385031215614d0257600080fd5b838184011115614d1157600080fd5b509092915050565b63ffffffff81168114610b5d57600080fd5b803561469c81614d19565b600080600080600080600060e0888a031215614d5157600080fd5b8735614d5c816147c2565b965060208801359550614d71604089016148ce565b94506060880135614d81816148e0565b93506080880135614d9181614d19565b925060a08801356001600160401b0380821115614dad57600080fd5b614db98b838c016149c6565b935060c08a0135915080821115614dcf57600080fd5b50614ddc8a828b016149c6565b91505092959891949750929550565b60008060008060808587031215614e0157600080fd5b843593506020850135614e1381614d19565b925060408501356001600160401b0380821115614e2f57600080fd5b614e3b888389016149c6565b93506060870135915080821115614e5157600080fd5b50614b6b878288016149c6565b60008083601f840112614e7057600080fd5b5081356001600160401b03811115614e8757600080fd5b60208301915083602082850101111561467e57600080fd5b60008060008060608587031215614eb557600080fd5b8435614ec0816147c2565b93506020850135925060408501356001600160401b03811115614ee257600080fd5b614c1987828801614e5e565b600060408284031215614f0057600080fd5b614f08614907565b8235614f1381614d19565b81526020830135614f2381614d19565b60208201529392505050565b600080600060408486031215614f4457600080fd5b8335614f4f816147c2565b925060208401356001600160401b03811115614f6a57600080fd5b614f7686828701614e5e565b9497909650939450505050565b60008060208385031215614f9657600080fd5b82356001600160401b03811115614fac57600080fd5b614fb885828601614e5e565b90969095509350505050565b600081518084526020808501945080840160005b838110156147895781516001600160a01b031687529582019590820190600101614fd8565b6001600160601b03861681526001600160401b038581166020830152841660408201526001600160a01b038316606082015260a06080820181905260009061504790830184614fc4565b979650505050505050565b6000806040838503121561506557600080fd5b8235615070816147c2565b946020939093013593505050565b6000806040838503121561509157600080fd5b8235915060208301356001600160401b03811115614aff57600080fd5b634e487b7160e01b600052603260045260246000fd5b60008235609e198336030181126150da57600080fd5b9190910192915050565b600082601f8301126150f557600080fd5b813560206001600160401b0380831115615111576151116148f1565b8260051b615120838201614996565b938452858101830193838101908886111561513a57600080fd5b84880192505b858310156152485782358481111561515757600080fd5b8801601f196040828c038201121561516e57600080fd5b615176614907565b878301358781111561518757600080fd5b8301610100818e038401121561519c57600080fd5b6151a461492f565b92508881013583526151b8604082016148ce565b898401526151c8606082016147d7565b60408401526080810135888111156151df57600080fd5b6151ed8e8b838501016149c6565b6060850152506151ff60a08201614ab1565b608084015260c081013560a084015260e081013560c084015261010081013560e08401525081815261523360408401614ab1565b81890152845250509184019190840190615140565b98975050505050505050565b600081360360a081121561526757600080fd5b61526f614952565b61527884614685565b8152602080850135615289816148e0565b828201526040603f198401121561529f57600080fd5b6152a7614974565b925036605f8601126152b857600080fd5b6152c0614907565b8060808701368111156152d257600080fd5b604088015b818110156152ee57803584529284019284016152d7565b50908552604084019490945250509035906001600160401b0382111561531357600080fd5b61531f368386016150e4565b60608201529392505050565b634e487b7160e01b600052601160045260246000fd5b600061ffff8083168181036153585761535861532b565b6001019392505050565b6000600182016153745761537461532b565b5060010190565b6001600160401b0385811682526001600160c01b0385166020830152831660408201526080606082018190526000906153b69083018461472b565b9695505050505050565b6001600160601b038281168282160390808211156153e0576153e061532b565b5092915050565b8015158114610b5d57600080fd5b60006020828403121561540757600080fd5b8151614394816153e7565b6001600160a01b039290921682526001600160601b0316602082015260400190565b6001600160401b038181168382160280821691908281146154575761545761532b565b505092915050565b60ff81168114610b5d57600080fd5b60006020828403121561548057600080fd5b81356143948161545f565b600081356112cd81614d19565b81356154a3816153e7565b815460ff19811691151560ff16918217835560208401356154c38161545f565b61ff008160081b168361ffff198416171784555050506155066154e86040840161548b565b825465ffffffff0000191660109190911b65ffffffff000016178255565b61553b6155156060840161548b565b825469ffffffff000000000000191660309190911b69ffffffff00000000000016178255565b61556e61554a6080840161548b565b82805463ffffffff60501b191660509290921b63ffffffff60501b16919091179055565b6155a161557d60a0840161548b565b82805463ffffffff60701b191660709290921b63ffffffff60701b16919091179055565b6155d46155b060c0840161548b565b82805463ffffffff60901b191660909290921b63ffffffff60901b16919091179055565b60e082013560018201555050565b610100810182356155f2816153e7565b1515825260208301356156048161545f565b60ff166020830152604083013561561a81614d19565b63ffffffff16604083015261563160608401614d2b565b63ffffffff16606083015261564860808401614d2b565b63ffffffff16608083015261565f60a08401614d2b565b63ffffffff1660a083015261567660c08401614d2b565b63ffffffff811660c08401525060e092830135919092015290565b60006001600160401b038083168181036153585761535861532b565b80820281158282048414176112cd576112cd61532b565b634e487b7160e01b600052601260045260246000fd5b6000826156e9576156e96156c4565b500490565b6001600160601b038181168382160190808211156153e0576153e061532b565b6001600160601b038181168382160280821691908281146154575761545761532b565b808201808211156112cd576112cd61532b565b6001600160a01b0392831681529116602082015260400190565b818103818111156112cd576112cd61532b565b60006101008251845261ffff602084015116602085015260018060a01b03604084015116604085015260608301518160608601526157b18286018261482b565b9150506001600160601b03608084015116608085015260a083015160a085015260c083015160c085015260e083015160e08501528091505092915050565b6001600160401b038516815262ffffff841660208201528260408201526080606082015260006153b66080830184615771565b60006101206001600160401b038c16835262ffffff8b16602084015289604084015261ffff8916606084015263ffffffff881660808401528660a08401528560c08401528060e08401526158788184018661482b565b915050826101008301529a9950505050505050505050565b6000604082840312156158a257600080fd5b6158aa614907565b82356158b58161545f565b81526020928301359281019290925250919050565b6000602082840312156158dc57600080fd5b8151614394816147c2565b6000602082840312156158f957600080fd5b81516143948161545f565b6020815260ff82511660208201526020820151604082015260018060a01b0360408301511660608201526000606083015160c0608084015261594960e0840182614fc4565b90506001600160601b0360808501511660a08401526001600160401b0360a08501511660c08401528091505092915050565b9182526001600160a01b0316602082015260400190565b634e487b7160e01b600052603160045260246000fd5b6000602082840312156159ba57600080fd5b5051919050565b815160408201908260005b60028110156159eb5782518252602092830192909101906001016159cc565b50505092915050565b606080825284519082018190526000906020906080840190828801845b82811015615a2d57815184529284019290840190600101615a11565b50505083810382850152615a41818761482b565b905083810360408501528085518083528383019150838160051b84010184880160005b83811015615a9257601f19868403018552615a8083835161482b565b94870194925090860190600101615a64565b50909a9950505050505050505050565b63ffffffff8181168382160190808211156153e0576153e061532b565b65ffffffffffff8181168382160190808211156153e0576153e061532b565b62ffffff8316815261012081016143946020830184614c25565b805169ffffffffffffffffffff8116811461469c57600080fd5b600080600080600060a08688031215615b2a57600080fd5b615b3386615af8565b9450602086015193506040860151925060608601519150615b5660808701615af8565b90509295509295909350565b838152606060208201526000615b7b6060830185614b77565b82810360408401526153b6818561482b565b6001600160601b03841681526001600160a01b0383166020820152606060408201819052600090615bc09083018461482b565b95945050505050565b60008060408385031215615bdc57600080fd5b8251615be7816153e7565b6020840151909250614807816153e7565b60006001600160401b03821680615c1157615c1161532b565b6000190192915050565b600082615c2a57615c2a6156c4565b500690565b60ff82811682821603908111156112cd576112cd61532b56fea164736f6c6343000813000a",
 }
 
 var VRFCoordinatorABI = VRFCoordinatorMetaData.ABI
@@ -11093,28 +9947,6 @@ func (_VRFCoordinator *VRFCoordinatorCallerSession) MigrationVersion() (uint8, e
 	return _VRFCoordinator.Contract.MigrationVersion(&_VRFCoordinator.CallOpts)
 }
 
-func (_VRFCoordinator *VRFCoordinatorCaller) MinDelay(opts *bind.CallOpts) (uint16, error) {
-	var out []interface{}
-	err := _VRFCoordinator.contract.Call(opts, &out, "minDelay")
-
-	if err != nil {
-		return *new(uint16), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint16)).(*uint16)
-
-	return out0, err
-
-}
-
-func (_VRFCoordinator *VRFCoordinatorSession) MinDelay() (uint16, error) {
-	return _VRFCoordinator.Contract.MinDelay(&_VRFCoordinator.CallOpts)
-}
-
-func (_VRFCoordinator *VRFCoordinatorCallerSession) MinDelay() (uint16, error) {
-	return _VRFCoordinator.Contract.MinDelay(&_VRFCoordinator.CallOpts)
-}
-
 func (_VRFCoordinator *VRFCoordinatorCaller) OnMigration(opts *bind.CallOpts, arg0 []byte) error {
 	var out []interface{}
 	err := _VRFCoordinator.contract.Call(opts, &out, "onMigration", arg0)
@@ -11425,16 +10257,16 @@ func (_VRFCoordinator *VRFCoordinatorTransactorSession) ProcessVRFOutputs(vrfOut
 	return _VRFCoordinator.Contract.ProcessVRFOutputs(&_VRFCoordinator.TransactOpts, vrfOutputs, juelsPerFeeCoin, reasonableGasPrice, blockHeight, arg4)
 }
 
-func (_VRFCoordinator *VRFCoordinatorTransactor) RedeemRandomness(opts *bind.TransactOpts, sender common.Address, arg1 *big.Int, requestID *big.Int, arg3 []byte) (*types.Transaction, error) {
-	return _VRFCoordinator.contract.Transact(opts, "redeemRandomness", sender, arg1, requestID, arg3)
+func (_VRFCoordinator *VRFCoordinatorTransactor) RedeemRandomness(opts *bind.TransactOpts, sender common.Address, subID *big.Int, requestIDArg *big.Int, arg3 []byte) (*types.Transaction, error) {
+	return _VRFCoordinator.contract.Transact(opts, "redeemRandomness", sender, subID, requestIDArg, arg3)
 }
 
-func (_VRFCoordinator *VRFCoordinatorSession) RedeemRandomness(sender common.Address, arg1 *big.Int, requestID *big.Int, arg3 []byte) (*types.Transaction, error) {
-	return _VRFCoordinator.Contract.RedeemRandomness(&_VRFCoordinator.TransactOpts, sender, arg1, requestID, arg3)
+func (_VRFCoordinator *VRFCoordinatorSession) RedeemRandomness(sender common.Address, subID *big.Int, requestIDArg *big.Int, arg3 []byte) (*types.Transaction, error) {
+	return _VRFCoordinator.Contract.RedeemRandomness(&_VRFCoordinator.TransactOpts, sender, subID, requestIDArg, arg3)
 }
 
-func (_VRFCoordinator *VRFCoordinatorTransactorSession) RedeemRandomness(sender common.Address, arg1 *big.Int, requestID *big.Int, arg3 []byte) (*types.Transaction, error) {
-	return _VRFCoordinator.Contract.RedeemRandomness(&_VRFCoordinator.TransactOpts, sender, arg1, requestID, arg3)
+func (_VRFCoordinator *VRFCoordinatorTransactorSession) RedeemRandomness(sender common.Address, subID *big.Int, requestIDArg *big.Int, arg3 []byte) (*types.Transaction, error) {
+	return _VRFCoordinator.Contract.RedeemRandomness(&_VRFCoordinator.TransactOpts, sender, subID, requestIDArg, arg3)
 }
 
 func (_VRFCoordinator *VRFCoordinatorTransactor) RemoveConsumer(opts *bind.TransactOpts, subId *big.Int, consumer common.Address) (*types.Transaction, error) {
@@ -11449,28 +10281,28 @@ func (_VRFCoordinator *VRFCoordinatorTransactorSession) RemoveConsumer(subId *bi
 	return _VRFCoordinator.Contract.RemoveConsumer(&_VRFCoordinator.TransactOpts, subId, consumer)
 }
 
-func (_VRFCoordinator *VRFCoordinatorTransactor) RequestRandomness(opts *bind.TransactOpts, requester common.Address, subID *big.Int, numWords uint16, confirmationDelayArg *big.Int, arg4 []byte) (*types.Transaction, error) {
-	return _VRFCoordinator.contract.Transact(opts, "requestRandomness", requester, subID, numWords, confirmationDelayArg, arg4)
+func (_VRFCoordinator *VRFCoordinatorTransactor) RequestRandomness(opts *bind.TransactOpts, requester common.Address, subID *big.Int, numWords uint16, confDelayArg *big.Int, arg4 []byte) (*types.Transaction, error) {
+	return _VRFCoordinator.contract.Transact(opts, "requestRandomness", requester, subID, numWords, confDelayArg, arg4)
 }
 
-func (_VRFCoordinator *VRFCoordinatorSession) RequestRandomness(requester common.Address, subID *big.Int, numWords uint16, confirmationDelayArg *big.Int, arg4 []byte) (*types.Transaction, error) {
-	return _VRFCoordinator.Contract.RequestRandomness(&_VRFCoordinator.TransactOpts, requester, subID, numWords, confirmationDelayArg, arg4)
+func (_VRFCoordinator *VRFCoordinatorSession) RequestRandomness(requester common.Address, subID *big.Int, numWords uint16, confDelayArg *big.Int, arg4 []byte) (*types.Transaction, error) {
+	return _VRFCoordinator.Contract.RequestRandomness(&_VRFCoordinator.TransactOpts, requester, subID, numWords, confDelayArg, arg4)
 }
 
-func (_VRFCoordinator *VRFCoordinatorTransactorSession) RequestRandomness(requester common.Address, subID *big.Int, numWords uint16, confirmationDelayArg *big.Int, arg4 []byte) (*types.Transaction, error) {
-	return _VRFCoordinator.Contract.RequestRandomness(&_VRFCoordinator.TransactOpts, requester, subID, numWords, confirmationDelayArg, arg4)
+func (_VRFCoordinator *VRFCoordinatorTransactorSession) RequestRandomness(requester common.Address, subID *big.Int, numWords uint16, confDelayArg *big.Int, arg4 []byte) (*types.Transaction, error) {
+	return _VRFCoordinator.Contract.RequestRandomness(&_VRFCoordinator.TransactOpts, requester, subID, numWords, confDelayArg, arg4)
 }
 
-func (_VRFCoordinator *VRFCoordinatorTransactor) RequestRandomnessFulfillment(opts *bind.TransactOpts, requester common.Address, subID *big.Int, numWords uint16, confirmationDelayArg *big.Int, callbackGasLimit uint32, arguments []byte, arg6 []byte) (*types.Transaction, error) {
-	return _VRFCoordinator.contract.Transact(opts, "requestRandomnessFulfillment", requester, subID, numWords, confirmationDelayArg, callbackGasLimit, arguments, arg6)
+func (_VRFCoordinator *VRFCoordinatorTransactor) RequestRandomnessFulfillment(opts *bind.TransactOpts, requester common.Address, subID *big.Int, numWords uint16, confDelayArg *big.Int, callbackGasLimit uint32, arguments []byte, arg6 []byte) (*types.Transaction, error) {
+	return _VRFCoordinator.contract.Transact(opts, "requestRandomnessFulfillment", requester, subID, numWords, confDelayArg, callbackGasLimit, arguments, arg6)
 }
 
-func (_VRFCoordinator *VRFCoordinatorSession) RequestRandomnessFulfillment(requester common.Address, subID *big.Int, numWords uint16, confirmationDelayArg *big.Int, callbackGasLimit uint32, arguments []byte, arg6 []byte) (*types.Transaction, error) {
-	return _VRFCoordinator.Contract.RequestRandomnessFulfillment(&_VRFCoordinator.TransactOpts, requester, subID, numWords, confirmationDelayArg, callbackGasLimit, arguments, arg6)
+func (_VRFCoordinator *VRFCoordinatorSession) RequestRandomnessFulfillment(requester common.Address, subID *big.Int, numWords uint16, confDelayArg *big.Int, callbackGasLimit uint32, arguments []byte, arg6 []byte) (*types.Transaction, error) {
+	return _VRFCoordinator.Contract.RequestRandomnessFulfillment(&_VRFCoordinator.TransactOpts, requester, subID, numWords, confDelayArg, callbackGasLimit, arguments, arg6)
 }
 
-func (_VRFCoordinator *VRFCoordinatorTransactorSession) RequestRandomnessFulfillment(requester common.Address, subID *big.Int, numWords uint16, confirmationDelayArg *big.Int, callbackGasLimit uint32, arguments []byte, arg6 []byte) (*types.Transaction, error) {
-	return _VRFCoordinator.Contract.RequestRandomnessFulfillment(&_VRFCoordinator.TransactOpts, requester, subID, numWords, confirmationDelayArg, callbackGasLimit, arguments, arg6)
+func (_VRFCoordinator *VRFCoordinatorTransactorSession) RequestRandomnessFulfillment(requester common.Address, subID *big.Int, numWords uint16, confDelayArg *big.Int, callbackGasLimit uint32, arguments []byte, arg6 []byte) (*types.Transaction, error) {
+	return _VRFCoordinator.Contract.RequestRandomnessFulfillment(&_VRFCoordinator.TransactOpts, requester, subID, numWords, confDelayArg, callbackGasLimit, arguments, arg6)
 }
 
 func (_VRFCoordinator *VRFCoordinatorTransactor) RequestSubscriptionOwnerTransfer(opts *bind.TransactOpts, subId *big.Int, newOwner common.Address) (*types.Transaction, error) {
@@ -12918,6 +11750,7 @@ type VRFCoordinatorRandomnessFulfillmentRequested struct {
 	GasPrice               *big.Int
 	WeiPerUnitLink         *big.Int
 	Arguments              []byte
+	CostJuels              *big.Int
 	Raw                    types.Log
 }
 
@@ -12991,6 +11824,143 @@ func (_VRFCoordinator *VRFCoordinatorFilterer) ParseRandomnessFulfillmentRequest
 	return event, nil
 }
 
+type VRFCoordinatorRandomnessRedeemedIterator struct {
+	Event *VRFCoordinatorRandomnessRedeemed
+
+	contract *bind.BoundContract
+	event    string
+
+	logs chan types.Log
+	sub  ethereum.Subscription
+	done bool
+	fail error
+}
+
+func (it *VRFCoordinatorRandomnessRedeemedIterator) Next() bool {
+
+	if it.fail != nil {
+		return false
+	}
+
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(VRFCoordinatorRandomnessRedeemed)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+
+	select {
+	case log := <-it.logs:
+		it.Event = new(VRFCoordinatorRandomnessRedeemed)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+func (it *VRFCoordinatorRandomnessRedeemedIterator) Error() error {
+	return it.fail
+}
+
+func (it *VRFCoordinatorRandomnessRedeemedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+type VRFCoordinatorRandomnessRedeemed struct {
+	RequestID *big.Int
+	Requester common.Address
+	SubID     *big.Int
+	Raw       types.Log
+}
+
+func (_VRFCoordinator *VRFCoordinatorFilterer) FilterRandomnessRedeemed(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*VRFCoordinatorRandomnessRedeemedIterator, error) {
+
+	var requestIDRule []interface{}
+	for _, requestIDItem := range requestID {
+		requestIDRule = append(requestIDRule, requestIDItem)
+	}
+	var requesterRule []interface{}
+	for _, requesterItem := range requester {
+		requesterRule = append(requesterRule, requesterItem)
+	}
+
+	logs, sub, err := _VRFCoordinator.contract.FilterLogs(opts, "RandomnessRedeemed", requestIDRule, requesterRule)
+	if err != nil {
+		return nil, err
+	}
+	return &VRFCoordinatorRandomnessRedeemedIterator{contract: _VRFCoordinator.contract, event: "RandomnessRedeemed", logs: logs, sub: sub}, nil
+}
+
+func (_VRFCoordinator *VRFCoordinatorFilterer) WatchRandomnessRedeemed(opts *bind.WatchOpts, sink chan<- *VRFCoordinatorRandomnessRedeemed, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
+
+	var requestIDRule []interface{}
+	for _, requestIDItem := range requestID {
+		requestIDRule = append(requestIDRule, requestIDItem)
+	}
+	var requesterRule []interface{}
+	for _, requesterItem := range requester {
+		requesterRule = append(requesterRule, requesterItem)
+	}
+
+	logs, sub, err := _VRFCoordinator.contract.WatchLogs(opts, "RandomnessRedeemed", requestIDRule, requesterRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+
+				event := new(VRFCoordinatorRandomnessRedeemed)
+				if err := _VRFCoordinator.contract.UnpackLog(event, "RandomnessRedeemed", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+func (_VRFCoordinator *VRFCoordinatorFilterer) ParseRandomnessRedeemed(log types.Log) (*VRFCoordinatorRandomnessRedeemed, error) {
+	event := new(VRFCoordinatorRandomnessRedeemed)
+	if err := _VRFCoordinator.contract.UnpackLog(event, "RandomnessRedeemed", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
 type VRFCoordinatorRandomnessRequestedIterator struct {
 	Event *VRFCoordinatorRandomnessRequested
 
@@ -13058,6 +12028,7 @@ type VRFCoordinatorRandomnessRequested struct {
 	ConfDelay              *big.Int
 	SubID                  *big.Int
 	NumWords               uint16
+	CostJuels              *big.Int
 	Raw                    types.Log
 }
 
@@ -14157,8 +13128,8 @@ func (_VRFCoordinator *VRFCoordinatorFilterer) ParseUnpaused(log types.Log) (*VR
 }
 
 var VRFRouterMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[],\"name\":\"CoordinatorAlreadyRegistered\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"CoordinatorNotRegistered\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"route\",\"type\":\"address\"}],\"name\":\"RouteNotFound\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"UnexpectedMigrationVersion\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"CoordinatorDeregistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"CoordinatorRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint48[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"RouteSet\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"acceptOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gasAmount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"callWithExactGasEvenIfTargetIsNoContract\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"sufficientGas\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"deregisterCoordinator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCoordinators\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"getRoute\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"coordinator\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"isCoordinatorRegistered\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"externalRequestID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"registerCoordinator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"resetRoute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_redemptionRoutes\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"setRoute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"typeAndVersion\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}]",
-	Bin: "0x608060405234801561001057600080fd5b5033806000816100675760405162461bcd60e51b815260206004820152601860248201527f43616e6e6f7420736574206f776e657220746f207a65726f000000000000000060448201526064015b60405180910390fd5b600080546001600160a01b0319166001600160a01b0384811691909117909155811615610097576100978161009f565b505050610148565b336001600160a01b038216036100f75760405162461bcd60e51b815260206004820152601760248201527f43616e6e6f74207472616e7366657220746f2073656c66000000000000000000604482015260640161005e565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b6114ff806101576000396000f3fe608060405234801561001057600080fd5b50600436106101115760003560e01c80639479b74e116100ad578063d9c4a44d11610071578063d9c4a44d146102c5578063db972c8b146102d8578063f2fde38b146102eb578063f9c45ced146102fe578063fa66358a1461031157600080fd5b80639479b74e146102495780639e2010361461025c578063acfc6cdd1461026f578063bb9b2b341461028f578063cef40aa6146102a257600080fd5b8063181f5a77146101165780632f7527cc146101505780634b2407d41461016a5780634ffac83a1461017f57806355fe9763146101a05780635d5d8d19146101ca5780637612e884146101df57806379ba5097146102275780638da5cb5b1461022f575b600080fd5b604080518082018252600f81526e0565246526f7574657220312e302e3608c1b602082015290516101479190610e13565b60405180910390f35b610158600881565b60405160ff9091168152602001610147565b61017d610178366004610e42565b610324565b005b61019261018d366004610f37565b610426565b604051908152602001610147565b6101b36101ae366004610f9e565b610541565b604080519215158352901515602083015201610147565b6101d26105aa565b6040516101479190610ff4565b6102196101ed366004611041565b60056020526000908152604090205465ffffffffffff811690600160301b90046001600160a01b031682565b60405161014792919061105a565b61017d6105bb565b6000546001600160a01b03165b604051610147919061107b565b61017d610257366004611041565b61066a565b61019261026a3660046110a3565b6106f2565b61028261027d366004611114565b61077e565b604051610147919061114d565b61017d61029d366004611041565b61084b565b6102b56102b0366004610e42565b6108c0565b6040519015158152602001610147565b61017d6102d3366004610e42565b6108d3565b6101926102e6366004611185565b61093f565b61017d6102f9366004610e42565b6109df565b61019261030c366004611222565b6109f3565b61023c61031f366004611041565b610a79565b61032c610adb565b610337600382610b30565b156103555760405163dcecb7bf60e01b815260040160405180910390fd5b6000819050806001600160a01b031663294daa496040518163ffffffff1660e01b8152600401602060405180830381865afa158015610398573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103bc9190611268565b60ff166000036103df57604051630dd02d0960e31b815260040160405180910390fd5b6103ea600383610b55565b507fb7cabbfc11e66731fc77de0444614282023bcbd41d16781c753a431d0af016258260405161041a919061107b565b60405180910390a15050565b60008061043286610a79565b90506000816001600160a01b03166362f8b62033898989896040518663ffffffff1660e01b815260040161046a95949392919061128b565b6020604051808303816000875af1158015610489573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906104ad91906112d2565b9050600081836040516020016104c492919061105a565b60408051601f198184030181528282528051602091820120838301835265ffffffffffff95861684526001600160a01b039687168483019081526000828152600590935292909120925183549251909616600160301b026001600160d01b0319909216959094169490941793909317909255915050949350505050565b60008033610550600382610b30565b61056d576040516301fd70a160e51b815260040160405180910390fd5b5a61138881106105a057611388810390508660408204820311156105a05760008086516020880160008a8cf19350600192505b5050935093915050565b60606105b66003610b6a565b905090565b6001546001600160a01b031633146106135760405162461bcd60e51b815260206004820152601660248201527526bab9ba10313290383937b837b9b2b21037bbb732b960511b60448201526064015b60405180910390fd5b60008054336001600160a01b0319808316821784556001805490911690556040516001600160a01b0390921692909183917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a350565b33610676600382610b30565b610693576040516301fd70a160e51b815260040160405180910390fd5b6000828152600260205260409081902080546001600160a01b03191633908117909155905183917fd8bb190f51a471c0cc88b5df464ee10c29138cce0d70fb36c472d60b414f3b3a916106e6919061107b565b60405180910390a25050565b6000806106fe86610a79565b604051634f10081b60e11b81529091506001600160a01b03821690639e201036906107339089908990899089906004016112fa565b602060405180830381865afa158015610750573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906107749190611331565b9695505050505050565b600082815260056020818152604080842081518083018352815465ffffffffffff811682526001600160a01b03600160301b82048116838701908152978a9052959094526001600160d01b0319909316905592518151935163abbf1c9b60e01b8152606094929391929183169163abbf1c9b916108049133918b91908a9060040161134a565b6000604051808303816000875af1158015610823573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f19168201604052610774919081019061137f565b33610857600382610b30565b610874576040516301fd70a160e51b815260040160405180910390fd5b60008281526002602052604080822080546001600160a01b03191690555183917fd8bb190f51a471c0cc88b5df464ee10c29138cce0d70fb36c472d60b414f3b3a916106e6919061107b565b60006108cd600383610b30565b92915050565b6108db610adb565b806108e7600382610b30565b610904576040516301fd70a160e51b815260040160405180910390fd5b61090f600383610b77565b507ff80a1a97fd42251f3c33cda98635e7399253033a6774fe37cd3f650b5282af378260405161041a919061107b565b60008061094b88610a79565b90506000816001600160a01b03166395009f08338b8b8b8b8b8b6040518863ffffffff1660e01b81526004016109879796959493929190611424565b6020604051808303816000875af11580156109a6573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906109ca91906112d2565b65ffffffffffff169998505050505050505050565b6109e7610adb565b6109f081610b8c565b50565b6000806109ff84610a79565b60405163f9c45ced60e01b81529091506001600160a01b0382169063f9c45ced90610a30908790879060040161148c565b602060405180830381865afa158015610a4d573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610a719190611331565b949350505050565b6000818152600260205260408120546001600160a01b031680610ab157806040516339910a6760e01b815260040161060a919061107b565b610abc600382610b30565b6108cd57806040516339910a6760e01b815260040161060a919061107b565b6000546001600160a01b03163314610b2e5760405162461bcd60e51b815260206004820152601660248201527527b7363c9031b0b63630b1363290313c9037bbb732b960511b604482015260640161060a565b565b6001600160a01b038116600090815260018301602052604081205415155b9392505050565b6000610b4e836001600160a01b038416610c2f565b60606000610b4e83610c7e565b6000610b4e836001600160a01b038416610cda565b336001600160a01b03821603610bde5760405162461bcd60e51b815260206004820152601760248201527621b0b73737ba103a3930b739b332b9103a379039b2b63360491b604482015260640161060a565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b6000818152600183016020526040812054610c76575081546001818101845560008481526020808220909301849055845484825282860190935260409020919091556108cd565b5060006108cd565b606081600001805480602002602001604051908101604052809291908181526020018280548015610cce57602002820191906000526020600020905b815481526020019060010190808311610cba575b50505050509050919050565b60008181526001830160205260408120548015610dc3576000610cfe6001836114a5565b8554909150600090610d12906001906114a5565b9050818114610d77576000866000018281548110610d3257610d326114c6565b9060005260206000200154905080876000018481548110610d5557610d556114c6565b6000918252602080832090910192909255918252600188019052604090208390555b8554869080610d8857610d886114dc565b6001900381819060005260206000200160009055905585600101600086815260200190815260200160002060009055600193505050506108cd565b60009150506108cd565b6000815180845260005b81811015610df357602081850181015186830182015201610dd7565b506000602082860101526020601f19601f83011685010191505092915050565b602081526000610b4e6020830184610dcd565b80356001600160a01b0381168114610e3d57600080fd5b919050565b600060208284031215610e5457600080fd5b610b4e82610e26565b803561ffff81168114610e3d57600080fd5b803562ffffff81168114610e3d57600080fd5b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f191681016001600160401b0381118282101715610ec057610ec0610e82565b604052919050565b600082601f830112610ed957600080fd5b81356001600160401b03811115610ef257610ef2610e82565b610f05601f8201601f1916602001610e98565b818152846020838601011115610f1a57600080fd5b816020850160208301376000918101602001919091529392505050565b60008060008060808587031215610f4d57600080fd5b84359350610f5d60208601610e5d565b9250610f6b60408601610e6f565b915060608501356001600160401b03811115610f8657600080fd5b610f9287828801610ec8565b91505092959194509250565b600080600060608486031215610fb357600080fd5b83359250610fc360208501610e26565b915060408401356001600160401b03811115610fde57600080fd5b610fea86828701610ec8565b9150509250925092565b6020808252825182820181905260009190848201906040850190845b818110156110355783516001600160a01b031683529284019291840191600101611010565b50909695505050505050565b60006020828403121561105357600080fd5b5035919050565b65ffffffffffff9290921682526001600160a01b0316602082015260400190565b6001600160a01b0391909116815260200190565b803563ffffffff81168114610e3d57600080fd5b600080600080608085870312156110b957600080fd5b843593506110c96020860161108f565b925060408501356001600160401b03808211156110e557600080fd5b6110f188838901610ec8565b9350606087013591508082111561110757600080fd5b50610f9287828801610ec8565b60008060006060848603121561112957600080fd5b833592506020840135915060408401356001600160401b03811115610fde57600080fd5b6020808252825182820181905260009190848201906040850190845b8181101561103557835183529284019291840191600101611169565b60008060008060008060c0878903121561119e57600080fd5b863595506111ae60208801610e5d565b94506111bc60408801610e6f565b93506111ca6060880161108f565b925060808701356001600160401b03808211156111e657600080fd5b6111f28a838b01610ec8565b935060a089013591508082111561120857600080fd5b5061121589828a01610ec8565b9150509295509295509295565b6000806040838503121561123557600080fd5b8235915060208301356001600160401b0381111561125257600080fd5b61125e85828601610ec8565b9150509250929050565b60006020828403121561127a57600080fd5b815160ff81168114610b4e57600080fd5b60018060a01b038616815284602082015261ffff8416604082015262ffffff8316606082015260a0608082015260006112c760a0830184610dcd565b979650505050505050565b6000602082840312156112e457600080fd5b815165ffffffffffff81168114610b4e57600080fd5b84815263ffffffff8416602082015260806040820152600061131f6080830185610dcd565b82810360608401526112c78185610dcd565b60006020828403121561134357600080fd5b5051919050565b60018060a01b038516815283602082015265ffffffffffff831660408201526080606082015260006107746080830184610dcd565b6000602080838503121561139257600080fd5b82516001600160401b03808211156113a957600080fd5b818501915085601f8301126113bd57600080fd5b8151818111156113cf576113cf610e82565b8060051b91506113e0848301610e98565b81815291830184019184810190888411156113fa57600080fd5b938501935b83851015611418578451825293850193908501906113ff565b98975050505050505050565b60018060a01b038816815286602082015261ffff8616604082015262ffffff8516606082015263ffffffff8416608082015260e060a0820152600061146c60e0830185610dcd565b82810360c084015261147e8185610dcd565b9a9950505050505050505050565b828152604060208201526000610a716040830184610dcd565b818103818111156108cd57634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052603160045260246000fdfea164736f6c6343000813000a",
+	ABI: "[{\"inputs\":[],\"name\":\"CoordinatorAlreadyRegistered\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"CoordinatorNotRegistered\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"}],\"name\":\"RedemptionRouteNotFound\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"route\",\"type\":\"address\"}],\"name\":\"RouteNotFound\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"UnexpectedMigrationVersion\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"CoordinatorDeregistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"CoordinatorRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"RouteSet\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"acceptOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gasAmount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"callWithExactGasEvenIfTargetIsNoContract\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"sufficientGas\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"deregisterCoordinator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCoordinators\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"getRoute\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"coordinator\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"isCoordinatorRegistered\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"registerCoordinator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"resetRoute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_redemptionRoutes\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"setRoute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"typeAndVersion\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}]",
+	Bin: "0x608060405234801561001057600080fd5b5033806000816100675760405162461bcd60e51b815260206004820152601860248201527f43616e6e6f7420736574206f776e657220746f207a65726f000000000000000060448201526064015b60405180910390fd5b600080546001600160a01b0319166001600160a01b0384811691909117909155811615610097576100978161009f565b505050610148565b336001600160a01b038216036100f75760405162461bcd60e51b815260206004820152601760248201527f43616e6e6f74207472616e7366657220746f2073656c66000000000000000000604482015260640161005e565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b6113d5806101576000396000f3fe608060405234801561001057600080fd5b50600436106100f65760003560e01c80639e201036116100925780639e2010361461020c578063acfc6cdd1461021f578063bb9b2b341461023f578063cef40aa614610252578063d9c4a44d14610275578063db972c8b14610288578063f2fde38b1461029b578063f9c45ced146102ae578063fa66358a146102c157600080fd5b8063181f5a77146100fb5780634b2407d4146101355780634ffac83a1461014a57806355fe97631461016b5780635d5d8d19146101955780637612e884146101aa57806379ba5097146101e05780638da5cb5b146101e85780639479b74e146101f9575b600080fd5b604080518082018252600f81526e0565246526f7574657220312e302e3608c1b6020820152905161012c9190610d46565b60405180910390f35b610148610143366004610d75565b6102d4565b005b61015d610158366004610e6a565b6103d6565b60405190815260200161012c565b61017e610179366004610ed1565b610494565b60408051921515835290151560208301520161012c565b61019d6104fd565b60405161012c9190610f27565b6101d36101b8366004610f74565b6005602052600090815260409020546001600160a01b031681565b60405161012c9190610f8d565b61014861050e565b6000546001600160a01b03166101d3565b610148610207366004610f74565b6105bd565b61015d61021a366004610fb5565b610645565b61023261022d366004611026565b6106d1565b60405161012c919061105f565b61014861024d366004610f74565b610788565b610265610260366004610d75565b6107fd565b604051901515815260200161012c565b610148610283366004610d75565b610810565b61015d610296366004611097565b61087c565b6101486102a9366004610d75565b610912565b61015d6102bc366004611134565b610926565b6101d36102cf366004610f74565b6109ac565b6102dc610a0e565b6102e7600382610a63565b156103055760405163dcecb7bf60e01b815260040160405180910390fd5b6000819050806001600160a01b031663294daa496040518163ffffffff1660e01b8152600401602060405180830381865afa158015610348573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061036c919061117a565b60ff1660000361038f57604051630dd02d0960e31b815260040160405180910390fd5b61039a600383610a88565b507fb7cabbfc11e66731fc77de0444614282023bcbd41d16781c753a431d0af01625826040516103ca9190610f8d565b60405180910390a15050565b6000806103e2866109ac565b90506000816001600160a01b03166362f8b62033898989896040518663ffffffff1660e01b815260040161041a95949392919061119d565b6020604051808303816000875af1158015610439573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061045d91906111e4565b600081815260056020526040902080546001600160a01b0319166001600160a01b0394909416939093179092555095945050505050565b600080336104a3600382610a63565b6104c0576040516301fd70a160e51b815260040160405180910390fd5b5a61138881106104f357611388810390508660408204820311156104f35760008086516020880160008a8cf19350600192505b5050935093915050565b60606105096003610a9d565b905090565b6001546001600160a01b031633146105665760405162461bcd60e51b815260206004820152601660248201527526bab9ba10313290383937b837b9b2b21037bbb732b960511b60448201526064015b60405180910390fd5b60008054336001600160a01b0319808316821784556001805490911690556040516001600160a01b0390921692909183917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a350565b336105c9600382610a63565b6105e6576040516301fd70a160e51b815260040160405180910390fd5b6000828152600260205260409081902080546001600160a01b03191633908117909155905183917fd8bb190f51a471c0cc88b5df464ee10c29138cce0d70fb36c472d60b414f3b3a916106399190610f8d565b60405180910390a25050565b600080610651866109ac565b604051634f10081b60e11b81529091506001600160a01b03821690639e201036906106869089908990899089906004016111fd565b602060405180830381865afa1580156106a3573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106c791906111e4565b9695505050505050565b6000828152600560205260409020546060906001600160a01b03168061070d576040516371e8b52960e01b81526004810185905260240161055d565b604051636ae5fb3b60e01b815281906001600160a01b03821690636ae5fb3b906107419033908a908a908a90600401611234565b6000604051808303816000875af1158015610760573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f191682016040526106c79190810190611261565b33610794600382610a63565b6107b1576040516301fd70a160e51b815260040160405180910390fd5b60008281526002602052604080822080546001600160a01b03191690555183917fd8bb190f51a471c0cc88b5df464ee10c29138cce0d70fb36c472d60b414f3b3a916106399190610f8d565b600061080a600383610a63565b92915050565b610818610a0e565b80610824600382610a63565b610841576040516301fd70a160e51b815260040160405180910390fd5b61084c600383610aaa565b507ff80a1a97fd42251f3c33cda98635e7399253033a6774fe37cd3f650b5282af37826040516103ca9190610f8d565b600080610888886109ac565b6040516312a013e160e31b81529091506001600160a01b038216906395009f08906108c39033908c908c908c908c908c908c906004016112fa565b6020604051808303816000875af11580156108e2573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061090691906111e4565b98975050505050505050565b61091a610a0e565b61092381610abf565b50565b600080610932846109ac565b60405163f9c45ced60e01b81529091506001600160a01b0382169063f9c45ced906109639087908790600401611362565b602060405180830381865afa158015610980573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906109a491906111e4565b949350505050565b6000818152600260205260408120546001600160a01b0316806109e457806040516339910a6760e01b815260040161055d9190610f8d565b6109ef600382610a63565b61080a57806040516339910a6760e01b815260040161055d9190610f8d565b6000546001600160a01b03163314610a615760405162461bcd60e51b815260206004820152601660248201527527b7363c9031b0b63630b1363290313c9037bbb732b960511b604482015260640161055d565b565b6001600160a01b038116600090815260018301602052604081205415155b9392505050565b6000610a81836001600160a01b038416610b62565b60606000610a8183610bb1565b6000610a81836001600160a01b038416610c0d565b336001600160a01b03821603610b115760405162461bcd60e51b815260206004820152601760248201527621b0b73737ba103a3930b739b332b9103a379039b2b63360491b604482015260640161055d565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b6000818152600183016020526040812054610ba95750815460018181018455600084815260208082209093018490558454848252828601909352604090209190915561080a565b50600061080a565b606081600001805480602002602001604051908101604052809291908181526020018280548015610c0157602002820191906000526020600020905b815481526020019060010190808311610bed575b50505050509050919050565b60008181526001830160205260408120548015610cf6576000610c3160018361137b565b8554909150600090610c459060019061137b565b9050818114610caa576000866000018281548110610c6557610c6561139c565b9060005260206000200154905080876000018481548110610c8857610c8861139c565b6000918252602080832090910192909255918252600188019052604090208390555b8554869080610cbb57610cbb6113b2565b60019003818190600052602060002001600090559055856001016000868152602001908152602001600020600090556001935050505061080a565b600091505061080a565b6000815180845260005b81811015610d2657602081850181015186830182015201610d0a565b506000602082860101526020601f19601f83011685010191505092915050565b602081526000610a816020830184610d00565b80356001600160a01b0381168114610d7057600080fd5b919050565b600060208284031215610d8757600080fd5b610a8182610d59565b803561ffff81168114610d7057600080fd5b803562ffffff81168114610d7057600080fd5b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f191681016001600160401b0381118282101715610df357610df3610db5565b604052919050565b600082601f830112610e0c57600080fd5b81356001600160401b03811115610e2557610e25610db5565b610e38601f8201601f1916602001610dcb565b818152846020838601011115610e4d57600080fd5b816020850160208301376000918101602001919091529392505050565b60008060008060808587031215610e8057600080fd5b84359350610e9060208601610d90565b9250610e9e60408601610da2565b915060608501356001600160401b03811115610eb957600080fd5b610ec587828801610dfb565b91505092959194509250565b600080600060608486031215610ee657600080fd5b83359250610ef660208501610d59565b915060408401356001600160401b03811115610f1157600080fd5b610f1d86828701610dfb565b9150509250925092565b6020808252825182820181905260009190848201906040850190845b81811015610f685783516001600160a01b031683529284019291840191600101610f43565b50909695505050505050565b600060208284031215610f8657600080fd5b5035919050565b6001600160a01b0391909116815260200190565b803563ffffffff81168114610d7057600080fd5b60008060008060808587031215610fcb57600080fd5b84359350610fdb60208601610fa1565b925060408501356001600160401b0380821115610ff757600080fd5b61100388838901610dfb565b9350606087013591508082111561101957600080fd5b50610ec587828801610dfb565b60008060006060848603121561103b57600080fd5b833592506020840135915060408401356001600160401b03811115610f1157600080fd5b6020808252825182820181905260009190848201906040850190845b81811015610f685783518352928401929184019160010161107b565b60008060008060008060c087890312156110b057600080fd5b863595506110c060208801610d90565b94506110ce60408801610da2565b93506110dc60608801610fa1565b925060808701356001600160401b03808211156110f857600080fd5b6111048a838b01610dfb565b935060a089013591508082111561111a57600080fd5b5061112789828a01610dfb565b9150509295509295509295565b6000806040838503121561114757600080fd5b8235915060208301356001600160401b0381111561116457600080fd5b61117085828601610dfb565b9150509250929050565b60006020828403121561118c57600080fd5b815160ff81168114610a8157600080fd5b60018060a01b038616815284602082015261ffff8416604082015262ffffff8316606082015260a0608082015260006111d960a0830184610d00565b979650505050505050565b6000602082840312156111f657600080fd5b5051919050565b84815263ffffffff841660208201526080604082015260006112226080830185610d00565b82810360608401526111d98185610d00565b60018060a01b03851681528360208201528260408201526080606082015260006106c76080830184610d00565b6000602080838503121561127457600080fd5b82516001600160401b038082111561128b57600080fd5b818501915085601f83011261129f57600080fd5b8151818111156112b1576112b1610db5565b8060051b91506112c2848301610dcb565b81815291830184019184810190888411156112dc57600080fd5b938501935b83851015610906578451825293850193908501906112e1565b60018060a01b038816815286602082015261ffff8616604082015262ffffff8516606082015263ffffffff8416608082015260e060a0820152600061134260e0830185610d00565b82810360c08401526113548185610d00565b9a9950505050505050505050565b8281526040602082015260006109a46040830184610d00565b8181038181111561080a57634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052603160045260246000fdfea164736f6c6343000813000a",
 }
 
 var VRFRouterABI = VRFRouterMetaData.ABI
@@ -14289,28 +13260,6 @@ func (_VRFRouter *VRFRouterTransactorRaw) Transfer(opts *bind.TransactOpts) (*ty
 
 func (_VRFRouter *VRFRouterTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
 	return _VRFRouter.Contract.contract.Transact(opts, method, params...)
-}
-
-func (_VRFRouter *VRFRouterCaller) NUMCONFDELAYS(opts *bind.CallOpts) (uint8, error) {
-	var out []interface{}
-	err := _VRFRouter.contract.Call(opts, &out, "NUM_CONF_DELAYS")
-
-	if err != nil {
-		return *new(uint8), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint8)).(*uint8)
-
-	return out0, err
-
-}
-
-func (_VRFRouter *VRFRouterSession) NUMCONFDELAYS() (uint8, error) {
-	return _VRFRouter.Contract.NUMCONFDELAYS(&_VRFRouter.CallOpts)
-}
-
-func (_VRFRouter *VRFRouterCallerSession) NUMCONFDELAYS() (uint8, error) {
-	return _VRFRouter.Contract.NUMCONFDELAYS(&_VRFRouter.CallOpts)
 }
 
 func (_VRFRouter *VRFRouterCaller) GetCoordinators(opts *bind.CallOpts) ([]common.Address, error) {
@@ -14445,39 +13394,25 @@ func (_VRFRouter *VRFRouterCallerSession) Owner() (common.Address, error) {
 	return _VRFRouter.Contract.Owner(&_VRFRouter.CallOpts)
 }
 
-func (_VRFRouter *VRFRouterCaller) SRedemptionRoutes(opts *bind.CallOpts, arg0 *big.Int) (struct {
-	RequestID          *big.Int
-	CoordinatorAddress common.Address
-}, error) {
+func (_VRFRouter *VRFRouterCaller) SRedemptionRoutes(opts *bind.CallOpts, arg0 *big.Int) (common.Address, error) {
 	var out []interface{}
 	err := _VRFRouter.contract.Call(opts, &out, "s_redemptionRoutes", arg0)
 
-	outstruct := new(struct {
-		RequestID          *big.Int
-		CoordinatorAddress common.Address
-	})
 	if err != nil {
-		return *outstruct, err
+		return *new(common.Address), err
 	}
 
-	outstruct.RequestID = *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
-	outstruct.CoordinatorAddress = *abi.ConvertType(out[1], new(common.Address)).(*common.Address)
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
 
-	return *outstruct, err
+	return out0, err
 
 }
 
-func (_VRFRouter *VRFRouterSession) SRedemptionRoutes(arg0 *big.Int) (struct {
-	RequestID          *big.Int
-	CoordinatorAddress common.Address
-}, error) {
+func (_VRFRouter *VRFRouterSession) SRedemptionRoutes(arg0 *big.Int) (common.Address, error) {
 	return _VRFRouter.Contract.SRedemptionRoutes(&_VRFRouter.CallOpts, arg0)
 }
 
-func (_VRFRouter *VRFRouterCallerSession) SRedemptionRoutes(arg0 *big.Int) (struct {
-	RequestID          *big.Int
-	CoordinatorAddress common.Address
-}, error) {
+func (_VRFRouter *VRFRouterCallerSession) SRedemptionRoutes(arg0 *big.Int) (common.Address, error) {
 	return _VRFRouter.Contract.SRedemptionRoutes(&_VRFRouter.CallOpts, arg0)
 }
 
@@ -14539,16 +13474,16 @@ func (_VRFRouter *VRFRouterTransactorSession) DeregisterCoordinator(coordinatorA
 	return _VRFRouter.Contract.DeregisterCoordinator(&_VRFRouter.TransactOpts, coordinatorAddress)
 }
 
-func (_VRFRouter *VRFRouterTransactor) RedeemRandomness(opts *bind.TransactOpts, subID *big.Int, externalRequestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.contract.Transact(opts, "redeemRandomness", subID, externalRequestID, extraArgs)
+func (_VRFRouter *VRFRouterTransactor) RedeemRandomness(opts *bind.TransactOpts, subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _VRFRouter.contract.Transact(opts, "redeemRandomness", subID, requestID, extraArgs)
 }
 
-func (_VRFRouter *VRFRouterSession) RedeemRandomness(subID *big.Int, externalRequestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.Contract.RedeemRandomness(&_VRFRouter.TransactOpts, subID, externalRequestID, extraArgs)
+func (_VRFRouter *VRFRouterSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _VRFRouter.Contract.RedeemRandomness(&_VRFRouter.TransactOpts, subID, requestID, extraArgs)
 }
 
-func (_VRFRouter *VRFRouterTransactorSession) RedeemRandomness(subID *big.Int, externalRequestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.Contract.RedeemRandomness(&_VRFRouter.TransactOpts, subID, externalRequestID, extraArgs)
+func (_VRFRouter *VRFRouterTransactorSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _VRFRouter.Contract.RedeemRandomness(&_VRFRouter.TransactOpts, subID, requestID, extraArgs)
 }
 
 func (_VRFRouter *VRFRouterTransactor) RegisterCoordinator(opts *bind.TransactOpts, coordinatorAddress common.Address) (*types.Transaction, error) {
@@ -14621,131 +13556,6 @@ func (_VRFRouter *VRFRouterSession) TransferOwnership(to common.Address) (*types
 
 func (_VRFRouter *VRFRouterTransactorSession) TransferOwnership(to common.Address) (*types.Transaction, error) {
 	return _VRFRouter.Contract.TransferOwnership(&_VRFRouter.TransactOpts, to)
-}
-
-type VRFRouterConfigSetIterator struct {
-	Event *VRFRouterConfigSet
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterConfigSetIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterConfigSet)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterConfigSet)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterConfigSetIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterConfigSetIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterConfigSet struct {
-	PreviousConfigBlockNumber uint32
-	ConfigDigest              [32]byte
-	ConfigCount               uint64
-	Signers                   []common.Address
-	Transmitters              []common.Address
-	F                         uint8
-	OnchainConfig             []byte
-	OffchainConfigVersion     uint64
-	OffchainConfig            []byte
-	Raw                       types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterConfigSet(opts *bind.FilterOpts) (*VRFRouterConfigSetIterator, error) {
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterConfigSetIterator{contract: _VRFRouter.contract, event: "ConfigSet", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchConfigSet(opts *bind.WatchOpts, sink chan<- *VRFRouterConfigSet) (event.Subscription, error) {
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterConfigSet)
-				if err := _VRFRouter.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseConfigSet(log types.Log) (*VRFRouterConfigSet, error) {
-	event := new(VRFRouterConfigSet)
-	if err := _VRFRouter.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
 }
 
 type VRFRouterCoordinatorDeregisteredIterator struct {
@@ -14976,266 +13786,6 @@ func (_VRFRouter *VRFRouterFilterer) WatchCoordinatorRegistered(opts *bind.Watch
 func (_VRFRouter *VRFRouterFilterer) ParseCoordinatorRegistered(log types.Log) (*VRFRouterCoordinatorRegistered, error) {
 	event := new(VRFRouterCoordinatorRegistered)
 	if err := _VRFRouter.contract.UnpackLog(event, "CoordinatorRegistered", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterNewTransmissionIterator struct {
-	Event *VRFRouterNewTransmission
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterNewTransmissionIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterNewTransmission)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterNewTransmission)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterNewTransmissionIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterNewTransmissionIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterNewTransmission struct {
-	AggregatorRoundId  uint32
-	EpochAndRound      *big.Int
-	Transmitter        common.Address
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	ConfigDigest       [32]byte
-	Raw                types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterNewTransmission(opts *bind.FilterOpts, aggregatorRoundId []uint32, epochAndRound []*big.Int) (*VRFRouterNewTransmissionIterator, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterNewTransmissionIterator{contract: _VRFRouter.contract, event: "NewTransmission", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchNewTransmission(opts *bind.WatchOpts, sink chan<- *VRFRouterNewTransmission, aggregatorRoundId []uint32, epochAndRound []*big.Int) (event.Subscription, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterNewTransmission)
-				if err := _VRFRouter.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseNewTransmission(log types.Log) (*VRFRouterNewTransmission, error) {
-	event := new(VRFRouterNewTransmission)
-	if err := _VRFRouter.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterOutputsServedIterator struct {
-	Event *VRFRouterOutputsServed
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterOutputsServedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterOutputsServed)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterOutputsServed)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterOutputsServedIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterOutputsServedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterOutputsServed struct {
-	RecentBlockHeight  uint64
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	OutputsServed      []VRFBeaconTypesOutputServed
-	Raw                types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterOutputsServed(opts *bind.FilterOpts) (*VRFRouterOutputsServedIterator, error) {
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterOutputsServedIterator{contract: _VRFRouter.contract, event: "OutputsServed", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchOutputsServed(opts *bind.WatchOpts, sink chan<- *VRFRouterOutputsServed) (event.Subscription, error) {
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterOutputsServed)
-				if err := _VRFRouter.contract.UnpackLog(event, "OutputsServed", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseOutputsServed(log types.Log) (*VRFRouterOutputsServed, error) {
-	event := new(VRFRouterOutputsServed)
-	if err := _VRFRouter.contract.UnpackLog(event, "OutputsServed", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
@@ -15508,409 +14058,6 @@ func (_VRFRouter *VRFRouterFilterer) WatchOwnershipTransferred(opts *bind.WatchO
 func (_VRFRouter *VRFRouterFilterer) ParseOwnershipTransferred(log types.Log) (*VRFRouterOwnershipTransferred, error) {
 	event := new(VRFRouterOwnershipTransferred)
 	if err := _VRFRouter.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterRandomWordsFulfilledIterator struct {
-	Event *VRFRouterRandomWordsFulfilled
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterRandomWordsFulfilledIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterRandomWordsFulfilled)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterRandomWordsFulfilled)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterRandomWordsFulfilledIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterRandomWordsFulfilledIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterRandomWordsFulfilled struct {
-	RequestIDs            []*big.Int
-	SuccessfulFulfillment []byte
-	TruncatedErrorData    [][]byte
-	Raw                   types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterRandomWordsFulfilled(opts *bind.FilterOpts) (*VRFRouterRandomWordsFulfilledIterator, error) {
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterRandomWordsFulfilledIterator{contract: _VRFRouter.contract, event: "RandomWordsFulfilled", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchRandomWordsFulfilled(opts *bind.WatchOpts, sink chan<- *VRFRouterRandomWordsFulfilled) (event.Subscription, error) {
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterRandomWordsFulfilled)
-				if err := _VRFRouter.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseRandomWordsFulfilled(log types.Log) (*VRFRouterRandomWordsFulfilled, error) {
-	event := new(VRFRouterRandomWordsFulfilled)
-	if err := _VRFRouter.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterRandomnessFulfillmentRequestedIterator struct {
-	Event *VRFRouterRandomnessFulfillmentRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterRandomnessFulfillmentRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterRandomnessFulfillmentRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterRandomnessFulfillmentRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterRandomnessFulfillmentRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterRandomnessFulfillmentRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterRandomnessFulfillmentRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	GasAllowance           uint32
-	GasPrice               *big.Int
-	WeiPerUnitLink         *big.Int
-	Arguments              []byte
-	Raw                    types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterRandomnessFulfillmentRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*VRFRouterRandomnessFulfillmentRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterRandomnessFulfillmentRequestedIterator{contract: _VRFRouter.contract, event: "RandomnessFulfillmentRequested", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchRandomnessFulfillmentRequested(opts *bind.WatchOpts, sink chan<- *VRFRouterRandomnessFulfillmentRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterRandomnessFulfillmentRequested)
-				if err := _VRFRouter.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseRandomnessFulfillmentRequested(log types.Log) (*VRFRouterRandomnessFulfillmentRequested, error) {
-	event := new(VRFRouterRandomnessFulfillmentRequested)
-	if err := _VRFRouter.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterRandomnessRequestedIterator struct {
-	Event *VRFRouterRandomnessRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterRandomnessRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterRandomnessRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterRandomnessRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterRandomnessRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterRandomnessRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterRandomnessRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	Raw                    types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterRandomnessRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*VRFRouterRandomnessRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterRandomnessRequestedIterator{contract: _VRFRouter.contract, event: "RandomnessRequested", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchRandomnessRequested(opts *bind.WatchOpts, sink chan<- *VRFRouterRandomnessRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterRandomnessRequested)
-				if err := _VRFRouter.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseRandomnessRequested(log types.Log) (*VRFRouterRandomnessRequested, error) {
-	event := new(VRFRouterRandomnessRequested)
-	if err := _VRFRouter.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log

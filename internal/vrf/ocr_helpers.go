@@ -106,7 +106,7 @@ func validateAndAddCallback(
 		ConfirmationDelay: c.Callback.ConfDelay,
 		SubscriptionID:    big.NewInt(0).SetBytes(c.Callback.SubscriptionID),
 		Price:             big.NewInt(0).SetBytes(c.Price),
-		RequestID:         c.Callback.RequestId,
+		RequestID:         big.NewInt(0).SetBytes(c.Callback.RequestId),
 		NumWords:          uint16(c.Callback.NumWords),
 		Requester:         common.BytesToAddress(c.Callback.Requester),
 		Arguments:         c.Callback.Arguments,
@@ -346,7 +346,7 @@ func sanityCheckCallback(
 		})
 		return errors.Errorf(priceTooLargeMsg)
 	}
-	if c.Callback.RequestId > MaxRequestID.Uint64() {
+	if new(big.Int).SetBytes(c.Callback.RequestId).Cmp(MaxRequestID) > 0 {
 		l.Warn(requestIdTooLargeMsg, commontypes.LogFields{
 			"requestID": c.Callback.RequestId, "max": maxUint48, "callback": c,
 			"source": oracle,
@@ -454,7 +454,7 @@ func callbacksEqual(c1, c2 vrf_types.AbstractCostedCallbackRequest) bool {
 		c1.ConfirmationDelay == c2.ConfirmationDelay &&
 		c1.SubscriptionID.Cmp(c2.SubscriptionID) == 0 &&
 		c1.Price.Cmp(c2.Price) == 0 &&
-		c1.RequestID == c2.RequestID &&
+		c1.RequestID.Cmp(c2.RequestID) == 0 &&
 		c1.NumWords == c2.NumWords &&
 		c1.Requester == c2.Requester &&
 		bytes.Equal(c1.Arguments, c2.Arguments) &&
@@ -471,7 +471,7 @@ func getAbstractCallbackFromCallback(
 		ConfirmationDelay: c.Callback.ConfDelay,
 		SubscriptionID:    big.NewInt(0).SetBytes(c.Callback.SubscriptionID),
 		Price:             big.NewInt(0).SetBytes(c.Price),
-		RequestID:         c.Callback.RequestId,
+		RequestID:         big.NewInt(0).SetBytes(c.Callback.RequestId),
 		NumWords:          uint16(c.Callback.NumWords),
 		Requester:         common.BytesToAddress(c.Callback.Requester),
 		Arguments:         c.Callback.Arguments,
@@ -494,7 +494,7 @@ var (
 var (
 	MaxNumWords               = maxUint16
 	MaxConfirmationDelay      = maxUint24
-	MaxRequestID              = maxUint48
+	MaxRequestID              = maxUint256
 	MaxPrice                  = maxUint96
 	MaxGasAllowance           = maxUint96
 	MaxSubscriptionID         = maxUint256
@@ -513,7 +513,7 @@ func init() {
 	if MaxConfirmationDelay.Cmp(maxUint32) > 0 {
 		panic("MaxConfirmationDelay needs new backing type")
 	}
-	if MaxRequestID.Cmp(maxUint64) > 0 {
+	if MaxRequestID.Cmp(maxUint256) > 0 {
 		panic("MaxRequestID needs new backing type")
 	}
 	if MaxSubscriptionID.Cmp(maxUint256) > 0 {

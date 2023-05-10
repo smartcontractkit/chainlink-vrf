@@ -859,8 +859,8 @@ func (_ArbSys *ArbSysFilterer) ParseSendMerkleUpdate(log types.Log) (*ArbSysSend
 }
 
 var BeaconVRFConsumerMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"router\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"shouldFail\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"beaconPeriodBlocks\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"MustBeRouter\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint48[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"fail\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_beaconPeriodBlocks\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"internalType\":\"uint256[]\",\"name\":\"randomWords\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"rawFulfillRandomWords\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_ReceivedRandomnessByRequestID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_arguments\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_gasAvailable\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"}],\"name\":\"s_myBeaconRequests\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.SlotNumber\",\"name\":\"slotNumber\",\"type\":\"uint32\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_randomWords\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"\",\"type\":\"uint24\"}],\"name\":\"s_requestsIDs\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"}],\"name\":\"s_reverseRequestIDMapping\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_subId\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"shouldFail\",\"type\":\"bool\"}],\"name\":\"setFail\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"reqId\",\"type\":\"uint48\"},{\"internalType\":\"uint256\",\"name\":\"height\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"delay\",\"type\":\"uint24\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"storeBeaconRequest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"}],\"name\":\"testRedeemRandomness\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelayArg\",\"type\":\"uint24\"}],\"name\":\"testRequestRandomness\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelayArg\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"testRequestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
-	Bin: "0x60a060405234801561001057600080fd5b5060405161139038038061139083398101604081905261002f9161006c565b6001600160a01b03929092166080819052600680546001600160a01b03191690911790556009805460ff1916911515919091179055600a556100c0565b60008060006060848603121561008157600080fd5b83516001600160a01b038116811461009857600080fd5b602085015190935080151581146100ae57600080fd5b80925050604084015190509250925092565b6080516112b56100db600039600061038301526112b56000f3fe608060405234801561001057600080fd5b506004361061011b5760003560e01c80639d769402116100b2578063d4fab62c11610081578063f08c5daa11610066578063f08c5daa14610352578063f339c7941461035b578063f6eaffc81461036e57600080fd5b8063d4fab62c1461032c578063ea7502ab1461033f57600080fd5b80639d769402146102d2578063a9cc4718146102f3578063c6d6130114610310578063cd0593df1461032357600080fd5b80635f15cccc116100ee5780635f15cccc1461021b5780636d162a3e14610265578063706da1ca146102785780637716cdaa146102bd57600080fd5b806319a5fa22146101205780632f7527cc146101be5780634e2981b1146101d85780635a47dd7114610206575b600080fd5b61017c61012e366004610b34565b60026020526000908152604090205463ffffffff811690640100000000810462ffffff1690670100000000000000810461ffff1690690100000000000000000090046001600160a01b031684565b6040805163ffffffff909516855262ffffff909316602085015261ffff909116918301919091526001600160a01b031660608201526080015b60405180910390f35b6101c6600881565b60405160ff90911681526020016101b5565b6101f86101e6366004610b34565b60046020526000908152604090205481565b6040519081526020016101b5565b610219610214366004610c33565b610381565b005b61024e610229366004610d1d565b600160209081526000928352604080842090915290825290205465ffffffffffff1681565b60405165ffffffffffff90911681526020016101b5565b610219610273366004610d5b565b6103f3565b6007546102a49074010000000000000000000000000000000000000000900467ffffffffffffffff1681565b60405167ffffffffffffffff90911681526020016101b5565b6102c5610526565b6040516101b59190610df0565b6102196102e0366004610e03565b6009805460ff1916911515919091179055565b6009546103009060ff1681565b60405190151581526020016101b5565b61024e61031e366004610e25565b6105b4565b6101f8600a5481565b61021961033a366004610e61565b610753565b61024e61034d366004610e91565b61083b565b6101f860085481565b6101f8610369366004610f15565b61093b565b6101f861037c366004610f41565b61096c565b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b031633146103e3576040517ff74c318f00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b6103ee83838361098d565b505050565b600083815260016020908152604080832062ffffff861684529091528120805465ffffffffffff191665ffffffffffff8716179055600a546104359085610f86565b6040805160808101825263ffffffff928316815262ffffff958616602080830191825261ffff968716838501908152306060850190815265ffffffffffff909b1660009081526002909252939020915182549151935199516001600160a01b03166901000000000000000000027fffffff0000000000000000000000000000000000000000ffffffffffffffffff9a90971667010000000000000002999099167fffffff00000000000000000000000000000000000000000000ffffffffffffff939097166401000000000266ffffffffffffff199091169890931697909717919091171692909217179092555050565b6005805461053390610f9a565b80601f016020809104026020016040519081016040528092919081815260200182805461055f90610f9a565b80156105ac5780601f10610581576101008083540402835291602001916105ac565b820191906000526020600020905b81548152906001019060200180831161058f57829003601f168201915b505050505081565b600080600a546105c2610a33565b6105cc9190610fd4565b9050600081600a546105dc610a33565b6105e69190610fe8565b6105f09190611001565b60065460408051602081018252600080825291517f4ffac83a00000000000000000000000000000000000000000000000000000000815293945090926001600160a01b0390921691634ffac83a91610651918a918c918b9190600401611014565b6020604051808303816000875af1158015610670573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610694919061104c565b6006546040517f7612e884000000000000000000000000000000000000000000000000000000008152600481018390529192506000916001600160a01b0390911690637612e884906024016040805180830381865afa1580156106fb573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061071f9190611065565b5065ffffffffffff8116600090815260046020526040902083905590506107488184888b6103f3565b979650505050505050565b60065465ffffffffffff82166000908152600460208181526040808420548151928301825284835290517facfc6cdd00000000000000000000000000000000000000000000000000000000815293946001600160a01b03169363acfc6cdd936107c1938993929091016110a0565b6000604051808303816000875af11580156107e0573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f1916820160405261080891908101906110c8565b65ffffffffffff831660009081526003602090815260409091208251929350610835929091840190610abd565b50505050565b600080600a54610849610a33565b6108539190610fd4565b9050600081600a54610863610a33565b61086d9190610fe8565b6108779190611001565b60065460408051602081018252600080825291517fdb972c8b00000000000000000000000000000000000000000000000000000000815293945090926001600160a01b039092169163db972c8b916108dc918d918d918d918d918d919060040161114e565b6020604051808303816000875af11580156108fb573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061091f919061104c565b90508061092e81848a8c6103f3565b9998505050505050505050565b6003602052816000526040600020818154811061095757600080fd5b90600052602060002001600091509150505481565b6000818154811061097c57600080fd5b600091825260209091200154905081565b60095460ff16156109fe576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601d60248201527f206661696c656420696e2066756c66696c6c52616e646f6d576f726473000000604482015260640160405180910390fd5b65ffffffffffff831660009081526003602090815260409091208351610a2692850190610abd565b50600561083582826111e8565b60004661a4b1811480610a48575062066eed81145b15610ab65760646001600160a01b031663a3b1b31d6040518163ffffffff1660e01b8152600401602060405180830381865afa158015610a8c573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610ab0919061104c565b91505090565b4391505090565b828054828255906000526020600020908101928215610af8579160200282015b82811115610af8578251825591602001919060010190610add565b50610b04929150610b08565b5090565b5b80821115610b045760008155600101610b09565b65ffffffffffff81168114610b3157600080fd5b50565b600060208284031215610b4657600080fd5b8135610b5181610b1d565b9392505050565b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff81118282101715610b9757610b97610b58565b604052919050565b600067ffffffffffffffff821115610bb957610bb9610b58565b5060051b60200190565b600082601f830112610bd457600080fd5b813567ffffffffffffffff811115610bee57610bee610b58565b610c01601f8201601f1916602001610b6e565b818152846020838601011115610c1657600080fd5b816020850160208301376000918101602001919091529392505050565b600080600060608486031215610c4857600080fd5b8335610c5381610b1d565b925060208481013567ffffffffffffffff80821115610c7157600080fd5b818701915087601f830112610c8557600080fd5b8135610c98610c9382610b9f565b610b6e565b81815260059190911b8301840190848101908a831115610cb757600080fd5b938501935b82851015610cd557843582529385019390850190610cbc565b965050506040870135925080831115610ced57600080fd5b5050610cfb86828701610bc3565b9150509250925092565b803562ffffff81168114610d1857600080fd5b919050565b60008060408385031215610d3057600080fd5b82359150610d4060208401610d05565b90509250929050565b803561ffff81168114610d1857600080fd5b60008060008060808587031215610d7157600080fd5b8435610d7c81610b1d565b935060208501359250610d9160408601610d05565b9150610d9f60608601610d49565b905092959194509250565b6000815180845260005b81811015610dd057602081850181015186830182015201610db4565b506000602082860101526020601f19601f83011685010191505092915050565b602081526000610b516020830184610daa565b600060208284031215610e1557600080fd5b81358015158114610b5157600080fd5b600080600060608486031215610e3a57600080fd5b610e4384610d49565b925060208401359150610e5860408501610d05565b90509250925092565b60008060408385031215610e7457600080fd5b823591506020830135610e8681610b1d565b809150509250929050565b600080600080600060a08688031215610ea957600080fd5b85359450610eb960208701610d49565b9350610ec760408701610d05565b9250606086013563ffffffff81168114610ee057600080fd5b9150608086013567ffffffffffffffff811115610efc57600080fd5b610f0888828901610bc3565b9150509295509295909350565b60008060408385031215610f2857600080fd5b8235610f3381610b1d565b946020939093013593505050565b600060208284031215610f5357600080fd5b5035919050565b634e487b7160e01b600052601260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b600082610f9557610f95610f5a565b500490565b600181811c90821680610fae57607f821691505b602082108103610fce57634e487b7160e01b600052602260045260246000fd5b50919050565b600082610fe357610fe3610f5a565b500690565b80820180821115610ffb57610ffb610f70565b92915050565b81810381811115610ffb57610ffb610f70565b84815261ffff8416602082015262ffffff831660408201526080606082015260006110426080830184610daa565b9695505050505050565b60006020828403121561105e57600080fd5b5051919050565b6000806040838503121561107857600080fd5b825161108381610b1d565b60208401519092506001600160a01b0381168114610e8657600080fd5b8381528260208201526060604082015260006110bf6060830184610daa565b95945050505050565b600060208083850312156110db57600080fd5b825167ffffffffffffffff8111156110f257600080fd5b8301601f8101851361110357600080fd5b8051611111610c9382610b9f565b81815260059190911b8201830190838101908783111561113057600080fd5b928401925b8284101561074857835182529284019290840190611135565b86815261ffff8616602082015262ffffff8516604082015263ffffffff8416606082015260c06080820152600061118860c0830185610daa565b82810360a084015261092e8185610daa565b601f8211156103ee57600081815260208120601f850160051c810160208610156111c15750805b601f850160051c820191505b818110156111e0578281556001016111cd565b505050505050565b815167ffffffffffffffff81111561120257611202610b58565b611216816112108454610f9a565b8461119a565b602080601f83116001811461124b57600084156112335750858301515b600019600386901b1c1916600185901b1785556111e0565b600085815260208120601f198616915b8281101561127a5788860151825594840194600190910190840161125b565b50858210156112985787850151600019600388901b60f8161c191681555b5050505050600190811b0190555056fea164736f6c6343000813000a",
+	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"router\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"shouldFail\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"beaconPeriodBlocks\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"MustBeRouter\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"fail\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_beaconPeriodBlocks\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"randomWords\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"rawFulfillRandomWords\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_ReceivedRandomnessByRequestID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_arguments\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_gasAvailable\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_mostRecentRequestID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_myBeaconRequests\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.SlotNumber\",\"name\":\"slotNumber\",\"type\":\"uint32\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_randomWords\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"\",\"type\":\"uint24\"}],\"name\":\"s_requestsIDs\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_subId\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"shouldFail\",\"type\":\"bool\"}],\"name\":\"setFail\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"reqId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"height\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"delay\",\"type\":\"uint24\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"storeBeaconRequest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"}],\"name\":\"testRedeemRandomness\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelayArg\",\"type\":\"uint24\"}],\"name\":\"testRequestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelayArg\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"testRequestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	Bin: "0x60a060405234801561001057600080fd5b506040516111a53803806111a583398101604081905261002f9161006c565b6001600160a01b03929092166080819052600680546001600160a01b03191690911790556009805460ff1916911515919091179055600a556100c0565b60008060006060848603121561008157600080fd5b83516001600160a01b038116811461009857600080fd5b602085015190935080151581146100ae57600080fd5b80925050604084015190509250925092565b6080516110ca6100db60003960006106b401526110ca6000f3fe608060405234801561001057600080fd5b50600436106101005760003560e01c8063c6d6130111610097578063ea7502ab11610066578063ea7502ab1461024e578063f08c5daa14610261578063f6eaffc81461026a578063ffe97ca41461027d57600080fd5b8063c6d613011461020c578063cd0593df1461021f578063d0705f0414610228578063d21ea8fd1461023b57600080fd5b8063706da1ca116100d3578063706da1ca146101745780637716cdaa146101b95780639d769402146101ce578063a9cc4718146101ef57600080fd5b8063341867a2146101055780635f15cccc1461011a578063689b77ab146101585780636df57cc314610161575b600080fd5b6101186101133660046109d5565b610316565b005b610145610128366004610a0f565b600160209081526000928352604080842090915290825290205481565b6040519081526020015b60405180910390f35b61014560055481565b61011861016f366004610a4d565b6103e0565b6007546101a09074010000000000000000000000000000000000000000900467ffffffffffffffff1681565b60405167ffffffffffffffff909116815260200161014f565b6101c16104f6565b60405161014f9190610ad9565b6101186101dc366004610af3565b6009805460ff1916911515919091179055565b6009546101fc9060ff1681565b604051901515815260200161014f565b61014561021a366004610b15565b610584565b610145600a5481565b6101456102363660046109d5565b610681565b610118610249366004610c2c565b6106b2565b61014561025c366004610cf5565b610724565b61014560085481565b610145610278366004610d79565b61082d565b6102d961028b366004610d79565b60026020526000908152604090205463ffffffff811690640100000000810462ffffff1690670100000000000000810461ffff1690690100000000000000000090046001600160a01b031684565b6040805163ffffffff909516855262ffffff909316602085015261ffff909116918301919091526001600160a01b0316606082015260800161014f565b60065460408051602081018252600080825291517facfc6cdd00000000000000000000000000000000000000000000000000000000815291926001600160a01b03169163acfc6cdd9161036f9187918791600401610d92565b6000604051808303816000875af115801561038e573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f191682016040526103b69190810190610dba565b600083815260036020908152604090912082519293506103da929091840190610975565b50505050565b600083815260016020908152604080832062ffffff861684529091528120859055600a5461040e9085610e77565b6040805160808101825263ffffffff928316815262ffffff958616602080830191825261ffff968716838501908152306060850190815260009b8c52600290925293909920915182549151935199516001600160a01b03166901000000000000000000027fffffff0000000000000000000000000000000000000000ffffffffffffffffff9a90971667010000000000000002999099167fffffff00000000000000000000000000000000000000000000ffffffffffffff939097166401000000000266ffffffffffffff199091169890931697909717919091171692909217179092555050565b6004805461050390610e8b565b80601f016020809104026020016040519081016040528092919081815260200182805461052f90610e8b565b801561057c5780601f106105515761010080835404028352916020019161057c565b820191906000526020600020905b81548152906001019060200180831161055f57829003601f168201915b505050505081565b600080600a5461059261084e565b61059c9190610ec5565b9050600081600a546105ac61084e565b6105b69190610ed9565b6105c09190610ef2565b60065460408051602081018252600080825291517f4ffac83a00000000000000000000000000000000000000000000000000000000815293945090926001600160a01b0390921691634ffac83a91610621918a918c918b9190600401610f05565b6020604051808303816000875af1158015610640573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106649190610f3d565b90506106728183878a6103e0565b60058190559695505050505050565b6003602052816000526040600020818154811061069d57600080fd5b90600052602060002001600091509150505481565b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03163314610714576040517ff74c318f00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b61071f8383836108d8565b505050565b6000808490506000600a5461073761084e565b6107419190610ec5565b9050600081600a5461075161084e565b61075b9190610ed9565b6107659190610ef2565b60065460408051602081018252600080825291517fdb972c8b00000000000000000000000000000000000000000000000000000000815293945090926001600160a01b039092169163db972c8b916107ca918e918e918a918e918e9190600401610f56565b6020604051808303816000875af11580156107e9573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061080d9190610f3d565b905061081b81838a8c6103e0565b60058190559998505050505050505050565b6000818154811061083d57600080fd5b600091825260209091200154905081565b60004661a4b1811480610863575062066eed81145b156108d15760646001600160a01b031663a3b1b31d6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156108a7573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906108cb9190610f3d565b91505090565b4391505090565b60095460ff1615610949576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601d60248201527f206661696c656420696e2066756c66696c6c52616e646f6d576f726473000000604482015260640160405180910390fd5b6000838152600360209081526040909120835161096892850190610975565b5060046103da8282610ffd565b8280548282559060005260206000209081019282156109b0579160200282015b828111156109b0578251825591602001919060010190610995565b506109bc9291506109c0565b5090565b5b808211156109bc57600081556001016109c1565b600080604083850312156109e857600080fd5b50508035926020909101359150565b803562ffffff81168114610a0a57600080fd5b919050565b60008060408385031215610a2257600080fd5b82359150610a32602084016109f7565b90509250929050565b803561ffff81168114610a0a57600080fd5b60008060008060808587031215610a6357600080fd5b8435935060208501359250610a7a604086016109f7565b9150610a8860608601610a3b565b905092959194509250565b6000815180845260005b81811015610ab957602081850181015186830182015201610a9d565b506000602082860101526020601f19601f83011685010191505092915050565b602081526000610aec6020830184610a93565b9392505050565b600060208284031215610b0557600080fd5b81358015158114610aec57600080fd5b600080600060608486031215610b2a57600080fd5b610b3384610a3b565b925060208401359150610b48604085016109f7565b90509250925092565b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff81118282101715610b9057610b90610b51565b604052919050565b600067ffffffffffffffff821115610bb257610bb2610b51565b5060051b60200190565b600082601f830112610bcd57600080fd5b813567ffffffffffffffff811115610be757610be7610b51565b610bfa601f8201601f1916602001610b67565b818152846020838601011115610c0f57600080fd5b816020850160208301376000918101602001919091529392505050565b600080600060608486031215610c4157600080fd5b8335925060208085013567ffffffffffffffff80821115610c6157600080fd5b818701915087601f830112610c7557600080fd5b8135610c88610c8382610b98565b610b67565b81815260059190911b8301840190848101908a831115610ca757600080fd5b938501935b82851015610cc557843582529385019390850190610cac565b965050506040870135925080831115610cdd57600080fd5b5050610ceb86828701610bbc565b9150509250925092565b600080600080600060a08688031215610d0d57600080fd5b85359450610d1d60208701610a3b565b9350610d2b604087016109f7565b9250606086013563ffffffff81168114610d4457600080fd5b9150608086013567ffffffffffffffff811115610d6057600080fd5b610d6c88828901610bbc565b9150509295509295909350565b600060208284031215610d8b57600080fd5b5035919050565b838152826020820152606060408201526000610db16060830184610a93565b95945050505050565b60006020808385031215610dcd57600080fd5b825167ffffffffffffffff811115610de457600080fd5b8301601f81018513610df557600080fd5b8051610e03610c8382610b98565b81815260059190911b82018301908381019087831115610e2257600080fd5b928401925b82841015610e4057835182529284019290840190610e27565b979650505050505050565b634e487b7160e01b600052601260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b600082610e8657610e86610e4b565b500490565b600181811c90821680610e9f57607f821691505b602082108103610ebf57634e487b7160e01b600052602260045260246000fd5b50919050565b600082610ed457610ed4610e4b565b500690565b80820180821115610eec57610eec610e61565b92915050565b81810381811115610eec57610eec610e61565b84815261ffff8416602082015262ffffff83166040820152608060608201526000610f336080830184610a93565b9695505050505050565b600060208284031215610f4f57600080fd5b5051919050565b86815261ffff8616602082015262ffffff8516604082015263ffffffff8416606082015260c060808201526000610f9060c0830185610a93565b82810360a0840152610fa28185610a93565b9998505050505050505050565b601f82111561071f57600081815260208120601f850160051c81016020861015610fd65750805b601f850160051c820191505b81811015610ff557828155600101610fe2565b505050505050565b815167ffffffffffffffff81111561101757611017610b51565b61102b816110258454610e8b565b84610faf565b602080601f83116001811461106057600084156110485750858301515b600019600386901b1c1916600185901b178555610ff5565b600085815260208120601f198616915b8281101561108f57888601518255948401946001909101908401611070565b50858210156110ad5787850151600019600388901b60f8161c191681555b5050505050600190811b0190555056fea164736f6c6343000813000a",
 }
 
 var BeaconVRFConsumerABI = BeaconVRFConsumerMetaData.ABI
@@ -993,28 +993,6 @@ func (_BeaconVRFConsumer *BeaconVRFConsumerTransactorRaw) Transact(opts *bind.Tr
 	return _BeaconVRFConsumer.Contract.contract.Transact(opts, method, params...)
 }
 
-func (_BeaconVRFConsumer *BeaconVRFConsumerCaller) NUMCONFDELAYS(opts *bind.CallOpts) (uint8, error) {
-	var out []interface{}
-	err := _BeaconVRFConsumer.contract.Call(opts, &out, "NUM_CONF_DELAYS")
-
-	if err != nil {
-		return *new(uint8), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint8)).(*uint8)
-
-	return out0, err
-
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerSession) NUMCONFDELAYS() (uint8, error) {
-	return _BeaconVRFConsumer.Contract.NUMCONFDELAYS(&_BeaconVRFConsumer.CallOpts)
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerCallerSession) NUMCONFDELAYS() (uint8, error) {
-	return _BeaconVRFConsumer.Contract.NUMCONFDELAYS(&_BeaconVRFConsumer.CallOpts)
-}
-
 func (_BeaconVRFConsumer *BeaconVRFConsumerCaller) Fail(opts *bind.CallOpts) (bool, error) {
 	var out []interface{}
 	err := _BeaconVRFConsumer.contract.Call(opts, &out, "fail")
@@ -1125,6 +1103,28 @@ func (_BeaconVRFConsumer *BeaconVRFConsumerCallerSession) SGasAvailable() (*big.
 	return _BeaconVRFConsumer.Contract.SGasAvailable(&_BeaconVRFConsumer.CallOpts)
 }
 
+func (_BeaconVRFConsumer *BeaconVRFConsumerCaller) SMostRecentRequestID(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _BeaconVRFConsumer.contract.Call(opts, &out, "s_mostRecentRequestID")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerSession) SMostRecentRequestID() (*big.Int, error) {
+	return _BeaconVRFConsumer.Contract.SMostRecentRequestID(&_BeaconVRFConsumer.CallOpts)
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerCallerSession) SMostRecentRequestID() (*big.Int, error) {
+	return _BeaconVRFConsumer.Contract.SMostRecentRequestID(&_BeaconVRFConsumer.CallOpts)
+}
+
 func (_BeaconVRFConsumer *BeaconVRFConsumerCaller) SMyBeaconRequests(opts *bind.CallOpts, arg0 *big.Int) (struct {
 	SlotNumber        uint32
 	ConfirmationDelay *big.Int
@@ -1213,28 +1213,6 @@ func (_BeaconVRFConsumer *BeaconVRFConsumerSession) SRequestsIDs(arg0 *big.Int, 
 
 func (_BeaconVRFConsumer *BeaconVRFConsumerCallerSession) SRequestsIDs(arg0 *big.Int, arg1 *big.Int) (*big.Int, error) {
 	return _BeaconVRFConsumer.Contract.SRequestsIDs(&_BeaconVRFConsumer.CallOpts, arg0, arg1)
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerCaller) SReverseRequestIDMapping(opts *bind.CallOpts, arg0 *big.Int) (*big.Int, error) {
-	var out []interface{}
-	err := _BeaconVRFConsumer.contract.Call(opts, &out, "s_reverseRequestIDMapping", arg0)
-
-	if err != nil {
-		return *new(*big.Int), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
-
-	return out0, err
-
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerSession) SReverseRequestIDMapping(arg0 *big.Int) (*big.Int, error) {
-	return _BeaconVRFConsumer.Contract.SReverseRequestIDMapping(&_BeaconVRFConsumer.CallOpts, arg0)
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerCallerSession) SReverseRequestIDMapping(arg0 *big.Int) (*big.Int, error) {
-	return _BeaconVRFConsumer.Contract.SReverseRequestIDMapping(&_BeaconVRFConsumer.CallOpts, arg0)
 }
 
 func (_BeaconVRFConsumer *BeaconVRFConsumerCaller) SSubId(opts *bind.CallOpts) (uint64, error) {
@@ -1329,794 +1307,6 @@ func (_BeaconVRFConsumer *BeaconVRFConsumerSession) TestRequestRandomnessFulfill
 
 func (_BeaconVRFConsumer *BeaconVRFConsumerTransactorSession) TestRequestRandomnessFulfillment(subID *big.Int, numWords uint16, confirmationDelayArg *big.Int, callbackGasLimit uint32, arguments []byte) (*types.Transaction, error) {
 	return _BeaconVRFConsumer.Contract.TestRequestRandomnessFulfillment(&_BeaconVRFConsumer.TransactOpts, subID, numWords, confirmationDelayArg, callbackGasLimit, arguments)
-}
-
-type BeaconVRFConsumerConfigSetIterator struct {
-	Event *BeaconVRFConsumerConfigSet
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *BeaconVRFConsumerConfigSetIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(BeaconVRFConsumerConfigSet)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(BeaconVRFConsumerConfigSet)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *BeaconVRFConsumerConfigSetIterator) Error() error {
-	return it.fail
-}
-
-func (it *BeaconVRFConsumerConfigSetIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type BeaconVRFConsumerConfigSet struct {
-	PreviousConfigBlockNumber uint32
-	ConfigDigest              [32]byte
-	ConfigCount               uint64
-	Signers                   []common.Address
-	Transmitters              []common.Address
-	F                         uint8
-	OnchainConfig             []byte
-	OffchainConfigVersion     uint64
-	OffchainConfig            []byte
-	Raw                       types.Log
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) FilterConfigSet(opts *bind.FilterOpts) (*BeaconVRFConsumerConfigSetIterator, error) {
-
-	logs, sub, err := _BeaconVRFConsumer.contract.FilterLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return &BeaconVRFConsumerConfigSetIterator{contract: _BeaconVRFConsumer.contract, event: "ConfigSet", logs: logs, sub: sub}, nil
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) WatchConfigSet(opts *bind.WatchOpts, sink chan<- *BeaconVRFConsumerConfigSet) (event.Subscription, error) {
-
-	logs, sub, err := _BeaconVRFConsumer.contract.WatchLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(BeaconVRFConsumerConfigSet)
-				if err := _BeaconVRFConsumer.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) ParseConfigSet(log types.Log) (*BeaconVRFConsumerConfigSet, error) {
-	event := new(BeaconVRFConsumerConfigSet)
-	if err := _BeaconVRFConsumer.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type BeaconVRFConsumerNewTransmissionIterator struct {
-	Event *BeaconVRFConsumerNewTransmission
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *BeaconVRFConsumerNewTransmissionIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(BeaconVRFConsumerNewTransmission)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(BeaconVRFConsumerNewTransmission)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *BeaconVRFConsumerNewTransmissionIterator) Error() error {
-	return it.fail
-}
-
-func (it *BeaconVRFConsumerNewTransmissionIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type BeaconVRFConsumerNewTransmission struct {
-	AggregatorRoundId  uint32
-	EpochAndRound      *big.Int
-	Transmitter        common.Address
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	ConfigDigest       [32]byte
-	Raw                types.Log
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) FilterNewTransmission(opts *bind.FilterOpts, aggregatorRoundId []uint32, epochAndRound []*big.Int) (*BeaconVRFConsumerNewTransmissionIterator, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _BeaconVRFConsumer.contract.FilterLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return &BeaconVRFConsumerNewTransmissionIterator{contract: _BeaconVRFConsumer.contract, event: "NewTransmission", logs: logs, sub: sub}, nil
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) WatchNewTransmission(opts *bind.WatchOpts, sink chan<- *BeaconVRFConsumerNewTransmission, aggregatorRoundId []uint32, epochAndRound []*big.Int) (event.Subscription, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _BeaconVRFConsumer.contract.WatchLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(BeaconVRFConsumerNewTransmission)
-				if err := _BeaconVRFConsumer.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) ParseNewTransmission(log types.Log) (*BeaconVRFConsumerNewTransmission, error) {
-	event := new(BeaconVRFConsumerNewTransmission)
-	if err := _BeaconVRFConsumer.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type BeaconVRFConsumerOutputsServedIterator struct {
-	Event *BeaconVRFConsumerOutputsServed
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *BeaconVRFConsumerOutputsServedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(BeaconVRFConsumerOutputsServed)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(BeaconVRFConsumerOutputsServed)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *BeaconVRFConsumerOutputsServedIterator) Error() error {
-	return it.fail
-}
-
-func (it *BeaconVRFConsumerOutputsServedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type BeaconVRFConsumerOutputsServed struct {
-	RecentBlockHeight  uint64
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	OutputsServed      []VRFBeaconTypesOutputServed
-	Raw                types.Log
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) FilterOutputsServed(opts *bind.FilterOpts) (*BeaconVRFConsumerOutputsServedIterator, error) {
-
-	logs, sub, err := _BeaconVRFConsumer.contract.FilterLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return &BeaconVRFConsumerOutputsServedIterator{contract: _BeaconVRFConsumer.contract, event: "OutputsServed", logs: logs, sub: sub}, nil
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) WatchOutputsServed(opts *bind.WatchOpts, sink chan<- *BeaconVRFConsumerOutputsServed) (event.Subscription, error) {
-
-	logs, sub, err := _BeaconVRFConsumer.contract.WatchLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(BeaconVRFConsumerOutputsServed)
-				if err := _BeaconVRFConsumer.contract.UnpackLog(event, "OutputsServed", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) ParseOutputsServed(log types.Log) (*BeaconVRFConsumerOutputsServed, error) {
-	event := new(BeaconVRFConsumerOutputsServed)
-	if err := _BeaconVRFConsumer.contract.UnpackLog(event, "OutputsServed", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type BeaconVRFConsumerRandomWordsFulfilledIterator struct {
-	Event *BeaconVRFConsumerRandomWordsFulfilled
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *BeaconVRFConsumerRandomWordsFulfilledIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(BeaconVRFConsumerRandomWordsFulfilled)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(BeaconVRFConsumerRandomWordsFulfilled)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *BeaconVRFConsumerRandomWordsFulfilledIterator) Error() error {
-	return it.fail
-}
-
-func (it *BeaconVRFConsumerRandomWordsFulfilledIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type BeaconVRFConsumerRandomWordsFulfilled struct {
-	RequestIDs            []*big.Int
-	SuccessfulFulfillment []byte
-	TruncatedErrorData    [][]byte
-	Raw                   types.Log
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) FilterRandomWordsFulfilled(opts *bind.FilterOpts) (*BeaconVRFConsumerRandomWordsFulfilledIterator, error) {
-
-	logs, sub, err := _BeaconVRFConsumer.contract.FilterLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return &BeaconVRFConsumerRandomWordsFulfilledIterator{contract: _BeaconVRFConsumer.contract, event: "RandomWordsFulfilled", logs: logs, sub: sub}, nil
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) WatchRandomWordsFulfilled(opts *bind.WatchOpts, sink chan<- *BeaconVRFConsumerRandomWordsFulfilled) (event.Subscription, error) {
-
-	logs, sub, err := _BeaconVRFConsumer.contract.WatchLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(BeaconVRFConsumerRandomWordsFulfilled)
-				if err := _BeaconVRFConsumer.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) ParseRandomWordsFulfilled(log types.Log) (*BeaconVRFConsumerRandomWordsFulfilled, error) {
-	event := new(BeaconVRFConsumerRandomWordsFulfilled)
-	if err := _BeaconVRFConsumer.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type BeaconVRFConsumerRandomnessFulfillmentRequestedIterator struct {
-	Event *BeaconVRFConsumerRandomnessFulfillmentRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *BeaconVRFConsumerRandomnessFulfillmentRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(BeaconVRFConsumerRandomnessFulfillmentRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(BeaconVRFConsumerRandomnessFulfillmentRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *BeaconVRFConsumerRandomnessFulfillmentRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *BeaconVRFConsumerRandomnessFulfillmentRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type BeaconVRFConsumerRandomnessFulfillmentRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	GasAllowance           uint32
-	GasPrice               *big.Int
-	WeiPerUnitLink         *big.Int
-	Arguments              []byte
-	Raw                    types.Log
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) FilterRandomnessFulfillmentRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*BeaconVRFConsumerRandomnessFulfillmentRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _BeaconVRFConsumer.contract.FilterLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &BeaconVRFConsumerRandomnessFulfillmentRequestedIterator{contract: _BeaconVRFConsumer.contract, event: "RandomnessFulfillmentRequested", logs: logs, sub: sub}, nil
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) WatchRandomnessFulfillmentRequested(opts *bind.WatchOpts, sink chan<- *BeaconVRFConsumerRandomnessFulfillmentRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _BeaconVRFConsumer.contract.WatchLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(BeaconVRFConsumerRandomnessFulfillmentRequested)
-				if err := _BeaconVRFConsumer.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) ParseRandomnessFulfillmentRequested(log types.Log) (*BeaconVRFConsumerRandomnessFulfillmentRequested, error) {
-	event := new(BeaconVRFConsumerRandomnessFulfillmentRequested)
-	if err := _BeaconVRFConsumer.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type BeaconVRFConsumerRandomnessRequestedIterator struct {
-	Event *BeaconVRFConsumerRandomnessRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *BeaconVRFConsumerRandomnessRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(BeaconVRFConsumerRandomnessRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(BeaconVRFConsumerRandomnessRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *BeaconVRFConsumerRandomnessRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *BeaconVRFConsumerRandomnessRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type BeaconVRFConsumerRandomnessRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	Raw                    types.Log
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) FilterRandomnessRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*BeaconVRFConsumerRandomnessRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _BeaconVRFConsumer.contract.FilterLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &BeaconVRFConsumerRandomnessRequestedIterator{contract: _BeaconVRFConsumer.contract, event: "RandomnessRequested", logs: logs, sub: sub}, nil
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) WatchRandomnessRequested(opts *bind.WatchOpts, sink chan<- *BeaconVRFConsumerRandomnessRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _BeaconVRFConsumer.contract.WatchLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(BeaconVRFConsumerRandomnessRequested)
-				if err := _BeaconVRFConsumer.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) ParseRandomnessRequested(log types.Log) (*BeaconVRFConsumerRandomnessRequested, error) {
-	event := new(BeaconVRFConsumerRandomnessRequested)
-	if err := _BeaconVRFConsumer.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
 }
 
 var ChainSpecificUtilMetaData = &bind.MetaData{
@@ -3430,136 +2620,8 @@ func (_EnumerableSet *EnumerableSetTransactorRaw) Transact(opts *bind.TransactOp
 	return _EnumerableSet.Contract.contract.Transact(opts, method, params...)
 }
 
-var IERC677ReceiverMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"onTokenTransfer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
-}
-
-var IERC677ReceiverABI = IERC677ReceiverMetaData.ABI
-
-type IERC677Receiver struct {
-	IERC677ReceiverCaller
-	IERC677ReceiverTransactor
-	IERC677ReceiverFilterer
-}
-
-type IERC677ReceiverCaller struct {
-	contract *bind.BoundContract
-}
-
-type IERC677ReceiverTransactor struct {
-	contract *bind.BoundContract
-}
-
-type IERC677ReceiverFilterer struct {
-	contract *bind.BoundContract
-}
-
-type IERC677ReceiverSession struct {
-	Contract     *IERC677Receiver
-	CallOpts     bind.CallOpts
-	TransactOpts bind.TransactOpts
-}
-
-type IERC677ReceiverCallerSession struct {
-	Contract *IERC677ReceiverCaller
-	CallOpts bind.CallOpts
-}
-
-type IERC677ReceiverTransactorSession struct {
-	Contract     *IERC677ReceiverTransactor
-	TransactOpts bind.TransactOpts
-}
-
-type IERC677ReceiverRaw struct {
-	Contract *IERC677Receiver
-}
-
-type IERC677ReceiverCallerRaw struct {
-	Contract *IERC677ReceiverCaller
-}
-
-type IERC677ReceiverTransactorRaw struct {
-	Contract *IERC677ReceiverTransactor
-}
-
-func NewIERC677Receiver(address common.Address, backend bind.ContractBackend) (*IERC677Receiver, error) {
-	contract, err := bindIERC677Receiver(address, backend, backend, backend)
-	if err != nil {
-		return nil, err
-	}
-	return &IERC677Receiver{IERC677ReceiverCaller: IERC677ReceiverCaller{contract: contract}, IERC677ReceiverTransactor: IERC677ReceiverTransactor{contract: contract}, IERC677ReceiverFilterer: IERC677ReceiverFilterer{contract: contract}}, nil
-}
-
-func NewIERC677ReceiverCaller(address common.Address, caller bind.ContractCaller) (*IERC677ReceiverCaller, error) {
-	contract, err := bindIERC677Receiver(address, caller, nil, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &IERC677ReceiverCaller{contract: contract}, nil
-}
-
-func NewIERC677ReceiverTransactor(address common.Address, transactor bind.ContractTransactor) (*IERC677ReceiverTransactor, error) {
-	contract, err := bindIERC677Receiver(address, nil, transactor, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &IERC677ReceiverTransactor{contract: contract}, nil
-}
-
-func NewIERC677ReceiverFilterer(address common.Address, filterer bind.ContractFilterer) (*IERC677ReceiverFilterer, error) {
-	contract, err := bindIERC677Receiver(address, nil, nil, filterer)
-	if err != nil {
-		return nil, err
-	}
-	return &IERC677ReceiverFilterer{contract: contract}, nil
-}
-
-func bindIERC677Receiver(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := abi.JSON(strings.NewReader(IERC677ReceiverABI))
-	if err != nil {
-		return nil, err
-	}
-	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
-}
-
-func (_IERC677Receiver *IERC677ReceiverRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _IERC677Receiver.Contract.IERC677ReceiverCaller.contract.Call(opts, result, method, params...)
-}
-
-func (_IERC677Receiver *IERC677ReceiverRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _IERC677Receiver.Contract.IERC677ReceiverTransactor.contract.Transfer(opts)
-}
-
-func (_IERC677Receiver *IERC677ReceiverRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _IERC677Receiver.Contract.IERC677ReceiverTransactor.contract.Transact(opts, method, params...)
-}
-
-func (_IERC677Receiver *IERC677ReceiverCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _IERC677Receiver.Contract.contract.Call(opts, result, method, params...)
-}
-
-func (_IERC677Receiver *IERC677ReceiverTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _IERC677Receiver.Contract.contract.Transfer(opts)
-}
-
-func (_IERC677Receiver *IERC677ReceiverTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _IERC677Receiver.Contract.contract.Transact(opts, method, params...)
-}
-
-func (_IERC677Receiver *IERC677ReceiverTransactor) OnTokenTransfer(opts *bind.TransactOpts, sender common.Address, amount *big.Int, data []byte) (*types.Transaction, error) {
-	return _IERC677Receiver.contract.Transact(opts, "onTokenTransfer", sender, amount, data)
-}
-
-func (_IERC677Receiver *IERC677ReceiverSession) OnTokenTransfer(sender common.Address, amount *big.Int, data []byte) (*types.Transaction, error) {
-	return _IERC677Receiver.Contract.OnTokenTransfer(&_IERC677Receiver.TransactOpts, sender, amount, data)
-}
-
-func (_IERC677Receiver *IERC677ReceiverTransactorSession) OnTokenTransfer(sender common.Address, amount *big.Int, data []byte) (*types.Transaction, error) {
-	return _IERC677Receiver.Contract.OnTokenTransfer(&_IERC677Receiver.TransactOpts, sender, amount, data)
-}
-
 var IVRFMigratableCoordinatorMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint48[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"\",\"type\":\"uint48\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 var IVRFMigratableCoordinatorABI = IVRFMigratableCoordinatorMetaData.ABI
@@ -3674,28 +2736,6 @@ func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactorRaw) Transa
 	return _IVRFMigratableCoordinator.Contract.contract.Transact(opts, method, params...)
 }
 
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorCaller) NUMCONFDELAYS(opts *bind.CallOpts) (uint8, error) {
-	var out []interface{}
-	err := _IVRFMigratableCoordinator.contract.Call(opts, &out, "NUM_CONF_DELAYS")
-
-	if err != nil {
-		return *new(uint8), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint8)).(*uint8)
-
-	return out0, err
-
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorSession) NUMCONFDELAYS() (uint8, error) {
-	return _IVRFMigratableCoordinator.Contract.NUMCONFDELAYS(&_IVRFMigratableCoordinator.CallOpts)
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorCallerSession) NUMCONFDELAYS() (uint8, error) {
-	return _IVRFMigratableCoordinator.Contract.NUMCONFDELAYS(&_IVRFMigratableCoordinator.CallOpts)
-}
-
 func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorCaller) GetFee(opts *bind.CallOpts, subID *big.Int, extraArgs []byte) (*big.Int, error) {
 	var out []interface{}
 	err := _IVRFMigratableCoordinator.contract.Call(opts, &out, "getFee", subID, extraArgs)
@@ -3774,794 +2814,6 @@ func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorSession) RequestRando
 
 func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactorSession) RequestRandomnessFulfillment(requester common.Address, subID *big.Int, numWords uint16, confirmationDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
 	return _IVRFMigratableCoordinator.Contract.RequestRandomnessFulfillment(&_IVRFMigratableCoordinator.TransactOpts, requester, subID, numWords, confirmationDelay, callbackGasLimit, arguments, extraArgs)
-}
-
-type IVRFMigratableCoordinatorConfigSetIterator struct {
-	Event *IVRFMigratableCoordinatorConfigSet
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFMigratableCoordinatorConfigSetIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFMigratableCoordinatorConfigSet)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFMigratableCoordinatorConfigSet)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFMigratableCoordinatorConfigSetIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFMigratableCoordinatorConfigSetIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFMigratableCoordinatorConfigSet struct {
-	PreviousConfigBlockNumber uint32
-	ConfigDigest              [32]byte
-	ConfigCount               uint64
-	Signers                   []common.Address
-	Transmitters              []common.Address
-	F                         uint8
-	OnchainConfig             []byte
-	OffchainConfigVersion     uint64
-	OffchainConfig            []byte
-	Raw                       types.Log
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) FilterConfigSet(opts *bind.FilterOpts) (*IVRFMigratableCoordinatorConfigSetIterator, error) {
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.FilterLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigratableCoordinatorConfigSetIterator{contract: _IVRFMigratableCoordinator.contract, event: "ConfigSet", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) WatchConfigSet(opts *bind.WatchOpts, sink chan<- *IVRFMigratableCoordinatorConfigSet) (event.Subscription, error) {
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.WatchLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFMigratableCoordinatorConfigSet)
-				if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) ParseConfigSet(log types.Log) (*IVRFMigratableCoordinatorConfigSet, error) {
-	event := new(IVRFMigratableCoordinatorConfigSet)
-	if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFMigratableCoordinatorNewTransmissionIterator struct {
-	Event *IVRFMigratableCoordinatorNewTransmission
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFMigratableCoordinatorNewTransmissionIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFMigratableCoordinatorNewTransmission)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFMigratableCoordinatorNewTransmission)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFMigratableCoordinatorNewTransmissionIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFMigratableCoordinatorNewTransmissionIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFMigratableCoordinatorNewTransmission struct {
-	AggregatorRoundId  uint32
-	EpochAndRound      *big.Int
-	Transmitter        common.Address
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	ConfigDigest       [32]byte
-	Raw                types.Log
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) FilterNewTransmission(opts *bind.FilterOpts, aggregatorRoundId []uint32, epochAndRound []*big.Int) (*IVRFMigratableCoordinatorNewTransmissionIterator, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.FilterLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigratableCoordinatorNewTransmissionIterator{contract: _IVRFMigratableCoordinator.contract, event: "NewTransmission", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) WatchNewTransmission(opts *bind.WatchOpts, sink chan<- *IVRFMigratableCoordinatorNewTransmission, aggregatorRoundId []uint32, epochAndRound []*big.Int) (event.Subscription, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.WatchLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFMigratableCoordinatorNewTransmission)
-				if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) ParseNewTransmission(log types.Log) (*IVRFMigratableCoordinatorNewTransmission, error) {
-	event := new(IVRFMigratableCoordinatorNewTransmission)
-	if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFMigratableCoordinatorOutputsServedIterator struct {
-	Event *IVRFMigratableCoordinatorOutputsServed
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFMigratableCoordinatorOutputsServedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFMigratableCoordinatorOutputsServed)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFMigratableCoordinatorOutputsServed)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFMigratableCoordinatorOutputsServedIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFMigratableCoordinatorOutputsServedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFMigratableCoordinatorOutputsServed struct {
-	RecentBlockHeight  uint64
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	OutputsServed      []VRFBeaconTypesOutputServed
-	Raw                types.Log
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) FilterOutputsServed(opts *bind.FilterOpts) (*IVRFMigratableCoordinatorOutputsServedIterator, error) {
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.FilterLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigratableCoordinatorOutputsServedIterator{contract: _IVRFMigratableCoordinator.contract, event: "OutputsServed", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) WatchOutputsServed(opts *bind.WatchOpts, sink chan<- *IVRFMigratableCoordinatorOutputsServed) (event.Subscription, error) {
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.WatchLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFMigratableCoordinatorOutputsServed)
-				if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "OutputsServed", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) ParseOutputsServed(log types.Log) (*IVRFMigratableCoordinatorOutputsServed, error) {
-	event := new(IVRFMigratableCoordinatorOutputsServed)
-	if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "OutputsServed", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFMigratableCoordinatorRandomWordsFulfilledIterator struct {
-	Event *IVRFMigratableCoordinatorRandomWordsFulfilled
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFMigratableCoordinatorRandomWordsFulfilledIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFMigratableCoordinatorRandomWordsFulfilled)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFMigratableCoordinatorRandomWordsFulfilled)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFMigratableCoordinatorRandomWordsFulfilledIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFMigratableCoordinatorRandomWordsFulfilledIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFMigratableCoordinatorRandomWordsFulfilled struct {
-	RequestIDs            []*big.Int
-	SuccessfulFulfillment []byte
-	TruncatedErrorData    [][]byte
-	Raw                   types.Log
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) FilterRandomWordsFulfilled(opts *bind.FilterOpts) (*IVRFMigratableCoordinatorRandomWordsFulfilledIterator, error) {
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.FilterLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigratableCoordinatorRandomWordsFulfilledIterator{contract: _IVRFMigratableCoordinator.contract, event: "RandomWordsFulfilled", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) WatchRandomWordsFulfilled(opts *bind.WatchOpts, sink chan<- *IVRFMigratableCoordinatorRandomWordsFulfilled) (event.Subscription, error) {
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.WatchLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFMigratableCoordinatorRandomWordsFulfilled)
-				if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) ParseRandomWordsFulfilled(log types.Log) (*IVRFMigratableCoordinatorRandomWordsFulfilled, error) {
-	event := new(IVRFMigratableCoordinatorRandomWordsFulfilled)
-	if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFMigratableCoordinatorRandomnessFulfillmentRequestedIterator struct {
-	Event *IVRFMigratableCoordinatorRandomnessFulfillmentRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFMigratableCoordinatorRandomnessFulfillmentRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFMigratableCoordinatorRandomnessFulfillmentRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFMigratableCoordinatorRandomnessFulfillmentRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFMigratableCoordinatorRandomnessFulfillmentRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFMigratableCoordinatorRandomnessFulfillmentRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFMigratableCoordinatorRandomnessFulfillmentRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	GasAllowance           uint32
-	GasPrice               *big.Int
-	WeiPerUnitLink         *big.Int
-	Arguments              []byte
-	Raw                    types.Log
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) FilterRandomnessFulfillmentRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*IVRFMigratableCoordinatorRandomnessFulfillmentRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.FilterLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigratableCoordinatorRandomnessFulfillmentRequestedIterator{contract: _IVRFMigratableCoordinator.contract, event: "RandomnessFulfillmentRequested", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) WatchRandomnessFulfillmentRequested(opts *bind.WatchOpts, sink chan<- *IVRFMigratableCoordinatorRandomnessFulfillmentRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.WatchLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFMigratableCoordinatorRandomnessFulfillmentRequested)
-				if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) ParseRandomnessFulfillmentRequested(log types.Log) (*IVRFMigratableCoordinatorRandomnessFulfillmentRequested, error) {
-	event := new(IVRFMigratableCoordinatorRandomnessFulfillmentRequested)
-	if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFMigratableCoordinatorRandomnessRequestedIterator struct {
-	Event *IVRFMigratableCoordinatorRandomnessRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFMigratableCoordinatorRandomnessRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFMigratableCoordinatorRandomnessRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFMigratableCoordinatorRandomnessRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFMigratableCoordinatorRandomnessRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFMigratableCoordinatorRandomnessRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFMigratableCoordinatorRandomnessRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	Raw                    types.Log
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) FilterRandomnessRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*IVRFMigratableCoordinatorRandomnessRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.FilterLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigratableCoordinatorRandomnessRequestedIterator{contract: _IVRFMigratableCoordinator.contract, event: "RandomnessRequested", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) WatchRandomnessRequested(opts *bind.WatchOpts, sink chan<- *IVRFMigratableCoordinatorRandomnessRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFMigratableCoordinator.contract.WatchLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFMigratableCoordinatorRandomnessRequested)
-				if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorFilterer) ParseRandomnessRequested(log types.Log) (*IVRFMigratableCoordinatorRandomnessRequested, error) {
-	event := new(IVRFMigratableCoordinatorRandomnessRequested)
-	if err := _IVRFMigratableCoordinator.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
 }
 
 var IVRFMigrationMetaData = &bind.MetaData{
@@ -4726,8 +2978,204 @@ func (_IVRFMigration *IVRFMigrationTransactorSession) OnMigration(encodedData []
 	return _IVRFMigration.Contract.OnMigration(&_IVRFMigration.TransactOpts, encodedData)
 }
 
+var IVRFRouterMetaData = &bind.MetaData{
+	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+}
+
+var IVRFRouterABI = IVRFRouterMetaData.ABI
+
+type IVRFRouter struct {
+	IVRFRouterCaller
+	IVRFRouterTransactor
+	IVRFRouterFilterer
+}
+
+type IVRFRouterCaller struct {
+	contract *bind.BoundContract
+}
+
+type IVRFRouterTransactor struct {
+	contract *bind.BoundContract
+}
+
+type IVRFRouterFilterer struct {
+	contract *bind.BoundContract
+}
+
+type IVRFRouterSession struct {
+	Contract     *IVRFRouter
+	CallOpts     bind.CallOpts
+	TransactOpts bind.TransactOpts
+}
+
+type IVRFRouterCallerSession struct {
+	Contract *IVRFRouterCaller
+	CallOpts bind.CallOpts
+}
+
+type IVRFRouterTransactorSession struct {
+	Contract     *IVRFRouterTransactor
+	TransactOpts bind.TransactOpts
+}
+
+type IVRFRouterRaw struct {
+	Contract *IVRFRouter
+}
+
+type IVRFRouterCallerRaw struct {
+	Contract *IVRFRouterCaller
+}
+
+type IVRFRouterTransactorRaw struct {
+	Contract *IVRFRouterTransactor
+}
+
+func NewIVRFRouter(address common.Address, backend bind.ContractBackend) (*IVRFRouter, error) {
+	contract, err := bindIVRFRouter(address, backend, backend, backend)
+	if err != nil {
+		return nil, err
+	}
+	return &IVRFRouter{IVRFRouterCaller: IVRFRouterCaller{contract: contract}, IVRFRouterTransactor: IVRFRouterTransactor{contract: contract}, IVRFRouterFilterer: IVRFRouterFilterer{contract: contract}}, nil
+}
+
+func NewIVRFRouterCaller(address common.Address, caller bind.ContractCaller) (*IVRFRouterCaller, error) {
+	contract, err := bindIVRFRouter(address, caller, nil, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &IVRFRouterCaller{contract: contract}, nil
+}
+
+func NewIVRFRouterTransactor(address common.Address, transactor bind.ContractTransactor) (*IVRFRouterTransactor, error) {
+	contract, err := bindIVRFRouter(address, nil, transactor, nil)
+	if err != nil {
+		return nil, err
+	}
+	return &IVRFRouterTransactor{contract: contract}, nil
+}
+
+func NewIVRFRouterFilterer(address common.Address, filterer bind.ContractFilterer) (*IVRFRouterFilterer, error) {
+	contract, err := bindIVRFRouter(address, nil, nil, filterer)
+	if err != nil {
+		return nil, err
+	}
+	return &IVRFRouterFilterer{contract: contract}, nil
+}
+
+func bindIVRFRouter(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(IVRFRouterABI))
+	if err != nil {
+		return nil, err
+	}
+	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
+}
+
+func (_IVRFRouter *IVRFRouterRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IVRFRouter.Contract.IVRFRouterCaller.contract.Call(opts, result, method, params...)
+}
+
+func (_IVRFRouter *IVRFRouterRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.IVRFRouterTransactor.contract.Transfer(opts)
+}
+
+func (_IVRFRouter *IVRFRouterRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.IVRFRouterTransactor.contract.Transact(opts, method, params...)
+}
+
+func (_IVRFRouter *IVRFRouterCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IVRFRouter.Contract.contract.Call(opts, result, method, params...)
+}
+
+func (_IVRFRouter *IVRFRouterTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.contract.Transfer(opts)
+}
+
+func (_IVRFRouter *IVRFRouterTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.contract.Transact(opts, method, params...)
+}
+
+func (_IVRFRouter *IVRFRouterCaller) GetFee(opts *bind.CallOpts, subID *big.Int, extraArgs []byte) (*big.Int, error) {
+	var out []interface{}
+	err := _IVRFRouter.contract.Call(opts, &out, "getFee", subID, extraArgs)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+func (_IVRFRouter *IVRFRouterSession) GetFee(subID *big.Int, extraArgs []byte) (*big.Int, error) {
+	return _IVRFRouter.Contract.GetFee(&_IVRFRouter.CallOpts, subID, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterCallerSession) GetFee(subID *big.Int, extraArgs []byte) (*big.Int, error) {
+	return _IVRFRouter.Contract.GetFee(&_IVRFRouter.CallOpts, subID, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterCaller) GetFulfillmentFee(opts *bind.CallOpts, subID *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*big.Int, error) {
+	var out []interface{}
+	err := _IVRFRouter.contract.Call(opts, &out, "getFulfillmentFee", subID, callbackGasLimit, arguments, extraArgs)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+func (_IVRFRouter *IVRFRouterSession) GetFulfillmentFee(subID *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*big.Int, error) {
+	return _IVRFRouter.Contract.GetFulfillmentFee(&_IVRFRouter.CallOpts, subID, callbackGasLimit, arguments, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterCallerSession) GetFulfillmentFee(subID *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*big.Int, error) {
+	return _IVRFRouter.Contract.GetFulfillmentFee(&_IVRFRouter.CallOpts, subID, callbackGasLimit, arguments, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterTransactor) RedeemRandomness(opts *bind.TransactOpts, subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.contract.Transact(opts, "redeemRandomness", subID, requestID, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.RedeemRandomness(&_IVRFRouter.TransactOpts, subID, requestID, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterTransactorSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.RedeemRandomness(&_IVRFRouter.TransactOpts, subID, requestID, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterTransactor) RequestRandomness(opts *bind.TransactOpts, subID *big.Int, numWords uint16, confDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.contract.Transact(opts, "requestRandomness", subID, numWords, confDelay, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterSession) RequestRandomness(subID *big.Int, numWords uint16, confDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.RequestRandomness(&_IVRFRouter.TransactOpts, subID, numWords, confDelay, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterTransactorSession) RequestRandomness(subID *big.Int, numWords uint16, confDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.RequestRandomness(&_IVRFRouter.TransactOpts, subID, numWords, confDelay, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterTransactor) RequestRandomnessFulfillment(opts *bind.TransactOpts, subID *big.Int, numWords uint16, confDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.contract.Transact(opts, "requestRandomnessFulfillment", subID, numWords, confDelay, callbackGasLimit, arguments, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterSession) RequestRandomnessFulfillment(subID *big.Int, numWords uint16, confDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.RequestRandomnessFulfillment(&_IVRFRouter.TransactOpts, subID, numWords, confDelay, callbackGasLimit, arguments, extraArgs)
+}
+
+func (_IVRFRouter *IVRFRouterTransactorSession) RequestRandomnessFulfillment(subID *big.Int, numWords uint16, confDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFRouter.Contract.RequestRandomnessFulfillment(&_IVRFRouter.TransactOpts, subID, numWords, confDelay, callbackGasLimit, arguments, extraArgs)
+}
+
 var IVRFRouterConsumerMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[],\"name\":\"MustBeRouter\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint48[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"internalType\":\"uint256[]\",\"name\":\"randomWords\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"rawFulfillRandomWords\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[],\"name\":\"MustBeRouter\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"randomWords\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"rawFulfillRandomWords\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 var IVRFRouterConsumerABI = IVRFRouterConsumerMetaData.ABI
@@ -4842,28 +3290,6 @@ func (_IVRFRouterConsumer *IVRFRouterConsumerTransactorRaw) Transact(opts *bind.
 	return _IVRFRouterConsumer.Contract.contract.Transact(opts, method, params...)
 }
 
-func (_IVRFRouterConsumer *IVRFRouterConsumerCaller) NUMCONFDELAYS(opts *bind.CallOpts) (uint8, error) {
-	var out []interface{}
-	err := _IVRFRouterConsumer.contract.Call(opts, &out, "NUM_CONF_DELAYS")
-
-	if err != nil {
-		return *new(uint8), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint8)).(*uint8)
-
-	return out0, err
-
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerSession) NUMCONFDELAYS() (uint8, error) {
-	return _IVRFRouterConsumer.Contract.NUMCONFDELAYS(&_IVRFRouterConsumer.CallOpts)
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerCallerSession) NUMCONFDELAYS() (uint8, error) {
-	return _IVRFRouterConsumer.Contract.NUMCONFDELAYS(&_IVRFRouterConsumer.CallOpts)
-}
-
 func (_IVRFRouterConsumer *IVRFRouterConsumerTransactor) RawFulfillRandomWords(opts *bind.TransactOpts, requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
 	return _IVRFRouterConsumer.contract.Transact(opts, "rawFulfillRandomWords", requestID, randomWords, arguments)
 }
@@ -4874,794 +3300,6 @@ func (_IVRFRouterConsumer *IVRFRouterConsumerSession) RawFulfillRandomWords(requ
 
 func (_IVRFRouterConsumer *IVRFRouterConsumerTransactorSession) RawFulfillRandomWords(requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
 	return _IVRFRouterConsumer.Contract.RawFulfillRandomWords(&_IVRFRouterConsumer.TransactOpts, requestID, randomWords, arguments)
-}
-
-type IVRFRouterConsumerConfigSetIterator struct {
-	Event *IVRFRouterConsumerConfigSet
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFRouterConsumerConfigSetIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFRouterConsumerConfigSet)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFRouterConsumerConfigSet)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFRouterConsumerConfigSetIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFRouterConsumerConfigSetIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFRouterConsumerConfigSet struct {
-	PreviousConfigBlockNumber uint32
-	ConfigDigest              [32]byte
-	ConfigCount               uint64
-	Signers                   []common.Address
-	Transmitters              []common.Address
-	F                         uint8
-	OnchainConfig             []byte
-	OffchainConfigVersion     uint64
-	OffchainConfig            []byte
-	Raw                       types.Log
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) FilterConfigSet(opts *bind.FilterOpts) (*IVRFRouterConsumerConfigSetIterator, error) {
-
-	logs, sub, err := _IVRFRouterConsumer.contract.FilterLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerConfigSetIterator{contract: _IVRFRouterConsumer.contract, event: "ConfigSet", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) WatchConfigSet(opts *bind.WatchOpts, sink chan<- *IVRFRouterConsumerConfigSet) (event.Subscription, error) {
-
-	logs, sub, err := _IVRFRouterConsumer.contract.WatchLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFRouterConsumerConfigSet)
-				if err := _IVRFRouterConsumer.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) ParseConfigSet(log types.Log) (*IVRFRouterConsumerConfigSet, error) {
-	event := new(IVRFRouterConsumerConfigSet)
-	if err := _IVRFRouterConsumer.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFRouterConsumerNewTransmissionIterator struct {
-	Event *IVRFRouterConsumerNewTransmission
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFRouterConsumerNewTransmissionIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFRouterConsumerNewTransmission)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFRouterConsumerNewTransmission)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFRouterConsumerNewTransmissionIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFRouterConsumerNewTransmissionIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFRouterConsumerNewTransmission struct {
-	AggregatorRoundId  uint32
-	EpochAndRound      *big.Int
-	Transmitter        common.Address
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	ConfigDigest       [32]byte
-	Raw                types.Log
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) FilterNewTransmission(opts *bind.FilterOpts, aggregatorRoundId []uint32, epochAndRound []*big.Int) (*IVRFRouterConsumerNewTransmissionIterator, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _IVRFRouterConsumer.contract.FilterLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerNewTransmissionIterator{contract: _IVRFRouterConsumer.contract, event: "NewTransmission", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) WatchNewTransmission(opts *bind.WatchOpts, sink chan<- *IVRFRouterConsumerNewTransmission, aggregatorRoundId []uint32, epochAndRound []*big.Int) (event.Subscription, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _IVRFRouterConsumer.contract.WatchLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFRouterConsumerNewTransmission)
-				if err := _IVRFRouterConsumer.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) ParseNewTransmission(log types.Log) (*IVRFRouterConsumerNewTransmission, error) {
-	event := new(IVRFRouterConsumerNewTransmission)
-	if err := _IVRFRouterConsumer.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFRouterConsumerOutputsServedIterator struct {
-	Event *IVRFRouterConsumerOutputsServed
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFRouterConsumerOutputsServedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFRouterConsumerOutputsServed)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFRouterConsumerOutputsServed)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFRouterConsumerOutputsServedIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFRouterConsumerOutputsServedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFRouterConsumerOutputsServed struct {
-	RecentBlockHeight  uint64
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	OutputsServed      []VRFBeaconTypesOutputServed
-	Raw                types.Log
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) FilterOutputsServed(opts *bind.FilterOpts) (*IVRFRouterConsumerOutputsServedIterator, error) {
-
-	logs, sub, err := _IVRFRouterConsumer.contract.FilterLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerOutputsServedIterator{contract: _IVRFRouterConsumer.contract, event: "OutputsServed", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) WatchOutputsServed(opts *bind.WatchOpts, sink chan<- *IVRFRouterConsumerOutputsServed) (event.Subscription, error) {
-
-	logs, sub, err := _IVRFRouterConsumer.contract.WatchLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFRouterConsumerOutputsServed)
-				if err := _IVRFRouterConsumer.contract.UnpackLog(event, "OutputsServed", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) ParseOutputsServed(log types.Log) (*IVRFRouterConsumerOutputsServed, error) {
-	event := new(IVRFRouterConsumerOutputsServed)
-	if err := _IVRFRouterConsumer.contract.UnpackLog(event, "OutputsServed", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFRouterConsumerRandomWordsFulfilledIterator struct {
-	Event *IVRFRouterConsumerRandomWordsFulfilled
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFRouterConsumerRandomWordsFulfilledIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFRouterConsumerRandomWordsFulfilled)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFRouterConsumerRandomWordsFulfilled)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFRouterConsumerRandomWordsFulfilledIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFRouterConsumerRandomWordsFulfilledIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFRouterConsumerRandomWordsFulfilled struct {
-	RequestIDs            []*big.Int
-	SuccessfulFulfillment []byte
-	TruncatedErrorData    [][]byte
-	Raw                   types.Log
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) FilterRandomWordsFulfilled(opts *bind.FilterOpts) (*IVRFRouterConsumerRandomWordsFulfilledIterator, error) {
-
-	logs, sub, err := _IVRFRouterConsumer.contract.FilterLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerRandomWordsFulfilledIterator{contract: _IVRFRouterConsumer.contract, event: "RandomWordsFulfilled", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) WatchRandomWordsFulfilled(opts *bind.WatchOpts, sink chan<- *IVRFRouterConsumerRandomWordsFulfilled) (event.Subscription, error) {
-
-	logs, sub, err := _IVRFRouterConsumer.contract.WatchLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFRouterConsumerRandomWordsFulfilled)
-				if err := _IVRFRouterConsumer.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) ParseRandomWordsFulfilled(log types.Log) (*IVRFRouterConsumerRandomWordsFulfilled, error) {
-	event := new(IVRFRouterConsumerRandomWordsFulfilled)
-	if err := _IVRFRouterConsumer.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFRouterConsumerRandomnessFulfillmentRequestedIterator struct {
-	Event *IVRFRouterConsumerRandomnessFulfillmentRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFRouterConsumerRandomnessFulfillmentRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFRouterConsumerRandomnessFulfillmentRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFRouterConsumerRandomnessFulfillmentRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFRouterConsumerRandomnessFulfillmentRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFRouterConsumerRandomnessFulfillmentRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFRouterConsumerRandomnessFulfillmentRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	GasAllowance           uint32
-	GasPrice               *big.Int
-	WeiPerUnitLink         *big.Int
-	Arguments              []byte
-	Raw                    types.Log
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) FilterRandomnessFulfillmentRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*IVRFRouterConsumerRandomnessFulfillmentRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFRouterConsumer.contract.FilterLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerRandomnessFulfillmentRequestedIterator{contract: _IVRFRouterConsumer.contract, event: "RandomnessFulfillmentRequested", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) WatchRandomnessFulfillmentRequested(opts *bind.WatchOpts, sink chan<- *IVRFRouterConsumerRandomnessFulfillmentRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFRouterConsumer.contract.WatchLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFRouterConsumerRandomnessFulfillmentRequested)
-				if err := _IVRFRouterConsumer.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) ParseRandomnessFulfillmentRequested(log types.Log) (*IVRFRouterConsumerRandomnessFulfillmentRequested, error) {
-	event := new(IVRFRouterConsumerRandomnessFulfillmentRequested)
-	if err := _IVRFRouterConsumer.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type IVRFRouterConsumerRandomnessRequestedIterator struct {
-	Event *IVRFRouterConsumerRandomnessRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *IVRFRouterConsumerRandomnessRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(IVRFRouterConsumerRandomnessRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(IVRFRouterConsumerRandomnessRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *IVRFRouterConsumerRandomnessRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *IVRFRouterConsumerRandomnessRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type IVRFRouterConsumerRandomnessRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	Raw                    types.Log
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) FilterRandomnessRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*IVRFRouterConsumerRandomnessRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFRouterConsumer.contract.FilterLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerRandomnessRequestedIterator{contract: _IVRFRouterConsumer.contract, event: "RandomnessRequested", logs: logs, sub: sub}, nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) WatchRandomnessRequested(opts *bind.WatchOpts, sink chan<- *IVRFRouterConsumerRandomnessRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _IVRFRouterConsumer.contract.WatchLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(IVRFRouterConsumerRandomnessRequested)
-				if err := _IVRFRouterConsumer.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerFilterer) ParseRandomnessRequested(log types.Log) (*IVRFRouterConsumerRandomnessRequested, error) {
-	event := new(IVRFRouterConsumerRandomnessRequested)
-	if err := _IVRFRouterConsumer.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
 }
 
 var LinkTokenInterfaceMetaData = &bind.MetaData{
@@ -6728,7 +4366,7 @@ func (_TypeAndVersionInterface *TypeAndVersionInterfaceCallerSession) TypeAndVer
 }
 
 var VRFBeaconTypesMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint48[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint256[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"costJuels\",\"type\":\"uint256\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"RandomnessRedeemed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"costJuels\",\"type\":\"uint256\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
 	Bin: "0x6080604052348015600f57600080fd5b50605780601d6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c80632f7527cc14602d575b600080fd5b6034600881565b60405160ff909116815260200160405180910390f3fea164736f6c6343000813000a",
 }
 
@@ -7459,6 +5097,7 @@ type VRFBeaconTypesRandomnessFulfillmentRequested struct {
 	GasPrice               *big.Int
 	WeiPerUnitLink         *big.Int
 	Arguments              []byte
+	CostJuels              *big.Int
 	Raw                    types.Log
 }
 
@@ -7532,6 +5171,143 @@ func (_VRFBeaconTypes *VRFBeaconTypesFilterer) ParseRandomnessFulfillmentRequest
 	return event, nil
 }
 
+type VRFBeaconTypesRandomnessRedeemedIterator struct {
+	Event *VRFBeaconTypesRandomnessRedeemed
+
+	contract *bind.BoundContract
+	event    string
+
+	logs chan types.Log
+	sub  ethereum.Subscription
+	done bool
+	fail error
+}
+
+func (it *VRFBeaconTypesRandomnessRedeemedIterator) Next() bool {
+
+	if it.fail != nil {
+		return false
+	}
+
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(VRFBeaconTypesRandomnessRedeemed)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+
+	select {
+	case log := <-it.logs:
+		it.Event = new(VRFBeaconTypesRandomnessRedeemed)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+func (it *VRFBeaconTypesRandomnessRedeemedIterator) Error() error {
+	return it.fail
+}
+
+func (it *VRFBeaconTypesRandomnessRedeemedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+type VRFBeaconTypesRandomnessRedeemed struct {
+	RequestID *big.Int
+	Requester common.Address
+	SubID     *big.Int
+	Raw       types.Log
+}
+
+func (_VRFBeaconTypes *VRFBeaconTypesFilterer) FilterRandomnessRedeemed(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*VRFBeaconTypesRandomnessRedeemedIterator, error) {
+
+	var requestIDRule []interface{}
+	for _, requestIDItem := range requestID {
+		requestIDRule = append(requestIDRule, requestIDItem)
+	}
+	var requesterRule []interface{}
+	for _, requesterItem := range requester {
+		requesterRule = append(requesterRule, requesterItem)
+	}
+
+	logs, sub, err := _VRFBeaconTypes.contract.FilterLogs(opts, "RandomnessRedeemed", requestIDRule, requesterRule)
+	if err != nil {
+		return nil, err
+	}
+	return &VRFBeaconTypesRandomnessRedeemedIterator{contract: _VRFBeaconTypes.contract, event: "RandomnessRedeemed", logs: logs, sub: sub}, nil
+}
+
+func (_VRFBeaconTypes *VRFBeaconTypesFilterer) WatchRandomnessRedeemed(opts *bind.WatchOpts, sink chan<- *VRFBeaconTypesRandomnessRedeemed, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
+
+	var requestIDRule []interface{}
+	for _, requestIDItem := range requestID {
+		requestIDRule = append(requestIDRule, requestIDItem)
+	}
+	var requesterRule []interface{}
+	for _, requesterItem := range requester {
+		requesterRule = append(requesterRule, requesterItem)
+	}
+
+	logs, sub, err := _VRFBeaconTypes.contract.WatchLogs(opts, "RandomnessRedeemed", requestIDRule, requesterRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+
+				event := new(VRFBeaconTypesRandomnessRedeemed)
+				if err := _VRFBeaconTypes.contract.UnpackLog(event, "RandomnessRedeemed", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+func (_VRFBeaconTypes *VRFBeaconTypesFilterer) ParseRandomnessRedeemed(log types.Log) (*VRFBeaconTypesRandomnessRedeemed, error) {
+	event := new(VRFBeaconTypesRandomnessRedeemed)
+	if err := _VRFBeaconTypes.contract.UnpackLog(event, "RandomnessRedeemed", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
 type VRFBeaconTypesRandomnessRequestedIterator struct {
 	Event *VRFBeaconTypesRandomnessRequested
 
@@ -7599,6 +5375,7 @@ type VRFBeaconTypesRandomnessRequested struct {
 	ConfDelay              *big.Int
 	SubID                  *big.Int
 	NumWords               uint16
+	CostJuels              *big.Int
 	Raw                    types.Log
 }
 
@@ -7673,8 +5450,8 @@ func (_VRFBeaconTypes *VRFBeaconTypesFilterer) ParseRandomnessRequested(log type
 }
 
 var VRFRouterMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[],\"name\":\"CoordinatorAlreadyRegistered\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"CoordinatorNotRegistered\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"route\",\"type\":\"address\"}],\"name\":\"RouteNotFound\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"UnexpectedMigrationVersion\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"CoordinatorDeregistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"CoordinatorRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint48[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"RouteSet\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"acceptOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gasAmount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"callWithExactGasEvenIfTargetIsNoContract\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"sufficientGas\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"deregisterCoordinator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCoordinators\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"getRoute\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"coordinator\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"isCoordinatorRegistered\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"externalRequestID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"registerCoordinator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"resetRoute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_redemptionRoutes\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint48\"},{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"setRoute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"typeAndVersion\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}]",
-	Bin: "0x608060405234801561001057600080fd5b5033806000816100675760405162461bcd60e51b815260206004820152601860248201527f43616e6e6f7420736574206f776e657220746f207a65726f000000000000000060448201526064015b60405180910390fd5b600080546001600160a01b0319166001600160a01b0384811691909117909155811615610097576100978161009f565b505050610148565b336001600160a01b038216036100f75760405162461bcd60e51b815260206004820152601760248201527f43616e6e6f74207472616e7366657220746f2073656c66000000000000000000604482015260640161005e565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b611660806101576000396000f3fe608060405234801561001057600080fd5b50600436106101515760003560e01c80639479b74e116100cd578063d9c4a44d11610081578063f2fde38b11610066578063f2fde38b1461035f578063f9c45ced14610372578063fa66358a1461038557600080fd5b8063d9c4a44d14610339578063db972c8b1461034c57600080fd5b8063acfc6cdd116100b2578063acfc6cdd146102e3578063bb9b2b3414610303578063cef40aa61461031657600080fd5b80639479b74e146102bd5780639e201036146102d057600080fd5b806355fe9763116101245780637612e884116101095780637612e8841461022d57806379ba5097146102905780638da5cb5b1461029857600080fd5b806355fe9763146101ee5780635d5d8d191461021857600080fd5b8063181f5a77146101565780632f7527cc1461019e5780634b2407d4146101b85780634ffac83a146101cd575b600080fd5b604080518082018252600f81527f565246526f7574657220312e302e300000000000000000000000000000000000602082015290516101959190610f9d565b60405180910390f35b6101a6600881565b60405160ff9091168152602001610195565b6101cb6101c6366004610fcc565b610398565b005b6101e06101db3660046110c3565b6104d2565b604051908152602001610195565b6102016101fc36600461112b565b610603565b604080519215158352901515602083015201610195565b61022061066c565b6040516101959190611182565b61026a61023b3660046111cf565b60056020526000908152604090205465ffffffffffff811690660100000000000090046001600160a01b031682565b6040805165ffffffffffff90931683526001600160a01b03909116602083015201610195565b6101cb61067d565b6000546001600160a01b03165b6040516001600160a01b039091168152602001610195565b6101cb6102cb3660046111cf565b610740565b6101e06102de3660046111fc565b6107d2565b6102f66102f136600461126e565b610877565b60405161019591906112a8565b6101cb6103113660046111cf565b610978565b610329610324366004610fcc565b6109fb565b6040519015158152602001610195565b6101cb610347366004610fcc565b610a0e565b6101e061035a3660046112e0565b610a84565b6101cb61036d366004610fcc565b610b24565b6101e061038036600461137e565b610b38565b6102a56103933660046111cf565b610bd7565b6103a0610c4b565b6103ab600382610ca7565b156103e2576040517fdcecb7bf00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b6000819050806001600160a01b031663294daa496040518163ffffffff1660e01b8152600401602060405180830381865afa158015610425573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061044991906113c5565b60ff16600003610485576040517f6e81684800000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b610490600383610ccc565b506040516001600160a01b03831681527fb7cabbfc11e66731fc77de0444614282023bcbd41d16781c753a431d0af01625906020015b60405180910390a15050565b6000806104de86610bd7565b90506000816001600160a01b03166362f8b62033898989896040518663ffffffff1660e01b81526004016105169594939291906113e8565b6020604051808303816000875af1158015610535573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906105599190611430565b6040805165ffffffffffff92831660208083018290526001600160a01b039687168385018190528451808503860181526060850180875281519184019190912060a0860187529381526080909401908152600083815260059092529390209151825493519096166601000000000000027fffffffffffff00000000000000000000000000000000000000000000000000009093169590931694909417179092555095945050505050565b60008033610612600382610ca7565b61062f576040516301fd70a160e51b815260040160405180910390fd5b5a611388811061066257611388810390508660408204820311156106625760008086516020880160008a8cf19350600192505b5050935093915050565b60606106786003610ce1565b905090565b6001546001600160a01b031633146106dc5760405162461bcd60e51b815260206004820152601660248201527f4d7573742062652070726f706f736564206f776e65720000000000000000000060448201526064015b60405180910390fd5b600080543373ffffffffffffffffffffffffffffffffffffffff19808316821784556001805490911690556040516001600160a01b0390921692909183917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a350565b3361074c600382610ca7565b610769576040516301fd70a160e51b815260040160405180910390fd5b600082815260026020908152604091829020805473ffffffffffffffffffffffffffffffffffffffff191633908117909155915191825283917fd8bb190f51a471c0cc88b5df464ee10c29138cce0d70fb36c472d60b414f3b3a91015b60405180910390a25050565b6000806107de86610bd7565b6040517f9e2010360000000000000000000000000000000000000000000000000000000081529091506001600160a01b03821690639e2010369061082c908990899089908990600401611458565b602060405180830381865afa158015610849573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061086d919061148f565b9695505050505050565b600082815260056020818152604080842081518083018352815465ffffffffffff811682526001600160a01b03660100000000000082048116838701908152978a9052959094527fffffffffffff000000000000000000000000000000000000000000000000000090931690559251815193517fabbf1c9b000000000000000000000000000000000000000000000000000000008152606094929391929183169163abbf1c9b916109319133918b91908a906004016114a8565b6000604051808303816000875af1158015610950573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f1916820160405261086d91908101906114de565b33610984600382610ca7565b6109a1576040516301fd70a160e51b815260040160405180910390fd5b6000828152600260209081526040808320805473ffffffffffffffffffffffffffffffffffffffff191690555191825283917fd8bb190f51a471c0cc88b5df464ee10c29138cce0d70fb36c472d60b414f3b3a91016107c6565b6000610a08600383610ca7565b92915050565b610a16610c4b565b80610a22600382610ca7565b610a3f576040516301fd70a160e51b815260040160405180910390fd5b610a4a600383610cee565b506040516001600160a01b03831681527ff80a1a97fd42251f3c33cda98635e7399253033a6774fe37cd3f650b5282af37906020016104c6565b600080610a9088610bd7565b90506000816001600160a01b03166395009f08338b8b8b8b8b8b6040518863ffffffff1660e01b8152600401610acc9796959493929190611584565b6020604051808303816000875af1158015610aeb573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610b0f9190611430565b65ffffffffffff169998505050505050505050565b610b2c610c4b565b610b3581610d03565b50565b600080610b4484610bd7565b6040517ff9c45ced0000000000000000000000000000000000000000000000000000000081529091506001600160a01b0382169063f9c45ced90610b8e90879087906004016115ed565b602060405180830381865afa158015610bab573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610bcf919061148f565b949350505050565b6000818152600260205260408120546001600160a01b031680610c18576040516339910a6760e01b81526001600160a01b03821660048201526024016106d3565b610c23600382610ca7565b610a08576040516339910a6760e01b81526001600160a01b03821660048201526024016106d3565b6000546001600160a01b03163314610ca55760405162461bcd60e51b815260206004820152601660248201527f4f6e6c792063616c6c61626c65206279206f776e65720000000000000000000060448201526064016106d3565b565b6001600160a01b038116600090815260018301602052604081205415155b9392505050565b6000610cc5836001600160a01b038416610db9565b60606000610cc583610e08565b6000610cc5836001600160a01b038416610e64565b336001600160a01b03821603610d5b5760405162461bcd60e51b815260206004820152601760248201527f43616e6e6f74207472616e7366657220746f2073656c6600000000000000000060448201526064016106d3565b6001805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b6000818152600183016020526040812054610e0057508154600181810184556000848152602080822090930184905584548482528286019093526040902091909155610a08565b506000610a08565b606081600001805480602002602001604051908101604052809291908181526020018280548015610e5857602002820191906000526020600020905b815481526020019060010190808311610e44575b50505050509050919050565b60008181526001830160205260408120548015610f4d576000610e88600183611606565b8554909150600090610e9c90600190611606565b9050818114610f01576000866000018281548110610ebc57610ebc611627565b9060005260206000200154905080876000018481548110610edf57610edf611627565b6000918252602080832090910192909255918252600188019052604090208390555b8554869080610f1257610f1261163d565b600190038181906000526020600020016000905590558560010160008681526020019081526020016000206000905560019350505050610a08565b6000915050610a08565b6000815180845260005b81811015610f7d57602081850181015186830182015201610f61565b506000602082860101526020601f19601f83011685010191505092915050565b602081526000610cc56020830184610f57565b80356001600160a01b0381168114610fc757600080fd5b919050565b600060208284031215610fde57600080fd5b610cc582610fb0565b803561ffff81168114610fc757600080fd5b803562ffffff81168114610fc757600080fd5b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff8111828210171561104b5761104b61100c565b604052919050565b600082601f83011261106457600080fd5b813567ffffffffffffffff81111561107e5761107e61100c565b611091601f8201601f1916602001611022565b8181528460208386010111156110a657600080fd5b816020850160208301376000918101602001919091529392505050565b600080600080608085870312156110d957600080fd5b843593506110e960208601610fe7565b92506110f760408601610ff9565b9150606085013567ffffffffffffffff81111561111357600080fd5b61111f87828801611053565b91505092959194509250565b60008060006060848603121561114057600080fd5b8335925061115060208501610fb0565b9150604084013567ffffffffffffffff81111561116c57600080fd5b61117886828701611053565b9150509250925092565b6020808252825182820181905260009190848201906040850190845b818110156111c35783516001600160a01b03168352928401929184019160010161119e565b50909695505050505050565b6000602082840312156111e157600080fd5b5035919050565b803563ffffffff81168114610fc757600080fd5b6000806000806080858703121561121257600080fd5b84359350611222602086016111e8565b9250604085013567ffffffffffffffff8082111561123f57600080fd5b61124b88838901611053565b9350606087013591508082111561126157600080fd5b5061111f87828801611053565b60008060006060848603121561128357600080fd5b8335925060208401359150604084013567ffffffffffffffff81111561116c57600080fd5b6020808252825182820181905260009190848201906040850190845b818110156111c3578351835292840192918401916001016112c4565b60008060008060008060c087890312156112f957600080fd5b8635955061130960208801610fe7565b945061131760408801610ff9565b9350611325606088016111e8565b9250608087013567ffffffffffffffff8082111561134257600080fd5b61134e8a838b01611053565b935060a089013591508082111561136457600080fd5b5061137189828a01611053565b9150509295509295509295565b6000806040838503121561139157600080fd5b82359150602083013567ffffffffffffffff8111156113af57600080fd5b6113bb85828601611053565b9150509250929050565b6000602082840312156113d757600080fd5b815160ff81168114610cc557600080fd5b6001600160a01b038616815284602082015261ffff8416604082015262ffffff8316606082015260a06080820152600061142560a0830184610f57565b979650505050505050565b60006020828403121561144257600080fd5b815165ffffffffffff81168114610cc557600080fd5b84815263ffffffff8416602082015260806040820152600061147d6080830185610f57565b82810360608401526114258185610f57565b6000602082840312156114a157600080fd5b5051919050565b6001600160a01b038516815283602082015265ffffffffffff8316604082015260806060820152600061086d6080830184610f57565b600060208083850312156114f157600080fd5b825167ffffffffffffffff8082111561150957600080fd5b818501915085601f83011261151d57600080fd5b81518181111561152f5761152f61100c565b8060051b9150611540848301611022565b818152918301840191848101908884111561155a57600080fd5b938501935b838510156115785784518252938501939085019061155f565b98975050505050505050565b6001600160a01b038816815286602082015261ffff8616604082015262ffffff8516606082015263ffffffff8416608082015260e060a082015260006115cd60e0830185610f57565b82810360c08401526115df8185610f57565b9a9950505050505050505050565b828152604060208201526000610bcf6040830184610f57565b81810381811115610a0857634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052603160045260246000fdfea164736f6c6343000813000a",
+	ABI: "[{\"inputs\":[],\"name\":\"CoordinatorAlreadyRegistered\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"CoordinatorNotRegistered\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"}],\"name\":\"RedemptionRouteNotFound\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"route\",\"type\":\"address\"}],\"name\":\"RouteNotFound\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"UnexpectedMigrationVersion\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"CoordinatorDeregistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"CoordinatorRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"RouteSet\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"acceptOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gasAmount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"callWithExactGasEvenIfTargetIsNoContract\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"sufficientGas\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"deregisterCoordinator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCoordinators\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"getRoute\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"coordinator\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"isCoordinatorRegistered\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"registerCoordinator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"resetRoute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_redemptionRoutes\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"setRoute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"typeAndVersion\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}]",
+	Bin: "0x608060405234801561001057600080fd5b5033806000816100675760405162461bcd60e51b815260206004820152601860248201527f43616e6e6f7420736574206f776e657220746f207a65726f000000000000000060448201526064015b60405180910390fd5b600080546001600160a01b0319166001600160a01b0384811691909117909155811615610097576100978161009f565b505050610148565b336001600160a01b038216036100f75760405162461bcd60e51b815260206004820152601760248201527f43616e6e6f74207472616e7366657220746f2073656c66000000000000000000604482015260640161005e565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b611509806101576000396000f3fe608060405234801561001057600080fd5b50600436106101365760003560e01c80639e201036116100b2578063d9c4a44d11610081578063f2fde38b11610066578063f2fde38b146102f4578063f9c45ced14610307578063fa66358a1461031a57600080fd5b8063d9c4a44d146102ce578063db972c8b146102e157600080fd5b80639e20103614610265578063acfc6cdd14610278578063bb9b2b3414610298578063cef40aa6146102ab57600080fd5b80635d5d8d191161010957806379ba5097116100ee57806379ba5097146102395780638da5cb5b146102415780639479b74e1461025257600080fd5b80635d5d8d19146101e35780637612e884146101f857600080fd5b8063181f5a771461013b5780634b2407d4146101835780634ffac83a1461019857806355fe9763146101b9575b600080fd5b604080518082018252600f81527f565246526f7574657220312e302e3000000000000000000000000000000000006020820152905161017a9190610e82565b60405180910390f35b610196610191366004610eb1565b61032d565b005b6101ab6101a6366004610fa8565b610467565b60405190815260200161017a565b6101cc6101c7366004611010565b610525565b60408051921515835290151560208301520161017a565b6101eb61058e565b60405161017a9190611067565b6102216102063660046110b4565b6005602052600090815260409020546001600160a01b031681565b6040516001600160a01b03909116815260200161017a565b61019661059f565b6000546001600160a01b0316610221565b6101966102603660046110b4565b610655565b6101ab6102733660046110e1565b6106da565b61028b610286366004611153565b61077f565b60405161017a919061118d565b6101966102a63660046110b4565b610868565b6102be6102b9366004610eb1565b6108de565b604051901515815260200161017a565b6101966102dc366004610eb1565b6108f1565b6101ab6102ef3660046111c5565b610967565b610196610302366004610eb1565b610a16565b6101ab610315366004611263565b610a2a565b6102216103283660046110b4565b610ac9565b610335610b3d565b610340600382610b99565b15610377576040517fdcecb7bf00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b6000819050806001600160a01b031663294daa496040518163ffffffff1660e01b8152600401602060405180830381865afa1580156103ba573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103de91906112aa565b60ff1660000361041a576040517f6e81684800000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b610425600383610bbe565b506040516001600160a01b03831681527fb7cabbfc11e66731fc77de0444614282023bcbd41d16781c753a431d0af01625906020015b60405180910390a15050565b60008061047386610ac9565b90506000816001600160a01b03166362f8b62033898989896040518663ffffffff1660e01b81526004016104ab9594939291906112cd565b6020604051808303816000875af11580156104ca573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906104ee9190611315565b600081815260056020526040902080546001600160a01b0319166001600160a01b0394909416939093179092555095945050505050565b60008033610534600382610b99565b610551576040516301fd70a160e51b815260040160405180910390fd5b5a611388811061058457611388810390508660408204820311156105845760008086516020880160008a8cf19350600192505b5050935093915050565b606061059a6003610bd3565b905090565b6001546001600160a01b031633146105fe5760405162461bcd60e51b815260206004820152601660248201527f4d7573742062652070726f706f736564206f776e65720000000000000000000060448201526064015b60405180910390fd5b60008054336001600160a01b0319808316821784556001805490911690556040516001600160a01b0390921692909183917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a350565b33610661600382610b99565b61067e576040516301fd70a160e51b815260040160405180910390fd5b60008281526002602090815260409182902080546001600160a01b03191633908117909155915191825283917fd8bb190f51a471c0cc88b5df464ee10c29138cce0d70fb36c472d60b414f3b3a91015b60405180910390a25050565b6000806106e686610ac9565b6040517f9e2010360000000000000000000000000000000000000000000000000000000081529091506001600160a01b03821690639e2010369061073490899089908990899060040161132e565b602060405180830381865afa158015610751573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906107759190611315565b9695505050505050565b6000828152600560205260409020546060906001600160a01b0316806107d4576040517f71e8b529000000000000000000000000000000000000000000000000000000008152600481018590526024016105f5565b6040517f6ae5fb3b00000000000000000000000000000000000000000000000000000000815281906001600160a01b03821690636ae5fb3b906108219033908a908a908a90600401611365565b6000604051808303816000875af1158015610840573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f191682016040526107759190810190611393565b33610874600382610b99565b610891576040516301fd70a160e51b815260040160405180910390fd5b600082815260026020908152604080832080546001600160a01b03191690555191825283917fd8bb190f51a471c0cc88b5df464ee10c29138cce0d70fb36c472d60b414f3b3a91016106ce565b60006108eb600383610b99565b92915050565b6108f9610b3d565b80610905600382610b99565b610922576040516301fd70a160e51b815260040160405180910390fd5b61092d600383610be0565b506040516001600160a01b03831681527ff80a1a97fd42251f3c33cda98635e7399253033a6774fe37cd3f650b5282af379060200161045b565b60008061097388610ac9565b6040517f95009f080000000000000000000000000000000000000000000000000000000081529091506001600160a01b038216906395009f08906109c79033908c908c908c908c908c908c9060040161142d565b6020604051808303816000875af11580156109e6573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610a0a9190611315565b98975050505050505050565b610a1e610b3d565b610a2781610bf5565b50565b600080610a3684610ac9565b6040517ff9c45ced0000000000000000000000000000000000000000000000000000000081529091506001600160a01b0382169063f9c45ced90610a809087908790600401611496565b602060405180830381865afa158015610a9d573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610ac19190611315565b949350505050565b6000818152600260205260408120546001600160a01b031680610b0a576040516339910a6760e01b81526001600160a01b03821660048201526024016105f5565b610b15600382610b99565b6108eb576040516339910a6760e01b81526001600160a01b03821660048201526024016105f5565b6000546001600160a01b03163314610b975760405162461bcd60e51b815260206004820152601660248201527f4f6e6c792063616c6c61626c65206279206f776e65720000000000000000000060448201526064016105f5565b565b6001600160a01b038116600090815260018301602052604081205415155b9392505050565b6000610bb7836001600160a01b038416610c9e565b60606000610bb783610ced565b6000610bb7836001600160a01b038416610d49565b336001600160a01b03821603610c4d5760405162461bcd60e51b815260206004820152601760248201527f43616e6e6f74207472616e7366657220746f2073656c6600000000000000000060448201526064016105f5565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b6000818152600183016020526040812054610ce5575081546001818101845560008481526020808220909301849055845484825282860190935260409020919091556108eb565b5060006108eb565b606081600001805480602002602001604051908101604052809291908181526020018280548015610d3d57602002820191906000526020600020905b815481526020019060010190808311610d29575b50505050509050919050565b60008181526001830160205260408120548015610e32576000610d6d6001836114af565b8554909150600090610d81906001906114af565b9050818114610de6576000866000018281548110610da157610da16114d0565b9060005260206000200154905080876000018481548110610dc457610dc46114d0565b6000918252602080832090910192909255918252600188019052604090208390555b8554869080610df757610df76114e6565b6001900381819060005260206000200160009055905585600101600086815260200190815260200160002060009055600193505050506108eb565b60009150506108eb565b6000815180845260005b81811015610e6257602081850181015186830182015201610e46565b506000602082860101526020601f19601f83011685010191505092915050565b602081526000610bb76020830184610e3c565b80356001600160a01b0381168114610eac57600080fd5b919050565b600060208284031215610ec357600080fd5b610bb782610e95565b803561ffff81168114610eac57600080fd5b803562ffffff81168114610eac57600080fd5b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff81118282101715610f3057610f30610ef1565b604052919050565b600082601f830112610f4957600080fd5b813567ffffffffffffffff811115610f6357610f63610ef1565b610f76601f8201601f1916602001610f07565b818152846020838601011115610f8b57600080fd5b816020850160208301376000918101602001919091529392505050565b60008060008060808587031215610fbe57600080fd5b84359350610fce60208601610ecc565b9250610fdc60408601610ede565b9150606085013567ffffffffffffffff811115610ff857600080fd5b61100487828801610f38565b91505092959194509250565b60008060006060848603121561102557600080fd5b8335925061103560208501610e95565b9150604084013567ffffffffffffffff81111561105157600080fd5b61105d86828701610f38565b9150509250925092565b6020808252825182820181905260009190848201906040850190845b818110156110a85783516001600160a01b031683529284019291840191600101611083565b50909695505050505050565b6000602082840312156110c657600080fd5b5035919050565b803563ffffffff81168114610eac57600080fd5b600080600080608085870312156110f757600080fd5b84359350611107602086016110cd565b9250604085013567ffffffffffffffff8082111561112457600080fd5b61113088838901610f38565b9350606087013591508082111561114657600080fd5b5061100487828801610f38565b60008060006060848603121561116857600080fd5b8335925060208401359150604084013567ffffffffffffffff81111561105157600080fd5b6020808252825182820181905260009190848201906040850190845b818110156110a8578351835292840192918401916001016111a9565b60008060008060008060c087890312156111de57600080fd5b863595506111ee60208801610ecc565b94506111fc60408801610ede565b935061120a606088016110cd565b9250608087013567ffffffffffffffff8082111561122757600080fd5b6112338a838b01610f38565b935060a089013591508082111561124957600080fd5b5061125689828a01610f38565b9150509295509295509295565b6000806040838503121561127657600080fd5b82359150602083013567ffffffffffffffff81111561129457600080fd5b6112a085828601610f38565b9150509250929050565b6000602082840312156112bc57600080fd5b815160ff81168114610bb757600080fd5b6001600160a01b038616815284602082015261ffff8416604082015262ffffff8316606082015260a06080820152600061130a60a0830184610e3c565b979650505050505050565b60006020828403121561132757600080fd5b5051919050565b84815263ffffffff841660208201526080604082015260006113536080830185610e3c565b828103606084015261130a8185610e3c565b6001600160a01b03851681528360208201528260408201526080606082015260006107756080830184610e3c565b600060208083850312156113a657600080fd5b825167ffffffffffffffff808211156113be57600080fd5b818501915085601f8301126113d257600080fd5b8151818111156113e4576113e4610ef1565b8060051b91506113f5848301610f07565b818152918301840191848101908884111561140f57600080fd5b938501935b83851015610a0a57845182529385019390850190611414565b6001600160a01b038816815286602082015261ffff8616604082015262ffffff8516606082015263ffffffff8416608082015260e060a0820152600061147660e0830185610e3c565b82810360c08401526114888185610e3c565b9a9950505050505050505050565b828152604060208201526000610ac16040830184610e3c565b818103818111156108eb57634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052603160045260246000fdfea164736f6c6343000813000a",
 }
 
 var VRFRouterABI = VRFRouterMetaData.ABI
@@ -7805,28 +5582,6 @@ func (_VRFRouter *VRFRouterTransactorRaw) Transfer(opts *bind.TransactOpts) (*ty
 
 func (_VRFRouter *VRFRouterTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
 	return _VRFRouter.Contract.contract.Transact(opts, method, params...)
-}
-
-func (_VRFRouter *VRFRouterCaller) NUMCONFDELAYS(opts *bind.CallOpts) (uint8, error) {
-	var out []interface{}
-	err := _VRFRouter.contract.Call(opts, &out, "NUM_CONF_DELAYS")
-
-	if err != nil {
-		return *new(uint8), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint8)).(*uint8)
-
-	return out0, err
-
-}
-
-func (_VRFRouter *VRFRouterSession) NUMCONFDELAYS() (uint8, error) {
-	return _VRFRouter.Contract.NUMCONFDELAYS(&_VRFRouter.CallOpts)
-}
-
-func (_VRFRouter *VRFRouterCallerSession) NUMCONFDELAYS() (uint8, error) {
-	return _VRFRouter.Contract.NUMCONFDELAYS(&_VRFRouter.CallOpts)
 }
 
 func (_VRFRouter *VRFRouterCaller) GetCoordinators(opts *bind.CallOpts) ([]common.Address, error) {
@@ -7961,39 +5716,25 @@ func (_VRFRouter *VRFRouterCallerSession) Owner() (common.Address, error) {
 	return _VRFRouter.Contract.Owner(&_VRFRouter.CallOpts)
 }
 
-func (_VRFRouter *VRFRouterCaller) SRedemptionRoutes(opts *bind.CallOpts, arg0 *big.Int) (struct {
-	RequestID          *big.Int
-	CoordinatorAddress common.Address
-}, error) {
+func (_VRFRouter *VRFRouterCaller) SRedemptionRoutes(opts *bind.CallOpts, arg0 *big.Int) (common.Address, error) {
 	var out []interface{}
 	err := _VRFRouter.contract.Call(opts, &out, "s_redemptionRoutes", arg0)
 
-	outstruct := new(struct {
-		RequestID          *big.Int
-		CoordinatorAddress common.Address
-	})
 	if err != nil {
-		return *outstruct, err
+		return *new(common.Address), err
 	}
 
-	outstruct.RequestID = *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
-	outstruct.CoordinatorAddress = *abi.ConvertType(out[1], new(common.Address)).(*common.Address)
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
 
-	return *outstruct, err
+	return out0, err
 
 }
 
-func (_VRFRouter *VRFRouterSession) SRedemptionRoutes(arg0 *big.Int) (struct {
-	RequestID          *big.Int
-	CoordinatorAddress common.Address
-}, error) {
+func (_VRFRouter *VRFRouterSession) SRedemptionRoutes(arg0 *big.Int) (common.Address, error) {
 	return _VRFRouter.Contract.SRedemptionRoutes(&_VRFRouter.CallOpts, arg0)
 }
 
-func (_VRFRouter *VRFRouterCallerSession) SRedemptionRoutes(arg0 *big.Int) (struct {
-	RequestID          *big.Int
-	CoordinatorAddress common.Address
-}, error) {
+func (_VRFRouter *VRFRouterCallerSession) SRedemptionRoutes(arg0 *big.Int) (common.Address, error) {
 	return _VRFRouter.Contract.SRedemptionRoutes(&_VRFRouter.CallOpts, arg0)
 }
 
@@ -8055,16 +5796,16 @@ func (_VRFRouter *VRFRouterTransactorSession) DeregisterCoordinator(coordinatorA
 	return _VRFRouter.Contract.DeregisterCoordinator(&_VRFRouter.TransactOpts, coordinatorAddress)
 }
 
-func (_VRFRouter *VRFRouterTransactor) RedeemRandomness(opts *bind.TransactOpts, subID *big.Int, externalRequestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.contract.Transact(opts, "redeemRandomness", subID, externalRequestID, extraArgs)
+func (_VRFRouter *VRFRouterTransactor) RedeemRandomness(opts *bind.TransactOpts, subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _VRFRouter.contract.Transact(opts, "redeemRandomness", subID, requestID, extraArgs)
 }
 
-func (_VRFRouter *VRFRouterSession) RedeemRandomness(subID *big.Int, externalRequestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.Contract.RedeemRandomness(&_VRFRouter.TransactOpts, subID, externalRequestID, extraArgs)
+func (_VRFRouter *VRFRouterSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _VRFRouter.Contract.RedeemRandomness(&_VRFRouter.TransactOpts, subID, requestID, extraArgs)
 }
 
-func (_VRFRouter *VRFRouterTransactorSession) RedeemRandomness(subID *big.Int, externalRequestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.Contract.RedeemRandomness(&_VRFRouter.TransactOpts, subID, externalRequestID, extraArgs)
+func (_VRFRouter *VRFRouterTransactorSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _VRFRouter.Contract.RedeemRandomness(&_VRFRouter.TransactOpts, subID, requestID, extraArgs)
 }
 
 func (_VRFRouter *VRFRouterTransactor) RegisterCoordinator(opts *bind.TransactOpts, coordinatorAddress common.Address) (*types.Transaction, error) {
@@ -8137,131 +5878,6 @@ func (_VRFRouter *VRFRouterSession) TransferOwnership(to common.Address) (*types
 
 func (_VRFRouter *VRFRouterTransactorSession) TransferOwnership(to common.Address) (*types.Transaction, error) {
 	return _VRFRouter.Contract.TransferOwnership(&_VRFRouter.TransactOpts, to)
-}
-
-type VRFRouterConfigSetIterator struct {
-	Event *VRFRouterConfigSet
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterConfigSetIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterConfigSet)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterConfigSet)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterConfigSetIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterConfigSetIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterConfigSet struct {
-	PreviousConfigBlockNumber uint32
-	ConfigDigest              [32]byte
-	ConfigCount               uint64
-	Signers                   []common.Address
-	Transmitters              []common.Address
-	F                         uint8
-	OnchainConfig             []byte
-	OffchainConfigVersion     uint64
-	OffchainConfig            []byte
-	Raw                       types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterConfigSet(opts *bind.FilterOpts) (*VRFRouterConfigSetIterator, error) {
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterConfigSetIterator{contract: _VRFRouter.contract, event: "ConfigSet", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchConfigSet(opts *bind.WatchOpts, sink chan<- *VRFRouterConfigSet) (event.Subscription, error) {
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "ConfigSet")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterConfigSet)
-				if err := _VRFRouter.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseConfigSet(log types.Log) (*VRFRouterConfigSet, error) {
-	event := new(VRFRouterConfigSet)
-	if err := _VRFRouter.contract.UnpackLog(event, "ConfigSet", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
 }
 
 type VRFRouterCoordinatorDeregisteredIterator struct {
@@ -8492,266 +6108,6 @@ func (_VRFRouter *VRFRouterFilterer) WatchCoordinatorRegistered(opts *bind.Watch
 func (_VRFRouter *VRFRouterFilterer) ParseCoordinatorRegistered(log types.Log) (*VRFRouterCoordinatorRegistered, error) {
 	event := new(VRFRouterCoordinatorRegistered)
 	if err := _VRFRouter.contract.UnpackLog(event, "CoordinatorRegistered", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterNewTransmissionIterator struct {
-	Event *VRFRouterNewTransmission
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterNewTransmissionIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterNewTransmission)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterNewTransmission)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterNewTransmissionIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterNewTransmissionIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterNewTransmission struct {
-	AggregatorRoundId  uint32
-	EpochAndRound      *big.Int
-	Transmitter        common.Address
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	ConfigDigest       [32]byte
-	Raw                types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterNewTransmission(opts *bind.FilterOpts, aggregatorRoundId []uint32, epochAndRound []*big.Int) (*VRFRouterNewTransmissionIterator, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterNewTransmissionIterator{contract: _VRFRouter.contract, event: "NewTransmission", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchNewTransmission(opts *bind.WatchOpts, sink chan<- *VRFRouterNewTransmission, aggregatorRoundId []uint32, epochAndRound []*big.Int) (event.Subscription, error) {
-
-	var aggregatorRoundIdRule []interface{}
-	for _, aggregatorRoundIdItem := range aggregatorRoundId {
-		aggregatorRoundIdRule = append(aggregatorRoundIdRule, aggregatorRoundIdItem)
-	}
-	var epochAndRoundRule []interface{}
-	for _, epochAndRoundItem := range epochAndRound {
-		epochAndRoundRule = append(epochAndRoundRule, epochAndRoundItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "NewTransmission", aggregatorRoundIdRule, epochAndRoundRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterNewTransmission)
-				if err := _VRFRouter.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseNewTransmission(log types.Log) (*VRFRouterNewTransmission, error) {
-	event := new(VRFRouterNewTransmission)
-	if err := _VRFRouter.contract.UnpackLog(event, "NewTransmission", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterOutputsServedIterator struct {
-	Event *VRFRouterOutputsServed
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterOutputsServedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterOutputsServed)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterOutputsServed)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterOutputsServedIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterOutputsServedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterOutputsServed struct {
-	RecentBlockHeight  uint64
-	JuelsPerFeeCoin    *big.Int
-	ReasonableGasPrice uint64
-	OutputsServed      []VRFBeaconTypesOutputServed
-	Raw                types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterOutputsServed(opts *bind.FilterOpts) (*VRFRouterOutputsServedIterator, error) {
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterOutputsServedIterator{contract: _VRFRouter.contract, event: "OutputsServed", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchOutputsServed(opts *bind.WatchOpts, sink chan<- *VRFRouterOutputsServed) (event.Subscription, error) {
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "OutputsServed")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterOutputsServed)
-				if err := _VRFRouter.contract.UnpackLog(event, "OutputsServed", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseOutputsServed(log types.Log) (*VRFRouterOutputsServed, error) {
-	event := new(VRFRouterOutputsServed)
-	if err := _VRFRouter.contract.UnpackLog(event, "OutputsServed", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
@@ -9024,409 +6380,6 @@ func (_VRFRouter *VRFRouterFilterer) WatchOwnershipTransferred(opts *bind.WatchO
 func (_VRFRouter *VRFRouterFilterer) ParseOwnershipTransferred(log types.Log) (*VRFRouterOwnershipTransferred, error) {
 	event := new(VRFRouterOwnershipTransferred)
 	if err := _VRFRouter.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterRandomWordsFulfilledIterator struct {
-	Event *VRFRouterRandomWordsFulfilled
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterRandomWordsFulfilledIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterRandomWordsFulfilled)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterRandomWordsFulfilled)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterRandomWordsFulfilledIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterRandomWordsFulfilledIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterRandomWordsFulfilled struct {
-	RequestIDs            []*big.Int
-	SuccessfulFulfillment []byte
-	TruncatedErrorData    [][]byte
-	Raw                   types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterRandomWordsFulfilled(opts *bind.FilterOpts) (*VRFRouterRandomWordsFulfilledIterator, error) {
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterRandomWordsFulfilledIterator{contract: _VRFRouter.contract, event: "RandomWordsFulfilled", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchRandomWordsFulfilled(opts *bind.WatchOpts, sink chan<- *VRFRouterRandomWordsFulfilled) (event.Subscription, error) {
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "RandomWordsFulfilled")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterRandomWordsFulfilled)
-				if err := _VRFRouter.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseRandomWordsFulfilled(log types.Log) (*VRFRouterRandomWordsFulfilled, error) {
-	event := new(VRFRouterRandomWordsFulfilled)
-	if err := _VRFRouter.contract.UnpackLog(event, "RandomWordsFulfilled", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterRandomnessFulfillmentRequestedIterator struct {
-	Event *VRFRouterRandomnessFulfillmentRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterRandomnessFulfillmentRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterRandomnessFulfillmentRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterRandomnessFulfillmentRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterRandomnessFulfillmentRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterRandomnessFulfillmentRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterRandomnessFulfillmentRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	GasAllowance           uint32
-	GasPrice               *big.Int
-	WeiPerUnitLink         *big.Int
-	Arguments              []byte
-	Raw                    types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterRandomnessFulfillmentRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*VRFRouterRandomnessFulfillmentRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterRandomnessFulfillmentRequestedIterator{contract: _VRFRouter.contract, event: "RandomnessFulfillmentRequested", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchRandomnessFulfillmentRequested(opts *bind.WatchOpts, sink chan<- *VRFRouterRandomnessFulfillmentRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterRandomnessFulfillmentRequested)
-				if err := _VRFRouter.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseRandomnessFulfillmentRequested(log types.Log) (*VRFRouterRandomnessFulfillmentRequested, error) {
-	event := new(VRFRouterRandomnessFulfillmentRequested)
-	if err := _VRFRouter.contract.UnpackLog(event, "RandomnessFulfillmentRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterRandomnessRequestedIterator struct {
-	Event *VRFRouterRandomnessRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterRandomnessRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterRandomnessRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterRandomnessRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterRandomnessRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterRandomnessRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterRandomnessRequested struct {
-	RequestID              *big.Int
-	Requester              common.Address
-	NextBeaconOutputHeight uint64
-	ConfDelay              *big.Int
-	SubID                  *big.Int
-	NumWords               uint16
-	Raw                    types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterRandomnessRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*VRFRouterRandomnessRequestedIterator, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterRandomnessRequestedIterator{contract: _VRFRouter.contract, event: "RandomnessRequested", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchRandomnessRequested(opts *bind.WatchOpts, sink chan<- *VRFRouterRandomnessRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
-
-	var requestIDRule []interface{}
-	for _, requestIDItem := range requestID {
-		requestIDRule = append(requestIDRule, requestIDItem)
-	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterRandomnessRequested)
-				if err := _VRFRouter.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseRandomnessRequested(log types.Log) (*VRFRouterRandomnessRequested, error) {
-	event := new(VRFRouterRandomnessRequested)
-	if err := _VRFRouter.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log

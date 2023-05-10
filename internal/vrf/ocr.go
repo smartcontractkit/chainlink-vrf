@@ -117,11 +117,11 @@ func (s *sigRequest) Observation(
 	}
 
 	callbacks := make([]*protobuf.CostedCallback, 0, len(pendingCallbacks))
-	cbRequestIDs := make([]uint64, 0, len(pendingCallbacks))
+	cbRequestIDs := make([]*big.Int, 0, len(pendingCallbacks))
 	for _, c := range pendingCallbacks {
 		pcb := protobuf.CostedCallback{
 			Callback: &protobuf.Callback{
-				RequestId:      c.RequestID,
+				RequestId:      c.RequestID.Bytes(),
 				NumWords:       uint32(c.NumWords),
 				Requester:      append([]byte{}, c.Requester[:]...),
 				Arguments:      append([]byte{}, c.Arguments...),
@@ -162,7 +162,7 @@ func (s *sigRequest) Observation(
 			continue
 		}
 		callbacks = append(callbacks, &pcb)
-		cbRequestIDs = append(cbRequestIDs, pcb.Callback.RequestId)
+		cbRequestIDs = append(cbRequestIDs, new(big.Int).SetBytes(pcb.Callback.RequestId))
 	}
 
 	if (len(outputs) == 0) && (len(callbacks) == 0) {
@@ -432,8 +432,8 @@ func (s *sigRequest) Report(
 
 func callbackRequestIDs(
 	outputs []vrf_types.AbstractVRFOutput,
-) []uint64 {
-	var requestIDs []uint64
+) []*big.Int {
+	var requestIDs []*big.Int
 	for _, o := range outputs {
 		for _, cb := range o.Callbacks {
 			requestIDs = append(requestIDs, cb.RequestID)
