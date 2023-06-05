@@ -859,15 +859,15 @@ func (_ArbSys *ArbSysFilterer) ParseSendMerkleUpdate(log types.Log) (*ArbSysSend
 }
 
 var BeaconVRFConsumerMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"router\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"shouldFail\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"beaconPeriodBlocks\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"MustBeRouter\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"fail\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_beaconPeriodBlocks\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"randomWords\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"rawFulfillRandomWords\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_ReceivedRandomnessByRequestID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_arguments\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_gasAvailable\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_mostRecentRequestID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_myBeaconRequests\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.SlotNumber\",\"name\":\"slotNumber\",\"type\":\"uint32\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_randomWords\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"\",\"type\":\"uint24\"}],\"name\":\"s_requestsIDs\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_subId\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"shouldFail\",\"type\":\"bool\"}],\"name\":\"setFail\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"reqId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"height\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"delay\",\"type\":\"uint24\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"storeBeaconRequest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"}],\"name\":\"testRedeemRandomness\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelayArg\",\"type\":\"uint24\"}],\"name\":\"testRequestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelayArg\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"testRequestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
-	Bin: "0x60a060405234801561001057600080fd5b506040516111a53803806111a583398101604081905261002f9161006c565b6001600160a01b03929092166080819052600680546001600160a01b03191690911790556009805460ff1916911515919091179055600a556100c0565b60008060006060848603121561008157600080fd5b83516001600160a01b038116811461009857600080fd5b602085015190935080151581146100ae57600080fd5b80925050604084015190509250925092565b6080516110ca6100db60003960006106b401526110ca6000f3fe608060405234801561001057600080fd5b50600436106101005760003560e01c8063c6d6130111610097578063ea7502ab11610066578063ea7502ab1461024e578063f08c5daa14610261578063f6eaffc81461026a578063ffe97ca41461027d57600080fd5b8063c6d613011461020c578063cd0593df1461021f578063d0705f0414610228578063d21ea8fd1461023b57600080fd5b8063706da1ca116100d3578063706da1ca146101745780637716cdaa146101b95780639d769402146101ce578063a9cc4718146101ef57600080fd5b8063341867a2146101055780635f15cccc1461011a578063689b77ab146101585780636df57cc314610161575b600080fd5b6101186101133660046109d5565b610316565b005b610145610128366004610a0f565b600160209081526000928352604080842090915290825290205481565b6040519081526020015b60405180910390f35b61014560055481565b61011861016f366004610a4d565b6103e0565b6007546101a09074010000000000000000000000000000000000000000900467ffffffffffffffff1681565b60405167ffffffffffffffff909116815260200161014f565b6101c16104f6565b60405161014f9190610ad9565b6101186101dc366004610af3565b6009805460ff1916911515919091179055565b6009546101fc9060ff1681565b604051901515815260200161014f565b61014561021a366004610b15565b610584565b610145600a5481565b6101456102363660046109d5565b610681565b610118610249366004610c2c565b6106b2565b61014561025c366004610cf5565b610724565b61014560085481565b610145610278366004610d79565b61082d565b6102d961028b366004610d79565b60026020526000908152604090205463ffffffff811690640100000000810462ffffff1690670100000000000000810461ffff1690690100000000000000000090046001600160a01b031684565b6040805163ffffffff909516855262ffffff909316602085015261ffff909116918301919091526001600160a01b0316606082015260800161014f565b60065460408051602081018252600080825291517facfc6cdd00000000000000000000000000000000000000000000000000000000815291926001600160a01b03169163acfc6cdd9161036f9187918791600401610d92565b6000604051808303816000875af115801561038e573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f191682016040526103b69190810190610dba565b600083815260036020908152604090912082519293506103da929091840190610975565b50505050565b600083815260016020908152604080832062ffffff861684529091528120859055600a5461040e9085610e77565b6040805160808101825263ffffffff928316815262ffffff958616602080830191825261ffff968716838501908152306060850190815260009b8c52600290925293909920915182549151935199516001600160a01b03166901000000000000000000027fffffff0000000000000000000000000000000000000000ffffffffffffffffff9a90971667010000000000000002999099167fffffff00000000000000000000000000000000000000000000ffffffffffffff939097166401000000000266ffffffffffffff199091169890931697909717919091171692909217179092555050565b6004805461050390610e8b565b80601f016020809104026020016040519081016040528092919081815260200182805461052f90610e8b565b801561057c5780601f106105515761010080835404028352916020019161057c565b820191906000526020600020905b81548152906001019060200180831161055f57829003601f168201915b505050505081565b600080600a5461059261084e565b61059c9190610ec5565b9050600081600a546105ac61084e565b6105b69190610ed9565b6105c09190610ef2565b60065460408051602081018252600080825291517f4ffac83a00000000000000000000000000000000000000000000000000000000815293945090926001600160a01b0390921691634ffac83a91610621918a918c918b9190600401610f05565b6020604051808303816000875af1158015610640573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906106649190610f3d565b90506106728183878a6103e0565b60058190559695505050505050565b6003602052816000526040600020818154811061069d57600080fd5b90600052602060002001600091509150505481565b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03163314610714576040517ff74c318f00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b61071f8383836108d8565b505050565b6000808490506000600a5461073761084e565b6107419190610ec5565b9050600081600a5461075161084e565b61075b9190610ed9565b6107659190610ef2565b60065460408051602081018252600080825291517fdb972c8b00000000000000000000000000000000000000000000000000000000815293945090926001600160a01b039092169163db972c8b916107ca918e918e918a918e918e9190600401610f56565b6020604051808303816000875af11580156107e9573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061080d9190610f3d565b905061081b81838a8c6103e0565b60058190559998505050505050505050565b6000818154811061083d57600080fd5b600091825260209091200154905081565b60004661a4b1811480610863575062066eed81145b156108d15760646001600160a01b031663a3b1b31d6040518163ffffffff1660e01b8152600401602060405180830381865afa1580156108a7573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906108cb9190610f3d565b91505090565b4391505090565b60095460ff1615610949576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601d60248201527f206661696c656420696e2066756c66696c6c52616e646f6d576f726473000000604482015260640160405180910390fd5b6000838152600360209081526040909120835161096892850190610975565b5060046103da8282610ffd565b8280548282559060005260206000209081019282156109b0579160200282015b828111156109b0578251825591602001919060010190610995565b506109bc9291506109c0565b5090565b5b808211156109bc57600081556001016109c1565b600080604083850312156109e857600080fd5b50508035926020909101359150565b803562ffffff81168114610a0a57600080fd5b919050565b60008060408385031215610a2257600080fd5b82359150610a32602084016109f7565b90509250929050565b803561ffff81168114610a0a57600080fd5b60008060008060808587031215610a6357600080fd5b8435935060208501359250610a7a604086016109f7565b9150610a8860608601610a3b565b905092959194509250565b6000815180845260005b81811015610ab957602081850181015186830182015201610a9d565b506000602082860101526020601f19601f83011685010191505092915050565b602081526000610aec6020830184610a93565b9392505050565b600060208284031215610b0557600080fd5b81358015158114610aec57600080fd5b600080600060608486031215610b2a57600080fd5b610b3384610a3b565b925060208401359150610b48604085016109f7565b90509250925092565b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff81118282101715610b9057610b90610b51565b604052919050565b600067ffffffffffffffff821115610bb257610bb2610b51565b5060051b60200190565b600082601f830112610bcd57600080fd5b813567ffffffffffffffff811115610be757610be7610b51565b610bfa601f8201601f1916602001610b67565b818152846020838601011115610c0f57600080fd5b816020850160208301376000918101602001919091529392505050565b600080600060608486031215610c4157600080fd5b8335925060208085013567ffffffffffffffff80821115610c6157600080fd5b818701915087601f830112610c7557600080fd5b8135610c88610c8382610b98565b610b67565b81815260059190911b8301840190848101908a831115610ca757600080fd5b938501935b82851015610cc557843582529385019390850190610cac565b965050506040870135925080831115610cdd57600080fd5b5050610ceb86828701610bbc565b9150509250925092565b600080600080600060a08688031215610d0d57600080fd5b85359450610d1d60208701610a3b565b9350610d2b604087016109f7565b9250606086013563ffffffff81168114610d4457600080fd5b9150608086013567ffffffffffffffff811115610d6057600080fd5b610d6c88828901610bbc565b9150509295509295909350565b600060208284031215610d8b57600080fd5b5035919050565b838152826020820152606060408201526000610db16060830184610a93565b95945050505050565b60006020808385031215610dcd57600080fd5b825167ffffffffffffffff811115610de457600080fd5b8301601f81018513610df557600080fd5b8051610e03610c8382610b98565b81815260059190911b82018301908381019087831115610e2257600080fd5b928401925b82841015610e4057835182529284019290840190610e27565b979650505050505050565b634e487b7160e01b600052601260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b600082610e8657610e86610e4b565b500490565b600181811c90821680610e9f57607f821691505b602082108103610ebf57634e487b7160e01b600052602260045260246000fd5b50919050565b600082610ed457610ed4610e4b565b500690565b80820180821115610eec57610eec610e61565b92915050565b81810381811115610eec57610eec610e61565b84815261ffff8416602082015262ffffff83166040820152608060608201526000610f336080830184610a93565b9695505050505050565b600060208284031215610f4f57600080fd5b5051919050565b86815261ffff8616602082015262ffffff8516604082015263ffffffff8416606082015260c060808201526000610f9060c0830185610a93565b82810360a0840152610fa28185610a93565b9998505050505050505050565b601f82111561071f57600081815260208120601f850160051c81016020861015610fd65750805b601f850160051c820191505b81811015610ff557828155600101610fe2565b505050505050565b815167ffffffffffffffff81111561101757611017610b51565b61102b816110258454610e8b565b84610faf565b602080601f83116001811461106057600084156110485750858301515b600019600386901b1c1916600185901b178555610ff5565b600085815260208120601f198616915b8281101561108f57888601518255948401946001909101908401611070565b50858210156110ad5787850151600019600388901b60f8161c191681555b5050505050600190811b0190555056fea164736f6c6343000813000a",
+	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"shouldFail\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"beaconPeriodBlocks\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"MustBeCoordinator\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"MustBeOwnerOrCoordinator\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"coordinator\",\"type\":\"address\"}],\"name\":\"CoordinatorUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"acceptOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"fail\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"i_beaconPeriodBlocks\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"randomWords\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"rawFulfillRandomWords\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_ReceivedRandomnessByRequestID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_arguments\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_gasAvailable\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_mostRecentRequestID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_myBeaconRequests\",\"outputs\":[{\"internalType\":\"VRFBeaconTypes.SlotNumber\",\"name\":\"slotNumber\",\"type\":\"uint32\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_randomWords\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"\",\"type\":\"uint24\"}],\"name\":\"s_requestsIDs\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"s_subId\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinator\",\"type\":\"address\"}],\"name\":\"setCoordinator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"shouldFail\",\"type\":\"bool\"}],\"name\":\"setFail\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"reqId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"height\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"delay\",\"type\":\"uint24\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"}],\"name\":\"storeBeaconRequest\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"}],\"name\":\"testRedeemRandomness\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelayArg\",\"type\":\"uint24\"}],\"name\":\"testRequestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelayArg\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"testRequestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	Bin: "0x60806040523480156200001157600080fd5b5060405162001602380380620016028339810160408190526200003491620001aa565b8233806000816200008c5760405162461bcd60e51b815260206004820152601860248201527f43616e6e6f7420736574206f776e657220746f207a65726f000000000000000060448201526064015b60405180910390fd5b600080546001600160a01b0319166001600160a01b0384811691909117909155811615620000bf57620000bf81620000ff565b5050600280546001600160a01b0319166001600160a01b03939093169290921790915550600b805460ff191692151592909217909155600c555062000201565b336001600160a01b03821603620001595760405162461bcd60e51b815260206004820152601760248201527f43616e6e6f74207472616e7366657220746f2073656c66000000000000000000604482015260640162000083565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b600080600060608486031215620001c057600080fd5b83516001600160a01b0381168114620001d857600080fd5b60208501519093508015158114620001ef57600080fd5b80925050604084015190509250925092565b6113f180620002116000396000f3fe608060405234801561001057600080fd5b506004361061016c5760003560e01c8063a9cc4718116100cd578063ea7502ab11610081578063f2fde38b11610066578063f2fde38b146102f4578063f6eaffc814610307578063ffe97ca41461031a57600080fd5b8063ea7502ab146102d8578063f08c5daa146102eb57600080fd5b8063cd0593df116100b2578063cd0593df146102a9578063d0705f04146102b2578063d21ea8fd146102c557600080fd5b8063a9cc471814610279578063c6d613011461029657600080fd5b80637716cdaa116101245780638da5cb5b116101095780638da5cb5b1461022a5780638ea98117146102455780639d7694021461025857600080fd5b80637716cdaa1461020d57806379ba50971461022257600080fd5b8063689b77ab11610155578063689b77ab146101c45780636df57cc3146101cd578063706da1ca146101e057600080fd5b8063341867a2146101715780635f15cccc14610186575b600080fd5b61018461017f366004610cd3565b6103b3565b005b6101b1610194366004610d0d565b600460209081526000928352604080842090915290825290205481565b6040519081526020015b60405180910390f35b6101b160085481565b6101846101db366004610d4b565b61047d565b6009546101f49067ffffffffffffffff1681565b60405167ffffffffffffffff90911681526020016101bb565b610215610593565b6040516101bb9190610dd7565b610184610621565b6000546040516001600160a01b0390911681526020016101bb565b610184610253366004610df1565b6106e4565b610184610266366004610e1a565b600b805460ff1916911515919091179055565b600b546102869060ff1681565b60405190151581526020016101bb565b6101b16102a4366004610e3c565b610798565b6101b1600c5481565b6101b16102c0366004610cd3565b610895565b6101846102d3366004610f53565b6108c6565b6101b16102e636600461101c565b61091a565b6101b1600a5481565b610184610302366004610df1565b610a23565b6101b16103153660046110a0565b610a37565b6103766103283660046110a0565b60056020526000908152604090205463ffffffff811690640100000000810462ffffff1690670100000000000000810461ffff1690690100000000000000000090046001600160a01b031684565b6040805163ffffffff909516855262ffffff909316602085015261ffff909116918301919091526001600160a01b031660608201526080016101bb565b60025460408051602081018252600080825291517facfc6cdd00000000000000000000000000000000000000000000000000000000815291926001600160a01b03169163acfc6cdd9161040c91879187916004016110b9565b6000604051808303816000875af115801561042b573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f1916820160405261045391908101906110e1565b60008381526006602090815260409091208251929350610477929091840190610c73565b50505050565b600083815260046020908152604080832062ffffff861684529091528120859055600c546104ab908561119e565b6040805160808101825263ffffffff928316815262ffffff958616602080830191825261ffff968716838501908152306060850190815260009b8c52600590925293909920915182549151935199516001600160a01b03166901000000000000000000027fffffff0000000000000000000000000000000000000000ffffffffffffffffff9a90971667010000000000000002999099167fffffff00000000000000000000000000000000000000000000ffffffffffffff939097166401000000000266ffffffffffffff199091169890931697909717919091171692909217179092555050565b600780546105a0906111b2565b80601f01602080910402602001604051908101604052809291908181526020018280546105cc906111b2565b80156106195780601f106105ee57610100808354040283529160200191610619565b820191906000526020600020905b8154815290600101906020018083116105fc57829003601f168201915b505050505081565b6001546001600160a01b031633146106805760405162461bcd60e51b815260206004820152601660248201527f4d7573742062652070726f706f736564206f776e65720000000000000000000060448201526064015b60405180910390fd5b600080543373ffffffffffffffffffffffffffffffffffffffff19808316821784556001805490911690556040516001600160a01b0390921692909183917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a350565b6000546001600160a01b0316331480159061070a57506002546001600160a01b03163314155b15610741576040517fd4e06fd700000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b6002805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0383169081179091556040517fc258faa9a17ddfdf4130b4acff63a289202e7d5f9e42f366add65368575486bc90600090a250565b600080600c546107a6610a58565b6107b091906111ec565b9050600081600c546107c0610a58565b6107ca9190611200565b6107d49190611219565b60025460408051602081018252600080825291517f4ffac83a00000000000000000000000000000000000000000000000000000000815293945090926001600160a01b0390921691634ffac83a91610835918a918c918b919060040161122c565b6020604051808303816000875af1158015610854573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906108789190611264565b90506108868183878a61047d565b60088190559695505050505050565b600660205281600052604060002081815481106108b157600080fd5b90600052602060002001600091509150505481565b6002546001600160a01b0316331461090a576040517f66bf9c7200000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b610915838383610ae2565b505050565b6000808490506000600c5461092d610a58565b61093791906111ec565b9050600081600c54610947610a58565b6109519190611200565b61095b9190611219565b60025460408051602081018252600080825291517fdb972c8b00000000000000000000000000000000000000000000000000000000815293945090926001600160a01b039092169163db972c8b916109c0918e918e918a918e918e919060040161127d565b6020604051808303816000875af11580156109df573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610a039190611264565b9050610a1181838a8c61047d565b60088190559998505050505050505050565b610a2b610b61565b610a3481610bbd565b50565b60038181548110610a4757600080fd5b600091825260209091200154905081565b60004661a4b1811480610a6d575062066eed81145b15610adb5760646001600160a01b031663a3b1b31d6040518163ffffffff1660e01b8152600401602060405180830381865afa158015610ab1573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610ad59190611264565b91505090565b4391505090565b600b5460ff1615610b355760405162461bcd60e51b815260206004820152601d60248201527f206661696c656420696e2066756c66696c6c52616e646f6d576f7264730000006044820152606401610677565b60008381526006602090815260409091208351610b5492850190610c73565b5060076104778282611324565b6000546001600160a01b03163314610bbb5760405162461bcd60e51b815260206004820152601660248201527f4f6e6c792063616c6c61626c65206279206f776e6572000000000000000000006044820152606401610677565b565b336001600160a01b03821603610c155760405162461bcd60e51b815260206004820152601760248201527f43616e6e6f74207472616e7366657220746f2073656c660000000000000000006044820152606401610677565b6001805473ffffffffffffffffffffffffffffffffffffffff19166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b828054828255906000526020600020908101928215610cae579160200282015b82811115610cae578251825591602001919060010190610c93565b50610cba929150610cbe565b5090565b5b80821115610cba5760008155600101610cbf565b60008060408385031215610ce657600080fd5b50508035926020909101359150565b803562ffffff81168114610d0857600080fd5b919050565b60008060408385031215610d2057600080fd5b82359150610d3060208401610cf5565b90509250929050565b803561ffff81168114610d0857600080fd5b60008060008060808587031215610d6157600080fd5b8435935060208501359250610d7860408601610cf5565b9150610d8660608601610d39565b905092959194509250565b6000815180845260005b81811015610db757602081850181015186830182015201610d9b565b506000602082860101526020601f19601f83011685010191505092915050565b602081526000610dea6020830184610d91565b9392505050565b600060208284031215610e0357600080fd5b81356001600160a01b0381168114610dea57600080fd5b600060208284031215610e2c57600080fd5b81358015158114610dea57600080fd5b600080600060608486031215610e5157600080fd5b610e5a84610d39565b925060208401359150610e6f60408501610cf5565b90509250925092565b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff81118282101715610eb757610eb7610e78565b604052919050565b600067ffffffffffffffff821115610ed957610ed9610e78565b5060051b60200190565b600082601f830112610ef457600080fd5b813567ffffffffffffffff811115610f0e57610f0e610e78565b610f21601f8201601f1916602001610e8e565b818152846020838601011115610f3657600080fd5b816020850160208301376000918101602001919091529392505050565b600080600060608486031215610f6857600080fd5b8335925060208085013567ffffffffffffffff80821115610f8857600080fd5b818701915087601f830112610f9c57600080fd5b8135610faf610faa82610ebf565b610e8e565b81815260059190911b8301840190848101908a831115610fce57600080fd5b938501935b82851015610fec57843582529385019390850190610fd3565b96505050604087013592508083111561100457600080fd5b505061101286828701610ee3565b9150509250925092565b600080600080600060a0868803121561103457600080fd5b8535945061104460208701610d39565b935061105260408701610cf5565b9250606086013563ffffffff8116811461106b57600080fd5b9150608086013567ffffffffffffffff81111561108757600080fd5b61109388828901610ee3565b9150509295509295909350565b6000602082840312156110b257600080fd5b5035919050565b8381528260208201526060604082015260006110d86060830184610d91565b95945050505050565b600060208083850312156110f457600080fd5b825167ffffffffffffffff81111561110b57600080fd5b8301601f8101851361111c57600080fd5b805161112a610faa82610ebf565b81815260059190911b8201830190838101908783111561114957600080fd5b928401925b828410156111675783518252928401929084019061114e565b979650505050505050565b634e487b7160e01b600052601260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b6000826111ad576111ad611172565b500490565b600181811c908216806111c657607f821691505b6020821081036111e657634e487b7160e01b600052602260045260246000fd5b50919050565b6000826111fb576111fb611172565b500690565b8082018082111561121357611213611188565b92915050565b8181038181111561121357611213611188565b84815261ffff8416602082015262ffffff8316604082015260806060820152600061125a6080830184610d91565b9695505050505050565b60006020828403121561127657600080fd5b5051919050565b86815261ffff8616602082015262ffffff8516604082015263ffffffff8416606082015260c0608082015260006112b760c0830185610d91565b82810360a08401526112c98185610d91565b9998505050505050505050565b601f82111561091557600081815260208120601f850160051c810160208610156112fd5750805b601f850160051c820191505b8181101561131c57828155600101611309565b505050505050565b815167ffffffffffffffff81111561133e5761133e610e78565b6113528161134c84546111b2565b846112d6565b602080601f831160018114611387576000841561136f5750858301515b600019600386901b1c1916600185901b17855561131c565b600085815260208120601f198616915b828110156113b657888601518255948401946001909101908401611397565b50858210156113d45787850151600019600388901b60f8161c191681555b5050505050600190811b0190555056fea164736f6c6343000813000a",
 }
 
 var BeaconVRFConsumerABI = BeaconVRFConsumerMetaData.ABI
 
 var BeaconVRFConsumerBin = BeaconVRFConsumerMetaData.Bin
 
-func DeployBeaconVRFConsumer(auth *bind.TransactOpts, backend bind.ContractBackend, router common.Address, shouldFail bool, beaconPeriodBlocks *big.Int) (common.Address, *types.Transaction, *BeaconVRFConsumer, error) {
+func DeployBeaconVRFConsumer(auth *bind.TransactOpts, backend bind.ContractBackend, coordinator common.Address, shouldFail bool, beaconPeriodBlocks *big.Int) (common.Address, *types.Transaction, *BeaconVRFConsumer, error) {
 	parsed, err := BeaconVRFConsumerMetaData.GetAbi()
 	if err != nil {
 		return common.Address{}, nil, nil, err
@@ -876,7 +876,7 @@ func DeployBeaconVRFConsumer(auth *bind.TransactOpts, backend bind.ContractBacke
 		return common.Address{}, nil, nil, errors.New("GetABI returned nil")
 	}
 
-	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(BeaconVRFConsumerBin), backend, router, shouldFail, beaconPeriodBlocks)
+	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(BeaconVRFConsumerBin), backend, coordinator, shouldFail, beaconPeriodBlocks)
 	if err != nil {
 		return common.Address{}, nil, nil, err
 	}
@@ -1035,6 +1035,28 @@ func (_BeaconVRFConsumer *BeaconVRFConsumerSession) IBeaconPeriodBlocks() (*big.
 
 func (_BeaconVRFConsumer *BeaconVRFConsumerCallerSession) IBeaconPeriodBlocks() (*big.Int, error) {
 	return _BeaconVRFConsumer.Contract.IBeaconPeriodBlocks(&_BeaconVRFConsumer.CallOpts)
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _BeaconVRFConsumer.contract.Call(opts, &out, "owner")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerSession) Owner() (common.Address, error) {
+	return _BeaconVRFConsumer.Contract.Owner(&_BeaconVRFConsumer.CallOpts)
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerCallerSession) Owner() (common.Address, error) {
+	return _BeaconVRFConsumer.Contract.Owner(&_BeaconVRFConsumer.CallOpts)
 }
 
 func (_BeaconVRFConsumer *BeaconVRFConsumerCaller) SReceivedRandomnessByRequestID(opts *bind.CallOpts, arg0 *big.Int, arg1 *big.Int) (*big.Int, error) {
@@ -1237,6 +1259,18 @@ func (_BeaconVRFConsumer *BeaconVRFConsumerCallerSession) SSubId() (uint64, erro
 	return _BeaconVRFConsumer.Contract.SSubId(&_BeaconVRFConsumer.CallOpts)
 }
 
+func (_BeaconVRFConsumer *BeaconVRFConsumerTransactor) AcceptOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _BeaconVRFConsumer.contract.Transact(opts, "acceptOwnership")
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerSession) AcceptOwnership() (*types.Transaction, error) {
+	return _BeaconVRFConsumer.Contract.AcceptOwnership(&_BeaconVRFConsumer.TransactOpts)
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerTransactorSession) AcceptOwnership() (*types.Transaction, error) {
+	return _BeaconVRFConsumer.Contract.AcceptOwnership(&_BeaconVRFConsumer.TransactOpts)
+}
+
 func (_BeaconVRFConsumer *BeaconVRFConsumerTransactor) RawFulfillRandomWords(opts *bind.TransactOpts, requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
 	return _BeaconVRFConsumer.contract.Transact(opts, "rawFulfillRandomWords", requestID, randomWords, arguments)
 }
@@ -1247,6 +1281,18 @@ func (_BeaconVRFConsumer *BeaconVRFConsumerSession) RawFulfillRandomWords(reques
 
 func (_BeaconVRFConsumer *BeaconVRFConsumerTransactorSession) RawFulfillRandomWords(requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
 	return _BeaconVRFConsumer.Contract.RawFulfillRandomWords(&_BeaconVRFConsumer.TransactOpts, requestID, randomWords, arguments)
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerTransactor) SetCoordinator(opts *bind.TransactOpts, coordinator common.Address) (*types.Transaction, error) {
+	return _BeaconVRFConsumer.contract.Transact(opts, "setCoordinator", coordinator)
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerSession) SetCoordinator(coordinator common.Address) (*types.Transaction, error) {
+	return _BeaconVRFConsumer.Contract.SetCoordinator(&_BeaconVRFConsumer.TransactOpts, coordinator)
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerTransactorSession) SetCoordinator(coordinator common.Address) (*types.Transaction, error) {
+	return _BeaconVRFConsumer.Contract.SetCoordinator(&_BeaconVRFConsumer.TransactOpts, coordinator)
 }
 
 func (_BeaconVRFConsumer *BeaconVRFConsumerTransactor) SetFail(opts *bind.TransactOpts, shouldFail bool) (*types.Transaction, error) {
@@ -1307,6 +1353,417 @@ func (_BeaconVRFConsumer *BeaconVRFConsumerSession) TestRequestRandomnessFulfill
 
 func (_BeaconVRFConsumer *BeaconVRFConsumerTransactorSession) TestRequestRandomnessFulfillment(subID *big.Int, numWords uint16, confirmationDelayArg *big.Int, callbackGasLimit uint32, arguments []byte) (*types.Transaction, error) {
 	return _BeaconVRFConsumer.Contract.TestRequestRandomnessFulfillment(&_BeaconVRFConsumer.TransactOpts, subID, numWords, confirmationDelayArg, callbackGasLimit, arguments)
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerTransactor) TransferOwnership(opts *bind.TransactOpts, to common.Address) (*types.Transaction, error) {
+	return _BeaconVRFConsumer.contract.Transact(opts, "transferOwnership", to)
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerSession) TransferOwnership(to common.Address) (*types.Transaction, error) {
+	return _BeaconVRFConsumer.Contract.TransferOwnership(&_BeaconVRFConsumer.TransactOpts, to)
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerTransactorSession) TransferOwnership(to common.Address) (*types.Transaction, error) {
+	return _BeaconVRFConsumer.Contract.TransferOwnership(&_BeaconVRFConsumer.TransactOpts, to)
+}
+
+type BeaconVRFConsumerCoordinatorUpdatedIterator struct {
+	Event *BeaconVRFConsumerCoordinatorUpdated
+
+	contract *bind.BoundContract
+	event    string
+
+	logs chan types.Log
+	sub  ethereum.Subscription
+	done bool
+	fail error
+}
+
+func (it *BeaconVRFConsumerCoordinatorUpdatedIterator) Next() bool {
+
+	if it.fail != nil {
+		return false
+	}
+
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(BeaconVRFConsumerCoordinatorUpdated)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+
+	select {
+	case log := <-it.logs:
+		it.Event = new(BeaconVRFConsumerCoordinatorUpdated)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+func (it *BeaconVRFConsumerCoordinatorUpdatedIterator) Error() error {
+	return it.fail
+}
+
+func (it *BeaconVRFConsumerCoordinatorUpdatedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+type BeaconVRFConsumerCoordinatorUpdated struct {
+	Coordinator common.Address
+	Raw         types.Log
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) FilterCoordinatorUpdated(opts *bind.FilterOpts, coordinator []common.Address) (*BeaconVRFConsumerCoordinatorUpdatedIterator, error) {
+
+	var coordinatorRule []interface{}
+	for _, coordinatorItem := range coordinator {
+		coordinatorRule = append(coordinatorRule, coordinatorItem)
+	}
+
+	logs, sub, err := _BeaconVRFConsumer.contract.FilterLogs(opts, "CoordinatorUpdated", coordinatorRule)
+	if err != nil {
+		return nil, err
+	}
+	return &BeaconVRFConsumerCoordinatorUpdatedIterator{contract: _BeaconVRFConsumer.contract, event: "CoordinatorUpdated", logs: logs, sub: sub}, nil
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) WatchCoordinatorUpdated(opts *bind.WatchOpts, sink chan<- *BeaconVRFConsumerCoordinatorUpdated, coordinator []common.Address) (event.Subscription, error) {
+
+	var coordinatorRule []interface{}
+	for _, coordinatorItem := range coordinator {
+		coordinatorRule = append(coordinatorRule, coordinatorItem)
+	}
+
+	logs, sub, err := _BeaconVRFConsumer.contract.WatchLogs(opts, "CoordinatorUpdated", coordinatorRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+
+				event := new(BeaconVRFConsumerCoordinatorUpdated)
+				if err := _BeaconVRFConsumer.contract.UnpackLog(event, "CoordinatorUpdated", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) ParseCoordinatorUpdated(log types.Log) (*BeaconVRFConsumerCoordinatorUpdated, error) {
+	event := new(BeaconVRFConsumerCoordinatorUpdated)
+	if err := _BeaconVRFConsumer.contract.UnpackLog(event, "CoordinatorUpdated", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+type BeaconVRFConsumerOwnershipTransferRequestedIterator struct {
+	Event *BeaconVRFConsumerOwnershipTransferRequested
+
+	contract *bind.BoundContract
+	event    string
+
+	logs chan types.Log
+	sub  ethereum.Subscription
+	done bool
+	fail error
+}
+
+func (it *BeaconVRFConsumerOwnershipTransferRequestedIterator) Next() bool {
+
+	if it.fail != nil {
+		return false
+	}
+
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(BeaconVRFConsumerOwnershipTransferRequested)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+
+	select {
+	case log := <-it.logs:
+		it.Event = new(BeaconVRFConsumerOwnershipTransferRequested)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+func (it *BeaconVRFConsumerOwnershipTransferRequestedIterator) Error() error {
+	return it.fail
+}
+
+func (it *BeaconVRFConsumerOwnershipTransferRequestedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+type BeaconVRFConsumerOwnershipTransferRequested struct {
+	From common.Address
+	To   common.Address
+	Raw  types.Log
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) FilterOwnershipTransferRequested(opts *bind.FilterOpts, from []common.Address, to []common.Address) (*BeaconVRFConsumerOwnershipTransferRequestedIterator, error) {
+
+	var fromRule []interface{}
+	for _, fromItem := range from {
+		fromRule = append(fromRule, fromItem)
+	}
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _BeaconVRFConsumer.contract.FilterLogs(opts, "OwnershipTransferRequested", fromRule, toRule)
+	if err != nil {
+		return nil, err
+	}
+	return &BeaconVRFConsumerOwnershipTransferRequestedIterator{contract: _BeaconVRFConsumer.contract, event: "OwnershipTransferRequested", logs: logs, sub: sub}, nil
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) WatchOwnershipTransferRequested(opts *bind.WatchOpts, sink chan<- *BeaconVRFConsumerOwnershipTransferRequested, from []common.Address, to []common.Address) (event.Subscription, error) {
+
+	var fromRule []interface{}
+	for _, fromItem := range from {
+		fromRule = append(fromRule, fromItem)
+	}
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _BeaconVRFConsumer.contract.WatchLogs(opts, "OwnershipTransferRequested", fromRule, toRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+
+				event := new(BeaconVRFConsumerOwnershipTransferRequested)
+				if err := _BeaconVRFConsumer.contract.UnpackLog(event, "OwnershipTransferRequested", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) ParseOwnershipTransferRequested(log types.Log) (*BeaconVRFConsumerOwnershipTransferRequested, error) {
+	event := new(BeaconVRFConsumerOwnershipTransferRequested)
+	if err := _BeaconVRFConsumer.contract.UnpackLog(event, "OwnershipTransferRequested", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+type BeaconVRFConsumerOwnershipTransferredIterator struct {
+	Event *BeaconVRFConsumerOwnershipTransferred
+
+	contract *bind.BoundContract
+	event    string
+
+	logs chan types.Log
+	sub  ethereum.Subscription
+	done bool
+	fail error
+}
+
+func (it *BeaconVRFConsumerOwnershipTransferredIterator) Next() bool {
+
+	if it.fail != nil {
+		return false
+	}
+
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(BeaconVRFConsumerOwnershipTransferred)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+
+	select {
+	case log := <-it.logs:
+		it.Event = new(BeaconVRFConsumerOwnershipTransferred)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+func (it *BeaconVRFConsumerOwnershipTransferredIterator) Error() error {
+	return it.fail
+}
+
+func (it *BeaconVRFConsumerOwnershipTransferredIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+type BeaconVRFConsumerOwnershipTransferred struct {
+	From common.Address
+	To   common.Address
+	Raw  types.Log
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, from []common.Address, to []common.Address) (*BeaconVRFConsumerOwnershipTransferredIterator, error) {
+
+	var fromRule []interface{}
+	for _, fromItem := range from {
+		fromRule = append(fromRule, fromItem)
+	}
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _BeaconVRFConsumer.contract.FilterLogs(opts, "OwnershipTransferred", fromRule, toRule)
+	if err != nil {
+		return nil, err
+	}
+	return &BeaconVRFConsumerOwnershipTransferredIterator{contract: _BeaconVRFConsumer.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *BeaconVRFConsumerOwnershipTransferred, from []common.Address, to []common.Address) (event.Subscription, error) {
+
+	var fromRule []interface{}
+	for _, fromItem := range from {
+		fromRule = append(fromRule, fromItem)
+	}
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _BeaconVRFConsumer.contract.WatchLogs(opts, "OwnershipTransferred", fromRule, toRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+
+				event := new(BeaconVRFConsumerOwnershipTransferred)
+				if err := _BeaconVRFConsumer.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+func (_BeaconVRFConsumer *BeaconVRFConsumerFilterer) ParseOwnershipTransferred(log types.Log) (*BeaconVRFConsumerOwnershipTransferred, error) {
+	event := new(BeaconVRFConsumerOwnershipTransferred)
+	if err := _BeaconVRFConsumer.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
 }
 
 var ChainSpecificUtilMetaData = &bind.MetaData{
@@ -2485,143 +2942,593 @@ func (_ECCArithmetic *ECCArithmeticTransactorRaw) Transact(opts *bind.TransactOp
 	return _ECCArithmetic.Contract.contract.Transact(opts, method, params...)
 }
 
-var EnumerableSetMetaData = &bind.MetaData{
-	ABI: "[]",
-	Bin: "0x602d6037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea164736f6c6343000813000a",
+var IVRFCoordinatorConsumerMetaData = &bind.MetaData{
+	ABI: "[{\"inputs\":[],\"name\":\"MustBeCoordinator\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"MustBeOwnerOrCoordinator\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"coordinator\",\"type\":\"address\"}],\"name\":\"CoordinatorUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"acceptOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"randomWords\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"rawFulfillRandomWords\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinator\",\"type\":\"address\"}],\"name\":\"setCoordinator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
-var EnumerableSetABI = EnumerableSetMetaData.ABI
+var IVRFCoordinatorConsumerABI = IVRFCoordinatorConsumerMetaData.ABI
 
-var EnumerableSetBin = EnumerableSetMetaData.Bin
-
-func DeployEnumerableSet(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *EnumerableSet, error) {
-	parsed, err := EnumerableSetMetaData.GetAbi()
-	if err != nil {
-		return common.Address{}, nil, nil, err
-	}
-	if parsed == nil {
-		return common.Address{}, nil, nil, errors.New("GetABI returned nil")
-	}
-
-	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(EnumerableSetBin), backend)
-	if err != nil {
-		return common.Address{}, nil, nil, err
-	}
-	return address, tx, &EnumerableSet{EnumerableSetCaller: EnumerableSetCaller{contract: contract}, EnumerableSetTransactor: EnumerableSetTransactor{contract: contract}, EnumerableSetFilterer: EnumerableSetFilterer{contract: contract}}, nil
+type IVRFCoordinatorConsumer struct {
+	IVRFCoordinatorConsumerCaller
+	IVRFCoordinatorConsumerTransactor
+	IVRFCoordinatorConsumerFilterer
 }
 
-type EnumerableSet struct {
-	EnumerableSetCaller
-	EnumerableSetTransactor
-	EnumerableSetFilterer
-}
-
-type EnumerableSetCaller struct {
+type IVRFCoordinatorConsumerCaller struct {
 	contract *bind.BoundContract
 }
 
-type EnumerableSetTransactor struct {
+type IVRFCoordinatorConsumerTransactor struct {
 	contract *bind.BoundContract
 }
 
-type EnumerableSetFilterer struct {
+type IVRFCoordinatorConsumerFilterer struct {
 	contract *bind.BoundContract
 }
 
-type EnumerableSetSession struct {
-	Contract     *EnumerableSet
+type IVRFCoordinatorConsumerSession struct {
+	Contract     *IVRFCoordinatorConsumer
 	CallOpts     bind.CallOpts
 	TransactOpts bind.TransactOpts
 }
 
-type EnumerableSetCallerSession struct {
-	Contract *EnumerableSetCaller
+type IVRFCoordinatorConsumerCallerSession struct {
+	Contract *IVRFCoordinatorConsumerCaller
 	CallOpts bind.CallOpts
 }
 
-type EnumerableSetTransactorSession struct {
-	Contract     *EnumerableSetTransactor
+type IVRFCoordinatorConsumerTransactorSession struct {
+	Contract     *IVRFCoordinatorConsumerTransactor
 	TransactOpts bind.TransactOpts
 }
 
-type EnumerableSetRaw struct {
-	Contract *EnumerableSet
+type IVRFCoordinatorConsumerRaw struct {
+	Contract *IVRFCoordinatorConsumer
 }
 
-type EnumerableSetCallerRaw struct {
-	Contract *EnumerableSetCaller
+type IVRFCoordinatorConsumerCallerRaw struct {
+	Contract *IVRFCoordinatorConsumerCaller
 }
 
-type EnumerableSetTransactorRaw struct {
-	Contract *EnumerableSetTransactor
+type IVRFCoordinatorConsumerTransactorRaw struct {
+	Contract *IVRFCoordinatorConsumerTransactor
 }
 
-func NewEnumerableSet(address common.Address, backend bind.ContractBackend) (*EnumerableSet, error) {
-	contract, err := bindEnumerableSet(address, backend, backend, backend)
+func NewIVRFCoordinatorConsumer(address common.Address, backend bind.ContractBackend) (*IVRFCoordinatorConsumer, error) {
+	contract, err := bindIVRFCoordinatorConsumer(address, backend, backend, backend)
 	if err != nil {
 		return nil, err
 	}
-	return &EnumerableSet{EnumerableSetCaller: EnumerableSetCaller{contract: contract}, EnumerableSetTransactor: EnumerableSetTransactor{contract: contract}, EnumerableSetFilterer: EnumerableSetFilterer{contract: contract}}, nil
+	return &IVRFCoordinatorConsumer{IVRFCoordinatorConsumerCaller: IVRFCoordinatorConsumerCaller{contract: contract}, IVRFCoordinatorConsumerTransactor: IVRFCoordinatorConsumerTransactor{contract: contract}, IVRFCoordinatorConsumerFilterer: IVRFCoordinatorConsumerFilterer{contract: contract}}, nil
 }
 
-func NewEnumerableSetCaller(address common.Address, caller bind.ContractCaller) (*EnumerableSetCaller, error) {
-	contract, err := bindEnumerableSet(address, caller, nil, nil)
+func NewIVRFCoordinatorConsumerCaller(address common.Address, caller bind.ContractCaller) (*IVRFCoordinatorConsumerCaller, error) {
+	contract, err := bindIVRFCoordinatorConsumer(address, caller, nil, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &EnumerableSetCaller{contract: contract}, nil
+	return &IVRFCoordinatorConsumerCaller{contract: contract}, nil
 }
 
-func NewEnumerableSetTransactor(address common.Address, transactor bind.ContractTransactor) (*EnumerableSetTransactor, error) {
-	contract, err := bindEnumerableSet(address, nil, transactor, nil)
+func NewIVRFCoordinatorConsumerTransactor(address common.Address, transactor bind.ContractTransactor) (*IVRFCoordinatorConsumerTransactor, error) {
+	contract, err := bindIVRFCoordinatorConsumer(address, nil, transactor, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &EnumerableSetTransactor{contract: contract}, nil
+	return &IVRFCoordinatorConsumerTransactor{contract: contract}, nil
 }
 
-func NewEnumerableSetFilterer(address common.Address, filterer bind.ContractFilterer) (*EnumerableSetFilterer, error) {
-	contract, err := bindEnumerableSet(address, nil, nil, filterer)
+func NewIVRFCoordinatorConsumerFilterer(address common.Address, filterer bind.ContractFilterer) (*IVRFCoordinatorConsumerFilterer, error) {
+	contract, err := bindIVRFCoordinatorConsumer(address, nil, nil, filterer)
 	if err != nil {
 		return nil, err
 	}
-	return &EnumerableSetFilterer{contract: contract}, nil
+	return &IVRFCoordinatorConsumerFilterer{contract: contract}, nil
 }
 
-func bindEnumerableSet(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := abi.JSON(strings.NewReader(EnumerableSetABI))
+func bindIVRFCoordinatorConsumer(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := abi.JSON(strings.NewReader(IVRFCoordinatorConsumerABI))
 	if err != nil {
 		return nil, err
 	}
 	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
 }
 
-func (_EnumerableSet *EnumerableSetRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _EnumerableSet.Contract.EnumerableSetCaller.contract.Call(opts, result, method, params...)
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IVRFCoordinatorConsumer.Contract.IVRFCoordinatorConsumerCaller.contract.Call(opts, result, method, params...)
 }
 
-func (_EnumerableSet *EnumerableSetRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _EnumerableSet.Contract.EnumerableSetTransactor.contract.Transfer(opts)
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.Contract.IVRFCoordinatorConsumerTransactor.contract.Transfer(opts)
 }
 
-func (_EnumerableSet *EnumerableSetRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _EnumerableSet.Contract.EnumerableSetTransactor.contract.Transact(opts, method, params...)
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.Contract.IVRFCoordinatorConsumerTransactor.contract.Transact(opts, method, params...)
 }
 
-func (_EnumerableSet *EnumerableSetCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _EnumerableSet.Contract.contract.Call(opts, result, method, params...)
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _IVRFCoordinatorConsumer.Contract.contract.Call(opts, result, method, params...)
 }
 
-func (_EnumerableSet *EnumerableSetTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _EnumerableSet.Contract.contract.Transfer(opts)
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.Contract.contract.Transfer(opts)
 }
 
-func (_EnumerableSet *EnumerableSetTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _EnumerableSet.Contract.contract.Transact(opts, method, params...)
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.Contract.contract.Transact(opts, method, params...)
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _IVRFCoordinatorConsumer.contract.Call(opts, &out, "owner")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerSession) Owner() (common.Address, error) {
+	return _IVRFCoordinatorConsumer.Contract.Owner(&_IVRFCoordinatorConsumer.CallOpts)
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerCallerSession) Owner() (common.Address, error) {
+	return _IVRFCoordinatorConsumer.Contract.Owner(&_IVRFCoordinatorConsumer.CallOpts)
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerTransactor) AcceptOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.contract.Transact(opts, "acceptOwnership")
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerSession) AcceptOwnership() (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.Contract.AcceptOwnership(&_IVRFCoordinatorConsumer.TransactOpts)
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerTransactorSession) AcceptOwnership() (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.Contract.AcceptOwnership(&_IVRFCoordinatorConsumer.TransactOpts)
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerTransactor) RawFulfillRandomWords(opts *bind.TransactOpts, requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.contract.Transact(opts, "rawFulfillRandomWords", requestID, randomWords, arguments)
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerSession) RawFulfillRandomWords(requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.Contract.RawFulfillRandomWords(&_IVRFCoordinatorConsumer.TransactOpts, requestID, randomWords, arguments)
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerTransactorSession) RawFulfillRandomWords(requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.Contract.RawFulfillRandomWords(&_IVRFCoordinatorConsumer.TransactOpts, requestID, randomWords, arguments)
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerTransactor) SetCoordinator(opts *bind.TransactOpts, coordinator common.Address) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.contract.Transact(opts, "setCoordinator", coordinator)
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerSession) SetCoordinator(coordinator common.Address) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.Contract.SetCoordinator(&_IVRFCoordinatorConsumer.TransactOpts, coordinator)
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerTransactorSession) SetCoordinator(coordinator common.Address) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.Contract.SetCoordinator(&_IVRFCoordinatorConsumer.TransactOpts, coordinator)
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerTransactor) TransferOwnership(opts *bind.TransactOpts, to common.Address) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.contract.Transact(opts, "transferOwnership", to)
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerSession) TransferOwnership(to common.Address) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.Contract.TransferOwnership(&_IVRFCoordinatorConsumer.TransactOpts, to)
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerTransactorSession) TransferOwnership(to common.Address) (*types.Transaction, error) {
+	return _IVRFCoordinatorConsumer.Contract.TransferOwnership(&_IVRFCoordinatorConsumer.TransactOpts, to)
+}
+
+type IVRFCoordinatorConsumerCoordinatorUpdatedIterator struct {
+	Event *IVRFCoordinatorConsumerCoordinatorUpdated
+
+	contract *bind.BoundContract
+	event    string
+
+	logs chan types.Log
+	sub  ethereum.Subscription
+	done bool
+	fail error
+}
+
+func (it *IVRFCoordinatorConsumerCoordinatorUpdatedIterator) Next() bool {
+
+	if it.fail != nil {
+		return false
+	}
+
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(IVRFCoordinatorConsumerCoordinatorUpdated)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+
+	select {
+	case log := <-it.logs:
+		it.Event = new(IVRFCoordinatorConsumerCoordinatorUpdated)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+func (it *IVRFCoordinatorConsumerCoordinatorUpdatedIterator) Error() error {
+	return it.fail
+}
+
+func (it *IVRFCoordinatorConsumerCoordinatorUpdatedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+type IVRFCoordinatorConsumerCoordinatorUpdated struct {
+	Coordinator common.Address
+	Raw         types.Log
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerFilterer) FilterCoordinatorUpdated(opts *bind.FilterOpts, coordinator []common.Address) (*IVRFCoordinatorConsumerCoordinatorUpdatedIterator, error) {
+
+	var coordinatorRule []interface{}
+	for _, coordinatorItem := range coordinator {
+		coordinatorRule = append(coordinatorRule, coordinatorItem)
+	}
+
+	logs, sub, err := _IVRFCoordinatorConsumer.contract.FilterLogs(opts, "CoordinatorUpdated", coordinatorRule)
+	if err != nil {
+		return nil, err
+	}
+	return &IVRFCoordinatorConsumerCoordinatorUpdatedIterator{contract: _IVRFCoordinatorConsumer.contract, event: "CoordinatorUpdated", logs: logs, sub: sub}, nil
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerFilterer) WatchCoordinatorUpdated(opts *bind.WatchOpts, sink chan<- *IVRFCoordinatorConsumerCoordinatorUpdated, coordinator []common.Address) (event.Subscription, error) {
+
+	var coordinatorRule []interface{}
+	for _, coordinatorItem := range coordinator {
+		coordinatorRule = append(coordinatorRule, coordinatorItem)
+	}
+
+	logs, sub, err := _IVRFCoordinatorConsumer.contract.WatchLogs(opts, "CoordinatorUpdated", coordinatorRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+
+				event := new(IVRFCoordinatorConsumerCoordinatorUpdated)
+				if err := _IVRFCoordinatorConsumer.contract.UnpackLog(event, "CoordinatorUpdated", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerFilterer) ParseCoordinatorUpdated(log types.Log) (*IVRFCoordinatorConsumerCoordinatorUpdated, error) {
+	event := new(IVRFCoordinatorConsumerCoordinatorUpdated)
+	if err := _IVRFCoordinatorConsumer.contract.UnpackLog(event, "CoordinatorUpdated", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+type IVRFCoordinatorConsumerOwnershipTransferRequestedIterator struct {
+	Event *IVRFCoordinatorConsumerOwnershipTransferRequested
+
+	contract *bind.BoundContract
+	event    string
+
+	logs chan types.Log
+	sub  ethereum.Subscription
+	done bool
+	fail error
+}
+
+func (it *IVRFCoordinatorConsumerOwnershipTransferRequestedIterator) Next() bool {
+
+	if it.fail != nil {
+		return false
+	}
+
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(IVRFCoordinatorConsumerOwnershipTransferRequested)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+
+	select {
+	case log := <-it.logs:
+		it.Event = new(IVRFCoordinatorConsumerOwnershipTransferRequested)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+func (it *IVRFCoordinatorConsumerOwnershipTransferRequestedIterator) Error() error {
+	return it.fail
+}
+
+func (it *IVRFCoordinatorConsumerOwnershipTransferRequestedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+type IVRFCoordinatorConsumerOwnershipTransferRequested struct {
+	From common.Address
+	To   common.Address
+	Raw  types.Log
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerFilterer) FilterOwnershipTransferRequested(opts *bind.FilterOpts, from []common.Address, to []common.Address) (*IVRFCoordinatorConsumerOwnershipTransferRequestedIterator, error) {
+
+	var fromRule []interface{}
+	for _, fromItem := range from {
+		fromRule = append(fromRule, fromItem)
+	}
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _IVRFCoordinatorConsumer.contract.FilterLogs(opts, "OwnershipTransferRequested", fromRule, toRule)
+	if err != nil {
+		return nil, err
+	}
+	return &IVRFCoordinatorConsumerOwnershipTransferRequestedIterator{contract: _IVRFCoordinatorConsumer.contract, event: "OwnershipTransferRequested", logs: logs, sub: sub}, nil
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerFilterer) WatchOwnershipTransferRequested(opts *bind.WatchOpts, sink chan<- *IVRFCoordinatorConsumerOwnershipTransferRequested, from []common.Address, to []common.Address) (event.Subscription, error) {
+
+	var fromRule []interface{}
+	for _, fromItem := range from {
+		fromRule = append(fromRule, fromItem)
+	}
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _IVRFCoordinatorConsumer.contract.WatchLogs(opts, "OwnershipTransferRequested", fromRule, toRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+
+				event := new(IVRFCoordinatorConsumerOwnershipTransferRequested)
+				if err := _IVRFCoordinatorConsumer.contract.UnpackLog(event, "OwnershipTransferRequested", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerFilterer) ParseOwnershipTransferRequested(log types.Log) (*IVRFCoordinatorConsumerOwnershipTransferRequested, error) {
+	event := new(IVRFCoordinatorConsumerOwnershipTransferRequested)
+	if err := _IVRFCoordinatorConsumer.contract.UnpackLog(event, "OwnershipTransferRequested", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+type IVRFCoordinatorConsumerOwnershipTransferredIterator struct {
+	Event *IVRFCoordinatorConsumerOwnershipTransferred
+
+	contract *bind.BoundContract
+	event    string
+
+	logs chan types.Log
+	sub  ethereum.Subscription
+	done bool
+	fail error
+}
+
+func (it *IVRFCoordinatorConsumerOwnershipTransferredIterator) Next() bool {
+
+	if it.fail != nil {
+		return false
+	}
+
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(IVRFCoordinatorConsumerOwnershipTransferred)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+
+	select {
+	case log := <-it.logs:
+		it.Event = new(IVRFCoordinatorConsumerOwnershipTransferred)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+func (it *IVRFCoordinatorConsumerOwnershipTransferredIterator) Error() error {
+	return it.fail
+}
+
+func (it *IVRFCoordinatorConsumerOwnershipTransferredIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+type IVRFCoordinatorConsumerOwnershipTransferred struct {
+	From common.Address
+	To   common.Address
+	Raw  types.Log
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, from []common.Address, to []common.Address) (*IVRFCoordinatorConsumerOwnershipTransferredIterator, error) {
+
+	var fromRule []interface{}
+	for _, fromItem := range from {
+		fromRule = append(fromRule, fromItem)
+	}
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _IVRFCoordinatorConsumer.contract.FilterLogs(opts, "OwnershipTransferred", fromRule, toRule)
+	if err != nil {
+		return nil, err
+	}
+	return &IVRFCoordinatorConsumerOwnershipTransferredIterator{contract: _IVRFCoordinatorConsumer.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *IVRFCoordinatorConsumerOwnershipTransferred, from []common.Address, to []common.Address) (event.Subscription, error) {
+
+	var fromRule []interface{}
+	for _, fromItem := range from {
+		fromRule = append(fromRule, fromItem)
+	}
+	var toRule []interface{}
+	for _, toItem := range to {
+		toRule = append(toRule, toItem)
+	}
+
+	logs, sub, err := _IVRFCoordinatorConsumer.contract.WatchLogs(opts, "OwnershipTransferred", fromRule, toRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+
+				event := new(IVRFCoordinatorConsumerOwnershipTransferred)
+				if err := _IVRFCoordinatorConsumer.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+func (_IVRFCoordinatorConsumer *IVRFCoordinatorConsumerFilterer) ParseOwnershipTransferred(log types.Log) (*IVRFCoordinatorConsumerOwnershipTransferred, error) {
+	event := new(IVRFCoordinatorConsumerOwnershipTransferred)
+	if err := _IVRFCoordinatorConsumer.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
 }
 
 var IVRFMigratableCoordinatorMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"}]",
 }
 
 var IVRFMigratableCoordinatorABI = IVRFMigratableCoordinatorMetaData.ABI
@@ -2780,526 +3687,40 @@ func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorCallerSession) GetFul
 	return _IVRFMigratableCoordinator.Contract.GetFulfillmentFee(&_IVRFMigratableCoordinator.CallOpts, subID, callbackGasLimit, arguments, extraArgs)
 }
 
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactor) RedeemRandomness(opts *bind.TransactOpts, requester common.Address, subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFMigratableCoordinator.contract.Transact(opts, "redeemRandomness", requester, subID, requestID, extraArgs)
+func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactor) RedeemRandomness(opts *bind.TransactOpts, subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFMigratableCoordinator.contract.Transact(opts, "redeemRandomness", subID, requestID, extraArgs)
 }
 
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorSession) RedeemRandomness(requester common.Address, subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFMigratableCoordinator.Contract.RedeemRandomness(&_IVRFMigratableCoordinator.TransactOpts, requester, subID, requestID, extraArgs)
+func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFMigratableCoordinator.Contract.RedeemRandomness(&_IVRFMigratableCoordinator.TransactOpts, subID, requestID, extraArgs)
 }
 
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactorSession) RedeemRandomness(requester common.Address, subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFMigratableCoordinator.Contract.RedeemRandomness(&_IVRFMigratableCoordinator.TransactOpts, requester, subID, requestID, extraArgs)
+func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactorSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFMigratableCoordinator.Contract.RedeemRandomness(&_IVRFMigratableCoordinator.TransactOpts, subID, requestID, extraArgs)
 }
 
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactor) RequestRandomness(opts *bind.TransactOpts, requester common.Address, subID *big.Int, numWords uint16, confirmationDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFMigratableCoordinator.contract.Transact(opts, "requestRandomness", requester, subID, numWords, confirmationDelay, extraArgs)
+func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactor) RequestRandomness(opts *bind.TransactOpts, subID *big.Int, numWords uint16, confirmationDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFMigratableCoordinator.contract.Transact(opts, "requestRandomness", subID, numWords, confirmationDelay, extraArgs)
 }
 
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorSession) RequestRandomness(requester common.Address, subID *big.Int, numWords uint16, confirmationDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFMigratableCoordinator.Contract.RequestRandomness(&_IVRFMigratableCoordinator.TransactOpts, requester, subID, numWords, confirmationDelay, extraArgs)
+func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorSession) RequestRandomness(subID *big.Int, numWords uint16, confirmationDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFMigratableCoordinator.Contract.RequestRandomness(&_IVRFMigratableCoordinator.TransactOpts, subID, numWords, confirmationDelay, extraArgs)
 }
 
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactorSession) RequestRandomness(requester common.Address, subID *big.Int, numWords uint16, confirmationDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFMigratableCoordinator.Contract.RequestRandomness(&_IVRFMigratableCoordinator.TransactOpts, requester, subID, numWords, confirmationDelay, extraArgs)
+func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactorSession) RequestRandomness(subID *big.Int, numWords uint16, confirmationDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFMigratableCoordinator.Contract.RequestRandomness(&_IVRFMigratableCoordinator.TransactOpts, subID, numWords, confirmationDelay, extraArgs)
 }
 
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactor) RequestRandomnessFulfillment(opts *bind.TransactOpts, requester common.Address, subID *big.Int, numWords uint16, confirmationDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFMigratableCoordinator.contract.Transact(opts, "requestRandomnessFulfillment", requester, subID, numWords, confirmationDelay, callbackGasLimit, arguments, extraArgs)
+func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactor) RequestRandomnessFulfillment(opts *bind.TransactOpts, subID *big.Int, numWords uint16, confirmationDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFMigratableCoordinator.contract.Transact(opts, "requestRandomnessFulfillment", subID, numWords, confirmationDelay, callbackGasLimit, arguments, extraArgs)
 }
 
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorSession) RequestRandomnessFulfillment(requester common.Address, subID *big.Int, numWords uint16, confirmationDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFMigratableCoordinator.Contract.RequestRandomnessFulfillment(&_IVRFMigratableCoordinator.TransactOpts, requester, subID, numWords, confirmationDelay, callbackGasLimit, arguments, extraArgs)
+func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorSession) RequestRandomnessFulfillment(subID *big.Int, numWords uint16, confirmationDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFMigratableCoordinator.Contract.RequestRandomnessFulfillment(&_IVRFMigratableCoordinator.TransactOpts, subID, numWords, confirmationDelay, callbackGasLimit, arguments, extraArgs)
 }
 
-func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactorSession) RequestRandomnessFulfillment(requester common.Address, subID *big.Int, numWords uint16, confirmationDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFMigratableCoordinator.Contract.RequestRandomnessFulfillment(&_IVRFMigratableCoordinator.TransactOpts, requester, subID, numWords, confirmationDelay, callbackGasLimit, arguments, extraArgs)
-}
-
-var IVRFMigrationMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"contractIVRFMigration\",\"name\":\"newCoordinator\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"encodedRequest\",\"type\":\"bytes\"}],\"name\":\"migrate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"migrationVersion\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"version\",\"type\":\"uint8\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"encodedData\",\"type\":\"bytes\"}],\"name\":\"onMigration\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
-}
-
-var IVRFMigrationABI = IVRFMigrationMetaData.ABI
-
-type IVRFMigration struct {
-	IVRFMigrationCaller
-	IVRFMigrationTransactor
-	IVRFMigrationFilterer
-}
-
-type IVRFMigrationCaller struct {
-	contract *bind.BoundContract
-}
-
-type IVRFMigrationTransactor struct {
-	contract *bind.BoundContract
-}
-
-type IVRFMigrationFilterer struct {
-	contract *bind.BoundContract
-}
-
-type IVRFMigrationSession struct {
-	Contract     *IVRFMigration
-	CallOpts     bind.CallOpts
-	TransactOpts bind.TransactOpts
-}
-
-type IVRFMigrationCallerSession struct {
-	Contract *IVRFMigrationCaller
-	CallOpts bind.CallOpts
-}
-
-type IVRFMigrationTransactorSession struct {
-	Contract     *IVRFMigrationTransactor
-	TransactOpts bind.TransactOpts
-}
-
-type IVRFMigrationRaw struct {
-	Contract *IVRFMigration
-}
-
-type IVRFMigrationCallerRaw struct {
-	Contract *IVRFMigrationCaller
-}
-
-type IVRFMigrationTransactorRaw struct {
-	Contract *IVRFMigrationTransactor
-}
-
-func NewIVRFMigration(address common.Address, backend bind.ContractBackend) (*IVRFMigration, error) {
-	contract, err := bindIVRFMigration(address, backend, backend, backend)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigration{IVRFMigrationCaller: IVRFMigrationCaller{contract: contract}, IVRFMigrationTransactor: IVRFMigrationTransactor{contract: contract}, IVRFMigrationFilterer: IVRFMigrationFilterer{contract: contract}}, nil
-}
-
-func NewIVRFMigrationCaller(address common.Address, caller bind.ContractCaller) (*IVRFMigrationCaller, error) {
-	contract, err := bindIVRFMigration(address, caller, nil, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigrationCaller{contract: contract}, nil
-}
-
-func NewIVRFMigrationTransactor(address common.Address, transactor bind.ContractTransactor) (*IVRFMigrationTransactor, error) {
-	contract, err := bindIVRFMigration(address, nil, transactor, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigrationTransactor{contract: contract}, nil
-}
-
-func NewIVRFMigrationFilterer(address common.Address, filterer bind.ContractFilterer) (*IVRFMigrationFilterer, error) {
-	contract, err := bindIVRFMigration(address, nil, nil, filterer)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFMigrationFilterer{contract: contract}, nil
-}
-
-func bindIVRFMigration(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := abi.JSON(strings.NewReader(IVRFMigrationABI))
-	if err != nil {
-		return nil, err
-	}
-	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
-}
-
-func (_IVRFMigration *IVRFMigrationRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _IVRFMigration.Contract.IVRFMigrationCaller.contract.Call(opts, result, method, params...)
-}
-
-func (_IVRFMigration *IVRFMigrationRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _IVRFMigration.Contract.IVRFMigrationTransactor.contract.Transfer(opts)
-}
-
-func (_IVRFMigration *IVRFMigrationRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _IVRFMigration.Contract.IVRFMigrationTransactor.contract.Transact(opts, method, params...)
-}
-
-func (_IVRFMigration *IVRFMigrationCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _IVRFMigration.Contract.contract.Call(opts, result, method, params...)
-}
-
-func (_IVRFMigration *IVRFMigrationTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _IVRFMigration.Contract.contract.Transfer(opts)
-}
-
-func (_IVRFMigration *IVRFMigrationTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _IVRFMigration.Contract.contract.Transact(opts, method, params...)
-}
-
-func (_IVRFMigration *IVRFMigrationCaller) MigrationVersion(opts *bind.CallOpts) (uint8, error) {
-	var out []interface{}
-	err := _IVRFMigration.contract.Call(opts, &out, "migrationVersion")
-
-	if err != nil {
-		return *new(uint8), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(uint8)).(*uint8)
-
-	return out0, err
-
-}
-
-func (_IVRFMigration *IVRFMigrationSession) MigrationVersion() (uint8, error) {
-	return _IVRFMigration.Contract.MigrationVersion(&_IVRFMigration.CallOpts)
-}
-
-func (_IVRFMigration *IVRFMigrationCallerSession) MigrationVersion() (uint8, error) {
-	return _IVRFMigration.Contract.MigrationVersion(&_IVRFMigration.CallOpts)
-}
-
-func (_IVRFMigration *IVRFMigrationTransactor) Migrate(opts *bind.TransactOpts, newCoordinator common.Address, encodedRequest []byte) (*types.Transaction, error) {
-	return _IVRFMigration.contract.Transact(opts, "migrate", newCoordinator, encodedRequest)
-}
-
-func (_IVRFMigration *IVRFMigrationSession) Migrate(newCoordinator common.Address, encodedRequest []byte) (*types.Transaction, error) {
-	return _IVRFMigration.Contract.Migrate(&_IVRFMigration.TransactOpts, newCoordinator, encodedRequest)
-}
-
-func (_IVRFMigration *IVRFMigrationTransactorSession) Migrate(newCoordinator common.Address, encodedRequest []byte) (*types.Transaction, error) {
-	return _IVRFMigration.Contract.Migrate(&_IVRFMigration.TransactOpts, newCoordinator, encodedRequest)
-}
-
-func (_IVRFMigration *IVRFMigrationTransactor) OnMigration(opts *bind.TransactOpts, encodedData []byte) (*types.Transaction, error) {
-	return _IVRFMigration.contract.Transact(opts, "onMigration", encodedData)
-}
-
-func (_IVRFMigration *IVRFMigrationSession) OnMigration(encodedData []byte) (*types.Transaction, error) {
-	return _IVRFMigration.Contract.OnMigration(&_IVRFMigration.TransactOpts, encodedData)
-}
-
-func (_IVRFMigration *IVRFMigrationTransactorSession) OnMigration(encodedData []byte) (*types.Transaction, error) {
-	return _IVRFMigration.Contract.OnMigration(&_IVRFMigration.TransactOpts, encodedData)
-}
-
-var IVRFRouterMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
-}
-
-var IVRFRouterABI = IVRFRouterMetaData.ABI
-
-type IVRFRouter struct {
-	IVRFRouterCaller
-	IVRFRouterTransactor
-	IVRFRouterFilterer
-}
-
-type IVRFRouterCaller struct {
-	contract *bind.BoundContract
-}
-
-type IVRFRouterTransactor struct {
-	contract *bind.BoundContract
-}
-
-type IVRFRouterFilterer struct {
-	contract *bind.BoundContract
-}
-
-type IVRFRouterSession struct {
-	Contract     *IVRFRouter
-	CallOpts     bind.CallOpts
-	TransactOpts bind.TransactOpts
-}
-
-type IVRFRouterCallerSession struct {
-	Contract *IVRFRouterCaller
-	CallOpts bind.CallOpts
-}
-
-type IVRFRouterTransactorSession struct {
-	Contract     *IVRFRouterTransactor
-	TransactOpts bind.TransactOpts
-}
-
-type IVRFRouterRaw struct {
-	Contract *IVRFRouter
-}
-
-type IVRFRouterCallerRaw struct {
-	Contract *IVRFRouterCaller
-}
-
-type IVRFRouterTransactorRaw struct {
-	Contract *IVRFRouterTransactor
-}
-
-func NewIVRFRouter(address common.Address, backend bind.ContractBackend) (*IVRFRouter, error) {
-	contract, err := bindIVRFRouter(address, backend, backend, backend)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouter{IVRFRouterCaller: IVRFRouterCaller{contract: contract}, IVRFRouterTransactor: IVRFRouterTransactor{contract: contract}, IVRFRouterFilterer: IVRFRouterFilterer{contract: contract}}, nil
-}
-
-func NewIVRFRouterCaller(address common.Address, caller bind.ContractCaller) (*IVRFRouterCaller, error) {
-	contract, err := bindIVRFRouter(address, caller, nil, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterCaller{contract: contract}, nil
-}
-
-func NewIVRFRouterTransactor(address common.Address, transactor bind.ContractTransactor) (*IVRFRouterTransactor, error) {
-	contract, err := bindIVRFRouter(address, nil, transactor, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterTransactor{contract: contract}, nil
-}
-
-func NewIVRFRouterFilterer(address common.Address, filterer bind.ContractFilterer) (*IVRFRouterFilterer, error) {
-	contract, err := bindIVRFRouter(address, nil, nil, filterer)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterFilterer{contract: contract}, nil
-}
-
-func bindIVRFRouter(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := abi.JSON(strings.NewReader(IVRFRouterABI))
-	if err != nil {
-		return nil, err
-	}
-	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
-}
-
-func (_IVRFRouter *IVRFRouterRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _IVRFRouter.Contract.IVRFRouterCaller.contract.Call(opts, result, method, params...)
-}
-
-func (_IVRFRouter *IVRFRouterRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _IVRFRouter.Contract.IVRFRouterTransactor.contract.Transfer(opts)
-}
-
-func (_IVRFRouter *IVRFRouterRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _IVRFRouter.Contract.IVRFRouterTransactor.contract.Transact(opts, method, params...)
-}
-
-func (_IVRFRouter *IVRFRouterCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _IVRFRouter.Contract.contract.Call(opts, result, method, params...)
-}
-
-func (_IVRFRouter *IVRFRouterTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _IVRFRouter.Contract.contract.Transfer(opts)
-}
-
-func (_IVRFRouter *IVRFRouterTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _IVRFRouter.Contract.contract.Transact(opts, method, params...)
-}
-
-func (_IVRFRouter *IVRFRouterCaller) GetFee(opts *bind.CallOpts, subID *big.Int, extraArgs []byte) (*big.Int, error) {
-	var out []interface{}
-	err := _IVRFRouter.contract.Call(opts, &out, "getFee", subID, extraArgs)
-
-	if err != nil {
-		return *new(*big.Int), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
-
-	return out0, err
-
-}
-
-func (_IVRFRouter *IVRFRouterSession) GetFee(subID *big.Int, extraArgs []byte) (*big.Int, error) {
-	return _IVRFRouter.Contract.GetFee(&_IVRFRouter.CallOpts, subID, extraArgs)
-}
-
-func (_IVRFRouter *IVRFRouterCallerSession) GetFee(subID *big.Int, extraArgs []byte) (*big.Int, error) {
-	return _IVRFRouter.Contract.GetFee(&_IVRFRouter.CallOpts, subID, extraArgs)
-}
-
-func (_IVRFRouter *IVRFRouterCaller) GetFulfillmentFee(opts *bind.CallOpts, subID *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*big.Int, error) {
-	var out []interface{}
-	err := _IVRFRouter.contract.Call(opts, &out, "getFulfillmentFee", subID, callbackGasLimit, arguments, extraArgs)
-
-	if err != nil {
-		return *new(*big.Int), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
-
-	return out0, err
-
-}
-
-func (_IVRFRouter *IVRFRouterSession) GetFulfillmentFee(subID *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*big.Int, error) {
-	return _IVRFRouter.Contract.GetFulfillmentFee(&_IVRFRouter.CallOpts, subID, callbackGasLimit, arguments, extraArgs)
-}
-
-func (_IVRFRouter *IVRFRouterCallerSession) GetFulfillmentFee(subID *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*big.Int, error) {
-	return _IVRFRouter.Contract.GetFulfillmentFee(&_IVRFRouter.CallOpts, subID, callbackGasLimit, arguments, extraArgs)
-}
-
-func (_IVRFRouter *IVRFRouterTransactor) RedeemRandomness(opts *bind.TransactOpts, subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFRouter.contract.Transact(opts, "redeemRandomness", subID, requestID, extraArgs)
-}
-
-func (_IVRFRouter *IVRFRouterSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFRouter.Contract.RedeemRandomness(&_IVRFRouter.TransactOpts, subID, requestID, extraArgs)
-}
-
-func (_IVRFRouter *IVRFRouterTransactorSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFRouter.Contract.RedeemRandomness(&_IVRFRouter.TransactOpts, subID, requestID, extraArgs)
-}
-
-func (_IVRFRouter *IVRFRouterTransactor) RequestRandomness(opts *bind.TransactOpts, subID *big.Int, numWords uint16, confDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFRouter.contract.Transact(opts, "requestRandomness", subID, numWords, confDelay, extraArgs)
-}
-
-func (_IVRFRouter *IVRFRouterSession) RequestRandomness(subID *big.Int, numWords uint16, confDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFRouter.Contract.RequestRandomness(&_IVRFRouter.TransactOpts, subID, numWords, confDelay, extraArgs)
-}
-
-func (_IVRFRouter *IVRFRouterTransactorSession) RequestRandomness(subID *big.Int, numWords uint16, confDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFRouter.Contract.RequestRandomness(&_IVRFRouter.TransactOpts, subID, numWords, confDelay, extraArgs)
-}
-
-func (_IVRFRouter *IVRFRouterTransactor) RequestRandomnessFulfillment(opts *bind.TransactOpts, subID *big.Int, numWords uint16, confDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFRouter.contract.Transact(opts, "requestRandomnessFulfillment", subID, numWords, confDelay, callbackGasLimit, arguments, extraArgs)
-}
-
-func (_IVRFRouter *IVRFRouterSession) RequestRandomnessFulfillment(subID *big.Int, numWords uint16, confDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFRouter.Contract.RequestRandomnessFulfillment(&_IVRFRouter.TransactOpts, subID, numWords, confDelay, callbackGasLimit, arguments, extraArgs)
-}
-
-func (_IVRFRouter *IVRFRouterTransactorSession) RequestRandomnessFulfillment(subID *big.Int, numWords uint16, confDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
-	return _IVRFRouter.Contract.RequestRandomnessFulfillment(&_IVRFRouter.TransactOpts, subID, numWords, confDelay, callbackGasLimit, arguments, extraArgs)
-}
-
-var IVRFRouterConsumerMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[],\"name\":\"MustBeRouter\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"randomWords\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"}],\"name\":\"rawFulfillRandomWords\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
-}
-
-var IVRFRouterConsumerABI = IVRFRouterConsumerMetaData.ABI
-
-type IVRFRouterConsumer struct {
-	IVRFRouterConsumerCaller
-	IVRFRouterConsumerTransactor
-	IVRFRouterConsumerFilterer
-}
-
-type IVRFRouterConsumerCaller struct {
-	contract *bind.BoundContract
-}
-
-type IVRFRouterConsumerTransactor struct {
-	contract *bind.BoundContract
-}
-
-type IVRFRouterConsumerFilterer struct {
-	contract *bind.BoundContract
-}
-
-type IVRFRouterConsumerSession struct {
-	Contract     *IVRFRouterConsumer
-	CallOpts     bind.CallOpts
-	TransactOpts bind.TransactOpts
-}
-
-type IVRFRouterConsumerCallerSession struct {
-	Contract *IVRFRouterConsumerCaller
-	CallOpts bind.CallOpts
-}
-
-type IVRFRouterConsumerTransactorSession struct {
-	Contract     *IVRFRouterConsumerTransactor
-	TransactOpts bind.TransactOpts
-}
-
-type IVRFRouterConsumerRaw struct {
-	Contract *IVRFRouterConsumer
-}
-
-type IVRFRouterConsumerCallerRaw struct {
-	Contract *IVRFRouterConsumerCaller
-}
-
-type IVRFRouterConsumerTransactorRaw struct {
-	Contract *IVRFRouterConsumerTransactor
-}
-
-func NewIVRFRouterConsumer(address common.Address, backend bind.ContractBackend) (*IVRFRouterConsumer, error) {
-	contract, err := bindIVRFRouterConsumer(address, backend, backend, backend)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumer{IVRFRouterConsumerCaller: IVRFRouterConsumerCaller{contract: contract}, IVRFRouterConsumerTransactor: IVRFRouterConsumerTransactor{contract: contract}, IVRFRouterConsumerFilterer: IVRFRouterConsumerFilterer{contract: contract}}, nil
-}
-
-func NewIVRFRouterConsumerCaller(address common.Address, caller bind.ContractCaller) (*IVRFRouterConsumerCaller, error) {
-	contract, err := bindIVRFRouterConsumer(address, caller, nil, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerCaller{contract: contract}, nil
-}
-
-func NewIVRFRouterConsumerTransactor(address common.Address, transactor bind.ContractTransactor) (*IVRFRouterConsumerTransactor, error) {
-	contract, err := bindIVRFRouterConsumer(address, nil, transactor, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerTransactor{contract: contract}, nil
-}
-
-func NewIVRFRouterConsumerFilterer(address common.Address, filterer bind.ContractFilterer) (*IVRFRouterConsumerFilterer, error) {
-	contract, err := bindIVRFRouterConsumer(address, nil, nil, filterer)
-	if err != nil {
-		return nil, err
-	}
-	return &IVRFRouterConsumerFilterer{contract: contract}, nil
-}
-
-func bindIVRFRouterConsumer(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := abi.JSON(strings.NewReader(IVRFRouterConsumerABI))
-	if err != nil {
-		return nil, err
-	}
-	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _IVRFRouterConsumer.Contract.IVRFRouterConsumerCaller.contract.Call(opts, result, method, params...)
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _IVRFRouterConsumer.Contract.IVRFRouterConsumerTransactor.contract.Transfer(opts)
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _IVRFRouterConsumer.Contract.IVRFRouterConsumerTransactor.contract.Transact(opts, method, params...)
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _IVRFRouterConsumer.Contract.contract.Call(opts, result, method, params...)
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _IVRFRouterConsumer.Contract.contract.Transfer(opts)
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _IVRFRouterConsumer.Contract.contract.Transact(opts, method, params...)
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerTransactor) RawFulfillRandomWords(opts *bind.TransactOpts, requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
-	return _IVRFRouterConsumer.contract.Transact(opts, "rawFulfillRandomWords", requestID, randomWords, arguments)
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerSession) RawFulfillRandomWords(requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
-	return _IVRFRouterConsumer.Contract.RawFulfillRandomWords(&_IVRFRouterConsumer.TransactOpts, requestID, randomWords, arguments)
-}
-
-func (_IVRFRouterConsumer *IVRFRouterConsumerTransactorSession) RawFulfillRandomWords(requestID *big.Int, randomWords []*big.Int, arguments []byte) (*types.Transaction, error) {
-	return _IVRFRouterConsumer.Contract.RawFulfillRandomWords(&_IVRFRouterConsumer.TransactOpts, requestID, randomWords, arguments)
+func (_IVRFMigratableCoordinator *IVRFMigratableCoordinatorTransactorSession) RequestRandomnessFulfillment(subID *big.Int, numWords uint16, confirmationDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
+	return _IVRFMigratableCoordinator.Contract.RequestRandomnessFulfillment(&_IVRFMigratableCoordinator.TransactOpts, subID, numWords, confirmationDelay, callbackGasLimit, arguments, extraArgs)
 }
 
 var LinkTokenInterfaceMetaData = &bind.MetaData{
@@ -4227,146 +4648,8 @@ func (_OwnerIsCreator *OwnerIsCreatorFilterer) ParseOwnershipTransferred(log typ
 	return event, nil
 }
 
-var TypeAndVersionInterfaceMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[],\"name\":\"typeAndVersion\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}]",
-}
-
-var TypeAndVersionInterfaceABI = TypeAndVersionInterfaceMetaData.ABI
-
-type TypeAndVersionInterface struct {
-	TypeAndVersionInterfaceCaller
-	TypeAndVersionInterfaceTransactor
-	TypeAndVersionInterfaceFilterer
-}
-
-type TypeAndVersionInterfaceCaller struct {
-	contract *bind.BoundContract
-}
-
-type TypeAndVersionInterfaceTransactor struct {
-	contract *bind.BoundContract
-}
-
-type TypeAndVersionInterfaceFilterer struct {
-	contract *bind.BoundContract
-}
-
-type TypeAndVersionInterfaceSession struct {
-	Contract     *TypeAndVersionInterface
-	CallOpts     bind.CallOpts
-	TransactOpts bind.TransactOpts
-}
-
-type TypeAndVersionInterfaceCallerSession struct {
-	Contract *TypeAndVersionInterfaceCaller
-	CallOpts bind.CallOpts
-}
-
-type TypeAndVersionInterfaceTransactorSession struct {
-	Contract     *TypeAndVersionInterfaceTransactor
-	TransactOpts bind.TransactOpts
-}
-
-type TypeAndVersionInterfaceRaw struct {
-	Contract *TypeAndVersionInterface
-}
-
-type TypeAndVersionInterfaceCallerRaw struct {
-	Contract *TypeAndVersionInterfaceCaller
-}
-
-type TypeAndVersionInterfaceTransactorRaw struct {
-	Contract *TypeAndVersionInterfaceTransactor
-}
-
-func NewTypeAndVersionInterface(address common.Address, backend bind.ContractBackend) (*TypeAndVersionInterface, error) {
-	contract, err := bindTypeAndVersionInterface(address, backend, backend, backend)
-	if err != nil {
-		return nil, err
-	}
-	return &TypeAndVersionInterface{TypeAndVersionInterfaceCaller: TypeAndVersionInterfaceCaller{contract: contract}, TypeAndVersionInterfaceTransactor: TypeAndVersionInterfaceTransactor{contract: contract}, TypeAndVersionInterfaceFilterer: TypeAndVersionInterfaceFilterer{contract: contract}}, nil
-}
-
-func NewTypeAndVersionInterfaceCaller(address common.Address, caller bind.ContractCaller) (*TypeAndVersionInterfaceCaller, error) {
-	contract, err := bindTypeAndVersionInterface(address, caller, nil, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &TypeAndVersionInterfaceCaller{contract: contract}, nil
-}
-
-func NewTypeAndVersionInterfaceTransactor(address common.Address, transactor bind.ContractTransactor) (*TypeAndVersionInterfaceTransactor, error) {
-	contract, err := bindTypeAndVersionInterface(address, nil, transactor, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &TypeAndVersionInterfaceTransactor{contract: contract}, nil
-}
-
-func NewTypeAndVersionInterfaceFilterer(address common.Address, filterer bind.ContractFilterer) (*TypeAndVersionInterfaceFilterer, error) {
-	contract, err := bindTypeAndVersionInterface(address, nil, nil, filterer)
-	if err != nil {
-		return nil, err
-	}
-	return &TypeAndVersionInterfaceFilterer{contract: contract}, nil
-}
-
-func bindTypeAndVersionInterface(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := abi.JSON(strings.NewReader(TypeAndVersionInterfaceABI))
-	if err != nil {
-		return nil, err
-	}
-	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
-}
-
-func (_TypeAndVersionInterface *TypeAndVersionInterfaceRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _TypeAndVersionInterface.Contract.TypeAndVersionInterfaceCaller.contract.Call(opts, result, method, params...)
-}
-
-func (_TypeAndVersionInterface *TypeAndVersionInterfaceRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _TypeAndVersionInterface.Contract.TypeAndVersionInterfaceTransactor.contract.Transfer(opts)
-}
-
-func (_TypeAndVersionInterface *TypeAndVersionInterfaceRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _TypeAndVersionInterface.Contract.TypeAndVersionInterfaceTransactor.contract.Transact(opts, method, params...)
-}
-
-func (_TypeAndVersionInterface *TypeAndVersionInterfaceCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _TypeAndVersionInterface.Contract.contract.Call(opts, result, method, params...)
-}
-
-func (_TypeAndVersionInterface *TypeAndVersionInterfaceTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _TypeAndVersionInterface.Contract.contract.Transfer(opts)
-}
-
-func (_TypeAndVersionInterface *TypeAndVersionInterfaceTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _TypeAndVersionInterface.Contract.contract.Transact(opts, method, params...)
-}
-
-func (_TypeAndVersionInterface *TypeAndVersionInterfaceCaller) TypeAndVersion(opts *bind.CallOpts) (string, error) {
-	var out []interface{}
-	err := _TypeAndVersionInterface.contract.Call(opts, &out, "typeAndVersion")
-
-	if err != nil {
-		return *new(string), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-
-	return out0, err
-
-}
-
-func (_TypeAndVersionInterface *TypeAndVersionInterfaceSession) TypeAndVersion() (string, error) {
-	return _TypeAndVersionInterface.Contract.TypeAndVersion(&_TypeAndVersionInterface.CallOpts)
-}
-
-func (_TypeAndVersionInterface *TypeAndVersionInterfaceCallerSession) TypeAndVersion() (string, error) {
-	return _TypeAndVersionInterface.Contract.TypeAndVersion(&_TypeAndVersionInterface.CallOpts)
-}
-
 var VRFBeaconTypesMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint256[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"},{\"indexed\":false,\"internalType\":\"uint96[]\",\"name\":\"subBalances\",\"type\":\"uint96[]\"},{\"indexed\":false,\"internalType\":\"uint256[]\",\"name\":\"subIDs\",\"type\":\"uint256[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"costJuels\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newSubBalance\",\"type\":\"uint256\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"RandomnessRedeemed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"costJuels\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newSubBalance\",\"type\":\"uint256\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"previousConfigBlockNumber\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"configCount\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"signers\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"address[]\",\"name\":\"transmitters\",\"type\":\"address[]\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"f\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"onchainConfig\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"offchainConfigVersion\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"offchainConfig\",\"type\":\"bytes\"}],\"name\":\"ConfigSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint32\",\"name\":\"aggregatorRoundId\",\"type\":\"uint32\"},{\"indexed\":true,\"internalType\":\"uint40\",\"name\":\"epochAndRound\",\"type\":\"uint40\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"transmitter\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"configDigest\",\"type\":\"bytes32\"}],\"name\":\"NewTransmission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"recentBlockHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint192\",\"name\":\"juelsPerFeeCoin\",\"type\":\"uint192\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"reasonableGasPrice\",\"type\":\"uint64\"},{\"components\":[{\"internalType\":\"uint64\",\"name\":\"height\",\"type\":\"uint64\"},{\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confirmationDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint256\",\"name\":\"proofG1X\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"proofG1Y\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"structVRFBeaconTypes.OutputServed[]\",\"name\":\"outputsServed\",\"type\":\"tuple[]\"}],\"name\":\"OutputsServed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.RequestID[]\",\"name\":\"requestIDs\",\"type\":\"uint256[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"successfulFulfillment\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes[]\",\"name\":\"truncatedErrorData\",\"type\":\"bytes[]\"},{\"indexed\":false,\"internalType\":\"uint96[]\",\"name\":\"subBalances\",\"type\":\"uint96[]\"},{\"indexed\":false,\"internalType\":\"uint256[]\",\"name\":\"subIDs\",\"type\":\"uint256[]\"}],\"name\":\"RandomWordsFulfilled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"gasAllowance\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"gasPrice\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"weiPerUnitLink\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"costJuels\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newSubBalance\",\"type\":\"uint256\"}],\"name\":\"RandomnessFulfillmentRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"RandomnessRedeemed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"VRFBeaconTypes.RequestID\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"requester\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"nextBeaconOutputHeight\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"VRFBeaconTypes.ConfirmationDelay\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"costJuels\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newSubBalance\",\"type\":\"uint256\"}],\"name\":\"RandomnessRequested\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NUM_CONF_DELAYS\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
 	Bin: "0x6080604052348015600f57600080fd5b50605780601d6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c80632f7527cc14602d575b600080fd5b6034600881565b60405160ff909116815260200160405180910390f3fea164736f6c6343000813000a",
 }
 
@@ -5104,36 +5387,28 @@ type VRFBeaconTypesRandomnessFulfillmentRequested struct {
 	Raw                    types.Log
 }
 
-func (_VRFBeaconTypes *VRFBeaconTypesFilterer) FilterRandomnessFulfillmentRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*VRFBeaconTypesRandomnessFulfillmentRequestedIterator, error) {
+func (_VRFBeaconTypes *VRFBeaconTypesFilterer) FilterRandomnessFulfillmentRequested(opts *bind.FilterOpts, requestID []*big.Int) (*VRFBeaconTypesRandomnessFulfillmentRequestedIterator, error) {
 
 	var requestIDRule []interface{}
 	for _, requestIDItem := range requestID {
 		requestIDRule = append(requestIDRule, requestIDItem)
 	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
 
-	logs, sub, err := _VRFBeaconTypes.contract.FilterLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
+	logs, sub, err := _VRFBeaconTypes.contract.FilterLogs(opts, "RandomnessFulfillmentRequested", requestIDRule)
 	if err != nil {
 		return nil, err
 	}
 	return &VRFBeaconTypesRandomnessFulfillmentRequestedIterator{contract: _VRFBeaconTypes.contract, event: "RandomnessFulfillmentRequested", logs: logs, sub: sub}, nil
 }
 
-func (_VRFBeaconTypes *VRFBeaconTypesFilterer) WatchRandomnessFulfillmentRequested(opts *bind.WatchOpts, sink chan<- *VRFBeaconTypesRandomnessFulfillmentRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
+func (_VRFBeaconTypes *VRFBeaconTypesFilterer) WatchRandomnessFulfillmentRequested(opts *bind.WatchOpts, sink chan<- *VRFBeaconTypesRandomnessFulfillmentRequested, requestID []*big.Int) (event.Subscription, error) {
 
 	var requestIDRule []interface{}
 	for _, requestIDItem := range requestID {
 		requestIDRule = append(requestIDRule, requestIDItem)
 	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
 
-	logs, sub, err := _VRFBeaconTypes.contract.WatchLogs(opts, "RandomnessFulfillmentRequested", requestIDRule, requesterRule)
+	logs, sub, err := _VRFBeaconTypes.contract.WatchLogs(opts, "RandomnessFulfillmentRequested", requestIDRule)
 	if err != nil {
 		return nil, err
 	}
@@ -5383,36 +5658,28 @@ type VRFBeaconTypesRandomnessRequested struct {
 	Raw                    types.Log
 }
 
-func (_VRFBeaconTypes *VRFBeaconTypesFilterer) FilterRandomnessRequested(opts *bind.FilterOpts, requestID []*big.Int, requester []common.Address) (*VRFBeaconTypesRandomnessRequestedIterator, error) {
+func (_VRFBeaconTypes *VRFBeaconTypesFilterer) FilterRandomnessRequested(opts *bind.FilterOpts, requestID []*big.Int) (*VRFBeaconTypesRandomnessRequestedIterator, error) {
 
 	var requestIDRule []interface{}
 	for _, requestIDItem := range requestID {
 		requestIDRule = append(requestIDRule, requestIDItem)
 	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
 
-	logs, sub, err := _VRFBeaconTypes.contract.FilterLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
+	logs, sub, err := _VRFBeaconTypes.contract.FilterLogs(opts, "RandomnessRequested", requestIDRule)
 	if err != nil {
 		return nil, err
 	}
 	return &VRFBeaconTypesRandomnessRequestedIterator{contract: _VRFBeaconTypes.contract, event: "RandomnessRequested", logs: logs, sub: sub}, nil
 }
 
-func (_VRFBeaconTypes *VRFBeaconTypesFilterer) WatchRandomnessRequested(opts *bind.WatchOpts, sink chan<- *VRFBeaconTypesRandomnessRequested, requestID []*big.Int, requester []common.Address) (event.Subscription, error) {
+func (_VRFBeaconTypes *VRFBeaconTypesFilterer) WatchRandomnessRequested(opts *bind.WatchOpts, sink chan<- *VRFBeaconTypesRandomnessRequested, requestID []*big.Int) (event.Subscription, error) {
 
 	var requestIDRule []interface{}
 	for _, requestIDItem := range requestID {
 		requestIDRule = append(requestIDRule, requestIDItem)
 	}
-	var requesterRule []interface{}
-	for _, requesterItem := range requester {
-		requesterRule = append(requesterRule, requesterItem)
-	}
 
-	logs, sub, err := _VRFBeaconTypes.contract.WatchLogs(opts, "RandomnessRequested", requestIDRule, requesterRule)
+	logs, sub, err := _VRFBeaconTypes.contract.WatchLogs(opts, "RandomnessRequested", requestIDRule)
 	if err != nil {
 		return nil, err
 	}
@@ -5447,1071 +5714,6 @@ func (_VRFBeaconTypes *VRFBeaconTypesFilterer) WatchRandomnessRequested(opts *bi
 func (_VRFBeaconTypes *VRFBeaconTypesFilterer) ParseRandomnessRequested(log types.Log) (*VRFBeaconTypesRandomnessRequested, error) {
 	event := new(VRFBeaconTypesRandomnessRequested)
 	if err := _VRFBeaconTypes.contract.UnpackLog(event, "RandomnessRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-var VRFRouterMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[],\"name\":\"CoordinatorAlreadyRegistered\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"CoordinatorNotRegistered\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"}],\"name\":\"RedemptionRouteNotFound\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"route\",\"type\":\"address\"}],\"name\":\"RouteNotFound\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"UnexpectedMigrationVersion\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"CoordinatorDeregistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"CoordinatorRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferRequested\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"RouteSet\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"acceptOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"gasAmount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"callWithExactGasEvenIfTargetIsNoContract\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"sufficientGas\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"deregisterCoordinator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCoordinators\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"getFulfillmentFee\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"getRoute\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"coordinator\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"isCoordinatorRegistered\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"requestID\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"redeemRandomness\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"randomness\",\"type\":\"uint256[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"coordinatorAddress\",\"type\":\"address\"}],\"name\":\"registerCoordinator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomness\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"numWords\",\"type\":\"uint16\"},{\"internalType\":\"uint24\",\"name\":\"confDelay\",\"type\":\"uint24\"},{\"internalType\":\"uint32\",\"name\":\"callbackGasLimit\",\"type\":\"uint32\"},{\"internalType\":\"bytes\",\"name\":\"arguments\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"extraArgs\",\"type\":\"bytes\"}],\"name\":\"requestRandomnessFulfillment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"resetRoute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"s_redemptionRoutes\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"subID\",\"type\":\"uint256\"}],\"name\":\"setRoute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"typeAndVersion\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}]",
-	Bin: "0x608060405234801561001057600080fd5b5033806000816100675760405162461bcd60e51b815260206004820152601860248201527f43616e6e6f7420736574206f776e657220746f207a65726f000000000000000060448201526064015b60405180910390fd5b600080546001600160a01b0319166001600160a01b0384811691909117909155811615610097576100978161009f565b505050610148565b336001600160a01b038216036100f75760405162461bcd60e51b815260206004820152601760248201527f43616e6e6f74207472616e7366657220746f2073656c66000000000000000000604482015260640161005e565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b611509806101576000396000f3fe608060405234801561001057600080fd5b50600436106101365760003560e01c80639e201036116100b2578063d9c4a44d11610081578063f2fde38b11610066578063f2fde38b146102f4578063f9c45ced14610307578063fa66358a1461031a57600080fd5b8063d9c4a44d146102ce578063db972c8b146102e157600080fd5b80639e20103614610265578063acfc6cdd14610278578063bb9b2b3414610298578063cef40aa6146102ab57600080fd5b80635d5d8d191161010957806379ba5097116100ee57806379ba5097146102395780638da5cb5b146102415780639479b74e1461025257600080fd5b80635d5d8d19146101e35780637612e884146101f857600080fd5b8063181f5a771461013b5780634b2407d4146101835780634ffac83a1461019857806355fe9763146101b9575b600080fd5b604080518082018252600f81527f565246526f7574657220312e302e3000000000000000000000000000000000006020820152905161017a9190610e82565b60405180910390f35b610196610191366004610eb1565b61032d565b005b6101ab6101a6366004610fa8565b610467565b60405190815260200161017a565b6101cc6101c7366004611010565b610525565b60408051921515835290151560208301520161017a565b6101eb61058e565b60405161017a9190611067565b6102216102063660046110b4565b6005602052600090815260409020546001600160a01b031681565b6040516001600160a01b03909116815260200161017a565b61019661059f565b6000546001600160a01b0316610221565b6101966102603660046110b4565b610655565b6101ab6102733660046110e1565b6106da565b61028b610286366004611153565b61077f565b60405161017a919061118d565b6101966102a63660046110b4565b610868565b6102be6102b9366004610eb1565b6108de565b604051901515815260200161017a565b6101966102dc366004610eb1565b6108f1565b6101ab6102ef3660046111c5565b610967565b610196610302366004610eb1565b610a16565b6101ab610315366004611263565b610a2a565b6102216103283660046110b4565b610ac9565b610335610b3d565b610340600382610b99565b15610377576040517fdcecb7bf00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b6000819050806001600160a01b031663294daa496040518163ffffffff1660e01b8152600401602060405180830381865afa1580156103ba573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906103de91906112aa565b60ff1660000361041a576040517f6e81684800000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b610425600383610bbe565b506040516001600160a01b03831681527fb7cabbfc11e66731fc77de0444614282023bcbd41d16781c753a431d0af01625906020015b60405180910390a15050565b60008061047386610ac9565b90506000816001600160a01b03166362f8b62033898989896040518663ffffffff1660e01b81526004016104ab9594939291906112cd565b6020604051808303816000875af11580156104ca573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906104ee9190611315565b600081815260056020526040902080546001600160a01b0319166001600160a01b0394909416939093179092555095945050505050565b60008033610534600382610b99565b610551576040516301fd70a160e51b815260040160405180910390fd5b5a611388811061058457611388810390508660408204820311156105845760008086516020880160008a8cf19350600192505b5050935093915050565b606061059a6003610bd3565b905090565b6001546001600160a01b031633146105fe5760405162461bcd60e51b815260206004820152601660248201527f4d7573742062652070726f706f736564206f776e65720000000000000000000060448201526064015b60405180910390fd5b60008054336001600160a01b0319808316821784556001805490911690556040516001600160a01b0390921692909183917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a350565b33610661600382610b99565b61067e576040516301fd70a160e51b815260040160405180910390fd5b60008281526002602090815260409182902080546001600160a01b03191633908117909155915191825283917fd8bb190f51a471c0cc88b5df464ee10c29138cce0d70fb36c472d60b414f3b3a91015b60405180910390a25050565b6000806106e686610ac9565b6040517f9e2010360000000000000000000000000000000000000000000000000000000081529091506001600160a01b03821690639e2010369061073490899089908990899060040161132e565b602060405180830381865afa158015610751573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906107759190611315565b9695505050505050565b6000828152600560205260409020546060906001600160a01b0316806107d4576040517f71e8b529000000000000000000000000000000000000000000000000000000008152600481018590526024016105f5565b6040517f6ae5fb3b00000000000000000000000000000000000000000000000000000000815281906001600160a01b03821690636ae5fb3b906108219033908a908a908a90600401611365565b6000604051808303816000875af1158015610840573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f191682016040526107759190810190611393565b33610874600382610b99565b610891576040516301fd70a160e51b815260040160405180910390fd5b600082815260026020908152604080832080546001600160a01b03191690555191825283917fd8bb190f51a471c0cc88b5df464ee10c29138cce0d70fb36c472d60b414f3b3a91016106ce565b60006108eb600383610b99565b92915050565b6108f9610b3d565b80610905600382610b99565b610922576040516301fd70a160e51b815260040160405180910390fd5b61092d600383610be0565b506040516001600160a01b03831681527ff80a1a97fd42251f3c33cda98635e7399253033a6774fe37cd3f650b5282af379060200161045b565b60008061097388610ac9565b6040517f95009f080000000000000000000000000000000000000000000000000000000081529091506001600160a01b038216906395009f08906109c79033908c908c908c908c908c908c9060040161142d565b6020604051808303816000875af11580156109e6573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610a0a9190611315565b98975050505050505050565b610a1e610b3d565b610a2781610bf5565b50565b600080610a3684610ac9565b6040517ff9c45ced0000000000000000000000000000000000000000000000000000000081529091506001600160a01b0382169063f9c45ced90610a809087908790600401611496565b602060405180830381865afa158015610a9d573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610ac19190611315565b949350505050565b6000818152600260205260408120546001600160a01b031680610b0a576040516339910a6760e01b81526001600160a01b03821660048201526024016105f5565b610b15600382610b99565b6108eb576040516339910a6760e01b81526001600160a01b03821660048201526024016105f5565b6000546001600160a01b03163314610b975760405162461bcd60e51b815260206004820152601660248201527f4f6e6c792063616c6c61626c65206279206f776e65720000000000000000000060448201526064016105f5565b565b6001600160a01b038116600090815260018301602052604081205415155b9392505050565b6000610bb7836001600160a01b038416610c9e565b60606000610bb783610ced565b6000610bb7836001600160a01b038416610d49565b336001600160a01b03821603610c4d5760405162461bcd60e51b815260206004820152601760248201527f43616e6e6f74207472616e7366657220746f2073656c6600000000000000000060448201526064016105f5565b600180546001600160a01b0319166001600160a01b0383811691821790925560008054604051929316917fed8889f560326eb138920d842192f0eb3dd22b4f139c87a2c57538e05bae12789190a350565b6000818152600183016020526040812054610ce5575081546001818101845560008481526020808220909301849055845484825282860190935260409020919091556108eb565b5060006108eb565b606081600001805480602002602001604051908101604052809291908181526020018280548015610d3d57602002820191906000526020600020905b815481526020019060010190808311610d29575b50505050509050919050565b60008181526001830160205260408120548015610e32576000610d6d6001836114af565b8554909150600090610d81906001906114af565b9050818114610de6576000866000018281548110610da157610da16114d0565b9060005260206000200154905080876000018481548110610dc457610dc46114d0565b6000918252602080832090910192909255918252600188019052604090208390555b8554869080610df757610df76114e6565b6001900381819060005260206000200160009055905585600101600086815260200190815260200160002060009055600193505050506108eb565b60009150506108eb565b6000815180845260005b81811015610e6257602081850181015186830182015201610e46565b506000602082860101526020601f19601f83011685010191505092915050565b602081526000610bb76020830184610e3c565b80356001600160a01b0381168114610eac57600080fd5b919050565b600060208284031215610ec357600080fd5b610bb782610e95565b803561ffff81168114610eac57600080fd5b803562ffffff81168114610eac57600080fd5b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff81118282101715610f3057610f30610ef1565b604052919050565b600082601f830112610f4957600080fd5b813567ffffffffffffffff811115610f6357610f63610ef1565b610f76601f8201601f1916602001610f07565b818152846020838601011115610f8b57600080fd5b816020850160208301376000918101602001919091529392505050565b60008060008060808587031215610fbe57600080fd5b84359350610fce60208601610ecc565b9250610fdc60408601610ede565b9150606085013567ffffffffffffffff811115610ff857600080fd5b61100487828801610f38565b91505092959194509250565b60008060006060848603121561102557600080fd5b8335925061103560208501610e95565b9150604084013567ffffffffffffffff81111561105157600080fd5b61105d86828701610f38565b9150509250925092565b6020808252825182820181905260009190848201906040850190845b818110156110a85783516001600160a01b031683529284019291840191600101611083565b50909695505050505050565b6000602082840312156110c657600080fd5b5035919050565b803563ffffffff81168114610eac57600080fd5b600080600080608085870312156110f757600080fd5b84359350611107602086016110cd565b9250604085013567ffffffffffffffff8082111561112457600080fd5b61113088838901610f38565b9350606087013591508082111561114657600080fd5b5061100487828801610f38565b60008060006060848603121561116857600080fd5b8335925060208401359150604084013567ffffffffffffffff81111561105157600080fd5b6020808252825182820181905260009190848201906040850190845b818110156110a8578351835292840192918401916001016111a9565b60008060008060008060c087890312156111de57600080fd5b863595506111ee60208801610ecc565b94506111fc60408801610ede565b935061120a606088016110cd565b9250608087013567ffffffffffffffff8082111561122757600080fd5b6112338a838b01610f38565b935060a089013591508082111561124957600080fd5b5061125689828a01610f38565b9150509295509295509295565b6000806040838503121561127657600080fd5b82359150602083013567ffffffffffffffff81111561129457600080fd5b6112a085828601610f38565b9150509250929050565b6000602082840312156112bc57600080fd5b815160ff81168114610bb757600080fd5b6001600160a01b038616815284602082015261ffff8416604082015262ffffff8316606082015260a06080820152600061130a60a0830184610e3c565b979650505050505050565b60006020828403121561132757600080fd5b5051919050565b84815263ffffffff841660208201526080604082015260006113536080830185610e3c565b828103606084015261130a8185610e3c565b6001600160a01b03851681528360208201528260408201526080606082015260006107756080830184610e3c565b600060208083850312156113a657600080fd5b825167ffffffffffffffff808211156113be57600080fd5b818501915085601f8301126113d257600080fd5b8151818111156113e4576113e4610ef1565b8060051b91506113f5848301610f07565b818152918301840191848101908884111561140f57600080fd5b938501935b83851015610a0a57845182529385019390850190611414565b6001600160a01b038816815286602082015261ffff8616604082015262ffffff8516606082015263ffffffff8416608082015260e060a0820152600061147660e0830185610e3c565b82810360c08401526114888185610e3c565b9a9950505050505050505050565b828152604060208201526000610ac16040830184610e3c565b818103818111156108eb57634e487b7160e01b600052601160045260246000fd5b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052603160045260246000fdfea164736f6c6343000813000a",
-}
-
-var VRFRouterABI = VRFRouterMetaData.ABI
-
-var VRFRouterBin = VRFRouterMetaData.Bin
-
-func DeployVRFRouter(auth *bind.TransactOpts, backend bind.ContractBackend) (common.Address, *types.Transaction, *VRFRouter, error) {
-	parsed, err := VRFRouterMetaData.GetAbi()
-	if err != nil {
-		return common.Address{}, nil, nil, err
-	}
-	if parsed == nil {
-		return common.Address{}, nil, nil, errors.New("GetABI returned nil")
-	}
-
-	address, tx, contract, err := bind.DeployContract(auth, *parsed, common.FromHex(VRFRouterBin), backend)
-	if err != nil {
-		return common.Address{}, nil, nil, err
-	}
-	return address, tx, &VRFRouter{VRFRouterCaller: VRFRouterCaller{contract: contract}, VRFRouterTransactor: VRFRouterTransactor{contract: contract}, VRFRouterFilterer: VRFRouterFilterer{contract: contract}}, nil
-}
-
-type VRFRouter struct {
-	VRFRouterCaller
-	VRFRouterTransactor
-	VRFRouterFilterer
-}
-
-type VRFRouterCaller struct {
-	contract *bind.BoundContract
-}
-
-type VRFRouterTransactor struct {
-	contract *bind.BoundContract
-}
-
-type VRFRouterFilterer struct {
-	contract *bind.BoundContract
-}
-
-type VRFRouterSession struct {
-	Contract     *VRFRouter
-	CallOpts     bind.CallOpts
-	TransactOpts bind.TransactOpts
-}
-
-type VRFRouterCallerSession struct {
-	Contract *VRFRouterCaller
-	CallOpts bind.CallOpts
-}
-
-type VRFRouterTransactorSession struct {
-	Contract     *VRFRouterTransactor
-	TransactOpts bind.TransactOpts
-}
-
-type VRFRouterRaw struct {
-	Contract *VRFRouter
-}
-
-type VRFRouterCallerRaw struct {
-	Contract *VRFRouterCaller
-}
-
-type VRFRouterTransactorRaw struct {
-	Contract *VRFRouterTransactor
-}
-
-func NewVRFRouter(address common.Address, backend bind.ContractBackend) (*VRFRouter, error) {
-	contract, err := bindVRFRouter(address, backend, backend, backend)
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouter{VRFRouterCaller: VRFRouterCaller{contract: contract}, VRFRouterTransactor: VRFRouterTransactor{contract: contract}, VRFRouterFilterer: VRFRouterFilterer{contract: contract}}, nil
-}
-
-func NewVRFRouterCaller(address common.Address, caller bind.ContractCaller) (*VRFRouterCaller, error) {
-	contract, err := bindVRFRouter(address, caller, nil, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterCaller{contract: contract}, nil
-}
-
-func NewVRFRouterTransactor(address common.Address, transactor bind.ContractTransactor) (*VRFRouterTransactor, error) {
-	contract, err := bindVRFRouter(address, nil, transactor, nil)
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterTransactor{contract: contract}, nil
-}
-
-func NewVRFRouterFilterer(address common.Address, filterer bind.ContractFilterer) (*VRFRouterFilterer, error) {
-	contract, err := bindVRFRouter(address, nil, nil, filterer)
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterFilterer{contract: contract}, nil
-}
-
-func bindVRFRouter(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := abi.JSON(strings.NewReader(VRFRouterABI))
-	if err != nil {
-		return nil, err
-	}
-	return bind.NewBoundContract(address, parsed, caller, transactor, filterer), nil
-}
-
-func (_VRFRouter *VRFRouterRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _VRFRouter.Contract.VRFRouterCaller.contract.Call(opts, result, method, params...)
-}
-
-func (_VRFRouter *VRFRouterRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _VRFRouter.Contract.VRFRouterTransactor.contract.Transfer(opts)
-}
-
-func (_VRFRouter *VRFRouterRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _VRFRouter.Contract.VRFRouterTransactor.contract.Transact(opts, method, params...)
-}
-
-func (_VRFRouter *VRFRouterCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _VRFRouter.Contract.contract.Call(opts, result, method, params...)
-}
-
-func (_VRFRouter *VRFRouterTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _VRFRouter.Contract.contract.Transfer(opts)
-}
-
-func (_VRFRouter *VRFRouterTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _VRFRouter.Contract.contract.Transact(opts, method, params...)
-}
-
-func (_VRFRouter *VRFRouterCaller) GetCoordinators(opts *bind.CallOpts) ([]common.Address, error) {
-	var out []interface{}
-	err := _VRFRouter.contract.Call(opts, &out, "getCoordinators")
-
-	if err != nil {
-		return *new([]common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new([]common.Address)).(*[]common.Address)
-
-	return out0, err
-
-}
-
-func (_VRFRouter *VRFRouterSession) GetCoordinators() ([]common.Address, error) {
-	return _VRFRouter.Contract.GetCoordinators(&_VRFRouter.CallOpts)
-}
-
-func (_VRFRouter *VRFRouterCallerSession) GetCoordinators() ([]common.Address, error) {
-	return _VRFRouter.Contract.GetCoordinators(&_VRFRouter.CallOpts)
-}
-
-func (_VRFRouter *VRFRouterCaller) GetFee(opts *bind.CallOpts, subID *big.Int, extraArgs []byte) (*big.Int, error) {
-	var out []interface{}
-	err := _VRFRouter.contract.Call(opts, &out, "getFee", subID, extraArgs)
-
-	if err != nil {
-		return *new(*big.Int), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
-
-	return out0, err
-
-}
-
-func (_VRFRouter *VRFRouterSession) GetFee(subID *big.Int, extraArgs []byte) (*big.Int, error) {
-	return _VRFRouter.Contract.GetFee(&_VRFRouter.CallOpts, subID, extraArgs)
-}
-
-func (_VRFRouter *VRFRouterCallerSession) GetFee(subID *big.Int, extraArgs []byte) (*big.Int, error) {
-	return _VRFRouter.Contract.GetFee(&_VRFRouter.CallOpts, subID, extraArgs)
-}
-
-func (_VRFRouter *VRFRouterCaller) GetFulfillmentFee(opts *bind.CallOpts, subID *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*big.Int, error) {
-	var out []interface{}
-	err := _VRFRouter.contract.Call(opts, &out, "getFulfillmentFee", subID, callbackGasLimit, arguments, extraArgs)
-
-	if err != nil {
-		return *new(*big.Int), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
-
-	return out0, err
-
-}
-
-func (_VRFRouter *VRFRouterSession) GetFulfillmentFee(subID *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*big.Int, error) {
-	return _VRFRouter.Contract.GetFulfillmentFee(&_VRFRouter.CallOpts, subID, callbackGasLimit, arguments, extraArgs)
-}
-
-func (_VRFRouter *VRFRouterCallerSession) GetFulfillmentFee(subID *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*big.Int, error) {
-	return _VRFRouter.Contract.GetFulfillmentFee(&_VRFRouter.CallOpts, subID, callbackGasLimit, arguments, extraArgs)
-}
-
-func (_VRFRouter *VRFRouterCaller) GetRoute(opts *bind.CallOpts, subID *big.Int) (common.Address, error) {
-	var out []interface{}
-	err := _VRFRouter.contract.Call(opts, &out, "getRoute", subID)
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
-}
-
-func (_VRFRouter *VRFRouterSession) GetRoute(subID *big.Int) (common.Address, error) {
-	return _VRFRouter.Contract.GetRoute(&_VRFRouter.CallOpts, subID)
-}
-
-func (_VRFRouter *VRFRouterCallerSession) GetRoute(subID *big.Int) (common.Address, error) {
-	return _VRFRouter.Contract.GetRoute(&_VRFRouter.CallOpts, subID)
-}
-
-func (_VRFRouter *VRFRouterCaller) IsCoordinatorRegistered(opts *bind.CallOpts, coordinatorAddress common.Address) (bool, error) {
-	var out []interface{}
-	err := _VRFRouter.contract.Call(opts, &out, "isCoordinatorRegistered", coordinatorAddress)
-
-	if err != nil {
-		return *new(bool), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-
-	return out0, err
-
-}
-
-func (_VRFRouter *VRFRouterSession) IsCoordinatorRegistered(coordinatorAddress common.Address) (bool, error) {
-	return _VRFRouter.Contract.IsCoordinatorRegistered(&_VRFRouter.CallOpts, coordinatorAddress)
-}
-
-func (_VRFRouter *VRFRouterCallerSession) IsCoordinatorRegistered(coordinatorAddress common.Address) (bool, error) {
-	return _VRFRouter.Contract.IsCoordinatorRegistered(&_VRFRouter.CallOpts, coordinatorAddress)
-}
-
-func (_VRFRouter *VRFRouterCaller) Owner(opts *bind.CallOpts) (common.Address, error) {
-	var out []interface{}
-	err := _VRFRouter.contract.Call(opts, &out, "owner")
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
-}
-
-func (_VRFRouter *VRFRouterSession) Owner() (common.Address, error) {
-	return _VRFRouter.Contract.Owner(&_VRFRouter.CallOpts)
-}
-
-func (_VRFRouter *VRFRouterCallerSession) Owner() (common.Address, error) {
-	return _VRFRouter.Contract.Owner(&_VRFRouter.CallOpts)
-}
-
-func (_VRFRouter *VRFRouterCaller) SRedemptionRoutes(opts *bind.CallOpts, arg0 *big.Int) (common.Address, error) {
-	var out []interface{}
-	err := _VRFRouter.contract.Call(opts, &out, "s_redemptionRoutes", arg0)
-
-	if err != nil {
-		return *new(common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-
-	return out0, err
-
-}
-
-func (_VRFRouter *VRFRouterSession) SRedemptionRoutes(arg0 *big.Int) (common.Address, error) {
-	return _VRFRouter.Contract.SRedemptionRoutes(&_VRFRouter.CallOpts, arg0)
-}
-
-func (_VRFRouter *VRFRouterCallerSession) SRedemptionRoutes(arg0 *big.Int) (common.Address, error) {
-	return _VRFRouter.Contract.SRedemptionRoutes(&_VRFRouter.CallOpts, arg0)
-}
-
-func (_VRFRouter *VRFRouterCaller) TypeAndVersion(opts *bind.CallOpts) (string, error) {
-	var out []interface{}
-	err := _VRFRouter.contract.Call(opts, &out, "typeAndVersion")
-
-	if err != nil {
-		return *new(string), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-
-	return out0, err
-
-}
-
-func (_VRFRouter *VRFRouterSession) TypeAndVersion() (string, error) {
-	return _VRFRouter.Contract.TypeAndVersion(&_VRFRouter.CallOpts)
-}
-
-func (_VRFRouter *VRFRouterCallerSession) TypeAndVersion() (string, error) {
-	return _VRFRouter.Contract.TypeAndVersion(&_VRFRouter.CallOpts)
-}
-
-func (_VRFRouter *VRFRouterTransactor) AcceptOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _VRFRouter.contract.Transact(opts, "acceptOwnership")
-}
-
-func (_VRFRouter *VRFRouterSession) AcceptOwnership() (*types.Transaction, error) {
-	return _VRFRouter.Contract.AcceptOwnership(&_VRFRouter.TransactOpts)
-}
-
-func (_VRFRouter *VRFRouterTransactorSession) AcceptOwnership() (*types.Transaction, error) {
-	return _VRFRouter.Contract.AcceptOwnership(&_VRFRouter.TransactOpts)
-}
-
-func (_VRFRouter *VRFRouterTransactor) CallWithExactGasEvenIfTargetIsNoContract(opts *bind.TransactOpts, gasAmount *big.Int, target common.Address, data []byte) (*types.Transaction, error) {
-	return _VRFRouter.contract.Transact(opts, "callWithExactGasEvenIfTargetIsNoContract", gasAmount, target, data)
-}
-
-func (_VRFRouter *VRFRouterSession) CallWithExactGasEvenIfTargetIsNoContract(gasAmount *big.Int, target common.Address, data []byte) (*types.Transaction, error) {
-	return _VRFRouter.Contract.CallWithExactGasEvenIfTargetIsNoContract(&_VRFRouter.TransactOpts, gasAmount, target, data)
-}
-
-func (_VRFRouter *VRFRouterTransactorSession) CallWithExactGasEvenIfTargetIsNoContract(gasAmount *big.Int, target common.Address, data []byte) (*types.Transaction, error) {
-	return _VRFRouter.Contract.CallWithExactGasEvenIfTargetIsNoContract(&_VRFRouter.TransactOpts, gasAmount, target, data)
-}
-
-func (_VRFRouter *VRFRouterTransactor) DeregisterCoordinator(opts *bind.TransactOpts, coordinatorAddress common.Address) (*types.Transaction, error) {
-	return _VRFRouter.contract.Transact(opts, "deregisterCoordinator", coordinatorAddress)
-}
-
-func (_VRFRouter *VRFRouterSession) DeregisterCoordinator(coordinatorAddress common.Address) (*types.Transaction, error) {
-	return _VRFRouter.Contract.DeregisterCoordinator(&_VRFRouter.TransactOpts, coordinatorAddress)
-}
-
-func (_VRFRouter *VRFRouterTransactorSession) DeregisterCoordinator(coordinatorAddress common.Address) (*types.Transaction, error) {
-	return _VRFRouter.Contract.DeregisterCoordinator(&_VRFRouter.TransactOpts, coordinatorAddress)
-}
-
-func (_VRFRouter *VRFRouterTransactor) RedeemRandomness(opts *bind.TransactOpts, subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.contract.Transact(opts, "redeemRandomness", subID, requestID, extraArgs)
-}
-
-func (_VRFRouter *VRFRouterSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.Contract.RedeemRandomness(&_VRFRouter.TransactOpts, subID, requestID, extraArgs)
-}
-
-func (_VRFRouter *VRFRouterTransactorSession) RedeemRandomness(subID *big.Int, requestID *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.Contract.RedeemRandomness(&_VRFRouter.TransactOpts, subID, requestID, extraArgs)
-}
-
-func (_VRFRouter *VRFRouterTransactor) RegisterCoordinator(opts *bind.TransactOpts, coordinatorAddress common.Address) (*types.Transaction, error) {
-	return _VRFRouter.contract.Transact(opts, "registerCoordinator", coordinatorAddress)
-}
-
-func (_VRFRouter *VRFRouterSession) RegisterCoordinator(coordinatorAddress common.Address) (*types.Transaction, error) {
-	return _VRFRouter.Contract.RegisterCoordinator(&_VRFRouter.TransactOpts, coordinatorAddress)
-}
-
-func (_VRFRouter *VRFRouterTransactorSession) RegisterCoordinator(coordinatorAddress common.Address) (*types.Transaction, error) {
-	return _VRFRouter.Contract.RegisterCoordinator(&_VRFRouter.TransactOpts, coordinatorAddress)
-}
-
-func (_VRFRouter *VRFRouterTransactor) RequestRandomness(opts *bind.TransactOpts, subID *big.Int, numWords uint16, confDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.contract.Transact(opts, "requestRandomness", subID, numWords, confDelay, extraArgs)
-}
-
-func (_VRFRouter *VRFRouterSession) RequestRandomness(subID *big.Int, numWords uint16, confDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.Contract.RequestRandomness(&_VRFRouter.TransactOpts, subID, numWords, confDelay, extraArgs)
-}
-
-func (_VRFRouter *VRFRouterTransactorSession) RequestRandomness(subID *big.Int, numWords uint16, confDelay *big.Int, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.Contract.RequestRandomness(&_VRFRouter.TransactOpts, subID, numWords, confDelay, extraArgs)
-}
-
-func (_VRFRouter *VRFRouterTransactor) RequestRandomnessFulfillment(opts *bind.TransactOpts, subID *big.Int, numWords uint16, confDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.contract.Transact(opts, "requestRandomnessFulfillment", subID, numWords, confDelay, callbackGasLimit, arguments, extraArgs)
-}
-
-func (_VRFRouter *VRFRouterSession) RequestRandomnessFulfillment(subID *big.Int, numWords uint16, confDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.Contract.RequestRandomnessFulfillment(&_VRFRouter.TransactOpts, subID, numWords, confDelay, callbackGasLimit, arguments, extraArgs)
-}
-
-func (_VRFRouter *VRFRouterTransactorSession) RequestRandomnessFulfillment(subID *big.Int, numWords uint16, confDelay *big.Int, callbackGasLimit uint32, arguments []byte, extraArgs []byte) (*types.Transaction, error) {
-	return _VRFRouter.Contract.RequestRandomnessFulfillment(&_VRFRouter.TransactOpts, subID, numWords, confDelay, callbackGasLimit, arguments, extraArgs)
-}
-
-func (_VRFRouter *VRFRouterTransactor) ResetRoute(opts *bind.TransactOpts, subID *big.Int) (*types.Transaction, error) {
-	return _VRFRouter.contract.Transact(opts, "resetRoute", subID)
-}
-
-func (_VRFRouter *VRFRouterSession) ResetRoute(subID *big.Int) (*types.Transaction, error) {
-	return _VRFRouter.Contract.ResetRoute(&_VRFRouter.TransactOpts, subID)
-}
-
-func (_VRFRouter *VRFRouterTransactorSession) ResetRoute(subID *big.Int) (*types.Transaction, error) {
-	return _VRFRouter.Contract.ResetRoute(&_VRFRouter.TransactOpts, subID)
-}
-
-func (_VRFRouter *VRFRouterTransactor) SetRoute(opts *bind.TransactOpts, subID *big.Int) (*types.Transaction, error) {
-	return _VRFRouter.contract.Transact(opts, "setRoute", subID)
-}
-
-func (_VRFRouter *VRFRouterSession) SetRoute(subID *big.Int) (*types.Transaction, error) {
-	return _VRFRouter.Contract.SetRoute(&_VRFRouter.TransactOpts, subID)
-}
-
-func (_VRFRouter *VRFRouterTransactorSession) SetRoute(subID *big.Int) (*types.Transaction, error) {
-	return _VRFRouter.Contract.SetRoute(&_VRFRouter.TransactOpts, subID)
-}
-
-func (_VRFRouter *VRFRouterTransactor) TransferOwnership(opts *bind.TransactOpts, to common.Address) (*types.Transaction, error) {
-	return _VRFRouter.contract.Transact(opts, "transferOwnership", to)
-}
-
-func (_VRFRouter *VRFRouterSession) TransferOwnership(to common.Address) (*types.Transaction, error) {
-	return _VRFRouter.Contract.TransferOwnership(&_VRFRouter.TransactOpts, to)
-}
-
-func (_VRFRouter *VRFRouterTransactorSession) TransferOwnership(to common.Address) (*types.Transaction, error) {
-	return _VRFRouter.Contract.TransferOwnership(&_VRFRouter.TransactOpts, to)
-}
-
-type VRFRouterCoordinatorDeregisteredIterator struct {
-	Event *VRFRouterCoordinatorDeregistered
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterCoordinatorDeregisteredIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterCoordinatorDeregistered)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterCoordinatorDeregistered)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterCoordinatorDeregisteredIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterCoordinatorDeregisteredIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterCoordinatorDeregistered struct {
-	CoordinatorAddress common.Address
-	Raw                types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterCoordinatorDeregistered(opts *bind.FilterOpts) (*VRFRouterCoordinatorDeregisteredIterator, error) {
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "CoordinatorDeregistered")
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterCoordinatorDeregisteredIterator{contract: _VRFRouter.contract, event: "CoordinatorDeregistered", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchCoordinatorDeregistered(opts *bind.WatchOpts, sink chan<- *VRFRouterCoordinatorDeregistered) (event.Subscription, error) {
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "CoordinatorDeregistered")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterCoordinatorDeregistered)
-				if err := _VRFRouter.contract.UnpackLog(event, "CoordinatorDeregistered", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseCoordinatorDeregistered(log types.Log) (*VRFRouterCoordinatorDeregistered, error) {
-	event := new(VRFRouterCoordinatorDeregistered)
-	if err := _VRFRouter.contract.UnpackLog(event, "CoordinatorDeregistered", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterCoordinatorRegisteredIterator struct {
-	Event *VRFRouterCoordinatorRegistered
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterCoordinatorRegisteredIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterCoordinatorRegistered)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterCoordinatorRegistered)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterCoordinatorRegisteredIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterCoordinatorRegisteredIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterCoordinatorRegistered struct {
-	CoordinatorAddress common.Address
-	Raw                types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterCoordinatorRegistered(opts *bind.FilterOpts) (*VRFRouterCoordinatorRegisteredIterator, error) {
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "CoordinatorRegistered")
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterCoordinatorRegisteredIterator{contract: _VRFRouter.contract, event: "CoordinatorRegistered", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchCoordinatorRegistered(opts *bind.WatchOpts, sink chan<- *VRFRouterCoordinatorRegistered) (event.Subscription, error) {
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "CoordinatorRegistered")
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterCoordinatorRegistered)
-				if err := _VRFRouter.contract.UnpackLog(event, "CoordinatorRegistered", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseCoordinatorRegistered(log types.Log) (*VRFRouterCoordinatorRegistered, error) {
-	event := new(VRFRouterCoordinatorRegistered)
-	if err := _VRFRouter.contract.UnpackLog(event, "CoordinatorRegistered", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterOwnershipTransferRequestedIterator struct {
-	Event *VRFRouterOwnershipTransferRequested
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterOwnershipTransferRequestedIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterOwnershipTransferRequested)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterOwnershipTransferRequested)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterOwnershipTransferRequestedIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterOwnershipTransferRequestedIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterOwnershipTransferRequested struct {
-	From common.Address
-	To   common.Address
-	Raw  types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterOwnershipTransferRequested(opts *bind.FilterOpts, from []common.Address, to []common.Address) (*VRFRouterOwnershipTransferRequestedIterator, error) {
-
-	var fromRule []interface{}
-	for _, fromItem := range from {
-		fromRule = append(fromRule, fromItem)
-	}
-	var toRule []interface{}
-	for _, toItem := range to {
-		toRule = append(toRule, toItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "OwnershipTransferRequested", fromRule, toRule)
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterOwnershipTransferRequestedIterator{contract: _VRFRouter.contract, event: "OwnershipTransferRequested", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchOwnershipTransferRequested(opts *bind.WatchOpts, sink chan<- *VRFRouterOwnershipTransferRequested, from []common.Address, to []common.Address) (event.Subscription, error) {
-
-	var fromRule []interface{}
-	for _, fromItem := range from {
-		fromRule = append(fromRule, fromItem)
-	}
-	var toRule []interface{}
-	for _, toItem := range to {
-		toRule = append(toRule, toItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "OwnershipTransferRequested", fromRule, toRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterOwnershipTransferRequested)
-				if err := _VRFRouter.contract.UnpackLog(event, "OwnershipTransferRequested", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseOwnershipTransferRequested(log types.Log) (*VRFRouterOwnershipTransferRequested, error) {
-	event := new(VRFRouterOwnershipTransferRequested)
-	if err := _VRFRouter.contract.UnpackLog(event, "OwnershipTransferRequested", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterOwnershipTransferredIterator struct {
-	Event *VRFRouterOwnershipTransferred
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterOwnershipTransferredIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterOwnershipTransferred)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterOwnershipTransferred)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterOwnershipTransferredIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterOwnershipTransferredIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterOwnershipTransferred struct {
-	From common.Address
-	To   common.Address
-	Raw  types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, from []common.Address, to []common.Address) (*VRFRouterOwnershipTransferredIterator, error) {
-
-	var fromRule []interface{}
-	for _, fromItem := range from {
-		fromRule = append(fromRule, fromItem)
-	}
-	var toRule []interface{}
-	for _, toItem := range to {
-		toRule = append(toRule, toItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "OwnershipTransferred", fromRule, toRule)
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterOwnershipTransferredIterator{contract: _VRFRouter.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *VRFRouterOwnershipTransferred, from []common.Address, to []common.Address) (event.Subscription, error) {
-
-	var fromRule []interface{}
-	for _, fromItem := range from {
-		fromRule = append(fromRule, fromItem)
-	}
-	var toRule []interface{}
-	for _, toItem := range to {
-		toRule = append(toRule, toItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "OwnershipTransferred", fromRule, toRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterOwnershipTransferred)
-				if err := _VRFRouter.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseOwnershipTransferred(log types.Log) (*VRFRouterOwnershipTransferred, error) {
-	event := new(VRFRouterOwnershipTransferred)
-	if err := _VRFRouter.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-type VRFRouterRouteSetIterator struct {
-	Event *VRFRouterRouteSet
-
-	contract *bind.BoundContract
-	event    string
-
-	logs chan types.Log
-	sub  ethereum.Subscription
-	done bool
-	fail error
-}
-
-func (it *VRFRouterRouteSetIterator) Next() bool {
-
-	if it.fail != nil {
-		return false
-	}
-
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(VRFRouterRouteSet)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-
-	select {
-	case log := <-it.logs:
-		it.Event = new(VRFRouterRouteSet)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-func (it *VRFRouterRouteSetIterator) Error() error {
-	return it.fail
-}
-
-func (it *VRFRouterRouteSetIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-type VRFRouterRouteSet struct {
-	SubID              *big.Int
-	CoordinatorAddress common.Address
-	Raw                types.Log
-}
-
-func (_VRFRouter *VRFRouterFilterer) FilterRouteSet(opts *bind.FilterOpts, subID []*big.Int) (*VRFRouterRouteSetIterator, error) {
-
-	var subIDRule []interface{}
-	for _, subIDItem := range subID {
-		subIDRule = append(subIDRule, subIDItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.FilterLogs(opts, "RouteSet", subIDRule)
-	if err != nil {
-		return nil, err
-	}
-	return &VRFRouterRouteSetIterator{contract: _VRFRouter.contract, event: "RouteSet", logs: logs, sub: sub}, nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) WatchRouteSet(opts *bind.WatchOpts, sink chan<- *VRFRouterRouteSet, subID []*big.Int) (event.Subscription, error) {
-
-	var subIDRule []interface{}
-	for _, subIDItem := range subID {
-		subIDRule = append(subIDRule, subIDItem)
-	}
-
-	logs, sub, err := _VRFRouter.contract.WatchLogs(opts, "RouteSet", subIDRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-
-				event := new(VRFRouterRouteSet)
-				if err := _VRFRouter.contract.UnpackLog(event, "RouteSet", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-func (_VRFRouter *VRFRouterFilterer) ParseRouteSet(log types.Log) (*VRFRouterRouteSet, error) {
-	event := new(VRFRouterRouteSet)
-	if err := _VRFRouter.contract.UnpackLog(event, "RouteSet", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
