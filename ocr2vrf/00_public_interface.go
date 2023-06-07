@@ -4,7 +4,7 @@ import (
 	"go.uber.org/multierr"
 
 	"github.com/pkg/errors"
-	offchainreporting "github.com/smartcontractkit/libocr/offchainreporting2"
+	offchainreporting "github.com/smartcontractkit/libocr/offchainreporting2plus"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
 	"github.com/smartcontractkit/ocr2vrf/internal/util"
@@ -52,7 +52,7 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 		vrfReportingPluginFactory = a.VRFReportingPluginFactoryDecorator(vrfReportingPluginFactory)
 	}
 
-	deployedDKG, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
+	deployedDKG, err := offchainreporting.NewOracle(offchainreporting.OCR2OracleArgs{
 		BinaryNetworkEndpointFactory: a.BinaryNetworkEndpointFactory,
 		V2Bootstrappers:              a.V2Bootstrappers,
 		ContractConfigTracker:        a.DKGContractConfigTracker,
@@ -74,7 +74,7 @@ func NewOCR2VRF(a DKGVRFArgs) (*OCR2VRF, error) {
 		confirmationDelays[d] = struct{}{}
 	}
 
-	deployedVRF, err := offchainreporting.NewOracle(offchainreporting.OracleArgs{
+	deployedVRF, err := offchainreporting.NewOracle(offchainreporting.OCR2OracleArgs{
 		BinaryNetworkEndpointFactory: a.BinaryNetworkEndpointFactory,
 		V2Bootstrappers:              a.V2Bootstrappers,
 		ContractConfigTracker:        a.VRFContractConfigTracker,

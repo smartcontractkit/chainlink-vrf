@@ -3,7 +3,7 @@ package types
 import (
 	"context"
 
-	ocr_types "github.com/smartcontractkit/libocr/offchainreporting2/types"
+	ocr_types "github.com/smartcontractkit/libocr/offchainreporting2plus/types"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/types/hash"
