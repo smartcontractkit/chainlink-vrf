@@ -107,6 +107,7 @@ func (e *EthereumReportSerializer) ConvertToBeaconReport(
 			ConfirmationDelay: big.NewInt(int64(output.ConfirmationDelay)),
 			VrfOutput:         vrfProof,
 			Callbacks:         callbacks,
+			ShouldStore:       output.ShouldStore,
 		}
 		vrfOutputs = append(vrfOutputs, vrfOutput)
 	}
@@ -167,6 +168,7 @@ func (e *EthereumReportSerializer) ConvertToAbstractReport(
 			uint32(out.ConfirmationDelay.Uint64()),
 			vrfProof,
 			abstractCallbacks,
+			out.ShouldStore,
 		}
 		abstractOutputs = append(abstractOutputs, abstractOutput)
 	}

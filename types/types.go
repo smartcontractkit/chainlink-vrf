@@ -92,7 +92,8 @@ type AbstractVRFOutput struct {
 
 	VRFProof [32]byte
 
-	Callbacks []AbstractCostedCallbackRequest
+	Callbacks   []AbstractCostedCallbackRequest
+	ShouldStore bool
 }
 
 type AbstractReport struct {
@@ -111,6 +112,7 @@ type Block struct {
 	Height            uint64
 	ConfirmationDelay uint32
 	Hash              common.Hash
+	ShouldStore       bool
 }
 
 type (
