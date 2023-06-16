@@ -109,10 +109,11 @@ func (s *sigRequest) Observation(
 			continue
 		}
 		outputs = append(outputs, &protobuf.VRFResponse{
-			Height:    b.Height,
-			Delay:     b.ConfirmationDelay,
-			Blockhash: append([]byte{}, b.Hash[:]...),
-			Sig:       &protobuf.Signature{Sig: proofBytes[:]},
+			Height:      b.Height,
+			Delay:       b.ConfirmationDelay,
+			Blockhash:   append([]byte{}, b.Hash[:]...),
+			Sig:         &protobuf.Signature{Sig: proofBytes[:]},
+			ShouldStore: b.ShouldStore,
 		})
 	}
 
@@ -376,6 +377,7 @@ func (s *sigRequest) Report(
 			hd.delay,
 			[32]byte{},
 			ccallbacks,
+			false,
 		})
 	}
 	if len(outputs) == 0 {

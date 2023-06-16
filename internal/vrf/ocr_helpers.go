@@ -184,7 +184,7 @@ func (s *sigRequest) parseAndStoreVRFProofs(
 			continue
 		}
 		blockhash := common.BytesToHash(output.Blockhash)
-		b := vrf_types.Block{output.Height, output.Delay, blockhash}
+		b := vrf_types.Block{output.Height, output.Delay, blockhash, output.ShouldStore}
 		hd := heightDelay{b.Height, b.ConfirmationDelay}
 		if _, p := seenBlocks[hd]; p {
 			s.logger.Warn(
@@ -313,6 +313,7 @@ func (s *sigRequest) aggregateOutputs(
 			b.ConfirmationDelay,
 			common.BytesToHash(proof),
 			ccallbacks,
+			b.ShouldStore,
 		})
 	}
 	return
