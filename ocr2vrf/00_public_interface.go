@@ -13,7 +13,7 @@ import (
 )
 
 type OCR2VRF struct {
-	dkg, vrf       *offchainreporting.Oracle
+	dkg, vrf       offchainreporting.Oracle
 	keyTransceiver *vrf.KeyTransceiver
 }
 
