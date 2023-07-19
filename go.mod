@@ -8,7 +8,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/sirupsen/logrus v1.9.3
 	// WARNING: Experimental version of libocr - do not merge until this is officially released!
-	github.com/smartcontractkit/libocr v0.0.0-20230606215712-82b910bef5c1
+	github.com/smartcontractkit/libocr v0.0.0-20230711203850-025a0533d9ac
 	go.dedis.ch/fixbuf v1.0.3
 	go.dedis.ch/kyber/v3 v3.0.13
 	go.uber.org/multierr v1.11.0
