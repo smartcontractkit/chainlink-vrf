@@ -7,8 +7,7 @@ require (
 	github.com/ethereum/go-ethereum v1.10.26
 	github.com/pkg/errors v0.9.1
 	github.com/sirupsen/logrus v1.9.3
-	// WARNING: Experimental version of libocr - do not merge until this is officially released!
-	github.com/smartcontractkit/libocr v0.0.0-20230726142939-a2ab71019d9c
+	github.com/smartcontractkit/libocr v0.0.0-20230802221916-2271752fa829
 	go.dedis.ch/fixbuf v1.0.3
 	go.dedis.ch/kyber/v3 v3.0.13
 	go.uber.org/multierr v1.11.0
