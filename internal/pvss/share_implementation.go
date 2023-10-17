@@ -66,7 +66,6 @@ func (s *share) decrypt(
 func (s *share) verify(
 	group anon.Suite, domainSep []byte, receiver *player_idx.PlayerIdx,
 ) error {
-
 	sharePublicCommitment := receiver.EvalPoint(s.shareSet.coeffCommitments)
 	err := s.shareSet.translation.VerifyTranslation(sharePublicCommitment, s.subKeyTranslation)
 	if err != nil {

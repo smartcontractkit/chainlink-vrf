@@ -36,7 +36,7 @@ func (c *CipherText) Decrypt(
 	group anon.Suite, domainSep []byte, sharePublicCommitment kyber.Point,
 	receiver player_idx.PlayerIdx,
 ) (kyber.Scalar, error) {
-	return c.decrypt(sk, group, domainSep, sharePublicCommitment)
+	return c.DecryptRaw(sk, group, domainSep)
 }
 
 func (c *CipherText) Marshal() ([]byte, error) {

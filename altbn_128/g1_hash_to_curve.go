@@ -199,29 +199,6 @@ func init() {
 	}
 }
 
-func SolidityVRFProof(pubKey, output kyber.Point, hp HashProof) (*vrf.VRFProof, error) {
-	pubKeyB, err := pubKey.MarshalBinary()
-	if err != nil {
-		return nil, err
-	}
-	var pubKeySol vrf.ECCArithmeticG2Point
-	for i := range pubKeySol.P {
-		pubKeySol.P[i] = big.NewInt(0).SetBytes(pubKeyB[i*32 : (i+1)*32])
-	}
-	outputB := LongMarshal(output)
-	var outputSol vrf.ECCArithmeticG1Point
-	for i := range outputSol.P {
-		outputSol.P[i] = big.NewInt(0).SetBytes(outputB[i*32 : (i+1)*32])
-	}
-	proof := vrf.VRFProof{
-		pubKeySol,
-		outputSol,
-		hp.SummandProofs[0].interimValues,
-		hp.SummandProofs[1].interimValues,
-	}
-	return &proof, nil
-}
-
 func (hp *HashProof) EqualFProofs(f1, f2 vrf.HashToCurveFProof) bool {
 	s := hp.SummandProofs
 	return f1.DenomInv.Cmp(s[0].interimValues.DenomInv) == 0 &&

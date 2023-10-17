@@ -76,14 +76,14 @@ func (c *cipherText) marshal() (m []byte, err error) {
 		return nil, err
 	}
 
-	ctl := elGamalBitPairMarshalLength(c.suite)
+	ctl := ElGamalBitPairMarshalLength(c.suite)
 	for _, ct := range c.cipherText {
 		ctm, err := ct.marshal()
 		if err != nil {
 			return nil, errors.Wrap(err, "could not marshal ciphertext")
 		}
 		if len(ctm) != ctl {
-			return nil, errors.Errorf("elGamalBitPair marshaled to wrong length")
+			return nil, errors.Errorf("ElGamalBitPair marshaled to wrong length")
 		}
 		if err := hw(rv, ctm, "ciphertext bit pair"); err != nil {
 			return nil, err
@@ -153,13 +153,13 @@ func unmarshal(suite anon.Suite, byteStream io.Reader) (c *cipherText, err error
 	}
 	numPairs := binary.BigEndian.Uint16(rawNumPairs[:])
 
-	ctm := make([]byte, elGamalBitPairMarshalLength(suite))
-	c.cipherText = make([]*elGamalBitPair, numPairs)
+	ctm := make([]byte, ElGamalBitPairMarshalLength(suite))
+	c.cipherText = make([]*ElGamalBitPair, numPairs)
 	for bpIdx := uint16(0); bpIdx < numPairs; bpIdx++ {
 		if err2 := hr(byteStream, ctm[:], "ciphertext bit pair"); err2 != nil {
 			return nil, err2
 		}
-		c.cipherText[bpIdx], err = unmarshalElGamalBitPair(suite, ctm)
+		c.cipherText[bpIdx], err = UnmarshalElGamalBitPair(suite, ctm)
 		if err != nil {
 			return nil, errors.Wrap(err, "could not unmarshal cipher text")
 		}

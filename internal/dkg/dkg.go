@@ -9,7 +9,7 @@ import (
 	"github.com/pkg/errors"
 
 	"github.com/smartcontractkit/libocr/commontypes"
-	"github.com/smartcontractkit/libocr/offchainreporting2plus/types"
+	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
@@ -24,20 +24,16 @@ import (
 )
 
 type dkg struct {
-	t player_idx.Int
-
+	t    player_idx.Int
 	lock sync.RWMutex
 
 	selfIdx *player_idx.PlayerIdx
-
 	cfgDgst types.ConfigDigest
 
-	keyID contract.KeyID
-
+	keyID       contract.KeyID
 	keyConsumer KeyConsumer
 
-	shareSets shareRecords
-
+	shareSets     shareRecords
 	myShareRecord *shareRecord
 
 	esk  kyber.Scalar
@@ -63,9 +59,6 @@ type dkg struct {
 	logger commontypes.Logger
 
 	randomness io.Reader
-
-	ctx        context.Context
-	cancelFunc context.CancelFunc
 }
 
 var _ types.ReportingPlugin = (*dkg)(nil)
@@ -147,14 +140,12 @@ func (d *dkg) recoverDistributedKeyShare(ctx context.Context) (err error) {
 		return errors.Wrap(err, "could not get key data while recovering key shares")
 	}
 	if d.shareSets.allKeysPresent(kd.Hashes) {
-
 		finalShare, err := d.shareSets.recoverDistributedKeyShare(
 			d.esk, *d.selfIdx, &kd, d.encryptionGroup, d.cfgDgst,
 		)
 		if err != nil {
 			return errors.Wrap(err, "could not recover distribute key from shares")
 		}
-
 		shares, err := d.shareSets.recoverPublicShares(&kd)
 		if err != nil {
 			return errors.Wrap(err, "could not get public shares to report to consumer")
@@ -165,10 +156,8 @@ func (d *dkg) recoverDistributedKeyShare(ctx context.Context) (err error) {
 		}
 		pubShares := make([]kshare.PubShare, len(players))
 		for i, playerIdx := range players {
-
 			pubShares[i] = playerIdx.PubShare(shares[i])
 		}
-
 		keyData := &KeyData{
 			kd.PublicKey,
 			pubShares,
@@ -176,7 +165,6 @@ func (d *dkg) recoverDistributedKeyShare(ctx context.Context) (err error) {
 			d.t,
 			true,
 		}
-
 		d.keyConsumer.NewKey(d.keyID, keyData)
 		d.completed = true
 		d.dkgComplete()

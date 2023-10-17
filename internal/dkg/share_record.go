@@ -6,7 +6,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/smartcontractkit/libocr/offchainreporting2plus/types"
+	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/ciphertext/schnorr"
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
@@ -17,11 +17,9 @@ import (
 )
 
 type shareRecord struct {
-	shareSet *pvss.ShareSet
-
+	shareSet             *pvss.ShareSet
 	marshaledShareRecord []byte
-
-	sig signature
+	sig                  signature
 }
 
 type signature struct{ sig []byte }
@@ -31,7 +29,6 @@ func newShareRecord(
 	domainSep types.ConfigDigest,
 ) (*shareRecord, error) {
 	rv := &shareRecord{shareSet: shareSet}
-
 	if err := rv.sign(suite, domainSep, sk); err != nil {
 		return nil, errors.Wrapf(err, "could not sign new share record")
 	}
@@ -96,7 +93,6 @@ func unmarshalShareRecord(
 
 	sig, data := data[:64], data[64:]
 	dealerPK := dealer.Index(spks).(kyber.Point)
-
 	msg := append(cfgDgst[:], ssBytes...)
 	err = schnorr.Verify(sigSuite, dealerPK, msg, sig)
 	if err != nil {
@@ -126,7 +122,6 @@ func (r *shareRecord) sign(suite schnorr.Suite,
 	if err != nil {
 		return errors.Wrap(err, "could sign share set")
 	}
-
 	pk := suite.Point().Mul(sk, nil)
 
 	if err := schnorr.Verify(suite, pk, msg, r.sig.sig); err != nil {

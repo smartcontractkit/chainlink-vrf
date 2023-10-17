@@ -9,7 +9,7 @@ import (
 	"go.dedis.ch/kyber/v3/sign/anon"
 )
 
-type elGamalBitPair struct {
+type ElGamalBitPair struct {
 	blindingCommitment, cipherTextTerm kyber.Point
 
 	proof bitPairProof
@@ -18,7 +18,7 @@ type elGamalBitPair struct {
 }
 
 func newElGamalBitPair(suite anon.Suite, domainSep []byte, b int, pk kyber.Point,
-) (bp *elGamalBitPair, blindingSecret kyber.Scalar, err error) {
+) (bp *ElGamalBitPair, blindingSecret kyber.Scalar, err error) {
 	if reflect.TypeOf(pk) != reflect.TypeOf(suite.Point()) {
 		return nil, nil, errors.Errorf(
 			"public key (of type %T) does not match group points (of type %T)",
@@ -38,28 +38,18 @@ func newElGamalBitPair(suite anon.Suite, domainSep []byte, b int, pk kyber.Point
 
 		return nil, nil, errors.Wrapf(err, "while constructing encrypted bit pair")
 	}
-	rv := &elGamalBitPair{blindingCommitment, cipherTextTerm, proof, suite}
+	rv := &ElGamalBitPair{blindingCommitment, cipherTextTerm, proof, suite}
 	if err := rv.verify(domainSep, pk); err != nil {
 
-		pkm, err2 := pk.MarshalBinary()
-		if err2 != nil {
-			return nil, nil,
-				errors.Wrapf(
-					err2, "error while marshalling public key in newElGamalBitPair: %s", err,
-				)
-		}
-		return nil, nil,
-			errors.Wrapf(
-				err,
-				"made unverifiable bit pair! domainSep: 0x%x pk: 0x%x %s x: %s",
-				domainSep, pkm, err, x)
+		pkm, err := pk.MarshalBinary()
+		return nil, nil, errors.Wrapf(err, "made unverifiable bit pair! domainSep: 0x%x pk: 0x%x %s x: %s", domainSep, pkm, err, x)
 	}
 	return rv, x, nil
 }
 
 var _ = (&CipherText{}).Verify
 
-func (e *elGamalBitPair) verify(domainSep []byte, encryptionKey kyber.Point) error {
+func (e *ElGamalBitPair) verify(domainSep []byte, encryptionKey kyber.Point) error {
 	pgroup, err := makeProductGroup(e.suite, encryptionKey)
 	if err != nil {
 		return errors.Wrapf(err, "while verifying bit pair encryption")
@@ -68,12 +58,11 @@ func (e *elGamalBitPair) verify(domainSep []byte, encryptionKey kyber.Point) err
 		encryptionKey)
 }
 
-func (e *elGamalBitPair) decrypt(sk kyber.Scalar) (int, error) {
+func (e *ElGamalBitPair) decrypt(sk kyber.Scalar) (int, error) {
 	if reflect.TypeOf(sk) != reflect.TypeOf(e.suite.Scalar()) {
 		return 0, errors.Errorf("need scalar of type %T, got type %T", e.suite.Scalar(), sk)
 	}
 	plainText := e.suite.Point()
-
 	plainText.Sub(e.cipherTextTerm, plainText.Mul(sk, e.blindingCommitment))
 	for i, pt := range memPlainTexts(e.suite) {
 		if pt.Equal(plainText) {
@@ -83,7 +72,7 @@ func (e *elGamalBitPair) decrypt(sk kyber.Scalar) (int, error) {
 	return 0, errors.Errorf("plaintext unknown")
 }
 
-func (e *elGamalBitPair) marshal() (m []byte, err error) {
+func (e *ElGamalBitPair) marshal() (m []byte, err error) {
 	rv := make([][]byte, 3)
 	cursor := 0
 
@@ -107,12 +96,17 @@ func (e *elGamalBitPair) marshal() (m []byte, err error) {
 	return bytes.Join(rv, nil), nil
 }
 
-func unmarshalElGamalBitPair(suite anon.Suite, d []byte,
-) (e *elGamalBitPair, err error) {
-	if len(d) < elGamalBitPairMarshalLength(suite) {
-		return nil, errors.Errorf("marshal data too short to contain elGamalBitPair")
+func (e *ElGamalBitPair) Marshal() (m []byte, err error) {
+	m, err = e.marshal()
+	return
+}
+
+func UnmarshalElGamalBitPair(suite anon.Suite, d []byte,
+) (e *ElGamalBitPair, err error) {
+	if len(d) < ElGamalBitPairMarshalLength(suite) {
+		return nil, errors.Errorf("marshal data too short to contain ElGamalBitPair")
 	}
-	e = &elGamalBitPair{suite: suite}
+	e = &ElGamalBitPair{suite: suite}
 	e.blindingCommitment = suite.Point()
 	pointLen := e.blindingCommitment.MarshalSize()
 
@@ -133,14 +127,14 @@ func unmarshalElGamalBitPair(suite anon.Suite, d []byte,
 	return e, nil
 }
 
-func elGamalBitPairMarshalLength(suite anon.Suite) int {
+func ElGamalBitPairMarshalLength(suite anon.Suite) int {
 	pointLen := suite.PointLen()
 	return pointLen +
 		pointLen +
 		bitPairProofLen(suite)
 }
 
-func (e *elGamalBitPair) equal(e2 *elGamalBitPair) bool {
+func (e *ElGamalBitPair) equal(e2 *ElGamalBitPair) bool {
 	return e.blindingCommitment.Equal(e2.blindingCommitment) &&
 		e.cipherTextTerm.Equal(e2.cipherTextTerm) &&
 		bytes.Equal(e.proof[:], e2.proof[:]) &&

@@ -21,6 +21,4 @@ var TranslatorRegistry = map[string]PubKeyTranslation{
 	"translator from AltBN-128 G₁ to AltBN-128 G₂": &PairingTranslation{
 		&altbn_128.PairingSuite{},
 	},
-
-	"trivial": &TrivialTranslation{},
 }

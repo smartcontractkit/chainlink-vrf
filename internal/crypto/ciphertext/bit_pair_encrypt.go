@@ -7,9 +7,9 @@ import (
 	"go.dedis.ch/kyber/v3/sign/anon"
 )
 
-func encrypt(
+func EncryptRaw(
 	domainSep []byte, group anon.Suite, plaintext []byte, pk kyber.Point,
-) (cipherText []*elGamalBitPair, totalBlindingSecret kyber.Scalar, err error) {
+) (cipherText []*ElGamalBitPair, totalBlindingSecret kyber.Scalar, err error) {
 	if len(plaintext) > plaintextMaxSizeBytes {
 		return nil, nil, errors.Errorf("plaintext longer than 256 bits")
 	}
@@ -49,7 +49,7 @@ func encryptDomainSep(domainSep []byte, pairIdx uint8) []byte {
 	return append(domainSep, pairIdx)
 }
 
-func combinedCipherTexts(cipherText []*elGamalBitPair, s anon.Suite) kyber.Point {
+func combinedCipherTexts(cipherText []*ElGamalBitPair, s anon.Suite) kyber.Point {
 	rv := cipherText[0].cipherTextTerm.Clone().Null()
 	fourPower := s.Scalar().One()
 	two := s.Scalar().Add(fourPower, fourPower)

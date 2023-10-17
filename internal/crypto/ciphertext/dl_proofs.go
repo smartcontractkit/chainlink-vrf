@@ -17,17 +17,14 @@ type dLKnowledgeProof []byte
 func newDLKnowledgeProof(
 	domainSep []byte, group anon.Suite, h kyber.Point, b kyber.Scalar,
 ) (dLKnowledgeProof, error) {
-
 	g, err := change_base_group.NewChangeBaseGroup(group, h)
 	if err != nil {
 		return nil, errors.Wrapf(err, "could not create cyclic group from given generator")
 	}
-
 	rv, err := schnorr.Sign(g, b, domainSep)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to generate knowledge proof")
 	}
-
 	pk := g.Point().Mul(b, nil)
 	msg := domainSep
 	sig := rv

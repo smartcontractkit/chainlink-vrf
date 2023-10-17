@@ -12,7 +12,7 @@ import (
 )
 
 type cipherText struct {
-	cipherText            []*elGamalBitPair
+	cipherText            []*ElGamalBitPair
 	receiver              *player_idx.PlayerIdx
 	encryptionKey         kyber.Point
 	encodesShareProof     dLKnowledgeProof
@@ -32,8 +32,7 @@ func newCipherText(
 		return nil, nil, err
 	}
 	var totalBlindingSecret kyber.Scalar
-
-	rv.cipherText, totalBlindingSecret, err = encrypt(domainSep, group, rawShare, pk)
+	rv.cipherText, totalBlindingSecret, err = EncryptRaw(domainSep, group, rawShare, pk)
 	if err != nil {
 		return nil, nil, errors.Wrapf(err, "could not encrypt secret share")
 	}
@@ -74,7 +73,6 @@ func (c *cipherText) verify(
 			plaintextMaxSizeBytes*4,
 		)
 	}
-
 	combinedBlindingFactors := group.Point().Sub(
 		combinedCipherTexts(c.cipherText, group),
 		sharePublicCommitment,
@@ -83,7 +81,6 @@ func (c *cipherText) verify(
 	if err != nil {
 		return err
 	}
-
 	err = c.encodesShareProof.verify(
 		group, edomain, encryptionPK, combinedBlindingFactors,
 	)
@@ -107,7 +104,6 @@ func (c *cipherText) proveFinalDLKnowledge(
 	domainSep []byte, group anon.Suite, pk kyber.Point,
 	totalBlindingSecret kyber.Scalar,
 ) error {
-
 	dlDomainSep, err := c.cipherTextDomainSep(domainSep)
 	if err != nil {
 		return err

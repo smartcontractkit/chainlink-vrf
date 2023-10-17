@@ -24,6 +24,10 @@ func PlayerIdxs(n Int) (rv []*PlayerIdx, err error) {
 	return rv, nil
 }
 
+func (pi PlayerIdx) GetIdx() Int {
+	return pi.idx
+}
+
 func (pi PlayerIdx) Eval(f *share.PriPoly) kyber.Scalar {
 	pi.mustBeNonZero()
 	return f.Eval(int(pi.idx - 1)).V

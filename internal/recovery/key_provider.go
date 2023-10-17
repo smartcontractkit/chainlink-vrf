@@ -1,4 +1,4 @@
-package vrf
+package recovery
 
 import (
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg"

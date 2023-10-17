@@ -7,7 +7,7 @@ import (
 	"go.dedis.ch/kyber/v3"
 
 	"github.com/smartcontractkit/libocr/commontypes"
-	"github.com/smartcontractkit/libocr/offchainreporting2plus/types"
+	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
@@ -31,14 +31,11 @@ func (d *dkg) recoverShareRecord(report []byte) (r *shareRecord, h hash.Hash, er
 }
 
 type validShareRecords struct {
-	includedDealers map[player_idx.PlayerIdx]bool
-
-	includedHashes hash.Hashes
-
-	validShareCount int
-	players         []*player_idx.PlayerIdx
-	d               *dkg
-
+	includedDealers    map[player_idx.PlayerIdx]bool
+	includedHashes     hash.Hashes
+	validShareCount    int
+	players            []*player_idx.PlayerIdx
+	d                  *dkg
 	aggregatePublicKey kyber.Point
 
 	context context.Context
@@ -92,7 +89,7 @@ func (v *validShareRecords) validateShareRecord(
 }
 
 func (v *validShareRecords) storeValidShareSet(
-	marshaledShareSet []byte,
+	aobs types.AttributedObservation,
 	reportedDealer player_idx.PlayerIdx,
 	shareSet *pvss.ShareSet,
 	h *hash.Hash,
@@ -102,7 +99,7 @@ func (v *validShareRecords) storeValidShareSet(
 	agg := v.aggregatePublicKey.Clone()
 	_ = v.aggregatePublicKey.Add(agg, shareSet.PublicKey())
 	v.includedHashes.Add(*h)
-	go v.persistShares(reportedDealer, marshaledShareSet, *h)
+	go v.persistShares(reportedDealer, aobs.Observation, *h)
 	v.validShareCount++
 }
 
@@ -121,13 +118,12 @@ func (v *validShareRecords) processShareSet(aobs types.AttributedObservation) {
 			commontypes.LogFields{"err": err, "sender": sender})
 		return
 	}
-
 	reportedDealer, err := v.validateShareRecord(r, sender)
 	if err != nil {
 		v.d.logger.Warn("invalid share set", commontypes.LogFields{"err": err})
 		return
 	}
-	v.storeValidShareSet(aobs.Observation, *reportedDealer, r.shareSet, &h)
+	v.storeValidShareSet(aobs, *reportedDealer, r.shareSet, &h)
 }
 
 func (v *validShareRecords) enoughShareSets() bool {
@@ -135,7 +131,6 @@ func (v *validShareRecords) enoughShareSets() bool {
 }
 
 func (v *validShareRecords) report() (rv []byte, err error) {
-
 	kd := &contract.KeyData{v.aggregatePublicKey, v.includedHashes}
 	kb, err := kd.MarshalBinary(v.d.keyID)
 	if err != nil {

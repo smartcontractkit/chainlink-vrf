@@ -9,7 +9,6 @@ import (
 
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 )
 
@@ -26,9 +25,7 @@ func MaybeAddStubCommitMethod(b Client) CommittingClient {
 	return client
 }
 
-type committer interface {
-	Commit() common.Hash
-}
+type committer interface{ Commit() }
 
 type CommittingClient interface {
 	Client
@@ -39,7 +36,7 @@ type noncommittalClient struct{ Client }
 
 var _ CommittingClient = noncommittalClient{}
 
-func (n noncommittalClient) Commit() common.Hash { return common.Hash{} }
+func (n noncommittalClient) Commit() {}
 
 func CheckStatus(
 	ctx context.Context,

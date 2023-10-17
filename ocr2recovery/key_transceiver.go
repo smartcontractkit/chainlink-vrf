@@ -1,26 +1,23 @@
-package vrf
+package ocr2recovery
 
 import (
 	"sync"
 
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
 	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
+	"github.com/smartcontractkit/ocr2vrf/internal/recovery"
 )
 
-type KeyTransceiver struct {
+type keyTransceiver struct {
 	keyID contract.KeyID
 	kd    *dkg.KeyData
 	mu    sync.RWMutex
 }
 
-var _ dkg.KeyConsumer = (*KeyTransceiver)(nil)
-var _ KeyProvider = (*KeyTransceiver)(nil)
+var _ dkg.KeyConsumer = (*keyTransceiver)(nil)
+var _ recovery.KeyProvider = (*keyTransceiver)(nil)
 
-func NewKeyTransceiver(keyID contract.KeyID) *KeyTransceiver {
-	return &KeyTransceiver{keyID, nil, sync.RWMutex{}}
-}
-
-func (kt *KeyTransceiver) KeyInvalidated(kID contract.KeyID) {
+func (kt *keyTransceiver) KeyInvalidated(kID contract.KeyID) {
 
 	kt.mu.Lock()
 	defer kt.mu.Unlock()
@@ -30,7 +27,7 @@ func (kt *KeyTransceiver) KeyInvalidated(kID contract.KeyID) {
 	}
 }
 
-func (kt *KeyTransceiver) NewKey(kID contract.KeyID, kd *dkg.KeyData) {
+func (kt *keyTransceiver) NewKey(kID contract.KeyID, kd *dkg.KeyData) {
 
 	kt.mu.Lock()
 	defer kt.mu.Unlock()
@@ -40,7 +37,7 @@ func (kt *KeyTransceiver) NewKey(kID contract.KeyID, kd *dkg.KeyData) {
 	}
 }
 
-func (kt *KeyTransceiver) KeyLookup(p contract.KeyID) dkg.KeyData {
+func (kt *keyTransceiver) KeyLookup(p contract.KeyID) dkg.KeyData {
 
 	kt.mu.RLock()
 	defer kt.mu.RUnlock()
@@ -53,8 +50,4 @@ func (kt *KeyTransceiver) KeyLookup(p contract.KeyID) dkg.KeyData {
 	}
 
 	panic("key consumer is asking for unknown key ID")
-}
-
-func (kt *KeyTransceiver) KeyGenerated() bool {
-	return (kt.kd != nil) && kt.kd.Present
 }

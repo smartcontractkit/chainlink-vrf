@@ -19,18 +19,15 @@ func proveBitPair(
 	if (bitPair < 0) || (bitPair > 3) {
 		return rv, errors.Errorf("bitPair must be in {0,1,2,3}, got %d", bitPair)
 	}
-
 	pgroup, err := makeProductGroup(suite, pk)
 	if err != nil {
 		return rv, errors.Wrap(err, "while proving common discrete log")
 	}
-
 	possiblePKs, err := blindingPKs(suite, pgroup, blindingCommitment, cipherTextTerm)
 	if err != nil {
 		return rv, errors.Wrapf(err, "while constructing bit-pair proof")
 	}
 	pPKs := pksToPoints(possiblePKs)
-
 	sig := anon.Sign(pgroup, domainSep, pPKs, nil, bitPair, secret)
 	if len(sig) != bitPairProofLen(suite) {
 		return rv, errors.Errorf("signature wrong length")
@@ -58,7 +55,6 @@ func (p bitPairProof) verify(suite anon.Suite,
 		return errors.Wrap(err, "while constructing possible keys for bit-pair proof")
 	}
 	possiblePKs := pksToPoints(possibleBlindingTerms)
-
 	_, err = anon.Verify(pgroup, domainSep, possiblePKs, nil, p)
 	if err != nil {
 		return errors.Wrap(err, "while verifying bit-pair proof")
