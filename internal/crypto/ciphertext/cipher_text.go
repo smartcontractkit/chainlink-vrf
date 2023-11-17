@@ -8,7 +8,7 @@ import (
 	"go.dedis.ch/kyber/v3/share"
 	"go.dedis.ch/kyber/v3/sign/anon"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/player_idx"
 )
 
 type cipherText struct {

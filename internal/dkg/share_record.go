@@ -8,9 +8,9 @@ import (
 
 	"github.com/smartcontractkit/libocr/offchainreporting2plus/types"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/ciphertext/schnorr"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
-	"github.com/smartcontractkit/ocr2vrf/internal/pvss"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/ciphertext/schnorr"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/point_translation"
+	"github.com/smartcontractkit/chainlink-vrf/internal/pvss"
 
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/sign/anon"

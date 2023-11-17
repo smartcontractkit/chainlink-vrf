@@ -13,10 +13,10 @@ import (
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2plus/types"
 
-	"github.com/smartcontractkit/ocr2vrf/altbn_128"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
-	dkg_contract "github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
-	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
+	"github.com/smartcontractkit/chainlink-vrf/altbn_128"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/player_idx"
+	dkg_contract "github.com/smartcontractkit/chainlink-vrf/internal/dkg/contract"
+	vrf_types "github.com/smartcontractkit/chainlink-vrf/types"
 )
 
 type vrfReportingPluginFactory struct {

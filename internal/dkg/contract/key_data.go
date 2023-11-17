@@ -8,7 +8,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	dkg_hash "github.com/smartcontractkit/ocr2vrf/types/hash"
+	dkg_hash "github.com/smartcontractkit/chainlink-vrf/types/hash"
 
 	"go.dedis.ch/kyber/v3"
 )

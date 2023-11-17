@@ -6,17 +6,17 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 
-	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
+	vrf_types "github.com/smartcontractkit/chainlink-vrf/types"
 
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/sign/anon"
 
-	"github.com/smartcontractkit/ocr2vrf/gethwrappers/testdkgstub"
-	"github.com/smartcontractkit/ocr2vrf/internal/common/ocr"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
-	"github.com/smartcontractkit/ocr2vrf/internal/util"
+	"github.com/smartcontractkit/chainlink-vrf/gethwrappers/testdkgstub"
+	"github.com/smartcontractkit/chainlink-vrf/internal/common/ocr"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/player_idx"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/point_translation"
+	"github.com/smartcontractkit/chainlink-vrf/internal/dkg/contract"
+	"github.com/smartcontractkit/chainlink-vrf/internal/util"
 )
 
 type testDKG interface {

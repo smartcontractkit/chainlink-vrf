@@ -6,11 +6,11 @@ import (
 
 	"github.com/smartcontractkit/libocr/commontypes"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
-	"github.com/smartcontractkit/ocr2vrf/internal/pvss"
-	"github.com/smartcontractkit/ocr2vrf/internal/util"
-	"github.com/smartcontractkit/ocr2vrf/types"
-	"github.com/smartcontractkit/ocr2vrf/types/hash"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/player_idx"
+	"github.com/smartcontractkit/chainlink-vrf/internal/pvss"
+	"github.com/smartcontractkit/chainlink-vrf/internal/util"
+	"github.com/smartcontractkit/chainlink-vrf/types"
+	"github.com/smartcontractkit/chainlink-vrf/types/hash"
 
 	"go.dedis.ch/kyber/v3/sign/anon"
 )

@@ -9,7 +9,7 @@ import (
 
 	bn256 "github.com/ethereum/go-ethereum/crypto/bn256/cloudflare"
 
-	"github.com/smartcontractkit/ocr2vrf/altbn_128/scalar"
+	"github.com/smartcontractkit/chainlink-vrf/altbn_128/scalar"
 )
 
 type G1 struct{ r cipher.Stream }

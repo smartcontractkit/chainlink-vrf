@@ -10,8 +10,8 @@ import (
 
 	bn256 "github.com/ethereum/go-ethereum/crypto/bn256/cloudflare"
 
-	"github.com/smartcontractkit/ocr2vrf/altbn_128/scalar"
-	"github.com/smartcontractkit/ocr2vrf/internal/util"
+	"github.com/smartcontractkit/chainlink-vrf/altbn_128/scalar"
+	"github.com/smartcontractkit/chainlink-vrf/internal/util"
 
 	"go.dedis.ch/kyber/v3"
 )

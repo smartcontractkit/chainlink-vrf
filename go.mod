@@ -1,4 +1,4 @@
-module github.com/smartcontractkit/ocr2vrf
+module github.com/smartcontractkit/chainlink-vrf
 
 go 1.20
 

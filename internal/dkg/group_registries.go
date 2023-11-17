@@ -3,8 +3,8 @@ package dkg
 import (
 	"go.dedis.ch/kyber/v3/sign/anon"
 
-	"github.com/smartcontractkit/ocr2vrf/altbn_128"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
+	"github.com/smartcontractkit/chainlink-vrf/altbn_128"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/point_translation"
 )
 
 var translatorRegistry = point_translation.TranslatorRegistry
