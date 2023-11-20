@@ -14,9 +14,9 @@ import (
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/pairing"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
-	dkg_contract "github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
-	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/player_idx"
+	dkg_contract "github.com/smartcontractkit/chainlink-vrf/internal/dkg/contract"
+	vrf_types "github.com/smartcontractkit/chainlink-vrf/types"
 )
 
 var _ types.ReportingPlugin = (*sigRequest)(nil)

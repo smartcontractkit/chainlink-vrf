@@ -12,9 +12,9 @@ import (
 	"go.dedis.ch/kyber/v3/group/mod"
 	kshare "go.dedis.ch/kyber/v3/share"
 
-	"github.com/smartcontractkit/ocr2vrf/altbn_128"
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
-	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
+	"github.com/smartcontractkit/chainlink-vrf/altbn_128"
+	"github.com/smartcontractkit/chainlink-vrf/internal/dkg"
+	vrf_types "github.com/smartcontractkit/chainlink-vrf/types"
 )
 
 func m(x int64) *mod.Int { return mod.NewInt64(x, bn256.P) }

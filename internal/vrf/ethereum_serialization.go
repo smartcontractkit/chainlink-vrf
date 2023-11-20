@@ -9,10 +9,10 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/smartcontractkit/ocr2vrf/altbn_128"
-	"github.com/smartcontractkit/ocr2vrf/gethwrappers/vrfbeacon"
-	"github.com/smartcontractkit/ocr2vrf/internal/util"
-	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
+	"github.com/smartcontractkit/chainlink-vrf/altbn_128"
+	"github.com/smartcontractkit/chainlink-vrf/gethwrappers/vrfbeacon"
+	"github.com/smartcontractkit/chainlink-vrf/internal/util"
+	vrf_types "github.com/smartcontractkit/chainlink-vrf/types"
 
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/group/mod"

@@ -11,11 +11,11 @@ import (
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2plus/types"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
-	"github.com/smartcontractkit/ocr2vrf/internal/pvss"
-	dkg_types "github.com/smartcontractkit/ocr2vrf/types"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/player_idx"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/point_translation"
+	"github.com/smartcontractkit/chainlink-vrf/internal/dkg/contract"
+	"github.com/smartcontractkit/chainlink-vrf/internal/pvss"
+	dkg_types "github.com/smartcontractkit/chainlink-vrf/types"
 
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/group/edwards25519"

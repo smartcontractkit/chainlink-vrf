@@ -14,10 +14,10 @@ import (
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2plus/types"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
-	"github.com/smartcontractkit/ocr2vrf/internal/util"
-	"github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
-	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/player_idx"
+	"github.com/smartcontractkit/chainlink-vrf/internal/util"
+	"github.com/smartcontractkit/chainlink-vrf/internal/vrf/protobuf"
+	vrf_types "github.com/smartcontractkit/chainlink-vrf/types"
 
 	kshare "go.dedis.ch/kyber/v3/share"
 
@@ -393,7 +393,6 @@ func (s *sigRequest) Report(
 		if c > int(s.t) {
 			if (mostRecentBlockHash.hash == zeroHash) ||
 				(hh.height > mostRecentBlockHash.height) ||
-
 				((hh.height == mostRecentBlockHash.height) &&
 					hh.hash.Big().Cmp(mostRecentBlockHash.hash.Big()) > 0) {
 				mostRecentBlockHash = hh

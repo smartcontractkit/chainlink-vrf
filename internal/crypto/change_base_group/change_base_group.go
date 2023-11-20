@@ -9,7 +9,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/ciphertext/schnorr"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/ciphertext/schnorr"
 
 	"go.dedis.ch/kyber/v3"
 )

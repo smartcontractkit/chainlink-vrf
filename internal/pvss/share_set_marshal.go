@@ -8,9 +8,9 @@ import (
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/sign/anon"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
-	"github.com/smartcontractkit/ocr2vrf/internal/util"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/player_idx"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/point_translation"
+	"github.com/smartcontractkit/chainlink-vrf/internal/util"
 )
 
 var _ = (&ShareSet{}).Marshal

@@ -9,7 +9,7 @@ import (
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/sign/anon"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/ciphertext"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/ciphertext"
 )
 
 func (s *share) marshal() ([]byte, error) {

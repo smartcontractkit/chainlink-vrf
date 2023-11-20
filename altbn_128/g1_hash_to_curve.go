@@ -7,8 +7,8 @@ import (
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/crypto"
 
-	"github.com/smartcontractkit/ocr2vrf/gethwrappers/vrf"
-	"github.com/smartcontractkit/ocr2vrf/internal/util"
+	"github.com/smartcontractkit/chainlink-vrf/gethwrappers/vrf"
+	"github.com/smartcontractkit/chainlink-vrf/internal/util"
 
 	bn256 "github.com/ethereum/go-ethereum/crypto/bn256/cloudflare"
 

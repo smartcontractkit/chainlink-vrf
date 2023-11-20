@@ -6,10 +6,10 @@ import (
 	"github.com/pkg/errors"
 	offchainreporting "github.com/smartcontractkit/libocr/offchainreporting2plus"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
-	"github.com/smartcontractkit/ocr2vrf/internal/util"
-	"github.com/smartcontractkit/ocr2vrf/internal/vrf"
-	"github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
+	"github.com/smartcontractkit/chainlink-vrf/internal/dkg"
+	"github.com/smartcontractkit/chainlink-vrf/internal/util"
+	"github.com/smartcontractkit/chainlink-vrf/internal/vrf"
+	"github.com/smartcontractkit/chainlink-vrf/internal/vrf/protobuf"
 )
 
 type OCR2VRF struct {

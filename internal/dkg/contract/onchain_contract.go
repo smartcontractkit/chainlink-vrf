@@ -7,8 +7,8 @@ import (
 
 	"github.com/smartcontractkit/libocr/offchainreporting2plus/types"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/common/ocr"
-	"github.com/smartcontractkit/ocr2vrf/internal/util"
+	"github.com/smartcontractkit/chainlink-vrf/internal/common/ocr"
+	"github.com/smartcontractkit/chainlink-vrf/internal/util"
 
 	"go.dedis.ch/kyber/v3"
 )

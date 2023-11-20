@@ -15,9 +15,9 @@ import (
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2plus/types"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
-	"github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
-	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
+	"github.com/smartcontractkit/chainlink-vrf/internal/dkg/contract"
+	"github.com/smartcontractkit/chainlink-vrf/internal/vrf/protobuf"
+	vrf_types "github.com/smartcontractkit/chainlink-vrf/types"
 )
 
 func OffchainConfig(v *protobuf.CoordinatorConfig) []byte {

@@ -4,8 +4,8 @@ import (
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2plus/types"
 
-	dkg_contract "github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
-	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
+	dkg_contract "github.com/smartcontractkit/chainlink-vrf/internal/dkg/contract"
+	vrf_types "github.com/smartcontractkit/chainlink-vrf/types"
 )
 
 type DKGVRFArgs struct {

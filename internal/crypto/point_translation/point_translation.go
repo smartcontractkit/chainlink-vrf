@@ -3,7 +3,7 @@ package point_translation
 import (
 	"go.dedis.ch/kyber/v3"
 
-	"github.com/smartcontractkit/ocr2vrf/altbn_128"
+	"github.com/smartcontractkit/chainlink-vrf/altbn_128"
 )
 
 type PubKeyTranslation interface {

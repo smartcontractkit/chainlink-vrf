@@ -10,11 +10,11 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
-	"github.com/smartcontractkit/ocr2vrf/internal/util"
-	"github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
-	vrf_types "github.com/smartcontractkit/ocr2vrf/types"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/player_idx"
+	"github.com/smartcontractkit/chainlink-vrf/internal/dkg"
+	"github.com/smartcontractkit/chainlink-vrf/internal/util"
+	"github.com/smartcontractkit/chainlink-vrf/internal/vrf/protobuf"
+	vrf_types "github.com/smartcontractkit/chainlink-vrf/types"
 
 	kshare "go.dedis.ch/kyber/v3/share"
 

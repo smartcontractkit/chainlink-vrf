@@ -10,11 +10,11 @@ import (
 	"github.com/smartcontractkit/libocr/commontypes"
 	"github.com/smartcontractkit/libocr/offchainreporting2plus/types"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/common/ocr"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
-	"github.com/smartcontractkit/ocr2vrf/internal/vrf/protobuf"
+	"github.com/smartcontractkit/chainlink-vrf/internal/common/ocr"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/player_idx"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/point_translation"
+	"github.com/smartcontractkit/chainlink-vrf/internal/dkg/contract"
+	"github.com/smartcontractkit/chainlink-vrf/internal/vrf/protobuf"
 )
 
 type CoordinatorInterface interface {

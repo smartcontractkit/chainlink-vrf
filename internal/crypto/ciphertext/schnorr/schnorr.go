@@ -6,7 +6,7 @@ import (
 
 	"go.dedis.ch/kyber/v3"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/util"
+	"github.com/smartcontractkit/chainlink-vrf/internal/util"
 )
 
 type Suite interface {

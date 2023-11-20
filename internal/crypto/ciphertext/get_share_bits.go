@@ -3,7 +3,7 @@ package ciphertext
 import (
 	"github.com/pkg/errors"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/player_idx"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/player_idx"
 
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/share"

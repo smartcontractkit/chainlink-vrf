@@ -3,8 +3,8 @@ package vrf
 import (
 	"sync"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
+	"github.com/smartcontractkit/chainlink-vrf/internal/dkg"
+	"github.com/smartcontractkit/chainlink-vrf/internal/dkg/contract"
 )
 
 type KeyTransceiver struct {

@@ -7,10 +7,10 @@ import (
 	"go.dedis.ch/kyber/v3"
 	"go.dedis.ch/kyber/v3/sign/anon"
 
-	"github.com/smartcontractkit/ocr2vrf/internal/crypto/point_translation"
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg"
-	"github.com/smartcontractkit/ocr2vrf/internal/dkg/contract"
-	dkg_types "github.com/smartcontractkit/ocr2vrf/types"
+	"github.com/smartcontractkit/chainlink-vrf/internal/crypto/point_translation"
+	"github.com/smartcontractkit/chainlink-vrf/internal/dkg"
+	"github.com/smartcontractkit/chainlink-vrf/internal/dkg/contract"
+	dkg_types "github.com/smartcontractkit/chainlink-vrf/types"
 )
 
 func NewReportingPluginFactory(

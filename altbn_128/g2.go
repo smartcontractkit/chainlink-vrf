@@ -3,7 +3,7 @@ package altbn_128
 import (
 	"crypto/cipher"
 
-	"github.com/smartcontractkit/ocr2vrf/altbn_128/scalar"
+	"github.com/smartcontractkit/chainlink-vrf/altbn_128/scalar"
 
 	"go.dedis.ch/kyber/v3"
 )
