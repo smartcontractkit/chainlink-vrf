@@ -39,6 +39,7 @@ type localArgs struct {
 }
 
 func (v *vrfReportingPluginFactory) NewReportingPlugin(
+	ctx context.Context,
 	c types.ReportingPluginConfig,
 ) (types.ReportingPlugin, types.ReportingPluginInfo, error) {
 	if c.N > int(player_idx.MaxPlayer) {
