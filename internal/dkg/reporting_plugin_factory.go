@@ -25,6 +25,7 @@ type dkgReportingPluginFactory struct {
 var _ types.ReportingPluginFactory = (*dkgReportingPluginFactory)(nil)
 
 func (d *dkgReportingPluginFactory) NewReportingPlugin(
+	ctx context.Context,
 	c types.ReportingPluginConfig,
 ) (types.ReportingPlugin, types.ReportingPluginInfo, error) {
 	d.lock.Lock()

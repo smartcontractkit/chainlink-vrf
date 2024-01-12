@@ -102,7 +102,11 @@ func fieldSquare(y *fieldElt) *fieldElt {
 	return fieldEltFromBigInt(newFieldZero().int().Exp(y.int(), two, q))
 }
 
-var sqrtPower = s256.QPlus1Div4()
+func i() *big.Int { return new(big.Int) }
+
+// sqrtPower is s.t. n^sqrtPower≡sqrt(n) mod q, if n has a root at all. See
+// https://math.stackexchange.com/a/1816280, for instance
+var sqrtPower = i().Rsh(i().Add(q, big.NewInt(1)), 2) // (q +1)/4
 
 func maybeSqrtInField(v *fieldElt) *fieldElt {
 	s := newFieldZero()
