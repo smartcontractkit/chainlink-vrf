@@ -1,0 +1,106 @@
+name: pull-request-master
+
+on:
+  merge_group:
+  pull_request:
+    branches:
+      - master
+# Only run 1 of this workflow at a time per PR
+concurrency:
+  group: chainlink-vrf-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PACKAGES: "./.."
+
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix_packages: ${{ steps.set-matrix-packages.outputs.matrix_packages }}
+      lint_args_packages: ${{ steps.set-matrix-packages.outputs.lint_args_packages }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          fetch-depth: 0
+      - name: Set matrix packages
+        id: set-matrix-packages
+        shell: bash
+        env:
+          PACKAGES: ${{ env.PACKAGES }}
+        run: |
+          matrix_packages=$(echo "${PACKAGES}" | jq -R 'split(",")' | tr -d "\n\t")
+          echo "matrix_packages=${matrix_packages}" | tee -a "${GITHUB_OUTPUT}"
+      - name: Set lint args packages
+        id: set-lint-args-packages
+        shell: bash
+        env:
+          PACKAGES: ${{ env.PACKAGES }}
+        # Convert "producer,reports_consumer" to "./producer/... ./reports_consumer/..."
+        run: echo "lint_args_packages=$(echo "./$(echo $PACKAGES | sed 's/,/\/... .\//g;s/$/\/.../')")" | tee -a "${GITHUB_OUTPUT}"
+
+  ci-lint:
+    runs-on: ubuntu-latest
+    needs: [init]
+    permissions:
+      id-token: write
+      contents: read
+      actions: read
+    steps:
+      - name: ci-lint
+        uses: smartcontractkit/.github/actions/ci-lint-go@5b1046c28343660ecb84844c6fa95a66d1cdb52e # ci-lint-go@0.2.1
+        with:
+          # grafana inputs
+          metrics-job-name: ci-lint
+          gc-basic-auth: ${{ secrets.GRAFANA_INTERNAL_BASIC_AUTH }}
+          gc-host: ${{ secrets.GRAFANA_INTERNAL_HOST }}
+          gc-org-id: ${{ secrets.GRAFANA_INTERNAL_TENANT_ID }}
+          # env inputs
+          use-env-files: "true"
+          env-files: ./tools/env/ci.env
+          # go inputs
+          use-go-cache: true
+          go-cache-dep-path: "**/go.sum"
+          go-version-file: go.mod
+          golangci-lint-version: "v1.55.2"
+          golangci-lint-args: --out-format colored-line-number,checkstyle:golangci-lint-report.xml
+
+  ci-lint-misc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ci-lint-misc
+        uses: smartcontractkit/.github/actions/ci-lint-misc@6b08487b176ef7cad086526d0b54ddff6691c044 # ci-lint-misc@0.1.1
+        with:
+          # grafana inputs
+          metrics-job-name: ci-lint-misc
+          gc-basic-auth: ${{ secrets.GRAFANA_INTERNAL_BASIC_AUTH }}
+          gc-host: ${{ secrets.GRAFANA_INTERNAL_HOST }}
+          gc-org-id: ${{ secrets.GRAFANA_INTERNAL_TENANT_ID }}
+
+  ci-test:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      actions: read
+    steps:
+      - name: ci-test
+        uses: smartcontractkit/.github/actions/ci-test-go@5b1046c28343660ecb84844c6fa95a66d1cdb52e # ci-test-go@0.1.2
+        with:
+          # grafana inputs
+          metrics-job-name: ci-test
+          gc-basic-auth: ${{ secrets.GRAFANA_INTERNAL_BASIC_AUTH }}
+          gc-host: ${{ secrets.GRAFANA_INTERNAL_HOST }}
+          gc-org-id: ${{ secrets.GRAFANA_INTERNAL_TENANT_ID }}
+          # docker inputs
+          use-docker-compose: "true"
+          docker-compose-workdir: ./tools/docker/setup-postgres
+          # env inputs
+          use-env-files: "true"
+          env-files: ./tools/env/ci.env
+          # go inputs
+          use-go-cache: "true"
+          go-cache-dep-path: "**/go.sum"
+          go-version-file: go.mod
+          go-test-cmd: make test-ci
