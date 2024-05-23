@@ -1,9 +1,9 @@
-name: push-master
+name: push-main
 
 on:
   push:
     branches:
-      - master
+      - main
 
 env:
   PACKAGES: "./..."

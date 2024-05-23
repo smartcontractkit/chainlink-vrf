@@ -1,10 +1,10 @@
-name: pull-request-master
+name: pull-request-main
 
 on:
   merge_group:
   pull_request:
     branches:
-      - master
+      - main
 # Only run 1 of this workflow at a time per PR
 concurrency:
   group: chainlink-vrf-${{ github.ref }}
